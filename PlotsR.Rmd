@@ -1,0 +1,303 @@
+---
+title: "ResearchProject"
+author: "AlistairGJ"
+date: "23/06/2019"
+output: html_document
+---
+
+```{r}
+library(ggplot2)
+library(dplyr) # easier data wrangling 
+library(viridis) # colour blind friendly palette, works in B&W also
+library(lubridate) # for easy date manipulation
+library(ggExtra) # because remembering ggplot theme options is beyond me
+library(tidyr)
+library(readr)
+library(lubridate)
+```
+
+```{r}
+setwd('/Users/alistairgj/Documents/GitHub/ResearchProject')
+#list.files()
+```
+
+
+```{r}
+resampleFreqMelt <- read_csv("resampled_freq_melt.csv")
+```
+
+```{r}
+head(resampleFreqMelt, n=5)
+```
+
+```{r}
+resampleFreq <- read_csv("resampled_freq.csv")
+```
+
+```{r}
+head(resampleFreq, n=5)
+```
+
+
+```{r}
+resampleFreqMelt$HOUR <- hour(resampleFreqMelt$TimeStamp)
+resampleFreqMelt$DATE <- date(resampleFreqMelt$TimeStamp)
+resampleFreqMelt$DAY <- weekdays(resampleFreqMelt$TimeStamp)
+```
+
+
+```{r}
+colnames(resampleFreqMelt)
+```
+
+```{r}
+head(resampleFreqMelt, n=5)
+```
+
+```{r}
+march27 <- resampleFreqMelt %>% filter(DATE == as.Date("2003-03-27"))
+```
+
+```{r}
+head(march27, n=5)
+```
+
+```{r}
+# Removing all zero values
+march27noZero <- march27 %>% filter(Freq > 0)
+```
+
+```{r}
+p <- ggplot(march27noZero, aes(x = HOUR,  y = Freq, fill = SubAct)) +
+  geom_col(color = "white", size = 0.1) 
+p 
+```
+
+```{r}
+p <- ggplot(march27noZero, aes(x = HOUR,  y = Freq, fill = SubAct)) +
+  geom_col(color = "white", size = 0.1) + coord_flip()
+p 
+```
+
+```{r}
+p <- ggplot() 
+p <- p + geom_col(data = march27noZero, 
+                  aes(x = HOUR,  y = Freq, fill = SubAct)) + coord_flip()
+p 
+```
+
+```{r}
+a <- ggplot() 
+a <- a + geom_boxplot(data = march27noZero, 
+                      aes(x = HOUR, y = Freq, fill = SubAct))
+a
+```
+
+
++ coord_flip() +
+
+```{r}
+p <- ggplot(march27noZero, aes(x = HOUR,  y = Freq, fill = SubAct)) +
+  geom_boxplot(color = "white", size = 0.1) 
+p 
+```
+
+```{r fig.width=10, fig.height=8}
+p <- ggplot() 
+p <- p + geom_col(data = march27noZero, 
+                  aes(x = HOUR,  y = Freq, fill = SubAct)) + coord_flip()
+p <- p + facet_grid(HOUR ~ ., scales = "free")
+p 
+```
+
+```{r fig.width=10, fig.height=8}
+p <- ggplot() 
+p <- p + geom_col(data = march27noZero, 
+                  aes(x = SubAct,  y = Freq, fill = HOUR))
+p 
+```
+
+```{r fig.width=10, fig.height=8}
+#p <- ggplot(resampleFreqMelt, aes(SubAct, hour, fill = Freq)) +
+#  geom_tile(color = "white", size = 0.1) + 
+#  scale_fill_viridis(name = "Hrly Temps C", option = "C")
+#p <- p + facet_grid(. ~ day)
+#p
+p <- ggplot()
+p <- p + geom_tile(data = march27noZero, aes(x = HOUR, y = SubAct, fill = SubAct))
+p
+```
+
+```{r fig.width=10, fig.height=8}
+p <- ggplot()
+p <- p + geom_density(data = march27noZero, aes(x = Freq, fill = SubAct))
+p <- p + facet_grid(. ~ SubAct)
+p
+```
+
+```{r fig.width=10, fig.height=40}
+p <- ggplot()
+p <- p + geom_density(data = march27noZero, aes(x = Freq))
+p <- p + facet_grid(SubAct ~ .)
+p
+```
+
+```{r}
+
+```
+
+
+
+
+```{r}
+p <- ggplot(resampleFreqMelt, aes(SubAct, hour, fill = Freq)) +
+  geom_tile(color = "white", size = 0.1) + 
+  scale_fill_viridis(name = "Hrly Temps C", option = "C")
+p <- p + facet_grid(. ~ day)
+p
+```
+
+```{r}
+p <- ggplot(resampleFreqMelt, aes(SubAct, hour, fill = Freq)) +
+  geom_tile(color = "white", size = 0.1) + 
+  scale_fill_viridis(name = "Hrly Temps C", option = "C")
+p <- p + facet_grid(SubAct ~ day)
+p
+```
+
+https://www.google.com/search?q=matplotlib+heatmap&source=lnms&sa=X&ved=0ahUKEwjU1Kn0o6DjAhUr8XMBHdiGBvYQ_AUICygA&biw=1249&bih=959&dpr=1
+https://www.data-to-viz.com/graph/ridgeline.html
+https://python-graph-gallery.com/
+https://stackoverflow.com/questions/33282368/plotting-a-2d-heatmap-with-matplotlib 
+https://www.r-graph-gallery.com/283-the-hourly-heatmap/
+
+
+
+names(df)[names(df) == 'old.var.name'] <- 'new.var.name' # Replace column name
+
+
+```{r}
+library(plotly)
+```
+
+```{r}
+data <- read.csv("https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv")
+```
+
+```{r}
+march27noZero$size <- march27noZero$Freq
+colors <- c('#4AC6B7', '#1972A4', '#965F8A', '#FF7070', '#C61951')
+
+p <- plot_ly(march27noZero, x = ~HOUR, y = ~Freq, z = ~SubAct, color = ~DAY, size = ~size, colors = colors,
+             marker = list(symbol = 'circle', sizemode = 'diameter'), sizes = c(5, 150))
+p
+# Create a shareable link to your chart
+# Set up API credentials: https://plot.ly/r/getting-started
+#chart_link = api_create(p, filename="scatter3d-bubble")
+#chart_link
+```
+
+
+```{r}
+data <- read.csv("https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv")
+
+data_2007 <- data[which(data$year == 2007),]
+data_2007 <- data_2007[order(data_2007$continent, data_2007$country),]
+data_2007$size <- data_2007$pop
+colors <- c('#4AC6B7', '#1972A4', '#965F8A', '#FF7070', '#C61951')
+
+p <- plot_ly(data_2007, x = ~gdpPercap, y = ~lifeExp, z = ~pop, color = ~continent, size = ~size, colors = colors,
+             marker = list(symbol = 'circle', sizemode = 'diameter'), sizes = c(5, 150),
+             text = ~paste('Country:', country, '<br>Life Expectancy:', lifeExp, '<br>GDP:', gdpPercap,
+                           '<br>Pop.:', pop)) %>%
+  layout(title = 'Life Expectancy v. Per Capita GDP, 2007',
+         scene = list(xaxis = list(title = 'GDP per capita (2000 dollars)',
+                      gridcolor = 'rgb(255, 255, 255)',
+                      range = c(2.003297660701705, 5.191505530708712),
+                      type = 'log',
+                      zerolinewidth = 1,
+                      ticklen = 5,
+                      gridwidth = 2),
+               yaxis = list(title = 'Life Expectancy (years)',
+                      gridcolor = 'rgb(255, 255, 255)',
+                      range = c(36.12621671352166, 91.72921793264332),
+                      zerolinewidth = 1,
+                      ticklen = 5,
+                      gridwith = 2),
+               zaxis = list(title = 'Population',
+                            gridcolor = 'rgb(255, 255, 255)',
+                            type = 'log',
+                            zerolinewidth = 1,
+                            ticklen = 5,
+                            gridwith = 2)),
+         paper_bgcolor = 'rgb(243, 243, 243)',
+         plot_bgcolor = 'rgb(243, 243, 243)')
+p
+# Create a shareable link to your chart
+# Set up API credentials: https://plot.ly/r/getting-started
+#chart_link = api_create(p, filename="scatter3d-bubble")
+#chart_link
+```
+
+
+
+
+```{r}
+ds <- read_csv("ds_resampled_freq.csv")
+```
+
+```{r}
+head(ds, n=5)
+```
+
+```{r}
+ds$HOUR <- hour(ds$timeStamp)
+ds$DATE <- date(ds$timeStamp)
+ds$DAY <- weekdays(ds$timeStamp)
+```
+
+
+```{r}
+colnames(resampleFreqMelt)
+```
+
+```{r}
+head(ds, n=5)
+```
+
+```{r}
+ds_bathroom_cabinet <- ds %>% filter(subAct == 'bathroom_cabinet')
+```
+
+
+```{r fig.width=10, fig.height=5}
+p <- ggplot()
+p <- p + geom_density(data = ds_bathroom_cabinet, aes(x = freq, color = DAY))
+p
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
