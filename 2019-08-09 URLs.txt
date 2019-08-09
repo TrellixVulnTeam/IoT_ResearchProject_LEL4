@@ -1,0 +1,10 @@
+
+
+https://plotnine.readthedocs.io/en/stable/tutorials/miscellaneous-altering-colors.html
+https://plotnine.readthedocs.io/en/stable/generated/plotnine.geoms.geom_segment.html#change-in-rank
+https://github.com/altair-viz/altair_widgets
+https://www.dataquest.io/blog/tutorial-advanced-for-loops-python-pandas/
+https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html
+https://datatofish.com/if-condition-in-pandas-dataframe/
+https://www.mkyong.com/python/python-how-to-list-all-files-in-a-directory/
+

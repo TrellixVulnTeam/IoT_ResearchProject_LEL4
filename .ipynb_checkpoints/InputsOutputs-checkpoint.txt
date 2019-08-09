@@ -1,0 +1,78 @@
+
+S1 Sensor and Activities Information
+- Input = 'S1Activities.csv' (checking only)
+- Input = 'S1sensors.csv'
+- Output = 'S1sensors_preprocessed.csv'
+
+S1 Activities Data Preprocessing
+- Input = 'S1Activities.csv'
+- Output = 'S1Activities_preprocessed.csv'
+
+S1 SubActivities Preprocessing
+- Input = 'S1Activities.csv'
+- Output = 'S1SubActivities_preprocessed.csv'
+
+S1 SubActivities Added Time Range
+- Input = 'S1SubActivities_preprocessed.csv'
+- Output = 'S1SubActivities_timeStampRanges.csv'
+-- Features
+[subActNum, subAct, start, end, ActDuration, timeStampList, timeStampArrayList] 
+Contains numeric duration value, may be used later to explore temporal relationships between events
+
+S1 SubActivities Time Range Melt
+- Input = 'S1SubActivities_timeStampRanges.csv'
+- Output = 'S1SubActivities_timeRangeMelt.csv'
+-- Features
+[subActNum, actDuration, duration]
+
+S1 SubActivities Time Range Boolean
+- Input = 'S1SubActivities_timeRangeMelt.csv'
+- Output = 'S1SubActivities_timeRangeBoolean_DuplicateIndex.csv'
+-- Features
+[idx(Timestamp), subActNumi, ..., subActNumf]
+
+- Output = 'S1SubActivities_timeRangeBoolean.csv'
+* Index collapsed
+-- Features
+[idx(Timestamp), subActNumi, ..., subActNumf]
+
+
+
+
+
+
+
+
+
+
+[I 16:21:57.810 LabApp] Appmode server extension loaded.
+[W 16:21:57.810 LabApp] Error loading server extension jupyter_nbextensions_configurator
+Traceback (most recent call last):
+File "/Users/alistairgj/anaconda/envs/py36/lib/python3.6/site-packages/notebook/notebookapp.py", line 1271, in init_server_extensions
+mod = importlib.import_module(modulename)
+File "/Users/alistairgj/anaconda/envs/py36/lib/python3.6/importlib/__init__.py", line 126, in import_module
+return _bootstrap._gcd_import(name[level:], package, level)
+File "", line 994, in _gcd_import
+File "", line 971, in _find_and_load
+File "", line 953, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'jupyter_nbextensions_configurator'
+[I 16:21:57.828 LabApp] JupyterLab extension loaded from /Users/alistairgj/anaconda/envs/py36/lib/python3.6/site-packages/jupyterlab
+[I 16:21:57.828 LabApp] JupyterLab application directory is /Users/alistairgj/anaconda/envs/py36/share/jupyter/lab
+[W 16:21:57.830 LabApp] JupyterLab server extension not enabled, manually loading...
+[I 16:21:57.840 LabApp] JupyterLab extension loaded from /Users/alistairgj/anaconda/envs/py36/lib/python3.6/site-packages/jupyterlab
+[I 16:21:57.840 LabApp] JupyterLab application directory is /Users/alistairgj/anaconda/envs/py36/share/jupyter/lab
+[I 16:21:57.853 LabApp] Serving notebooks from local directory: /Users/alistairgj
+[I 16:21:57.853 LabApp] 0 active kernels 
+[I 16:21:57.853 LabApp] The Jupyter Notebook is running at: http://localhost:8888/
+[I 16:21:57.853 LabApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[W 16:22:00.638 LabApp] Could not determine jupyterlab build status without nodejs
+[W 16:22:00.823 LabApp] 404 GET /metrics?1564294920739 (::1) 55.14ms referer=http://localhost:8888/lab
+
+
+
+
+
+
+
+
+
