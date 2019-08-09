@@ -2,41 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d78bd06-6122-408d-90f9-cc05a9353d96" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cana.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.ipynb_checkpoints/1 - TImeSeriesSegmentation-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.ipynb_checkpoints/1. A Master-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.ipynb_checkpoints/1. S1a Sensor and Activities Information-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.ipynb_checkpoints/10. S1b Probability Function-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.ipynb_checkpoints/2. S1a Activities Data Preprocessing-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.ipynb_checkpoints/3. S1a SubActivities Preprocessing-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.ipynb_checkpoints/4. S1a SubActivities Added Time Range-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.ipynb_checkpoints/5. S1a SubActivities Time Range Melt-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.ipynb_checkpoints/6. S1a SubActivities Time Range Boolean-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.ipynb_checkpoints/7. S1a SubActivities Collapse into Minutes-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.ipynb_checkpoints/8. S1a SubActivities Remove Duplicate Attributes-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.ipynb_checkpoints/9. S1b SubActivities Plots-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../0402_001.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1 - CompilingEnergyConsumption.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1 - FeatureExtraction.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1 - ProbabilisticModellingPt1.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1 - ProbabilisticModellingPt2.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1 - TImeSeriesSegmentation.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1. A Master.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1. S1a Sensor and Activities Information.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../10. S1b Probability Function.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../2. S1a Activities Data Preprocessing.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../2019-08-09 URLs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../2019-08-09 URLs.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../3. S1a SubActivities Preprocessing.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../4. S1a SubActivities Added Time Range.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../5. S1a SubActivities Time Range Melt.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../6. S1a SubActivities Time Range Boolean.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../7. S1a SubActivities Collapse into Minutes.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../8. S1a SubActivities Remove Duplicate Attributes.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../9. S1b SubActivities Plots.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../USEFUL FUNCTIONS.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../USEFUL FUNCTIONS.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cana.py" beforeDir="false" afterPath="$PROJECT_DIR$/cana.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,13 +11,30 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/py27$cana.coverage" NAME="cana Coverage Results" MODIFIED="1565369880385" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cana.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="8" column="11" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+            <state relative-caret-position="322">
+              <caret line="14" column="35" lean-forward="true" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
               <folding>
                 <element signature="e#1#32#0" expanded="true" />
               </folding>
@@ -71,8 +55,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="321" />
-    <option name="y" value="151" />
+    <option name="x" value="105" />
+    <option name="y" value="23" />
     <option name="width" value="1363" />
     <option name="height" value="1188" />
   </component>
@@ -124,6 +108,35 @@
       </list>
     </option>
   </component>
+  <component name="RunManager">
+    <configuration name="cana" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="py27" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/cana.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.cana" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -134,15 +147,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1565368235273</updated>
-      <workItem from="1565368237006" duration="377000" />
+      <workItem from="1565368237006" duration="2446000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="377000" />
+    <option name="totallyTimeSpent" value="2446000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="321" y="151" width="1363" height="1188" extended-state="0" />
+    <frame x="105" y="23" width="1363" height="1188" extended-state="0" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24981076" />
@@ -150,18 +163,18 @@
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Python Console" weight="0.32937956" />
-      <window_info anchor="bottom" id="Terminal" visible="true" weight="0.32937956" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info active="true" anchor="bottom" id="Python Console" sideWeight="0.4996215" visible="true" weight="0.32937956" />
+      <window_info anchor="bottom" id="Terminal" weight="0.32937956" />
+      <window_info anchor="bottom" id="Event Log" sideWeight="0.5003785" side_tool="true" weight="0.32937956" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32937956" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="right" id="SciView" weight="0.329296" />
-      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Database" weight="0.329296" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -173,8 +186,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/cana.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="8" column="11" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+        <state relative-caret-position="322">
+          <caret line="14" column="35" lean-forward="true" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
           <folding>
             <element signature="e#1#32#0" expanded="true" />
           </folding>
