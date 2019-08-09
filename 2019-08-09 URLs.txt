@@ -8,3 +8,17 @@ https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environme
 https://datatofish.com/if-condition-in-pandas-dataframe/
 https://www.mkyong.com/python/python-how-to-list-all-files-in-a-directory/
 
+https://github.com/maxmelnick
+http://maxmelnick.com/2016/04/19/python-beginner-tips-and-tricks.html
+https://github.com/dunovank/jupyter-themes
+https://github.com/quobit/awesome-python-in-education#jupyter
+https://github.com/jupyter/jupyter/wiki/a-gallery-of-interesting-jupyter-notebooks
+https://github.com/markusschanta/awesome-jupyter
+https://github.com/mauhai/awesome-jupyterlab
+https://github.com/jupyterlab/jupyterlab-latex
+
+
+
+
+
+
