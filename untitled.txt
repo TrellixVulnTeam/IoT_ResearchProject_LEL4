@@ -1,4 +1,7 @@
 
+jupyter nbextensions_configurator enable --user
+
+
 https://quant.stackexchange.com/questions/613/what-is-the-best-data-structure-implementation-for-representing-a-time-series
 https://www.machinelearningplus.com/time-series/time-series-analysis-python/
 https://towardsdatascience.com/playing-with-time-series-data-in-python-959e2485bff8
