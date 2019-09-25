@@ -1,0 +1,5 @@
+ds = ds[ds.subAct != 'bedroom_jewelrybox']
+ds = ds[ds.subAct != 'foyer_closet']
+ds = ds[ds.subAct != 'kitchen_cereal']
+ds = ds[ds.subAct != 'kitchen_containers']
+ds = ds[ds.subAct != 'bedroom_lamp']

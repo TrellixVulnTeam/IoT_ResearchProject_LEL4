@@ -1,0 +1,150 @@
+\documentclass[11pt,a4paper,twoside]{article}
+
+% Put your name and thesis title in the next two lines
+\newcommand{\student}{W. Mansfield}
+\newcommand{\topic}{Enhancing Commitment Machines}
+
+\usepackage{times}
+\usepackage{a4wide}
+\usepackage{fancyheadings}
+
+%\usepackage{apalike}
+\usepackage{natbib} % various citation commands
+
+%% New 
+\usepackage{epsfig}
+\usepackage{pifont}
+\usepackage{fancybox}
+\usepackage{amssymb}
+
+\newcommand{\yes}{\ding{52}}
+\newcommand{\no}{\ding{56}}
+\newcommand{\gap}{\hspace*{1cm}}
+
+
+\renewcommand{\leftmark}{\student}
+\renewcommand{\rightmark}{\topic}
+\setlength{\headrulewidth}{0pt}
+
+\begin{document}
+
+\title{{\sc \topic}}
+\author{{\sc \student}
+% Delete one of the two next lines
+	\\[3mm] {\bf Supervisor:} {\sc H. Jacobson}
+	\\[5mm] Honours Thesis
+	\\[5mm] School of Computer Science and Information Technology
+	\\ RMIT University 
+	\\ Melbourne, AUSTRALIA
+} 
+\date{July, 2004}
+
+\maketitle
+
+\begin{abstract}
+Agent interaction protocols are usually specified in terms of permissible
+sequences of messages. This representation is, unfortunately, brittle and does
+not allow for flexibility and robustness.  The {\em commitment machines}
+framework of Yolum and Singh aims to provide more flexibility and robustness by
+defining interactions in terms of the commitments of agents.  In this thesis we
+identify a number of areas where the commitment machines framework needs
+improvement and propose an improved version.
+In particular we improve the
+way in which commitments are discharged and the way in which pre-conditions are specified. 
+\end{abstract}
+
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\pagestyle{fancy}
+
+
+\newcommand{\offer}{\mathit{offer}}
+\newcommand{\C}{\mathsf{C}}
+\newcommand{\CC}{\mathsf{CC}}
+\newcommand{\CP}{\mathsf{CP}}
+
+\section{Introduction}
+
+Communications between software agents are typically regulated by interaction
+protocols. These include general communication protocols, such as  the auction
+protocol and the contract net protocol, as well as more specific protocols such as
+the NetBill payment protocol \citep{mi:handbook03,mi:article:dunham}. 
+Traditional protocol
+representations such as Finite State Machines (FSM), Petri-Nets
+\citep{mi:inproc:hmine} and AUML sequence diagrams 
+often specify protocols in terms of legal message sequences.  Under such
+protocol specifications, agent interactions are pre-defined and predictable. The
+inevitable rigidity resulting from this prevents agents from taking
+opportunities and handling exceptions in a highly dynamic and uncertain
+multi-agent environment.
+
+
+Commitment Machines proposed by \cite{mi:article:dunham} define an
+interaction protocol in terms of actions that change the state of the system,
+which consists of the state of the world as well as the {\it commitments} that
+agents have made to each other. It is a commitment made to an interaction
+partner which makes an agent perform its next action. In other words, an agent
+acts because it wants to comply with the protocol and provide the promised
+outcomes for another party. Actions not only change the values of state
+variables, but also may initiate new commitments and/or discharge existing
+commitments. In traditional protocol representations, agents are constrained to
+perform a pre-defined sequence of actions, whereas in CMs, an agent is able to
+reason about what action should be taken next in accordance with the dynamics of
+the environment and the management of its commitments in that environment.  This
+fundamentally changes the process of specifying a protocol from a procedural
+approach (i.e.\ prescribing {\em how} an interaction is to be executed) to a
+declarative one (i.e.\ describing {\em what} interaction is to take place).
+
+Another advantage of the CM approach is that it provides a natural means of
+managing multi-agent interactions. Agent programming concepts are often
+discussed in the context of a single agent situated in an environment,
+discussing properties such as autonomy, pro-activeness, reactivity and social
+awareness. The CM approach enables pro-activeness and reactivity to be discussed
+in a multi-agent context.
+
+CMs thus allow interactions between agents to be organized in a manner which is
+more flexible and robust than an approach based on pre-defined sequences. For
+example, in the NetBill protocol, a
+customer may wish to order goods without first receiving a quotation, or a
+merchant may be happy to send goods to a known reliable customer with less
+rigorous checking than normal.
+
+In this thesis we identify a number of areas where the Commitment Machine
+framework can be improved.  Specifically, we show how the identification of
+undesirable states (such as omitting to provide a receipt, or receiving the
+goods before payment has been confirmed) can be incorporated into the design
+process in order to achieve acceptable outcomes for a wider variety of
+circumstances than is done in \citep{mi:handbook03,mi:article:dunham}. 
+We also show how certain
+anomalies in discharging commitments and in handling pre-conditions can be
+remedied. 
+
+\section{Citation commands}
+
+Citations in different styles. With the \texttt{natbib} package, 
+you can use different
+citation commands. 
+The \texttt{\\citep} command gives author and year \citep{mi:handbook03},
+The \texttt{\\cite} command gives author and year for use in text, 
+for example \cite{mi:handbook03} wrote the data mining handbook.   
+
+
+
+% Bibliography goes here
+%\bibliographystyle{agsm}
+\bibliographystyle{apalike}
+\bibliography{DM}
+
+% Keep these if you want appendices
+%\newpage
+%\appendix
+%\section{An Appendix}
+
+\end{document}
+
+

@@ -1,0 +1,118 @@
+{
+    "Cluster": {
+        "Status": {
+            "Timeline": {
+                "ReadyDateTime": 1568114215.944,
+                "CreationDateTime": 1568112712.128
+            },
+            "State": "WAITING",
+            "StateChangeReason": {
+                "Message": "Cluster ready to run steps."
+            }
+        },
+        "Ec2InstanceAttributes": {
+            "EmrManagedMasterSecurityGroup": "sg-05aa5a88d3affe838",
+            "RequestedEc2AvailabilityZones": [],
+            "AdditionalSlaveSecurityGroups": [],
+            "AdditionalMasterSecurityGroups": [
+                "sg-0de5e1c625d0337a3"
+            ],
+            "RequestedEc2SubnetIds": [
+                "subnet-9af348c6"
+            ],
+            "Ec2SubnetId": "subnet-9af348c6",
+            "IamInstanceProfile": "EMR_EC2_DefaultRole",
+            "Ec2KeyName": "s3644119-cosc2637",
+            "Ec2AvailabilityZone": "us-east-1d",
+            "EmrManagedSlaveSecurityGroup": "sg-04476b5862b38bdb3"
+        },
+        "Name": "s3644119",
+        "ServiceRole": "EMR_DefaultRole",
+        "Tags": [
+            {
+                "Value": "cosc2637",
+                "Key": "Application"
+            },
+            {
+                "Value": "s3644119",
+                "Key": "Owner"
+            }
+        ],
+        "TerminationProtected": false,
+        "ReleaseLabel": "emr-5.14.0",
+        "NormalizedInstanceHours": 18,
+        "InstanceCollectionType": "INSTANCE_GROUP",
+        "Applications": [
+            {
+                "Version": "4.1.0",
+                "Name": "Hue"
+            },
+            {
+                "Version": "2.3.2",
+                "Name": "Hive"
+            },
+            {
+                "Version": "0.17.0",
+                "Name": "Pig"
+            },
+            {
+                "Version": "2.3.0",
+                "Name": "Spark"
+            }
+        ],
+        "KerberosAttributes": {},
+        "ScaleDownBehavior": "TERMINATE_AT_TASK_COMPLETION",
+        "InstanceGroups": [
+            {
+                "RequestedInstanceCount": 2,
+                "Status": {
+                    "Timeline": {
+                        "ReadyDateTime": 1568114215.944,
+                        "CreationDateTime": 1568112712.129
+                    },
+                    "State": "RUNNING",
+                    "StateChangeReason": {
+                        "Message": ""
+                    }
+                },
+                "Name": "Core",
+                "InstanceGroupType": "CORE",
+                "EbsBlockDevices": [],
+                "ShrinkPolicy": {},
+                "Id": "ig-395R0I7TG0TRK",
+                "Configurations": [],
+                "InstanceType": "m1.medium",
+                "Market": "ON_DEMAND",
+                "RunningInstanceCount": 2
+            },
+            {
+                "RequestedInstanceCount": 1,
+                "Status": {
+                    "Timeline": {
+                        "ReadyDateTime": 1568114177.008,
+                        "CreationDateTime": 1568112712.129
+                    },
+                    "State": "RUNNING",
+                    "StateChangeReason": {
+                        "Message": ""
+                    }
+                },
+                "Name": "Master",
+                "InstanceGroupType": "MASTER",
+                "EbsBlockDevices": [],
+                "ShrinkPolicy": {},
+                "Id": "ig-331NL7AP0QHIO",
+                "Configurations": [],
+                "InstanceType": "m1.medium",
+                "Market": "ON_DEMAND",
+                "RunningInstanceCount": 1
+            }
+        ],
+        "VisibleToAllUsers": true,
+        "BootstrapActions": [],
+        "MasterPublicDnsName": "ec2-54-80-170-191.compute-1.amazonaws.com",
+        "AutoTerminate": false,
+        "Id": "j-1YW8LM9Q30IAM",
+        "Configurations": []
+    }
+}
