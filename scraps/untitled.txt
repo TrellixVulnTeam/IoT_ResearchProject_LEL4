@@ -1,0 +1,225 @@
+
+jupyter nbextensions_configurator enable --user
+
+
+https://quant.stackexchange.com/questions/613/what-is-the-best-data-structure-implementation-for-representing-a-time-series
+https://www.machinelearningplus.com/time-series/time-series-analysis-python/
+https://towardsdatascience.com/playing-with-time-series-data-in-python-959e2485bff8
+http://colah.github.io/posts/2015-08-Understanding-LSTMs/
+https://medium.com/open-machine-learning-course/open-machine-learning-course-topic-9-time-series-analysis-in-python-a270cb05e0b3
+https://petolau.github.io/TSrepr-clustering-time-series-representations/
+https://towardsdatascience.com/an-overview-of-pythons-datatable-package-5d3a97394ee9
+https://stackoverflow.com/questions/48387878/attributeerror-dataframe-object-has-no-attribute-to-datetime?noredirect=1&lq=1
+https://github.com/JuliaPlots/Plots.jl/issues/1715
+https://towardsdatascience.com/5-reasons-why-jupyter-notebooks-suck-4dc201e27086
+
+https://www.journaldev.com/23365/python-string-to-datetime-strptime
+https://www.journaldev.com/18745/python-datetime
+https://www.thegeekstuff.com/2013/06/python-list/?utm_source=feedly
+https://thispointer.com/python-pandas-how-to-convert-lists-to-a-dataframe/
+https://stackoverflow.com/questions/12282232/how-do-i-count-unique-values-inside-a-list
+https://stackoverflow.com/questions/21646791/convert-python-list-to-pandas-series
+
+https://stackoverflow.com/questions/3684484/peak-detection-in-a-2d-array?rq=1
+
+
+https://towardsdatascience.com/jupyter-lab-evolution-of-the-jupyter-notebook-5297cacde6b
+https://matplotlib.org/users/pyplot_tutorial.html
+https://altair-viz.github.io/user_guide/times_and_dates.html
+https://machinelearningmastery.com/time-series-data-visualization-with-python/
+https://python-forum.io/Thread-Help-how-to-deal-with-a-invalid-Matplotlib-date-value-when-use-gca
+https://www.tutorialspoint.com/How-to-take-the-first-N-items-from-a-generator-or-list-in-Python
+https://www.programiz.com/python-programming/methods/built-in/slice
+https://www.reddit.com/r/learnpython/comments/4uqs7d/iterating_over_numpy_array_slices/
+https://opensource.com/article/18/3/loop-better-deeper-look-iteration-python
+https://developers.google.com/edu/python/lists
+https://stackoverflow.com/questions/4071396/split-by-comma-and-strip-whitespace-in-python
+
+
+
+From our exploration so far, we know tha
+As seen in Figure [REF], above, 
+The 1D array still 
+
+#new
+https://codereview.stackexchange.com/questions/200277/find-the-repeated-elements-in-a-list
+https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.drop.html
+https://stackoverflow.com/questions/27263805/pandas-when-cell-contents-are-lists-create-a-row-for-each-element-in-the-list
+https://stackoverflow.com/questions/20625582/how-to-deal-with-settingwithcopywarning-in-pandas
+https://www.w3schools.com/python/python_for_loops.asp
+https://stackoverflow.com/questions/2632677/python-integer-incrementing-with
+https://stackoverflow.com/questions/41925808/combing-columns-after-transposing-columns-pandas-dataframes
+https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.pivot.html
+https://stackoverflow.com/questions/17315737/split-a-large-pandas-dataframe
+https://stackoverflow.com/questions/54334674/how-to-use-pandas-to-pivot-a-table-while-changing-values-to-boolean
+http://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DatetimeIndex.to_pydatetime.html#pandas-datetimeindex-to-pydatetime
+https://pandas.pydata.org/pandas-docs/stable/install.html
+https://stackoverflow.com/questions/39597553/from-datetimeindex-to-list-of-times
+https://stackoverflow.com/questions/32271474/datetime-index-in-python-dataframe
+https://stackoverflow.com/questions/28133018/convert-pandas-series-to-datetime-in-a-dataframe
+https://stackoverflow.com/questions/28990256/python-pandas-time-series-year-extraction?rq=1
+https://pandas.pydata.org/pandas-docs/version/0.17.0/generated/pandas.DatetimeIndex.strftime.html
+https://www.dataquest.io/blog/settingwithcopywarning/
+http://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html
+
+
+https://stackoverflow.com/questions/48297287/output-unique-year-set-from-datetime-index
+https://stackoverflow.com/questions/33889310/r-summary-equivalent-in-numpy
+
+https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DatetimeIndex.dayofyear.html#pandas.DatetimeIndex.dayofyear
+https://pandas.pydata.org/pandas-docs/stable/reference/indexing.html#timedeltaindex
+
+https://stackoverflow.com/questions/13035764/remove-rows-with-duplicate-indices-pandas-dataframe-and-timeseries/13036848
+https://stackoverflow.com/questions/29583312/pandas-sum-of-duplicate-attributes
+https://stackoverflow.com/questions/17950374/converting-a-column-within-pandas-dataframe-from-int-to-string
+https://www.geeksforgeeks.org/python-get-unique-values-list/
+https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.to_datetime.html
+
+
+https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DatetimeIndex.html
+https://towardsdatascience.com/basic-time-series-manipulation-with-pandas-4432afee64ea
+https://stackoverflow.com/questions/37213556/remove-rows-that-contain-false-in-a-column-of-pandas-data-frame
+https://datacarpentry.org/python-ecology-lesson/03-index-slice-subset/
+https://stackoverflow.com/questions/29566527/concatenate-python-string-from-list-entries
+http://www.datasciencemadesimple.com/strip-space-column-pandas-dataframe-leading-trailing-2/
+https://www.oreilly.com/library/view/machine-learning-with/9781491989371/ch01.html
+https://towardsdatascience.com/machine-learning-from-scratch-part-3-ed572330367d
+
+
+
+https://bmcgenomics.biomedcentral.com/articles/10.1186/1471-2164-13-S6-S9
+
+
+https://stackoverflow.com/questions/26537878/pandas-sum-across-columns-and-divide-each-cell-from-that-value
+
+https://ipywidgets.readthedocs.io/en/latest/user_install.html
+https://chrisalbon.com/python/data_wrangling/pandas_join_merge_dataframe/
+https://stackoverflow.com/questions/13148429/how-to-change-the-order-of-dataframe-columns
+
+arrayLength = []
+def lenCheck(arrayX):
+    for x in arrayX:
+        arrayLength.append(len(x))
+lenCheck(arrayCheck)
+arrayLength
+
+for col in ['parks', 'playgrounds', 'sports', 'roading']:
+    public[col] = public[col].astype('category')
+    
+
+http://www.datasciencemadesimple.com/drop-rows-with-nan-na-drop-missing-value-in-pandas-python-2/
+https://hackersandslackers.com/pandas-dataframe-drop/
+https://chrisalbon.com/python/data_wrangling/pandas_rename_multiple_columns/
+df.rename(columns={'Leader': 'Commander'}, inplace=True)
+https://developer.rhino3d.com/guides/rhinopython/python-xml-json/
+https://docs.python.org/3/tutorial/datastructures.html
+https://chrisalbon.com/python/data_wrangling/pandas_dropping_column_and_rows/
+https://chrisalbon.com/#leadership
+
+df['year'] = df['date'].dt.year
+df['month'] = df['date'].dt.month
+df['day'] = df['date'].dt.day
+df['hour'] = df['date'].dt.hour
+df['minute'] = df['date'].dt.minute
+
+https://chrisalbon.com/machine_learning/feature_engineering/dimensionality_reduction_on_sparse_feature_matrix/
+https://towardsdatascience.com/how-to-use-ggplot2-in-python-74ab8adec129
+
+
+http://sergilehkyi.com/tips-on-working-with-datetime-index-in-pandas/
+
+
+
+import datetime as dt
+
+testEnd = dt.datetime(2003,3,27,7,0,0)
+testStart = dt.datetime(2003,3,27,6,0,0)
+testTimeFrame = dt.timedelta(hours = 1)
+
+def eventPR(ds, eventAStart, periodStart, periodEnd, dayType, eventB, timeFrame):
+    tempDF = ds[(ds.start < periodEnd + timeFrame) & (ds.start > periodStart)]
+    return tempDF
+    
+dsNew = eventPR(ds, 0, testStart, testEnd, 0, 0, testTimeFrame)
+
+
+
+import datetime as dt
+
+def nearest_neighbours(events, n=1, delta_threshold=dt.timedelta(-99)):
+    nns = []
+    for row in events.itertuples():
+        #print(row)
+        start_time = getattr(row, 'start')
+        end_time = getattr(row, 'end')
+        subActNum = getattr(row, 'subActNum')
+        #print(subActNum)
+        row_index = getattr(row, 'Index')
+        nn = events[(events.start >= start_time) & (events.index != row_index) & (end_time - events.start > delta_threshold)][:n]
+        ordered = pd.DataFrame()
+        ordered['EventA'] = subActNum
+        #print(ordered['EventA'])
+        ordered['EventB'] = nn['subActNum']
+        ordered['EvA_Start'] = start_time
+        ordered['EvA_End'] = end_time
+        ordered['EvB_Start'] = nn['start']
+        ordered['EvB_End'] = nn['end']
+        nns.append(ordered)
+  
+    #print(nns)
+    return pd.concat(nns)
+
+def id_delta(events):
+    df = events.copy()
+    return df
+
+#id_delta(ds).head()
+nearest_neighbours(ds, 5, dt.timedelta(0,-10))
+
+
+## Importing R Plotting Capabilities
+# https://medium.com/@crscardellino/python-with-ggplot-9ed888af93ca
+#import pandas as pd
+# import rpy2
+# the base of rpy2 plotting is matplotlib, thus we need to declare
+# it inline in order to see the plots in the notebook
+# %matplotlib inline
+#from rpy2.robjects import pandas2ri # we need to activate the automatic conversion for pandas
+#pandas2ri.activate()
+#%load_ext rpy2.ipython
+# load the needed extension for the %%R cell magic
+
+
+# get min/max
+initialTimeStart = min(ds.start)
+finalTimeStart = max(ds.start)
+print("Initial Time for START:", initialTimeStart, '\n' "Final Time for START:", finalTimeStart)
+
+# get min/max
+initialTimeEnd = min(ds.end)
+finalTimeEnd = max(ds.end)
+print("Initial Time for END:", initialTimeStart, '\n' "Final Time for END:", finalTimeStart)
+
+print(min(ds.start))                                   # Checking the start time minima
+print(max(ds.start))                                   # Checking the start time maxima
+
+
+https://www.mixcloud.com/Ben_Salem/ben-salem-voyager-ep18-05-14-16-progressive-beats-radio/
+https://soundcloud.com/ben_salem/ben-salem-voyager-41-progressive-beats-radio
+http://pages.stat.wisc.edu/~larget/stat302/chap2.pdf
+https://stackoverflow.com/questions/38492029/manually-set-scale-of-scale-fill-distiller
+https://jupyter-notebook.readthedocs.io/en/stable/examples/Notebook/Importing%20Notebooks.html
+https://rpy2.readthedocs.io/en/version_2.8.x/introduction.html
+https://ggplot2.tidyverse.org/reference/ggtheme.html
+https://stackoverflow.com/questions/48424682/how-do-i-limit-the-range-of-the-viridis-colour-scale
+http://rstudio-pubs-static.s3.amazonaws.com/5312_98fc1aba2d5740dd849a5ab797cc2c8d.html *******
+
+
+
+
+
+
+
+
+
+
