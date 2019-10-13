@@ -1,0 +1,28 @@
+The sankey diagrams show the sequences such that certain activities (NOT requiring electricity) mostly [always?] come before those that require electricity. In other words, 'energy poor' activities often act of preparative in the lead up to 'energy intensive' activities. The Sankey can show this by looking at the 'terminal events'.
+
+- COLOUR WITH BLUE AND RED
+
+
+Quantitative - 
+- Stem cell treatments in piglets
+- Piglets have infections
+- Coding in R
+- Qualitative versus quantitative
+- Accreditation?
+- Mathematics / Statistics / IT
+- Realistic to jump quantitative background?
+- 
+
+Story points!!! RE 
+
+https://stackoverflow.com/questions/3543833/how-do-i-clear-all-variables-in-the-middle-of-a-python-script 
+https://www.readcube.com/library/f5a263bd-e4ef-478a-a418-c2abf21c5b74:15fc13dc-fc4f-4200-b407-5e7a3f3f55d0 
+https://store.google.com/au/product/google_nest_hub_works_with?hl=en-AU 
+https://store.google.com/product/google_nest_hub_works_with 
+https://store.google.com/collection/accessories_wall?compatibilityCategory=Connected%20Home 
+https://store.google.com/product/google_home 
+https://www.amazon.com.au/TP-Link-Required-Anywhere-Assistant-HS100/dp/B017X72J5Q 
+https://www.officeworks.com.au/shop/officeworks/c/technology/smart-home-office/smart-plugs 
+https://www.lifx.com.au/pages/about 
+
+
