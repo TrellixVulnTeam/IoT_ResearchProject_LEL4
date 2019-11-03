@@ -2,40 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e838669c-2c16-4631-a72a-3816b9dfc6eb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py27/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py27/cana.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/1 - TImeSeriesSegmentation-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/1. A Master-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/1. S1a Sensor and Activities Information-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/10. S1b Probability Function-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/2. S1a Activities Data Preprocessing-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/3. S1a SubActivities Preprocessing-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/4. S1a SubActivities Added Time Range-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/5. S1a SubActivities Time Range Melt-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/6. S1a SubActivities Time Range Boolean-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/7. S1a SubActivities Collapse into Minutes-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/8. S1a SubActivities Remove Duplicate Attributes-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/9. S1b SubActivities Plots-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/0402_001.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/1 - CompilingEnergyConsumption.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/1 - FeatureExtraction.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/1 - ProbabilisticModellingPt1.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/1 - ProbabilisticModellingPt2.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/1 - TImeSeriesSegmentation.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/1. A Master.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/1. S1a Sensor and Activities Information.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/10. S1b Probability Function.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2. S1a Activities Data Preprocessing.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2019-08-09 URLs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/2019-08-09 URLs.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3. S1a SubActivities Preprocessing.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/4. S1a SubActivities Added Time Range.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/5. S1a SubActivities Time Range Melt.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/6. S1a SubActivities Time Range Boolean.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/7. S1a SubActivities Collapse into Minutes.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/8. S1a SubActivities Remove Duplicate Attributes.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/9. S1b SubActivities Plots.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/USEFUL FUNCTIONS.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/USEFUL FUNCTIONS.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IoT_November/addTemporalArrays.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IoT_November/altairDurationCharts.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IoT_November/cleanToilet.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IoT_November/cleanseOutliers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IoT_November/countUnique.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IoT_November/determineMeanMedian.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IoT_November/dsS1Activities_processingExample.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IoT_November/getUniqueValues.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IoT_November/refrigeratorDupes.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IoT_November/removeDupesJSON.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IoT_November/reqEnergy_containSpecialChar.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IoT_November/script_4_6.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IoT_November/seen_dupes_dsS1Sensors.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IoT_November/test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IoT_November/valueDrop.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/00. A Master-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/00. A Phase 1-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/00. A Phase 1-checkpoint.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/00. A Master.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/00. A Phase 1.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/00. A Phase 1.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/py27/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/py27/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,14 +31,23 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/py27/cana.py">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/IoT_November/getUniqueValues.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+            <state relative-caret-position="253">
+              <caret line="11" selection-start-line="11" selection-end-line="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/IoT_November/addTemporalArrays.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="667">
+              <caret line="29" column="38" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
               <folding>
-                <element signature="e#1#12#0" expanded="true" />
+                <element signature="e#0#11#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -73,20 +69,38 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/cana.py" />
+        <option value="$PROJECT_DIR$/IoT_November/S1sensorsPreprocessing copy.py" />
+        <option value="$PROJECT_DIR$/IoT_November/seen_dupes_dsS1Sensors.py" />
+        <option value="$PROJECT_DIR$/IoT_November/reqEnergy_containSpecialChar.py" />
+        <option value="$PROJECT_DIR$/IoT_November/sensorDataJSONwDUPES.py" />
+        <option value="$PROJECT_DIR$/IoT_November/dsS1Activities_processingExample.py" />
+        <option value="$PROJECT_DIR$/IoT_November/cleanDupesSubAct.py" />
+        <option value="$PROJECT_DIR$/IoT_November/refrigeratorDupes.py" />
+        <option value="$PROJECT_DIR$/IoT_November/removeDupesJSON.py" />
+        <option value="$PROJECT_DIR$/IoT_November/altairDurationCharts.py" />
+        <option value="$PROJECT_DIR$/IoT_November/countUnique.py" />
+        <option value="$PROJECT_DIR$/IoT_November/cleanToilet.py" />
+        <option value="$PROJECT_DIR$/IoT_November/determineMeanMedian.py" />
+        <option value="$PROJECT_DIR$/IoT_November/cleanseOutliers.py" />
+        <option value="$PROJECT_DIR$/IoT_November/valueDrop.py" />
+        <option value="$PROJECT_DIR$/IoT_November/addTemporalArrays.py" />
+        <option value="$PROJECT_DIR$/IoT_November/test.py" />
+        <option value="$PROJECT_DIR$/IoT_November/script_4_6.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="321" />
-    <option name="y" value="151" />
-    <option name="width" value="1363" />
-    <option name="height" value="1188" />
+    <option name="x" value="1920" />
+    <option name="y" value="23" />
+    <option name="width" value="1920" />
+    <option name="height" value="1057" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -97,13 +111,17 @@
             <path>
               <item name="IoT_ResearchProject" type="b2602c69:ProjectViewProjectNode" />
               <item name="IoT_ResearchProject" type="462c0819:PsiDirectoryNode" />
+              <item name="IoT_November" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="IoT_ResearchProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="IoT_ResearchProject" type="462c0819:PsiDirectoryNode" />
               <item name="py27" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -116,6 +134,9 @@
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/py27" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/IoT_November" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -141,25 +162,21 @@
       <option name="presentableId" value="Default" />
       <updated>1565367540739</updated>
       <workItem from="1565367547029" duration="605000" />
+      <workItem from="1572689358082" duration="3663000" />
+      <workItem from="1572755902577" duration="724000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="605000" />
+    <option name="totallyTimeSpent" value="4992000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="321" y="151" width="1363" height="1188" extended-state="0" />
+    <frame x="1920" y="23" width="1920" height="1057" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2361847" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17039403" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Python Console" weight="0.32937956" />
-      <window_info anchor="bottom" id="Terminal" visible="true" weight="0.32937956" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -167,30 +184,158 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="SciView" />
-      <window_info anchor="right" id="Database" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.26632124" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.32937956" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/10. TBD S1b Duration Preprocess.ipynb">
-      <provider selected="true" editor-type-id="ipnb-editor">
-        <state>
-          <selected id="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/10. TBD S1b Duration Preprocess.ipynb" />
     <entry file="file://$PROJECT_DIR$/py27/cana.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="92">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/IoT_November/S1sensorsPreprocessing copy.py" />
+    <entry file="file://$PROJECT_DIR$/IoT_November/dsS1Activities_processingExample.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/IoT_November/dsS1Activities_processing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-844" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/IoT_November/sensorDataJSONwDUPES.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="7" column="9" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/IoT_November/reqEnergy_containSpecialChar.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="7" column="64" selection-start-line="7" selection-start-column="64" selection-end-line="7" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/IoT_November/seen_dupes_dsS1Sensors.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="15" column="29" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/IoT_November/removeDupesJSON.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="66" selection-start-line="2" selection-start-column="66" selection-end-line="2" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/IoT_November/refrigeratorDupes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/IoT_November/getUniqueValues.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/IoT_November/cleanDupesSubAct.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="477">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/IoT_November/countUnique.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/IoT_November/altairDurationCharts.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="598">
+          <caret line="26" column="43" selection-start-line="26" selection-start-column="43" selection-end-line="26" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/IoT_November/valueDrop.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="3" column="42" selection-start-line="3" selection-start-column="42" selection-end-line="3" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/IoT_November/cleanToilet.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="3" column="28" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/IoT_November/determineMeanMedian.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/IoT_November/cleanseOutliers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/IoT_November/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="569">
+          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
           <folding>
-            <element signature="e#1#12#0" expanded="true" />
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/IoT_November/script_4_6.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/IoT_November/addTemporalArrays.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="667">
+          <caret line="29" column="38" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
