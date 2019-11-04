@@ -56,41 +56,7 @@ Questions
 
 ---
 
-# Service Mining on the Web @
-@article{zheng2009}
 
-## Abstract 
-_The Web is transforming from a Web of data to a Web of both Semantic data and services. This trend is providing us with increasing opportunities to compose potentially interesting and useful services from existing services. While we may not sometimes have the specific queries needed in top-down service composition approaches to identify them, the early and proactive exposure of these opportunities will be key to harvest the great potential of the large body of Web services. In this paper, we propose a Web service mining framework that allows unexpected and interesting service compositions to automatically emerge in a bottom-up fashion. We present several mining techniques aiming at the discovery of such service compositions. We also present evaluation measures of their interestingness and usefulness. As a novel application of this framework, we demonstrate its effectiveness and potential by applying it to service-oriented models of biological processes for the discovery of interesting and useful pathways._ 
-
-## Objective
-
-## Domain
-Service Mining, Service Recognition
-
-## Input
-Web Service Operation, 
-
-## Technology
-Service mining tool, Web Service Mining
-
-## Output
-Composed Web Services
-
-## Notes
-
-Web Service Composition
-* Aims at providing value-added services through composing existing services
-* Traditionally taken a ‘top-down’ approach
-* Challenge: If the search terms are to specific the user may not be able to find an appropriate composed service
-* ‘Bottom-up’ approach also possible
-* E.g., Aim to discover any interesting and useful services with a general interest in Chinese medicine in mind, using a Service Mining Tool, may find – A service composition that takes as input a biological sample from a subject, determined the corresponding genome and the possible diseases the subject is predisposed to, and finally generates a list of treatment recommendation and/or life style suggestions.
-* Bottom-up is ‘serendipidous’ in nature, has the ability of finding unexpected interesting and useful service compositions
-* It is essential to be able to proactively discover opportunities for composing useful services, even when the goals are unspecified at the moment, or simply hard to imagine or unknown
-* Much like the easy access to a glut of data has provided a fertile ground for data mining research, there is an expectation that an increase in Web services’ availability will also spur both the need and opportunities to break new ground on Web Services Mining
-* We define Web Service Mining as a bottom-up search process aimed at the proactive discovery of potentially interesting and useful web services from existing services.
-* Two Main Challenges
-1. Combinatorial Explosion
-2. Evaluation of interestingness and usefulness
 
 ---
 
