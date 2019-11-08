@@ -1,0 +1,92 @@
+---
+title: "Test"
+author: "AlistairGJ"
+date: "06/11/2019"
+output: 
+  pdf_document:
+    toc: true
+    number_sections: true
+    fig_caption: true
+    highlight: "kate"
+fontsize: 11pt
+geometry: margin=0.79in
+---
+
+# Table of Contents
+1. [Example](#example)
+2. [Example2](#example2)
+3. [Third Example](#third-example)
+4. [Fourth Example](#fourth-examplehttpwwwfourthexamplecom)
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+library(ggplot2)
+library(readr)
+library(lubridate)
+library(dplyr)
+library(tidyr)
+library(viridis)
+library(knitr)
+library(kableExtra)
+library(reticulate)
+use_python("/anaconda3/envs/IoT_ResearchProject/bin/python", required = T)
+```
+
+```{python include=TRUE}
+# eval=FALSE, 
+import numpy as np
+import pandas as pd
+PATH = '/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November'
+```
+
+
+# Data Preprocessing & Visualisation
+
+## Importing & Preprocessing the Activities Meta Data
+
+The dataset `S1Activities.csv` was imported into the interactive development environment. These data contains a tabulated summary of Heading, Category, Subcategory and a corresponding code. After importation, the dataset has dimensionality of [3, 33], with `Heading`, `Category` & `Subcategory` present as non-null objects. The attribute `Code` (which codefies the unique set of Heading, Category) was imported as an index value. At this time, the activities data will not be subject to preprocessing.
+
+```{python include=FALSE}
+ds = pd.read_csv(PATH + '/datasets/S1Activities.csv', index_col = 'Code') 
+```
+
+```{r activitiesMetaData, echo=FALSE, results='asis'}
+head(py$ds) %>% kable(format = "latex", caption = "The S1Activities Data", booktabs = T) %>% 
+  kable_styling(latex_options = c("hold_position", "striped"),
+                bootstrap_options = c("striped", "hover", "condensed"),
+                font_size = 8)
+```
+
+## Importing & Preprocessing the Sensor Meta Data
+
+The dataset `S1sensors.csv` was imported into the interactive development environment. These data contains a tabulated values for Sensor ID, Room and Sensor Activity Type, with no header row present in the original dataset. After importation, the dataset has dimensionality of [3, 76], with header 0, 1 & 2 corresponding to SensorID, Room & Sensor Activity Type, respectively. All attributes are nominal, and were imported as dtype str, accordingly. Note that it can be immediately seen (dsS1Sensors.head()) that attribute 1 & 2 contain degenerate values. This will be addressed in the subsequent data preprocessing.
+
+The preprocessing of the sensor data is a critical step in our analysis. Careful consideration of the data, including the presence of duplicates. This is because if we dont have a sufficient understanding of where and why duplicates exist, we will not be able to satisfactorarily preprocess them. Failure to do so we mean that there is potentail degeneracy in our source dataset, leading to unknown issues with our downstream analysis.
+
+```{python include=FALSE}
+dsS1Sensors = pd.read_csv(PATH + '/datasets/S1sensors.csv', 
+                          dtype={0:str, 1:str, 2:str},
+                          index_col = None, header = None)
+```
+
+```{r activitiesMetaData2, echo=FALSE, results='asis'}
+head(py$dsS1Sensors) %>% kable(format = "latex", caption = "Demo table", booktabs = T) %>% 
+  kable_styling(latex_options = c("hold_position", "striped"),
+                bootstrap_options = c("striped", "hover", "condensed"),
+                font_size = 8)
+```
+
+Column [1] & Column [2] of the sensor data will be concatenated, whitespace will be removed, all text will be cast to lowercase and a final whitespace strip will be performed.
+The python script `S1sensorsPreprocessing.py` is run perform several preprocessing steps in these data. The script concatenates the attributes `dsS1Sensors[1]` and `dsS1Sensors[2]`, with an underscore. Whitespace is then stripped and all string values are coerced to lowercase. This newly created attribute is then added to the dataframe, as seen below (REF). Additionally, the attributes `0`, `1` & `2` are renamed `subActNum`, `room` & `activity`, respectively. <br>
+- Data types
+- IF a sub-act requires electricity
+
+
+
+```python
+
+```
+
+
+```{r fig1, echo=FALSE, fig.cap="\\label{fig:fig1}This is a caption"}
+plot(pressure)
+```

@@ -1,6 +1,6 @@
 a = dsS1Sensors.iloc[:,3]
 specialChar = '/'
-reqEnergy = 'ligh|burn|mach|toas|freez|dvd|lamp|washer|dry|exh|disp|frig|oven|hot|micro'
+reqEnergy = 'ligh|burn|mach|toas|freez|dvd|lamp|washer|dry|exh|disp|frig|oven|hot|shower|micro'
 b = a.str.contains(reqEnergy, regex = True)
 c = a.str.contains(specialChar, regex = True)
 dsS1Sensors['reqEnergy'] = b

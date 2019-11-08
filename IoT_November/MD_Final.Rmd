@@ -1,0 +1,426 @@
+---
+title: "Test"
+author: "AlistairGJ"
+date: "06/11/2019"
+output: 
+  pdf_document:
+    number_sections: true
+    fig_crop: TRUE
+    fig_caption: yes
+    keep_tex: yes
+    highlight: "kate"
+fontsize: 11pt
+geometry: margin=0.79in
+header-includes:
+ \usepackage{booktabs}
+ \usepackage{longtable}
+ \usepackage{array}
+ \usepackage{multirow}
+ \usepackage[table]{xcolor}
+ \usepackage{wrapfig}
+ \usepackage{float}
+ \floatplacement{figure}{H}
+ \usepackage{caption, setspace}
+ \captionsetup[figure]{font={stretch=1,scriptsize}}
+ \captionsetup[table]{font={stretch=1,scriptsize}}
+---
+
+
+SPELL CHECK
+
+# Table of Contents
+1. [Background](#Background)
+2. [Data Preprocessing & Visualisation](#Data Preprocessing & Visualisation)
+  2.1 [Importing & Preprocessing the Activities Meta Data](#Importing & Preprocessing the Activities Meta Data)
+3. [Third Example](#third-example)
+4. [Fourth Example](#fourth-examplehttpwwwfourthexamplecom)
+
+
+CB!!! citation_package: biblatex 
+TABLES + FIGURES CB
+http://www.ctex.org/documents/packages/float/caption.pdf 
+https://stackoverflow.com/questions/32634274/knit-hooksset-and-opts-chunkset 
+https://github.com/yihui/knitr/issues/1102 
+https://alanarnholt.github.io/GeneralStatistics/rmarkdown/FormattingTables.html 
+https://github.com/tidyverse/ggplot2/wiki/legend-attributes
+knit_hooks$set(crop = hook_pdfcrop)
+
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+library(countrycode)
+library(cowplot)
+library(dplyr)
+library(ggExtra) # because remembering ggplot theme options is beyond me
+library(ggplot2)
+library(ggridges)
+library(kableExtra)
+library(knitr)
+library(lubridate)
+library(readr)
+library(tidyr)
+library(viridis)
+library(reticulate)
+use_python("/anaconda3/envs/IoT_ResearchProject/bin/python", required = T)
+```
+
+```{python include=TRUE}
+# eval=FALSE, 
+import numpy as np
+import pandas as pd
+import json
+PATH = '/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November'
+```
+
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(
+  fig.pos = 'H',
+	echo = TRUE,
+	message = FALSE,
+	warning = FALSE
+)
+```
+
+\pagebreak
+
+# Background
+
+## Introduction
+
+### Mankind, Technology & Development
+
+Since the inception of the first home computers in the late 1970’s (Press, 1993), modern society has become utterly dependent on and indeed, inexorably bound to digital technology. The rapid and widespread adoption of computational technology has led to the fastest rate of societal and economic development our species has ever experienced. One of the most salient manifestations of technical progress has been the widespread availability and adoption of Information and Communications Technology (ICT), including the rise of the global network of networks known as the Internet.
+
+```{r satelliteImagesAsia, echo=FALSE, fig.cap="Satellite images of South Asia by night. Left (South Asia in 1994) Right (South Asia in 2010). Images are taken from Maxim Pinkovskiy and Xavier Sala-i-Martin (2016) - Lights, Camera ... Income! Illuminating the National Accounts-Household Surveys Debate. The Quarterly Journal of Economics.", fig.align='center', out.width = '60%'}
+knit_hooks$set(crop = hook_pdfcrop)
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/satelliteImages.png')
+```
+```{r globalPovertyPreprocessing, message=FALSE, warning=FALSE, include=FALSE}
+poverty <- read_csv('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/datasets/total-population-living-in-extreme-poverty-by-world-region.csv')
+colnames(poverty)[4] = 'Number'
+poverty <- poverty %>% filter(Entity != 'World')
+```
+```{r globalPovertyPlot, echo=FALSE, fig.align='center', fig.cap="ADD TEXT, Source: Our World in Data", fig.height=3, fig.width=6.5, message=FALSE, warning=FALSE}
+p <- ggplot(poverty, aes(x = Year, y = Number, fill = Entity))
+p <- p + geom_area(alpha=0.8 , size=.2, colour="white") +
+  scale_x_continuous(limits = c(1990, 2015)) + 
+  scale_x_continuous(breaks = c(1990, 1995, 2000, 2005, 2010, 2015), expand = c(0.02, 0.02)) +
+  #scale_color_brewer(palette = "Dark2") +
+  theme_grey() +
+  scale_fill_viridis(discrete = T) +
+  labs(title="Number of People Living in Extreme Poverty as a Function of Time",
+       x="Year",
+       y="Number of People") + 
+  theme(text = element_text(size=8),
+        axis.text.x = element_text(size = 8, angle = 0), 
+        legend.title = element_blank(),
+        legend.position = "right",
+        legend.box = "vertical")
+p + theme(legend.key.size = unit(5, "mm"))
+```
+
+### The Rise and Rise of the World Wide Web
+
+According to the International Telecommunication Union (ITU) 2015 ICTs figures, Internet penetration has grown from just over 400 millions users (6 per cent of global population) in 2000 to 3.2 billion users in 2015 (43 per cent of global population), which includes around 2 billion users from developing countries (Dutta et al., 2015). ICTs bring a broad range of benefits and are recognised as a key to eradicating poverty and unemployment. They enable and facilitate the building a people-centred, inclusive and development-oriented Information Society, where everyone can create, access, utilize and share information and knowledge. This enables individuals, communities and peoples to achieve their full potential in promoting their sustainable development and improving their quality of life (“Information and communication technologies (ICTs) | Poverty Eradication,” n.d.). 
+
+In addition to a rapidly growing internet user-base both in the developing and developed world, the nature of internet usage has fundamentally changed. Once the purview of academics, engineers and computer scientists sending tiny packets of information back and forth, there are now some 2.5 quintillion bytes of data created each day by all manner of users, industry and sensors to name a few (“Data Never Sleeps 5.0 | Domo,” n.d.)
+
+```{r internetAccessPreprocessing, message=FALSE, warning=FALSE, include=FALSE}
+internet <- read_csv('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/datasets/share-of-individuals-using-the-internet.csv')
+colnames(internet)[4] <- 'PercentagePopulation'
+internet$Continent <- countrycode(sourcevar = internet$Code,
+                            origin = "genc3c",
+                            destination = "continent")
+internet <- internet %>% group_by(Continent, Year) %>% summarise(PercentagePopulation = mean(PercentagePopulation))
+internet[is.na(internet)] <- 'Other'
+```
+```{r internetAccessPlot, echo=FALSE, fig.align='center', fig.cap="ADD TEXT", fig.height=2.5, fig.width=5, message=FALSE, warning=FALSE}
+p <- ggplot(internet, aes(x = Year, y = PercentagePopulation))
+p <- p + geom_line(aes(color = Continent), size = 0.75) + 
+  scale_x_continuous(limits = c(1990, 2015)) + 
+  scale_x_continuous(breaks = c(1990, 1995, 2000, 2005, 2010, 2015)) +
+  #scale_color_brewer(palette = "Dark2") +
+  theme_classic() +
+  labs(title="Internet Access by Percentage as a Function of Time",
+       #caption="Source: Our World in Data",
+       x="Year",
+       y="Percentage of Population") + 
+  theme(text = element_text(size=8),
+          axis.text.x = element_text(size = 8, angle = 0))
+p
+```
+
+### Forging a New Technological Paradigm
+
+Such rapid and widespread internet adoption has created a seemingly insatiable demand for exponentially greater computational power and digital storage capacity. This has led to a new and utterly ubiquitous technological paradigm; Cloud Computing. Cloud Computing is succinctly defined as; The practice of using a network of remote servers hosted on the Internet to store, manage, and process data, rather than a local server or a personal computer (https://www.dictionary.com/browse/cloud-computing). 
+
+As with the initial rise and widespread implementation of the internet, Cloud Computing itself acts as a facilitator for new technologies. One such example being the Internet of Things (IoT) paradigm. The Internet of Things can be surmised as the extension of the Internet and the Web into the physical realm, by means of the widespread deployment of spatially distributed devices with embedded identification, sensing and/or actuation capabilities (Daniele Miorandi, 2012). The Internet of Things (IoT) paradigm enables physical devices to connect and exchange information, and also allows objects to be sensed or controlled remotely through the internet (Bing Huang, 2018). IoT devices allow objects to be sensed or controlled remotely through the Internet (Luigi Atzori, 2010). IoT thus represents a convergence of real-world objects and digital objects into a unified cyber-physical system. 
+
+### The Bigger Picture
+
+Considering again the bigger picture of societal benefit, Figure X, shows that the benefits of technological deployment have been widely adopted and exploited. However, the success of modern human society is not without consequence. All of the benefits our society has enjoyed from the development, production and deployment of technology, has required vast amounts of energy. This energy has, since the industrial revolution, primarily been derived from the burning of fossil fuels (REF). The International Panel on Climate Change (IPCC) notes finds that Human activities are estimated to have caused approximately 1.0°C of global warming above pre-industrial levels, with a likely range of 0.8°C to 1.2°C. Global warming is likely to reach 1.5°C between 2030 and 2052 if it continues to increase at the current rate (Intergovernmental Panel on Climate Change, 2018). 
+
+Climate change poses an existential threat to modern human civilisation, with warming of between 1.5°C and 2°C predicted to cause increases in mean temperature in most land and ocean regions, hot extremes in most inhabited regions, heavy precipitation changes including drought and precipitation deficits in some regions. Additionally, increases in ocean temperature as well as associated increases in ocean acidity and decreases in ocean oxygen levels are projected to reduce risks to marine biodiversity, fisheries, and ecosystems, and their functions and services to humans. Taken together, these effects will lead to risks of the health, livelihoods, food security, water supply, human security, and economic growth of mankind.
+
+```{r warmingTrend, echo=FALSE, fig.cap="CAPTION", fig.align='center', out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/warmingTrend.png')
+```
+
+It is therefore imperative moving forward as a species that all steps are be taken to mitigate the emission of greenhouse gases and abate the advance of anthropomorphic climate change. The scale of the challenge is such that technology itself will prove critical in effectively combatting this existential threat to civilisation. When considering energy consumption, the industrial sector (including the non-combusted use of fuels) currently consumes around half of all global energy and feedstock fuels, with residential and commercial buildings (29%) and transport (21%) accounting for the remainder (https://www.bp.com/en/global/corporate/energy-economics/energy-outlook/demand-by-sector.html). 
+
+### Optimizing Global Energy Usage COMPLETE
+
+With residential and commercial buildings accounting for 29% of energy demand globally (REF). A qualitative assessment of figures X Y and Z show that our increased energy consumption has coincided with our staggering global achievements, including lifting millions out of poverty blah blah blah. We have more development we use more energy, but we have more development we are better off in all ways. We ALSO have more internet connectivity. 
+It therefore stands that the key to continues human prosperity is to de-couple energy demand growth from economic growth. Clearly economic prosperity is a direct contributing factor to human prosperity in general. One such avenue for reduced energy consumption is the optimization of existing services, utilities, and so on with respect to the timing, manner and BLAH of their energy consumption.
+
+```{r echo=FALSE, fig.cap="ADD TEXT", out.width = '100%'}
+#knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/')
+```
+
+
+
+
+\pagebreak
+
+
+
+# Data Preprocessing & Visualisation
+
+## Importing & Preprocessing the Activities Meta Data
+
+The dataset `S1Activities.csv` was imported into the interactive development environment. These data contains a tabulated summary of Heading, Category, Subcategory and a corresponding code. After importation, the dataset has dimensionality of [3, 33], with `Heading`, `Category` & `Subcategory` present as non-null objects, as seen in Table \ref{tab:S1ActivitiesData} below. The attribute `Code` (which codefies the unique set of Heading, Category) was imported as an index value. At this time, the activities data will not be kept in it's native state and will not be subject to preprocessing.
+
+```{python READ_activities, include=FALSE}
+ds = pd.read_csv(PATH + '/datasets/S1Activities.csv', index_col = 'Code') 
+```
+
+```{r TAB_S1ActivitiesData, echo=FALSE, results='asis'}
+head(py$ds, n=5) %>% kable(format = "latex", caption = "The S1 activities dataset", booktabs = T) %>% 
+  kable_styling(latex_options = c("hold_position", "striped"),
+                bootstrap_options = c("striped", "hover", "condensed"),
+                font_size = 8)
+```
+
+```{r REMOVE1, eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
+head(py$ds)
+```
+
+## Importing & Preprocessing the Sensor Meta Data
+
+The dataset `S1sensors.csv` was imported into the interactive development environment. These data contains a tabulated values for Sensor ID, Room and Sensor Activity Type, with no header row present in the original dataset. After importation, the dataset has dimensionality of [3, 76], with header 0, 1 & 2 corresponding to SensorID, Room & Sensor Activity Type, respectively, as seen in Table \ref{tab:TAB_sensorData}. All attributes are nominal, and were imported as dtype str, accordingly. Attribute attribute 1 & 2 contain degenerate values (e.g., Bathroom & Light Switch). This will be addressed in the subsequent data preprocessing. The preprocessing of the sensor data is a critical step in our analysis. Careful consideration of the data, including the presence of duplicates. This is because if we dont have a sufficient understanding of where and why duplicates exist, we will not be able to satisfactorarily preprocess them. Failure to do so we mean that there is potentail degeneracy in our source dataset, leading to unknown issues with our downstream analysis.
+
+```{python READ_sensors, include=FALSE}
+dsS1Sensors = pd.read_csv(PATH + '/datasets/S1sensors.csv', 
+                          dtype={0:str, 1:str, 2:str},
+                          index_col = None, header = None)
+```
+
+```{r TAB_sensorData, echo=FALSE, results='asis'}
+head(py$dsS1Sensors, n=5) %>% kable(format = "latex", caption = "The S1 sensor meta data", booktabs = T) %>% 
+  kable_styling(latex_options = c("hold_position", "striped"),
+                bootstrap_options = c("striped", "hover", "condensed"),
+                font_size = 8)
+```
+
+```{r REMOVE2, eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
+head(py$dsS1Sensors, n=5)
+```
+
+Column [1] & Column [2] of the sensor data will be concatenated, whitespace will be removed, all text will be cast to lowercase and a final whitespace strip will be performed. The python script `S1sensorsPreprocessing.py` is run perform several preprocessing steps in these data. The script concatenates the attributes `dsS1Sensors[1]` and `dsS1Sensors[2]`, with an underscore. Whitespace is then stripped and all string values are coerced to lowercase. This newly created attribute is then added to the dataframe, as seen below (REF). Additionally, the attributes `0`, `1` & `2` are renamed `subActNum`, `room` & `activity`, respectively. 
+
+* Data types
+* IF a sub-act requires electricity
+
+```{python FUNC_S1sensorsPreprocessing, include=FALSE}
+# %run -i S1sensorsPreprocessing.py
+temp1 = dsS1Sensors[1] + '_' + dsS1Sensors[2]   # Creating a new vector of concatenated column 1 & 2
+temp2 = temp1.str.replace(" ", "")              # Removing whitespace between strings
+temp3 = temp2.str.lower()                       # Changing all text to lowercase
+temp4 = temp3.str.strip()                       # Striping any remaining whitespace
+dsS1Sensors[3] = temp4                          # Adding the precessed vector back into the dataset
+dsS1Sensors.rename(columns={0:'subActNum', 
+                            1:'room',
+                            2:'activity',
+                            3:'concat',
+                            4:'energyReq'}, 
+                   inplace=True)
+```
+
+```{r TAB_sensorDataProcessed, echo=FALSE, results='asis'}
+head(py$dsS1Sensors) %>% kable(format = "latex", caption = "The first iteration of processed S1 sensor meta data", booktabs = T) %>% 
+  kable_styling(latex_options = c("hold_position", "striped"),
+                bootstrap_options = c("striped", "hover", "condensed"),
+                font_size = 8)
+```
+
+```{r REMOVE3, eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
+head(py$dsS1Sensors, n=5)
+```
+
+The function `getUniqueValues.py` is invoked to provide a means of capturing a list of unique values in a given column of a dataset. The newly created `dsS1Sensors` is then checked for duplicates in two attributes, `subActNum` & `concat`. The number of unique values in `dsS1Sensors.subActNum` is found to be 76, demonstrating that this attribute contains a set of completely unique values (recall n(rows) = 76). The number of unique values in `dsS1Sensors.concat` is found to be 41, demonstrating that despite the concatenation methodology, their are still duplicate values in the dataframe. These duplicate values warrant further investigation. The function `length(unique())` was used to list counts with their corresponding values.
+
+* `length(unique(py$dsS1Sensors$subActNum))` = 76
+* `length(unique(py$dsS1Sensors$concat))` = 41
+
+COMMENT
+
+```{python FUNC_seen_dupes_dsS1Sensors, include=FALSE}
+# %run -i seen_dupes_dsS1Sensors.py
+seen = {}
+dupes = []
+
+for x in dsS1Sensors.concat:
+    if x not in seen:
+        seen[x] = 1
+    else:
+        if seen[x] == 1:
+            dupes.append(x)
+        seen[x] += 1
+
+for i in seen:  # Adding value counts for dupes
+    if (seen[i] > 1 and seen[i] <= 9):
+        print(seen[i], " ", i)
+    if (seen[i] >= 10):
+        print(seen[i], "", i)
+```
+
+Upon compilation of the above summary list, and with reference to the original work (REF) is was determined that these values result from multiple sensors with extremely similar functionality. For example, kitchen_burner has a value of n=4 - this is because on the burner in the apartment under investigation, there were 4 individual burners present. Similarly, kitchen_cabinet has a value of n=15, indicating that for the various cabinets in the apartment, each were given sensors. On the one-hand, this level of granularity may provide fertile grounds for advanced analysis, HOWEVER, for the purposes of this research project, such values will serve to increase the dimensionality of the overall dataset. High dimensionality can lead to difficulties with plotting, .... ML (REF) and thus IN A SUBSEQUENT PREPROCESSING exercise these values will be collapsed down to have n=1. <br>
+
+**Creation of JSON Catalogues PRIOR to dup removal** - why? Because even if a key-value pair cannot be matched it will simply be ignored
+**Prior to dupe removal** As this work is largely concerned with energy usage in the home, the sub-activities will be categorized based on their energy requirement. That is, if a sub-activity requires an input of energy beyond what the end user alone can provide, it will be classified as `energyReq` = true. Whereas, if a sub-activity is able to be performed through only interaction with the end user, it will be classified as `energyReq` = false. By way of example, the sub-activity `bathroom_toiletflush` will have an `energyReq` equal to false, while the sub-activity `bathroom_lightswitch` will have an `energyReq` equal to true. Each row (n=76) needs to be inspected manually to determine if the activity requires electricity. <br>
+
+Function `reqEnergy_containSpecialChar.py` is run
+- After visual inspection, uses `reqEnergy = 'ligh|burn|mach|toas|freez|dvd|lamp|washer|dry|exh|disp|frig|oven|hot|shower|micro'` to find subActivities which require energy input beyond that of the end user
+- Checked below for SPECIAL CHAR
+- Special CHARs removed
+
+```{python FUNC_reqEnergy_containSpecialChar, include=FALSE}
+# %run -i reqEnergy_containSpecialChar.py
+a = dsS1Sensors.iloc[:,3]
+specialChar = '/'
+reqEnergy = 'ligh|burn|mach|toas|freez|dvd|lamp|washer|dry|exh|disp|frig|oven|hot|shower|micro'
+b = a.str.contains(reqEnergy, regex = True)
+c = a.str.contains(specialChar, regex = True)
+dsS1Sensors['reqEnergy'] = b
+dsS1Sensors['specialChar'] = c
+forwardSlashFilter = dsS1Sensors['concat'].str.contains('/|\|', regex = True) # Find characters `/`, `\`
+```
+
+```{python include=FALSE}
+# Create variable to parse to R kernel
+check = dsS1Sensors.loc[dsS1Sensors['specialChar'] == True]     
+```
+
+```{r TAB_sensorDataCleansed, echo=FALSE, results='asis'}
+head(py$check) %>% kable(format = "latex", caption = "Demo table", booktabs = T) %>% 
+  kable_styling(latex_options = c("hold_position", "striped"),
+                bootstrap_options = c("striped", "hover", "condensed"),
+                font_size = 8)
+```
+
+```{r REMOVE4, message=FALSE, warning=FALSE, include=FALSE}
+head(py$check)
+```
+
+```{python FUNC_reqEnergy_containSpecialCharClean}
+#%run -i reqEnergy_containSpecialCharClean.py
+dsS1Sensors['concat'].replace('office/study_drawer','study_drawer',inplace=True)
+dsS1Sensors['room'].replace('Office/study','Study',inplace=True)
+dsS1Sensors['concat'].replace('office/study_lightswitch','study_lightwitch',inplace=True)
+dsS1Sensors['subActNumConcat'] = 'subActNum_' + dsS1Sensors['subActNum'].astype(str)
+dsS1Sensors.drop(columns=['specialChar'], inplace=True)
+```
+
+```{python include=FALSE}
+# Create variable to parse to R kernel
+check = dsS1Sensors[58:59]   
+```
+
+```{r TAB_sensorDataCleansedFinal, echo=FALSE, results='asis'}
+head(py$check) %>% kable(format = "latex", caption = "Demo table", booktabs = T) %>% 
+  kable_styling(latex_options = c("hold_position", "striped"),
+                bootstrap_options = c("striped", "hover", "condensed"),
+                font_size = 8)
+```
+
+```{python FUNC_sensorDataJSONwDUPES, include=FALSE}
+# %run -i sensorDataJSONwDUPES.py
+# SubAct Number KEY with String DICTIONARY JSON 
+PATH = '/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November'
+subActNumKeyWithStringDict = pd.Series(dsS1Sensors.concat.values, 
+                                       dsS1Sensors.subActNumConcat.values).to_dict()
+subActNumKeyWithStringJson = json.dumps(subActNumKeyWithStringDict)
+f = open(PATH + '/JSON/subActNumKeyWithStringDict.json','w')
+f.write(subActNumKeyWithStringJson)
+f.close()
+
+# SubAct Number KEY with Boolean Energy DICTIONARY JSON 
+subActNumKeyWithEnergyDict = pd.Series(dsS1Sensors.reqEnergy.values, 
+                                    dsS1Sensors.subActNumConcat.values).to_dict()
+subActNumKeyWithEnergyJson = json.dumps(subActNumKeyWithEnergyDict)
+f = open(PATH + '/JSON/subActNumKeyWithEnergyDict.json', 'w')
+f.write(subActNumKeyWithEnergyJson)
+f.close()
+
+# SubAct String KEY with Boolean Energy DICTIONARY JSON 
+subActKeyWithEnergyDict = pd.Series(dsS1Sensors.reqEnergy.values, 
+                                    dsS1Sensors.concat.values).to_dict()
+subActKeyWithEnergyJson = json.dumps(subActKeyWithEnergyDict)
+f = open(PATH + '/JSON/subActKeyWithEnergyDict.json','w')
+f.write(subActKeyWithEnergyJson)
+f.close()
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r echo=FALSE, fig.cap="ADD TEXT", out.width = '100%'}
+#knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/')
+```
+
+```{r echo=FALSE, fig.cap="ADD TEXT", out.width = '100%'}
+#knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/')
+```
+
+
+
+
+
+```{r pressure, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct60.png')
+```
+
+```{r pressureFULL, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct60.png')
+```
+
+```python
+%run -i reqEnergy_containSpecialCharClean.py
+```
+
+
+Test for in \ref{fig:fig1} we see XYZ
+
+
+```{r fig1, echo=FALSE, fig.cap="\\label{fig:fig1}This is a caption"}
+plot(pressure)
+```
+
+Reduce image border (not working???)
+https://holtzy.github.io/Pimp-my-rmd/
+
