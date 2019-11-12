@@ -1,0 +1,245 @@
+"Don't raise your voice, improve your argument."- Ruth Bader Ginsburg
+
+from qutip.ipynbtools import version_table
+
+version_table() 
+
+https://nbviewer.jupyter.org/url/jakevdp.github.com/downloads/notebooks/XKCD_plots.ipynb 
+https://github.com/microscopium/microscopium 
+http://blog.juliusschulz.de/blog/ultimate-ipython-notebook 
+https://www.tutorialspoint.com/jupyter/jupyter_notebook_plotting.htm 
+
+import pycountry_convert as pc
+continent_name = pc.country_alpha2_to_continent_code(country_code)
+print(continent_name)
+
+
+..as shown in Fig. X ...as seen in Fig. X (or ...as can be seen in Fig. X) ...which is evident in Fig. X Fig. X shows...
+The data in Table X indicates that ...
+If you have some certainty where the figure or table will be relative to the text, you can use phrases such as: ...as seen in the figure to the left... (to the right, on the previous page, etc.) The next table shows blah blah ...
+
+which can mediate the timing and manner and BLAH of their energy consumption.
+- Key words
+- provisioning 
+- Appliances
+- This thesis will focus on 
+
+One such 
+We have more development we use more energy, but we have more development we are better off in all ways. We ALSO have more internet connectivity. 
+Consider on the micro scale – define macro and micro???
+Clearly economic prosperity is a direct contributing factor to human prosperity in general.
+
+Huang et al explore the idea of Service-oriented Computing (SOC) whereby the inherent complexity associated with networking and programming is abstracted away, shifting the focus from dealing with technical details to a focus on how the services are to be used. For example, under this paradigm, a light connected to the Internet is represented as a light service or a heater connected to the internet is represented as a heating service... 'realm of smart home'... A smart home can be considered as any regular home which has been augmented with various types of IoT services, the purpose of which is to make residents' life more convenient and efficient (@article{huang2018} @ 15/17 of @article{huang2018}). <br>
+
+
+Novelty: This work USES sensor data (which could conceivably have been derived from a sensor-rich IoT smarthome) and considers the interplay between 
+- End User Convenience
+- Predictive Analytics
+- Predictive Service Offering
+- Energy Consumption
+- Demand Response
+- Smart Electricity Grids
+OTHER WORKS TYPICALLY CONSIDER ELECTRICAL APPLIANCES ONLY
+- In this work, we use the sensor data from both electrical (energy consumption activity - ECA) and activities that do not require electrical consumption (non energy consuming activity - nECA). 
+
+**Based on the two explorator** <br>
+**The PlaceLab** <br>
+The mission of House_n is to conduct research by designing and building real living environments - "living labs" - that are used to study technology and design strategies in context. The PlaceLab is a joint MIT and TIAX, LLC initiative. It is a residential condominium in Cambridge, Massachusetts
+- End user installation method is prposed using "stick on" wireless sensors
+- Wireless sensors in the home environment
+- Data collected from such sensors can be used by software to automatically infer context, such as the activities of daily living.
+- This context inference can then be exploited in novel applications for health-care, communication, education, and entertainment.
+- Determination of 
+
+GET WEATHER DATA
+
+https://ourworldindata.org/energy-production-and-changing-energy-sources
+https://www.iea.org/statistics/kwes/consumption/
+https://ourworldindata.org/internet
+https://www.un.org/en/sections/issues-depth/big-data-sustainable-development/index.html
+https://ourworldindata.org/technology-adoption
+https://www.forbes.com/sites/forbestechcouncil/2019/11/04/the-year-of-iot-eight-data-driven-directions-for-2020/#266d46bf1dd3 
+https://wearesocial.com/blog/2019/01/digital-2019-global-internet-use-accelerates  
+https://ourworldindata.org/extreme-poverty 
+
+- Two ways of looking at this
+1. Internet = lots of electricity
+2. Internet can save vast amounts of electricity
+
+
+& [@article{palensky2011demand}NOT IN LIB]
+
+Talk broadly about 
+- Internet
+- End Users (household demand for electricity)
+- IoT
+
+
+Consider COST OF IOT SERVICES??? Link this back to the aformentioned increased in global internet users
+Pivot into micro - end users... As previously mentioned, demand shifting 
+HMI = Human-Machine Interface
+'How smart do smart meters need to be?' - this is fundamentally at odds with the vision described above. In this scenario, end users would still be having to interact with HMIs. 
+- From a behavioural point of view, moving forward this type of behaviour will become increasingly anachronistic (think about tuning a television set)
+- Additionally, there is associated resouce (time of end user & physical resource to make the HMI) which contributes to environmental burden (this is a NULL point, as authors specifically mention interaction via a tablet computer) ALTHOUGH, the point can still be made that interaction with 
+(J.-S. Chou and N.-S. Truong) posit that 'A user’s ignorance of methods for saving energy is generally attributable to a lack of relevant feedback.' 
+Review of available literature (bad?) has shown that currently, consumer convenience and consumer energy consumption are considered in relative isolation from one-another (detached, disjoined). For example, analysis of texts X Y Z yield only T mention of convenience, whilst analysis of texts A B C yield only S mentions of energy consumption.
+This work aims to 'bridge the gap' between these two areas of consideration.
+Bring it back to the idea that previous forecasting / intervention models have focussed on 
+@article{huang2018} dis
+@article{kobus2015} et al contend that _Today’s major developments in the production and demand of electricity in domestic areas make it increasingly important that domestic electricity demand can respond to the availability of electricity_. They also note that _the benefits resulting from domestic demand response depend on household acceptance and behavioural change_
+- Aim is to investigate if households can shift their electricity demand to times when electricity is abundantly available
+- Two major developments in the coming decades
+1. The amount of distributed renewable electricity generation will increase (e.g., growing number of installed photovoltaic (PV) panels)
+2. Significant increase in electricity demand - due to widespread introduction of energy-reliant (albeit more efficient) technologies
+Smart grids: Consideration of power greid in real time to drive efficiency in the power grid at a macro-level (NOT: We will define macro as ...) ADD PROPER DEFINITION for SMARTGRID
+HOWEVER _the effects of smart grids strongly depend on the successful implementation of demand response programs_ Demand Response = _Demand response as a household action (automated, manual, orboth) due to which electricity use is shifted in time in response to a price signal or other stimuli._
+Factors
+- Availability of PV electricity
+- Availability of other renewable energy
+- 'Peak' electricity grid time (this may vary)
+- Weather / climate considerations (e.g., heatwave)
+- Interaction with Energy Management System (EMS)
+_An example of a price signal that several countries have in place is aday- and night pricing scheme. In this scheme, electricity is cheaperduring the night, when demand is low._
+_Households were also equipped with PV panels, an Energy Management System (EMS), and a dynamic tariff._
+DEMAND RESPONSE - 'Demand response of a household'
+_The usage of wet appliances, such as dishwashers, washing machines and dryers, is in general not very time critical and therefore can be shifted._
+_The user defines an ultimate finish time and within this time frame, the smart applianceautomatically defines the most appropriate starting time_
+*Overall - concept that 'end user' will mediate power consumption between various appliances...
+---
+Novelty: This work USES sensor data (which could conceivably have been derived from a sensor-rich IoT smarthome) and considers the interplay between 
+- End User Convenience
+- Predictive Analytics
+- Predictive Service Offering
+- Energy Consumption
+- Demand Response
+- Smart Electricity Grids
+OTHER WORKS TYPICALLY CONSIDER ELECTRICAL APPLIANCES ONLY
+
+- In this work, we use the sensor data from both electrical (energy consumption activity - ECA) and activities that do not require electrical consumption (non energy consuming activity - nECA). 
+- The predictive capability of our ML model shows that this is an extremely robust methodology
+
+**Assumptions**
+1. The cost of the sensors is negligible (EXCEPT for discussion later RE top 5 features)
+2. The energy requirement for the sensors is negligible
+3. In our proposed model, computation is performed in the cloud
+4. An app is available to interact with the smart home
+5. All of the electrical appliances in our smart home can be remote controlled to some extent
+- What about, instead of responding to the average time, the antagonistic AI responded to price signals in the market?
+**Huang et al proposed a novel service mining framework to personalize services in an IoT based smart home (REF). 
+
+
+MURRAY
+While energy consumption of domestic cooking in developed countries has decreased by 31% from 1991 to 2008 (Thim, 2009), mainly due to improved energy efficiency of cooking appliances, cooking and beverage preparation in domestic settings still consume a substantial amount of energy, or approximately 7 Mega Joule (MJ)/Kilogram (kg). Similarly, the report on Energy Consumption and Efficiency Trends in the European Union (EU) (Bertoldi and Atanasiu, 2009) estimates the energy consumption for ovens and hobs in private households in the EU-27 to be approximately 60 Tera-Watt hour (TWh) and states that for cooking appliances, there is still potential for energy savings. The situation is worse in many developing countries, where cooking consumes up to 90% of the overall residential energy consumption (International Energy Agency, 2006;De et al., 2013),and it is mainly based on non-renewable energy. Oberascher et al. (2011) highlight the variability of behaviour of consumers in using electrical appliances at the domestic level and provides empirical data on electricity consumption for a number of cooking processes, including heating water, baking potatoes and boiling eggs, concluding that the energy consumption of the microwave for heating water is lower than stove with a pot with and without a lid, but higher than kettle. The literature survey above demonstrates a clear need to capture the effect of different cooking styles, and consequently variable appliance usage, and explore the impact of the consumer phase, particularly at domestic level, in food LCA studies. This requires wider studies that can only be enabled via accurate and scalable models for computing the energy aspect of end-user cooking at home, and not relying on appliance manufacturer's specifications to estimate the consumption. This paper proposes a methodology for generating general appliance models in a scalable manner to quantify energy consumption related to the usage of cooking appliances at domestic level. Specifically, our research hypothesis is that only smart meter data, comprising active power measurements with at least 60s sampling in a similar format to the UK Smart Metering Equipment Technical Specifications v2(SMETS2) (Jason and Cooper, 2013), is sufficient for building accurate major cooking appliance models. Our research hypothesis is that by using only smart meter energy data we can build accurate models of major cooking appliances.
+
+```{r internetAccessPreprocessing, message=FALSE, warning=FALSE, include=FALSE}
+internet <- read_csv('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/datasets/share-of-individuals-using-the-internet.csv')
+colnames(internet)[4] <- 'PercentagePopulation'
+internet$Continent <- countrycode(sourcevar = internet$Code,
+                            origin = "genc3c",
+                            destination = "continent")
+internet <- internet %>% group_by(Continent, Year) %>% summarise(PercentagePopulation = mean(PercentagePopulation))
+internet <- na.omit(internet)
+#internet[is.na(internet)] <- 'Other'
+```
+
+```{r internetAccessPlot, echo=FALSE, fig.align='center', fig.cap="ADD TEXT", fig.height=2.5, fig.width=5, message=FALSE, warning=FALSE}
+p <- ggplot(internet, aes(x = Year, y = PercentagePopulation))
+p <- p + geom_point(aes(color = Continent), size = 0.75) + geom_line(aes(color = Continent), size = 0.75) + 
+  scale_x_continuous(limits = c(1990, 2015)) + 
+  scale_x_continuous(breaks = c(1990, 1995, 2000, 2005, 2010, 2015)) +
+  #scale_color_brewer(palette = "Dark2") +
+  theme_grey() +
+  labs(title="Internet access by percentage (%) of population",
+       #caption="Source: Our World in Data",
+       x="Year",
+       y="Percentage (%) of Population") + 
+  theme(text = element_text(size=8),
+        axis.title.x=element_blank(),
+        legend.title = element_blank())
+p
+```
+@article{owidinternet,
+    author = {Max Roser, Hannah Ritchie and Esteban Ortiz-Ospina},
+    title = {Internet},
+    journal = {Our World in Data},
+    year = {2019},
+    note = {https://ourworldindata.org/internet}
+}
+
+Scientific journal color palettes
+The R package ggsci contains a collection of high-quality color palettes inspired by colors used in scientific journals, data visualization libraries, and more.
+
+The color palettes are provided as ggplot2 scale functions:
+
+scale_color_npg() and scale_fill_npg(): Nature Publishing Group color palettes
+scale_color_aaas() and scale_fill_aaas(): American Association for the Advancement of Science color palettes
+scale_color_lancet() and scale_fill_lancet(): Lancet journal color palettes
+scale_color_jco() and scale_fill_jco(): Journal of Clinical Oncology color palettes
+scale_color_tron() and scale_fill_tron(): This palette is inspired by the colors used in Tron Legacy. It is suitable for displaying data when using a dark theme.
+
+https://www.datanovia.com/en/blog/top-r-color-palettes-to-know-for-great-data-visualization/
+
+..as shown in Fig. X ...as seen in Fig. X (or ...as can be seen in Fig. X) ...which is evident in Fig. X Fig. X shows...
+
+The data in Table X indicates that ...
+
+If you have some certainty where the figure or table will be relative to the text, you can use phrases such as:
+
+...as seen in the figure to the left... (to the right, on the previous page, etc.) The next table shows blah blah ...
+
+
+https://en.wikibooks.org/wiki/LaTeX/Fonts#Sizing_text 
+https://crsh.github.io/papaja_man/reporting.html 
+https://stackoverflow.com/questions/11948245/markdown-to-create-pages-and-table-of-contents
+
+## Objective
+## Domain
+## Input
+## Technology
+## Output
+## Notes
+
+- End User Convenience 
+- Predictive Analytics
+- Predictive Service Offering
+- Energy Consumption
+- Demand Response 
+- Smart Electricity Grids 
+
+Accent, Dark2, Paired, Pastel1, Pastel2, Set1, Set2, Set3
+
+**Diverging**
+BrBG, PiYG, PRGn, PuOr, RdBu, RdGy, RdYlBu, RdYlGn, Spectral
+
+**Qualitative**
+Accent, Dark2, Paired, Pastel1, Pastel2, Set1, Set2, Set3
+
+**Sequential**
+Blues, BuGn, BuPu, GnBu, Greens, Greys, Oranges, OrRd, PuBu, PuBuGn, PuRd, Purples, RdPu, Reds, YlGn, YlGnBu, YlOrBr, YlOrRd
+
+SPELL CHECK
+
+# Table of Contents
+1. [Introduction](#Introduction)
+2. [Data Preprocessing & Visualisation](#Data Preprocessing & Visualisation)
+  2.1 [Importing & Preprocessing the Activities Meta Data](#Importing & Preprocessing the Activities Meta Data)
+3. [Third Example](#third-example)
+4. [Fourth Example](#fourth-examplehttpwwwfourthexamplecom)
+
+CB!!! citation_package: biblatex 
+TABLES + FIGURES CB
+http://www.ctex.org/documents/packages/float/caption.pdf 
+https://stackoverflow.com/questions/32634274/knit-hooksset-and-opts-chunkset 
+https://github.com/yihui/knitr/issues/1102 
+https://alanarnholt.github.io/GeneralStatistics/rmarkdown/FormattingTables.html 
+https://github.com/tidyverse/ggplot2/wiki/legend-attributes
+knit_hooks$set(crop = hook_pdfcrop)
+
+
+
+
+
+
+
+
+

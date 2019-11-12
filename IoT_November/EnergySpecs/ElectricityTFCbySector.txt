@@ -1,4 +1,4 @@
-Industry 	Residential Commercial and Public Services	Transport Other
+Year    Industry 	Residential     CommercialAndPublicServices	Transport Other
 1971	204.319691	85.690457	55.137661	9.710575	22.400257
 1972	218.190197	95.111777	60.370942	10.168274	24.287447
 1973	234.901111	101.34308	66.925883	10.593721	25.641877

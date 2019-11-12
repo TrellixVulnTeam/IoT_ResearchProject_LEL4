@@ -1,4 +1,4 @@
-Industry                      	Residential                   	Transport                     	Commercial and public services	Non-energy use                	Other
+Year    Industry        Residential     Transport       CommercialAndPublicServices	Non-energyUse                	Other
 1971	314.436051	138.693744	18.089423	65.684241	13.556773	31.236694
 1972	327.626073	149.210425	18.688777	69.772013	15.761459	36.527579
 1973	356.391511	148.293142	17.724656	70.098557	18.373902	40.871282
