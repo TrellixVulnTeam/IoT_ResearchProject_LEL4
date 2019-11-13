@@ -26,6 +26,7 @@ output:
 fontsize: 11pt
 geometry: margin=0.79in
 header-includes:
+ \usepackage[ruled,vlined,linesnumbered]{algorithm2e}
  \usepackage{booktabs}
  \usepackage{longtable}
  \usepackage{array}
@@ -37,6 +38,7 @@ header-includes:
  \usepackage{caption, setspace}
  \captionsetup[figure]{font={stretch=1,scriptsize}}
  \captionsetup[table]{font={stretch=1,scriptsize}}
+ \captionsetup[table]{skip=2pt}
 ---
 
 ```{r message=FALSE, warning=FALSE, include=FALSE}
@@ -499,12 +501,11 @@ Between 80-100 reed switch sensors where installed in two single-person apartmen
 
 \pagebreak
 
+
 # Data Preprocessing & Visualisation
 
 ## Importing & Preprocessing the Activities Meta Data
-
-The dataset `S1Activities.csv` was imported into the interactive development environment. These data contains a tabulated summary of Heading, Category, Subcategory and a corresponding code. After importation, the dataset has dimensionality of [3, 33], with `Heading`, `Category` & `Subcategory` present as non-null objects, as seen in Table \ref{tab:S1ActivitiesData} below. The attribute `Code` (which codefies the unique set of Heading, Category) was imported as an index value. At this time, the activities data will not be kept in it's native state and will not be subject to preprocessing.
-
+The dataset `S1Activities.csv` was imported into the interactive development environment. These data contains a tabulated summary of Heading, Category, Subcategory and a corresponding unique code. After importation, the dataset has dimensionality of [3, 33], with `Heading`, `Category` & `Subcategory` present as non-null objects, as seen in Table \ref{tab:TAB_S1ActivitiesData} below. The attribute `Code` (which codefies the unique set of Heading, Category & Subcategory) was imported as an index value (n=33). At this time, the activities data will be kept in it's native state and will not be subject to preprocessing.
 ```{python READ_activities, include=FALSE}
 ds = pd.read_csv(PATH + '/datasets/S1Activities.csv', index_col = 'Code') 
 ```
@@ -515,37 +516,20 @@ head(py$ds, n=5) %>% kable(format = "latex", caption = "The S1 activities datase
                 bootstrap_options = c("striped", "hover", "condensed"),
                 font_size = 8)
 ```
-
-```{r REMOVE1, eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
-head(py$ds)
-```
-
 ## Importing & Preprocessing the Sensor Meta Data
-
-The dataset `S1sensors.csv` was imported into the interactive development environment. These data contains a tabulated values for Sensor ID, Room and Sensor Activity Type, with no header row present in the original dataset. After importation, the dataset has dimensionality of [3, 76], with header 0, 1 & 2 corresponding to SensorID, Room & Sensor Activity Type, respectively, as seen in Table \ref{tab:TAB_sensorData}. All attributes are nominal, and were imported as dtype str, accordingly. Attribute attribute 1 & 2 contain degenerate values (e.g., Bathroom & Light Switch). This will be addressed in the subsequent data preprocessing. The preprocessing of the sensor data is a critical step in our analysis. Careful consideration of the data, including the presence of duplicates. This is because if we dont have a sufficient understanding of where and why duplicates exist, we will not be able to satisfactorarily preprocess them. Failure to do so we mean that there is potentail degeneracy in our source dataset, leading to unknown issues with our downstream analysis.
-
+The dataset `S1sensors.csv` was imported into the interactive development environment. These data contains a tabulated values for Sensor ID, Room and Sensor Descriptor (e.g., light switch), with no header row present in the original dataset. After importation, the dataset has dimensionality of [3, 76], with header 0, 1 & 2 corresponding to SensorID, Room & Sensor Descriptor, respectively, as seen in Table \ref{tab:TAB_sensorData}. As all attributes are nominal, they were imported as String data types. 
 ```{python READ_sensors, include=FALSE}
 dsS1Sensors = pd.read_csv(PATH + '/datasets/S1sensors.csv', 
                           dtype={0:str, 1:str, 2:str},
                           index_col = None, header = None)
 ```
-
 ```{r TAB_sensorData, echo=FALSE, results='asis'}
 head(py$dsS1Sensors, n=5) %>% kable(format = "latex", caption = "The S1 sensor meta data", booktabs = T) %>% 
   kable_styling(latex_options = c("hold_position", "striped"),
                 bootstrap_options = c("striped", "hover", "condensed"),
                 font_size = 8)
 ```
-
-```{r REMOVE2, eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
-head(py$dsS1Sensors, n=5)
-```
-
-Column [1] & Column [2] of the sensor data will be concatenated, whitespace will be removed, all text will be cast to lowercase and a final whitespace strip will be performed. The python script `S1sensorsPreprocessing.py` is run perform several preprocessing steps in these data. The script concatenates the attributes `dsS1Sensors[1]` and `dsS1Sensors[2]`, with an underscore. Whitespace is then stripped and all string values are coerced to lowercase. This newly created attribute is then added to the dataframe, as seen below (REF). Additionally, the attributes `0`, `1` & `2` are renamed `subActNum`, `room` & `activity`, respectively. 
-
-* Data types
-* IF a sub-act requires electricity
-
+After importation these data were checked for duplicate values. The `Sensor ID` attribute had a 76 unique values, the `Room` attribute had only 7 unique values and the `Sensor Descriptor` attribute had 28 unique values. Examples of the degeneracy in these attributes can be seen in Table \ref{tab:TAB_sensorData}, e.g., Bathroom & Light Switch. Room[1] and SensorDescriptor[2] were stripped of whitespace, coerced to lowercase and concatenated using an underscore. The concatenated vector was then bound to the dataframe and the column names updated, resulting in \ref{tab:TAB_sensorDataProcessed}, below.
 ```{python FUNC_S1sensorsPreprocessing, include=FALSE}
 # %run -i S1sensorsPreprocessing.py
 temp1 = dsS1Sensors[1] + '_' + dsS1Sensors[2]   # Creating a new vector of concatenated column 1 & 2
@@ -560,309 +544,267 @@ dsS1Sensors.rename(columns={0:'subActNum',
                             4:'energyReq'}, 
                    inplace=True)
 ```
-
 ```{r TAB_sensorDataProcessed, echo=FALSE, results='asis'}
 head(py$dsS1Sensors) %>% kable(format = "latex", caption = "The first iteration of processed S1 sensor meta data", booktabs = T) %>% 
   kable_styling(latex_options = c("hold_position", "striped"),
                 bootstrap_options = c("striped", "hover", "condensed"),
                 font_size = 8)
 ```
-
-```{r REMOVE3, eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
-head(py$dsS1Sensors, n=5)
-```
-
-The function `getUniqueValues.py` is invoked to provide a means of capturing a list of unique values in a given column of a dataset. The newly created `dsS1Sensors` is then checked for duplicates in two attributes, `subActNum` & `concat`. The number of unique values in `dsS1Sensors.subActNum` is found to be 76, demonstrating that this attribute contains a set of completely unique values (recall n(rows) = 76). The number of unique values in `dsS1Sensors.concat` is found to be 41, demonstrating that despite the concatenation methodology, their are still duplicate values in the dataframe. These duplicate values warrant further investigation. The function `length(unique())` was used to list counts with their corresponding values.
-
-* `length(unique(py$dsS1Sensors$subActNum))` = 76
-* `length(unique(py$dsS1Sensors$concat))` = 41
-
-COMMENT
-
-```{python FUNC_seen_dupes_dsS1Sensors, include=FALSE}
-# %run -i seen_dupes_dsS1Sensors.py
-seen = {}
-dupes = []
-
-for x in dsS1Sensors.concat:
-    if x not in seen:
-        seen[x] = 1
-    else:
-        if seen[x] == 1:
-            dupes.append(x)
-        seen[x] += 1
-
-for i in seen:  # Adding value counts for dupes
-    if (seen[i] > 1 and seen[i] <= 9):
-        print(seen[i], " ", i)
-    if (seen[i] >= 10):
-        print(seen[i], "", i)
-```
-
-Upon compilation of the above summary list, and with reference to the original work (REF) is was determined that these values result from multiple sensors with extremely similar functionality. For example, kitchen_burner has a value of n=4 - this is because on the burner in the apartment under investigation, there were 4 individual burners present. Similarly, kitchen_cabinet has a value of n=15, indicating that for the various cabinets in the apartment, each were given sensors. On the one-hand, this level of granularity may provide fertile grounds for advanced analysis, HOWEVER, for the purposes of this research project, such values will serve to increase the dimensionality of the overall dataset. High dimensionality can lead to difficulties with plotting, .... ML (REF) and thus IN A SUBSEQUENT PREPROCESSING exercise these values will be collapsed down to have n=1. <br>
-
-**Creation of JSON Catalogues PRIOR to dup removal** - why? Because even if a key-value pair cannot be matched it will simply be ignored
-**Prior to dupe removal** As this work is largely concerned with energy usage in the home, the sub-activities will be categorized based on their energy requirement. That is, if a sub-activity requires an input of energy beyond what the end user alone can provide, it will be classified as `energyReq` = true. Whereas, if a sub-activity is able to be performed through only interaction with the end user, it will be classified as `energyReq` = false. By way of example, the sub-activity `bathroom_toiletflush` will have an `energyReq` equal to false, while the sub-activity `bathroom_lightswitch` will have an `energyReq` equal to true. Each row (n=76) needs to be inspected manually to determine if the activity requires electricity. <br>
-
-Function `reqEnergy_containSpecialChar.py` is run
-- After visual inspection, uses `reqEnergy = 'ligh|burn|mach|toas|freez|dvd|lamp|washer|dry|exh|disp|frig|oven|hot|shower|micro'` to find subActivities which require energy input beyond that of the end user
-- Checked below for SPECIAL CHAR
-- Special CHARs removed
-
-```{python FUNC_reqEnergy_containSpecialChar, include=FALSE}
-# %run -i reqEnergy_containSpecialChar.py
-a = dsS1Sensors.iloc[:,3]
-specialChar = '/'
-reqEnergy = 'ligh|burn|mach|toas|freez|dvd|lamp|washer|dry|exh|disp|frig|oven|hot|shower|micro'
-b = a.str.contains(reqEnergy, regex = True)
-c = a.str.contains(specialChar, regex = True)
-dsS1Sensors['reqEnergy'] = b
-dsS1Sensors['specialChar'] = c
-forwardSlashFilter = dsS1Sensors['concat'].str.contains('/|\|', regex = True) # Find characters `/`, `\`
-```
-
-```{python include=FALSE}
-# Create variable to parse to R kernel
-check = dsS1Sensors.loc[dsS1Sensors['specialChar'] == True]     
-```
-
-```{r TAB_sensorDataCleansed, echo=FALSE, results='asis'}
-head(py$check) %>% kable(format = "latex", caption = "Demo table", booktabs = T) %>% 
+The number of unique values in `dsS1Sensors.subActNum` is checked once more and found to be n=76, indicating no degeneracy in this attribute. The number of unique values in `dsS1Sensors.concat` is found to be n=41, indicating the presence of degeneracy. This was investigated by aggregating the duplicate attributes, which are summarised in Table \ref{tab:TAB_numDupes}, below.
+```{r TAB_numDupes, echo=FALSE, results='asis'}
+dupes <- read_csv('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/datasets/dupes.csv')
+head(dupes, n=10) %>% kable(format = "latex", caption = "The first iteration of processed S1 sensor meta data", booktabs = T) %>% 
   kable_styling(latex_options = c("hold_position", "striped"),
                 bootstrap_options = c("striped", "hover", "condensed"),
                 font_size = 8)
 ```
-
-```{r REMOVE4, message=FALSE, warning=FALSE, include=FALSE}
-head(py$check)
-```
-
-```{python FUNC_reqEnergy_containSpecialCharClean, include=FALSE}
-#%run -i reqEnergy_containSpecialCharClean.py
-dsS1Sensors['concat'].replace('office/study_drawer','study_drawer',inplace=True)
-dsS1Sensors['room'].replace('Office/study','Study',inplace=True)
-dsS1Sensors['concat'].replace('office/study_lightswitch','study_lightwitch',inplace=True)
-dsS1Sensors['subActNumConcat'] = 'subActNum_' + dsS1Sensors['subActNum'].astype(str)
-dsS1Sensors.drop(columns=['specialChar'], inplace=True)
-```
-
-```{python include=FALSE}
-# Create variable to parse to R kernel
-check = dsS1Sensors[58:59]   
-```
-
-```{r TAB_sensorDataCleansedFinal, echo=FALSE, results='asis'}
-head(py$check) %>% kable(format = "latex", caption = "Demo table", booktabs = T) %>% 
+Referering to the work of (**REF**) it is was determined that these duplicate values are theresult of multiple sensors with extremely similar functionality. Kitchen_burner has a value of n=4, accounted for by the presense of one sensor per burner in the original work.While this level of granularity may provide an avenue for further analysis, for the purposes of this research such values serve to significantly increase the dimensionality of the overall dataset, with a low corresponding gain in information. High dimensionality can also lead to difficulties in machine learning models and challenges with data visualisation. By way of example, kitchen_cabinet has a value of n=15, indicating that for the various cabinets in the kitchen, a total of 15 sensors were fitted to monitor activity. It was determined that such values would aggregated and collapsed to a value of n=1 (with the first occurence of the degenerate subactivity thus providing the subActNum). The data set was inspected and stripped of special characters, and the sub activities requiring an input of energy (e.g., electrical, gas) were flagged with a boolean value, resulting in Table \ref{tab:TAB_sensorDataCleansedFinal}. EXPORTED as `S1Sensors_preprocessed.csv` **DUPES NOT YET DROPPED**
+```{r TAB_sensorDataCleansedFinal, echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+df <- read_csv('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/S1Sensors_preprocessed.csv')
+head(df) %>% kable(format = "latex", caption = "Demo table", booktabs = T) %>% 
   kable_styling(latex_options = c("hold_position", "striped"),
                 bootstrap_options = c("striped", "hover", "condensed"),
                 font_size = 8)
 ```
-
-```{python FUNC_sensorDataJSONwDUPES, include=FALSE}
-# %run -i sensorDataJSONwDUPES.py
-# SubAct Number KEY with String DICTIONARY JSON 
-PATH = '/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November'
-subActNumKeyWithStringDict = pd.Series(dsS1Sensors.concat.values, 
-                                       dsS1Sensors.subActNumConcat.values).to_dict()
-subActNumKeyWithStringJson = json.dumps(subActNumKeyWithStringDict)
-f = open(PATH + '/JSON/subActNumKeyWithStringDict.json','w')
-f.write(subActNumKeyWithStringJson)
-f.close()
-
-# SubAct Number KEY with Boolean Energy DICTIONARY JSON 
-subActNumKeyWithEnergyDict = pd.Series(dsS1Sensors.reqEnergy.values, 
-                                    dsS1Sensors.subActNumConcat.values).to_dict()
-subActNumKeyWithEnergyJson = json.dumps(subActNumKeyWithEnergyDict)
-f = open(PATH + '/JSON/subActNumKeyWithEnergyDict.json', 'w')
-f.write(subActNumKeyWithEnergyJson)
-f.close()
-
-# SubAct String KEY with Boolean Energy DICTIONARY JSON 
-subActKeyWithEnergyDict = pd.Series(dsS1Sensors.reqEnergy.values, 
-                                    dsS1Sensors.concat.values).to_dict()
-subActKeyWithEnergyJson = json.dumps(subActKeyWithEnergyDict)
-f = open(PATH + '/JSON/subActKeyWithEnergyDict.json','w')
-f.write(subActKeyWithEnergyJson)
-f.close()
-```
-
 
 
 ## Importing & Preprocessing the Activities Data
+The activities data set `S1activities.csv` will be imported, evaluated and cleansed. The goal of the pre-processing will be to restructure the dataset into a 'tidy' format, that is, where the attributes are columns, the rows are instances, and each cell contains only one value. As the data is time-series, timestamps may be used as indexes. Figure \ref{fig:s1actExcel} shows the data set open in a spreadsheet program. Inspection of the original dataset via an interactive development environment shows that the original dataset follows a structure such that each 5 rows contains is one discrete set of data. 
 
-The activities data set `S1activities.csv` will be imported, evaluated and cleaned. The goal of the pre-processing will be to restructure the dataset into a 'tidy' format, that is, where the attributes are columns, the rows are instances, and each cell contains only one value. Given that the data is time-series, timestamps will be used as indexes. The data will also be cast into continuous 24 hour segments, with timestamps in the form `YYYY-MM-DD hh:mm:ss` (using datetime data type)
+* Row 1: Activity, Date, Start Time, End Time
+* Row 2: Sub-activity (an action that can be executed as part of performing the activity) code-values
+* Row 3: Sub-activity descriptive values
+* Row 4: Sub-activity start time
+* Row 5: Sub-activity end time
 
-We aim to perform the preprocessing in such a way that is
-* minimally computationally intensive
-* reproducible / traceable code
-* reasonable checks (validation)
-
-```{r echo=FALSE, fig.cap="ADD TEXT", fig.align='center', out.width = '100%'}
+```{r s1actExcel, echo=FALSE, fig.align='center', fig.cap="ADD TEXT", out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/s1actExcel.png')
 ```
 
-The activities data was imported into an indexed dataframe, containing only one column, with 1475 rows, with all values comma-separated (per row). This style of import had to be used, due to the varying number of comma-separated elements in each row (as seen in figure X, above).
-
-* A array of strings, instead of an array of arrays
-
-Analysis of the original dataset, and exploration during pre-processing to this point, shows us that the original dataset follows a structure such that each 5 rows of data contains is one discrete set of data. In this structure,
-
-* Row 1 = Activity, Date, Start Time, End Time
-* Row 2 = Sub-activity (an action that can be executed as part of performing the activity) code-values
-* Row 3 = Sub-activity descriptive values
-* Row 4 = Sub-activity start time
-* Row 5 = Sub-activity end time
-
-In order to access the values programmatically, we will now turn the 1D array list back into a 2D array list, where each element array[i] contains the 5 rows of information, as described above.
-
-The activities data set `S1activities.csv` will be imported, evaluated and cleaned. The goal of the pre-processing will be to restructure the dataset into a 'tidy' format, that is, where the attributes are columns, the rows are instances, and each cell contains only one value. Given that the data is time-series, timestamps will be used as indexes. The data will also be cast into continuous 24 hour segments, with timestamps in the form `YYYY-MM-DD hh:mm:ss` (using datetime data type)
-
-We aim to perform the preprocessing in such a way that is 
-* minimally computationally intensive 
-* reproducible / traceable code 
-* reasonable checks (validation)
-
-The activities data was imported into an indexed dataframe, containing only one column, with 1475 rows, with all values comma-separated (per row). This style of import had to be used, due to the varying number of comma-separated elements in each row (as seen in figure X, above). * A array of strings, instead of an array of arrays Analysis of the original dataset, and exploration during pre-processing to this point, shows us that the original dataset follows a structure such that each 5 rows of data contains is one discrete set of data. In this structure, * Row 1 = Activity, Date, Start Time, End Time * Row 2 = Sub-activity (an action that can be executed as part of performing the activity) code-values * Row 3 = Sub-activity descriptive values * Row 4 = Sub-activity start time * Row 5 = Sub-activity end time In order to access the values programmatically, we will now turn the 1D array list back into a 2D array list, where each element array[i] contains the 5 rows of information, as described above.
-
-```{python FUNC_dsS1Activities_processingExample, include=FALSE}
-# %run -i dsS1Activities_processingExample.py
-import pandas as pd
-d = {'Type': ['An array of comma-sep strings',
-             'An array of comma-sep strings',
-             'An array of comma-sep strings',
-             'An array of comma-sep strings',
-             'An array of comma-sep strings'],
-     'Description ': ['Activity information, date, start time, end time',
-                      'Sub-activity reference value',
-                      'Sub-activity descriptive value',
-                      'Sub-activity start time',
-                      'Sub-activity end time'],
-    'Desired Type' : ['...',
-                      'Levels',
-                      'Levels',
-                      'Datetime including the date extracted from the index 3 rows above',
-                      'Datetime including the date extracted from the index 4 rows above']}
-df = pd.DataFrame(data=d)
-```
-
-```{r TAB_processingExample, echo=FALSE, results='asis'}
-head(py$df) %>% kable(format = "latex", caption = "Demo table", booktabs = T) %>% 
-  kable_styling(latex_options = c("hold_position", "striped", "scale_down"),
-                bootstrap_options = c("striped", "hover", "condensed"),
-                font_size = 8)
-```
-
-As mentioned above, in order to work with these data, they need to be in a 'tidy' format [ref], that is, the attributes are columns, the rows are instances, and each cell contains only one value. 
-* Note: An array of arrays 
-* An array where each element is an array (list?) 
-* Between each increment of 5 (0 - 4), the sub-arrays have different lengths Table [ref], below, contains a summary of the data structure after the operation `np.array(dsS1)` is performed. In order to continue pre-processing, the array had to be flattened from a 2D structure to a 1D structure, using `flatten()`.
-
 ```{python include=FALSE}
 dsS1 = pd.read_csv(PATH + '/datasets/S1activities_data.csv', sep = 'delimiter', header = None, engine = 'python')
+dsS1 = dsS1.loc[[5,6,7,8,9],:]
 ```
-
 ```{r TAB_rawDSS1, echo=FALSE, results='asis'}
-head(py$dsS1) %>% kable(format = "latex", caption = "Demo table", booktabs = T) %>% 
-  kable_styling(latex_options = c("hold_position", "striped", "scale_down"),
+head(py$dsS1) %>% kable(format = "latex", caption = "The S1 activities dataset after importation into the interactive development environment", booktabs = T) %>% 
+  kable_styling(latex_options = c("hold_position", "striped"),
                 bootstrap_options = c("striped", "hover", "condensed"),
                 font_size = 8)
 ```
 
-* len(dsS1) = 1475
+The activities data was imported into an indexed dataframe, containing only one column, with 1475 rows, with all values comma-separated (per row). This style of import had to be used, due to the varying number of comma-separated elements in each row (as seen in Figure \ref{fig:s1actExcel}, above).
 
-```{python FUNC_dsS1Activities_processing, include=FALSE}
-#%run -i dsS1Activities_processing.py
-from datetime import datetime
-
-# Convert to an array structure using numpy
-step1 = np.array(dsS1)
-# The 2D array was flattened to a 1D array
-step2 = step1.flatten()
-# Chunking into groups of 5
-step3 = list(chunked(step2, 5))
-
-# Creating temporary data structures
-tempStringList = []
-tempStripList = []
-activityList = []
-dateList = []
-tempStartTimeList = []
-tempEndTimeList = []
-
-# Populating the temporary data structures with individual items of data
-i = 0
-while i < len(step3):
-    tempStringList.append(step3[i][0])
-    tempStripList.append([x.strip() for x in tempStringList[i].split(',')])
-    activityList.append(tempStripList[i][0])
-    dateList.append(tempStripList[i][1])
-    tempStartTimeList.append(tempStripList[i][2])
-    tempEndTimeList.append(tempStripList[i][3])
-    i = i + 1
-    
-zippedList = list(zip(activityList, dateList, tempStartTimeList, tempEndTimeList))
-ds = pd.DataFrame(zippedList, columns = ['activity', 'date', 'startTime', 'endTime'])
-dsIntermediate = pd.DataFrame(zippedList, columns = ['activity', 'date', 'startTime', 'endTime'])
-start = (ds.date + " " + ds.startTime)
-end = (ds.date + " " + ds.endTime)
-
-startList = []
-endList = []
-
-i = 0
-while i < len(start):
-    startList.append(datetime.strptime(start[i], '%m/%d/%Y %H:%M:%S'))
-    endList.append(datetime.strptime(end[i], '%m/%d/%Y %H:%M:%S'))
-    i = i + 1
-    
-zippedList = list(zip(activityList, startList, endList))
-ds = pd.DataFrame(zippedList, columns = ['activity', 'start', 'end'])
-```
+* Between each increment of 5 (0 - 4), the sub-arrays have different lengths Table [ref], below, contains a summary of the data structure after the operation `np.array(dsS1)` is performed. In order to continue pre-processing, the array had to be flattened from a 2D structure to a 1D structure, using `flatten()`.
 
 The function `dsS1Activities_processing.py` was run in-line to perform the required preprocessing. The dataframe was then converted to a 2D array, using `np.array()`, here, each row from the dataframe became an array within the 2D array [Step 1]. The 2D array was flattened to a 1D array using `.flatten()` [Step 2]. each group of observations was then chunked into a list of 5 [Step 3]
 
 Mention sanity checking here
 
-```Python
-i = 0
-while i < 5:
-    print(stepX[i])
-    i += 1
-```
-
-|StepX|Returns    |
-|-----|-----      |
-|Step1|5 array structures corresponding to one row each from the original dataset                 |
-|Step2|5 elements from one array structure (no longer associated with rows)                       |
-|Step3|5 array structures, with each array containing a set of related activity and temporal data |
-
 We used the Step 3 data structure to then extract the values for `activity`, `date`, `startTime` and `endTime`. These values were populated into a series of temporary arrays, which were then compiled into a dataset with the four attributes previously listed. We then used `Step3[i][j]` to access all the required elements and parse them into the arrays.
 
+#### Algorithm 1
+Text
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetAlgoLined
+\KwResult{Write here the result}
+\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+\Input{Write here the input}
+\Output{Write here the output}
+\BlankLine
+\While{While condition}{
+    instructions\;
+    \eIf{condition}{
+        instructions1\;
+        instructions2\;
+    }{
+        instructions3\;
+    }
+}
+\caption{Extraction of data from S1 Activities dataset}
+\end{algorithm} 
+
 ```{r TAB_dsIntermediate, echo=FALSE, results='asis'}
-head(py$dsIntermediate) %>% kable(format = "latex", caption = "Demo table", booktabs = T) %>% 
+df <- read_csv('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/S1Activities_intermediate.csv')
+head(df) %>% kable(format = "latex", caption = "Demo table", booktabs = T) %>% 
   kable_styling(latex_options = c("hold_position", "striped"),
                 bootstrap_options = c("striped", "hover", "condensed"),
                 font_size = 8)
 ```
 
+#### Algorithm 2
+Text
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetAlgoLined
+\KwResult{Write here the result}
+\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+\Input{Write here the input}
+\Output{Write here the output}
+\BlankLine
+\While{While condition}{
+    instructions\;
+    \eIf{condition}{
+        instructions1\;
+        instructions2\;
+    }{
+        instructions3\;
+    }
+}
+\caption{Extraction of data from S1 Activities dataset}
+\end{algorithm} 
 
+```{r TAB_dsActFinal, echo=FALSE, results='asis'}
+df <- read_csv('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/S1Activities_ds.csv')
+head(df) %>% kable(format = "latex", caption = "Demo table", booktabs = T) %>% 
+  kable_styling(latex_options = c("hold_position", "striped"),
+                bootstrap_options = c("striped", "hover", "condensed"),
+                font_size = 8)
+```
 
+## Importing, Visualizing and Preprocessing the SubActivities Data
 
+Importing `S1Activities_data.csv`, convert df to an array (list?), flatten to a 1D array (list?), chunk the array [5], extract subActNum, subActivity, time & date. Merge time and date into datetime elements, determine start and end time. The variable `dsS1` was used (still on stack from previous section). As previously observed (FIGURE X, TABLE Y), data was all in one column. A processing method with additional steps BLAH BLAH. 
 
+#### Algorithm 2 Part A
+Text
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetAlgoLined
+\KwResult{Write here the result}
+\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+\Input{Write here the input}
+\Output{Write here the output}
+\BlankLine
+\While{While condition}{
+    instructions\;
+    \eIf{condition}{
+        instructions1\;
+        instructions2\;
+    }{
+        instructions3\;
+    }
+}
+\caption{Extraction of data from S1 Activities dataset}
+\end{algorithm} 
 
+```{r TAB_dsSUBIntermediate, echo=FALSE, results='asis'}
+df <- read_csv('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/S1SubActivities_intermediate.csv')
+head(df) %>% kable(format = "latex", caption = "Demo table", booktabs = T) %>% 
+  kable_styling(latex_options = c("hold_position", "striped"),
+                bootstrap_options = c("striped", "hover", "condensed"),
+                font_size = 8)
+```
 
+#### Algorithm 2 Part B
+Text
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetAlgoLined
+\KwResult{Write here the result}
+\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+\Input{Write here the input}
+\Output{Write here the output}
+\BlankLine
+\While{While condition}{
+    instructions\;
+    \eIf{condition}{
+        instructions1\;
+        instructions2\;
+    }{
+        instructions3\;
+    }
+}
+\caption{Extraction of data from S1 Activities dataset}
+\end{algorithm} 
 
+```{r TAB_dsSUBActFinal, echo=FALSE, results='asis'}
+df <- read_csv('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/S1SubActivities_ds.csv')
+head(df) %>% kable(format = "latex", caption = "Demo table", booktabs = T) %>% 
+  kable_styling(latex_options = c("hold_position", "striped"),
+                bootstrap_options = c("striped", "hover", "condensed"),
+                font_size = 8)
+```
 
+### Sub Activity Preprocessing - Duplicate sub activities
 
+The following duplicate sensors were identified in section XX
 
+* From `S1Sensors_preprocessed.csv` I need to find the numbers associated with these - SUBACTNUM
+* 'Arbitrarily' choose one number to represent all of them
+* Fill them all with that one number
+
+**For dicussion later** - The kitchen cabinets have 15 sensors, say one of these cabinets just contains a blender, so there will always be a one-to-one between the cabinet opening and the blendor being used. This isn't particularly helpful to us. Also, more sensors could always be added... Better to do analysis with less (explain?)
+Note for discussion, S1Sensors_preprocessed itself should no longer be modified, EXAMPLE, going back upstream to remove the 'dupes', would perhaps cause an lack of traceability downstream later, Importing S1Sensors_preprecessed now has been done to inform, how to remove 'dupes' from the current ds
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+df <- read_csv('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/S1SubActivities_preprocessedWfeatures.csv', 
+               col_types = cols(subActNum = col_character(), dayNumeric = col_character(), HOUR = col_character()))
+dfNoDupes = df[!duplicated(df$subActNum),]
+dfNoDupes %>% kable(format = "latex", caption = "Demo table", booktabs = T) %>% 
+  kable_styling(latex_options = c("hold_position", "striped", "scale_down"),
+                bootstrap_options = c("striped", "hover", "condensed"),
+                font_size = 8)
+```
+
+### SubActivity Visualisation and Outlier Inspection
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+df$start <- ymd_hms(df$start)
+df$start <- force_tz(df$start, "America/New_York")
+df$end <- ymd_hms(df$end)
+df$end <- force_tz(df$end, "America/New_York")
+df$subAct <- as.factor(df$subAct)
+total_counts <- df %>% group_by(DAY, subAct) %>% summarise(count=n())
+```
+
+```{r}
+p <- ggplot(total_counts, aes(x = subAct, y = count, group = DAY, color = DAY))
+p <- p + geom_line() + geom_point() + theme_grey()
+p <- p + coord_flip() + labs(title = "Plot of SubActivity Count versus SubActivity",
+                             x = "SubActivity",
+                             y = "Aggregated Count") +
+  theme(text = element_text(size=8))
+ggsave("images/lineChart.png", plot = last_plot(), device = png(), 
+       scale = 1.5, width = 18, height = 12, units = c("cm"), dpi = 300)
+```
+
+#### Aggregated Line Chart
+
+The following figure shows XYZ
 
 ```{r echo=FALSE, fig.cap="ADD TEXT", out.width = '100%'}
-#knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/')
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/lineChart.png')
+```
+
+#### Aggregated Box Plot
+
+The following figure shows XYZ
+
+```{r}
+p <- ggplot(df, aes(subAct, durationSec))
+p <- p + geom_boxplot(fill= "plum", outlier.alpha = 0.8) + # aes(colour = WDWE) #, outlier.size = 1
+  coord_flip() + theme_grey() +
+  labs(title = "Box Plots",
+       x = "SubActivity",
+       y = "Duration (sec)") + theme(text = element_text(size=8))
+ggsave("images/boxPlots.png", plot = last_plot(), device = png(), 
+       scale = 1.5, width = 18, height = 12, units = c("cm"), dpi = 300)
 ```
 
 ```{r echo=FALSE, fig.cap="ADD TEXT", out.width = '100%'}
-#knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/')
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/boxPlots.png')
 ```
+
+#### Strip Plots
+
+```{r echo=FALSE, fig.cap="ADD TEXT", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/strip1.png')
+```
+
+###  SubActivity Cleansing - Outlier Removal
+
+
 
 
 
@@ -894,7 +836,32 @@ plot(pressure)
 Reduce image border (not working???)
 https://holtzy.github.io/Pimp-my-rmd/
 
+```{r, eval = FALSE}
+object <- [some kind of calculation]
+Note that this; is not valid R code
+```
 
 
+#### Algorithm 1
+Text
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetAlgoLined
+\KwResult{Write here the result}
+\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+\Input{Write here the input}
+\Output{Write here the output}
+\BlankLine
+\While{While condition}{
+    instructions\;
+    \eIf{condition}{
+        instructions1\;
+        instructions2\;
+    }{
+        instructions3\;
+    }
+}
+\caption{While loop with If/Else condition}
+\end{algorithm} 
 
 

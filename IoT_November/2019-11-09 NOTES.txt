@@ -236,10 +236,46 @@ https://github.com/tidyverse/ggplot2/wiki/legend-attributes
 knit_hooks$set(crop = hook_pdfcrop)
 
 
+http://www.sthda.com/english/wiki/ggplot2-axis-ticks-a-guide-to-customize-tick-marks-and-labels 
+http://www.sthda.com/english/wiki/ggplot2-axis-scales-and-transformations 
+https://cran.r-project.org/web/packages/scales/scales.pdf 
+
+Significant growth in digital interconnectivity over the last 20 years has given the internet a pivotal role as an essential element of economic growth (Haseeb et al., 2019). Cloud computing and the IoT paradigm has enabled the association of previously disparate fields into a larger coherent framework. Namely, smart home appliances, demand-response, energy consumption, predictive analytics predictive service offering and end user convenience.  This work proposes a framework for the association of sensor data into a model which can do X Y Z. Mention internet in general?
 
 
+The preprocessing of the sensor data is a critical step in our analysis. Careful consideration of the data, including the presence of duplicates. This is because if we dont have a sufficient understanding of where and why duplicates exist, we will not be able to satisfactorarily preprocess them. Failure to do so we mean that there is potentail degeneracy in our source dataset, leading to unknown issues with our downstream analysis.
 
+Column [1] & Column [2] of the sensor data will be concatenated, whitespace will be removed, all text will be cast to lowercase and a final whitespace strip will be performed. The python script `S1sensorsPreprocessing.py` is run perform several preprocessing steps in these data. The script concatenates the attributes `dsS1Sensors[1]` and `dsS1Sensors[2]`, with an underscore. Whitespace is then stripped and all string values are coerced to lowercase. This newly created attribute is then added to the dataframe, as seen below (REF). Additionally, the attributes `0`, `1` & `2` are renamed `subActNum`, `room` & `activity`, respectively. 
 
+\usepackage[tableposition=top]{caption}
+
+http://rpubs.com/G_Toff/ThHtmlKnitr 
+https://yihui.name/knitr/options/ 
+https://www.rdocumentation.org/packages/cowplot/versions/1.0.0/topics/plot_grid 
+https://www.ijcai.org/Proceedings/13/Papers/427.pdf 
+https://www.ipcc.ch/sr15/ 
+https://bookdown.org/yihui/rmarkdown/pdf-document.html 
+https://bookdown.org/yihui/bookdown/citations.html 
+https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html 
+https://github.com/rstudio/cheatsheets/blob/master/data-import.pdf 
+https://cran.r-project.org/web/packages/countrycode/countrycode.pdf 
+https://www.bp.com/content/dam/bp/business-sites/en/global/corporate/pdfs/energy-economics/statistical-review/bp-stats-review-2019-full-report.pdf 
+https://www.iea.org/statistics/kwes/consumption/ 
+https://www.bp.com/en/global/corporate/energy-economics/energy-outlook/demand-by-sector.html  
+https://www.iea.org/statistics/kwes/consumption/
+
+https://www.r-bloggers.com/bibliography-with-knitr-cite-your-references-and-packages/ 
+https://github.com/retorquere/zotero-better-bibtex 
+
+https://stackoverflow.com/questions/29696172/how-to-hold-figure-position-with-figure-caption-in-pdf-output-of-knitr 
+
+https://haozhu233.github.io/kableExtra/awesome_table_in_pdf.pdf 
+https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html
+
+https://stackoverflow.com/questions/11948245/markdown-to-create-pages-and-table-of-contents 
+https://tex.stackexchange.com/questions/58674/the-space-between-the-table-and-its-caption-is-very-small 
+
+https://tex.stackexchange.com/questions/452552/algorithm-pseudocode-in-markdown
 
 
 

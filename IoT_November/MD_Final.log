@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.11.6)  13 NOV 2019 00:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.11.13)  14 NOV 2019 00:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -495,42 +495,6 @@ Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
 \fb@frh=\dimen125
 \FrameRule=\dimen126
 \FrameSep=\dimen127
-) (/Users/alistairgj/Library/TinyTeX/texmf-dist/tex/latex/tools/longtable.sty
-Package: longtable 2019/02/06 v4.12 Multi-page Table package (DPC)
-\LTleft=\skip48
-\LTright=\skip49
-\LTpre=\skip50
-\LTpost=\skip51
-\LTchunksize=\count116
-\LTcapwidth=\dimen128
-\LT@head=\box30
-\LT@firsthead=\box31
-\LT@foot=\box32
-\LT@lastfoot=\box33
-\LT@cols=\count117
-\LT@rows=\count118
-\c@LT@tables=\count119
-\c@LT@chunks=\count120
-\LT@p@ftn=\toks24
-) (/Users/alistairgj/Library/TinyTeX/texmf-dist/tex/latex/booktabs/booktabs.sty
-Package: booktabs 2019/10/08 v1.6180339 publication quality tables
-\heavyrulewidth=\dimen129
-\lightrulewidth=\dimen130
-\cmidrulewidth=\dimen131
-\belowrulesep=\dimen132
-\belowbottomsep=\dimen133
-\aboverulesep=\dimen134
-\abovetopsep=\dimen135
-\cmidrulesep=\dimen136
-\cmidrulekern=\dimen137
-\defaultaddspace=\dimen138
-\@cmidla=\count121
-\@cmidlb=\count122
-\@aboverulesep=\dimen139
-\@belowrulesep=\dimen140
-\@thisruleclass=\count123
-\@lastruleclass=\count124
-\@thisrulewidth=\dimen141
 ) (/Users/alistairgj/Library/TinyTeX/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
 (/Users/alistairgj/Library/TinyTeX/texmf-dist/tex/latex/graphics/graphics.sty
@@ -544,8 +508,8 @@ File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 105.
 )
-\Gin@req@height=\dimen142
-\Gin@req@width=\dimen143
+\Gin@req@height=\dimen128
+\Gin@req@width=\dimen129
 ) (/Users/alistairgj/Library/TinyTeX/texmf-dist/tex/latex/oberdiek/grffile.sty
 Package: grffile 2017/06/30 v1.18 Extended file name support for graphics (HO)
 Package grffile Info: Option `multidot' is set to `true'.
@@ -554,9 +518,45 @@ Package grffile Info: Option `space' is set to `true'.
 Package grffile Info: \Gin@ii of package `graphicx' fixed on input line 494.
 ) (/Users/alistairgj/Library/TinyTeX/texmf-dist/tex/latex/titling/titling.sty
 Package: titling 2009/09/04 v2.1d maketitle typesetting
-\thanksmarkwidth=\skip52
-\thanksmargin=\skip53
-\droptitle=\skip54
+\thanksmarkwidth=\skip48
+\thanksmargin=\skip49
+\droptitle=\skip50
+) (/Users/alistairgj/Library/TinyTeX/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2019/10/08 v1.6180339 publication quality tables
+\heavyrulewidth=\dimen130
+\lightrulewidth=\dimen131
+\cmidrulewidth=\dimen132
+\belowrulesep=\dimen133
+\belowbottomsep=\dimen134
+\aboverulesep=\dimen135
+\abovetopsep=\dimen136
+\cmidrulesep=\dimen137
+\cmidrulekern=\dimen138
+\defaultaddspace=\dimen139
+\@cmidla=\count116
+\@cmidlb=\count117
+\@aboverulesep=\dimen140
+\@belowrulesep=\dimen141
+\@thisruleclass=\count118
+\@lastruleclass=\count119
+\@thisrulewidth=\dimen142
+) (/Users/alistairgj/Library/TinyTeX/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2019/02/06 v4.12 Multi-page Table package (DPC)
+\LTleft=\skip51
+\LTright=\skip52
+\LTpre=\skip53
+\LTpost=\skip54
+\LTchunksize=\count120
+\LTcapwidth=\dimen143
+\LT@head=\box30
+\LT@firsthead=\box31
+\LT@foot=\box32
+\LT@lastfoot=\box33
+\LT@cols=\count121
+\LT@rows=\count122
+\c@LT@tables=\count123
+\c@LT@chunks=\count124
+\LT@p@ftn=\toks24
 ) (/Users/alistairgj/Library/TinyTeX/texmf-dist/tex/latex/tools/array.sty
 Package: array 2019/08/31 v2.4l Tabular extension package (FMi)
 \col@sep=\dimen144
@@ -679,21 +679,74 @@ Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
 \rotheadsize=\dimen163
 \c@nlinenum=\count137
 \TeXr@lab=\toks33
+)
+(/Users/alistairgj/Library/TinyTeX/texmf-dist/tex/latex/algorithm2e/algorithm2e
+.sty
+Package: algorithm2e 2017/07/18 v5.2 algorithms environments
+\c@AlgoLine=\count138
+(/Users/alistairgj/Library/TinyTeX/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\algocf@hangindent=\skip63
+
+(/Users/alistairgj/Library/TinyTeX/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
+Package: ifoddpage 2016/04/23 v1.1 Conditionals for odd/even page detection
+\c@checkoddpage=\count139
+) (/Users/alistairgj/Library/TinyTeX/texmf-dist/tex/latex/tools/xspace.sty
+Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
+) (/Users/alistairgj/Library/TinyTeX/texmf-dist/tex/latex/relsize/relsize.sty
+Package: relsize 2013/03/29 ver 4.1
+)
+\skiptotal=\skip64
+\skiplinenumber=\skip65
+\skiprule=\skip66
+\skiphlne=\skip67
+\skiptext=\skip68
+\skiplength=\skip69
+\algomargin=\skip70
+\skipalgocfslide=\skip71
+\algowidth=\dimen164
+\inoutsize=\dimen165
+\inoutindent=\dimen166
+\interspacetitleruled=\dimen167
+\interspacealgoruled=\dimen168
+\interspacetitleboxruled=\dimen169
+\algocf@ruledwidth=\skip72
+\algocf@inoutbox=\box48
+\algocf@inputbox=\box49
+\AlCapSkip=\skip73
+\AlCapHSkip=\skip74
+\algoskipindent=\skip75
+\algocf@nlbox=\box50
+\algocf@hangingbox=\box51
+\algocf@untilbox=\box52
+\algocf@skipuntil=\skip76
+\algocf@capbox=\box53
+\algocf@lcaptionbox=\skip77
+\algoheightruledefault=\skip78
+\algoheightrule=\skip79
+\algotitleheightruledefault=\skip80
+\algotitleheightrule=\skip81
+\c@algocfline=\count140
+\c@algocfproc=\count141
+\c@algocf=\count142
+\algocf@algoframe=\box54
+\algocf@algobox=\box55
 ) (/Users/alistairgj/Library/TinyTeX/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2019/09/01 v3.3d Customizing captions (AR)
 (/Users/alistairgj/Library/TinyTeX/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2019/09/01 v1.8d caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 64.
-\captionmargin=\dimen164
-\captionmargin@=\dimen165
-\captionwidth=\dimen166
-\caption@tempdima=\dimen167
-\caption@indent=\dimen168
-\caption@parindent=\dimen169
-\caption@hangindent=\dimen170
+\captionmargin=\dimen170
+\captionmargin@=\dimen171
+\captionwidth=\dimen172
+\caption@tempdima=\dimen173
+\caption@indent=\dimen174
+\caption@parindent=\dimen175
+\caption@hangindent=\dimen176
 )
-\c@caption@flags=\count138
-\c@ContinuedFloat=\count139
+\c@caption@flags=\count143
+\c@ContinuedFloat=\count144
 Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: longtable package is loaded.
@@ -707,31 +760,31 @@ Package: setspace 2011/12/19 v6.7a set line spacing
 ) (./MD_Final.aux)
 \openout1 = `MD_Final.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 146.
-LaTeX Font Info:    ... okay on input line 146.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 146.
-LaTeX Font Info:    ... okay on input line 146.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 146.
-LaTeX Font Info:    ... okay on input line 146.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 146.
-LaTeX Font Info:    ... okay on input line 146.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 146.
-LaTeX Font Info:    ... okay on input line 146.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 146.
-LaTeX Font Info:    ... okay on input line 146.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 146.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 145.
 LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 1
-46.
+45.
 (/Users/alistairgj/Library/TinyTeX/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 146.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 146.
-LaTeX Font Info:    ... okay on input line 146.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 146.
-LaTeX Font Info:    ... okay on input line 146.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
 LaTeX Font Info:    Trying to load font information for T1+lmr on input line 14
-6.
+5.
 (/Users/alistairgj/Library/TinyTeX/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
@@ -769,8 +822,8 @@ File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\AtBeginShipoutBox=\box48
-Package hyperref Info: Link coloring OFF on input line 146.
+\AtBeginShipoutBox=\box56
+Package hyperref Info: Link coloring OFF on input line 145.
 (/Users/alistairgj/Library/TinyTeX/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
 (/Users/alistairgj/Library/TinyTeX/texmf-dist/tex/latex/oberdiek/refcount.sty
@@ -780,11 +833,11 @@ Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
 ng.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count140
+\c@section@level=\count145
 )
-LaTeX Info: Redefining \ref on input line 146.
-LaTeX Info: Redefining \pageref on input line 146.
-LaTeX Info: Redefining \nameref on input line 146.
+LaTeX Info: Redefining \ref on input line 145.
+LaTeX Info: Redefining \pageref on input line 145.
+LaTeX Info: Redefining \nameref on input line 145.
 (./MD_Final.out) (./MD_Final.out)
 \@outlinefile=\write4
 \openout4 = `MD_Final.out'.
@@ -853,304 +906,322 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 [2]
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-satelliteImages".png, id=149, 753.0534pt x 326.4195pt>
+satelliteImages".png, id=164, 753.0534pt x 326.4195pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""satelliteImages".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""satelliteImages".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""satelliteImages".png  used on input line 184.
+t/IoT_November/images/""satelliteImages".png  used on input line 183.
 (pdftex.def)             Requested size: 300.06696pt x 130.0674pt.
-<"MD_Final_files/figure-latex/""globalPovertyPlot-1".pdf, id=150, 420.57124pt x
+<"MD_Final_files/figure-latex/""globalPovertyPlot-1".pdf, id=165, 420.57124pt x
  241.90375pt>
 File: "MD_Final_files/figure-latex/""globalPovertyPlot-1".pdf Graphic file (typ
 e pdf)
 <use "MD_Final_files/figure-latex/""globalPovertyPlot-1".pdf>
 Package pdftex.def Info: "MD_Final_files/figure-latex/""globalPovertyPlot-1".pd
-f  used on input line 193.
+f  used on input line 192.
 (pdftex.def)             Requested size: 420.57663pt x 241.90683pt.
 [3 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/
 satelliteImages.png (PNG copy)> <./MD_Final_files/figure-latex/globalPovertyPlo
 t-1.pdf>]
-<"MD_Final_files/figure-latex/""internetAccessPlot-1".pdf, id=174, 247.92625pt 
+<"MD_Final_files/figure-latex/""internetAccessPlot-1".pdf, id=189, 247.92625pt 
 x 205.76875pt>
 File: "MD_Final_files/figure-latex/""internetAccessPlot-1".pdf Graphic file (ty
 pe pdf)
 <use "MD_Final_files/figure-latex/""internetAccessPlot-1".pdf>
 Package pdftex.def Info: "MD_Final_files/figure-latex/""internetAccessPlot-1".p
-df  used on input line 228.
+df  used on input line 227.
 (pdftex.def)             Requested size: 247.92564pt x 205.76823pt.
 [4 <./MD_Final_files/figure-latex/internetAccessPlot-1.pdf>]
-<"MD_Final_files/figure-latex/""populationGrowthPlot-1".pdf, id=196, 318.18875p
+<"MD_Final_files/figure-latex/""populationGrowthPlot-1".pdf, id=211, 318.18875p
 t x 205.76875pt>
 File: "MD_Final_files/figure-latex/""populationGrowthPlot-1".pdf Graphic file (
 type pdf)
 <use "MD_Final_files/figure-latex/""populationGrowthPlot-1".pdf>
 Package pdftex.def Info: "MD_Final_files/figure-latex/""populationGrowthPlot-1"
-.pdf  used on input line 282.
+.pdf  used on input line 281.
 (pdftex.def)             Requested size: 318.18796pt x 205.76823pt.
-<"MD_Final_files/figure-latex/""globalEnergyPlot-1".pdf, id=198, 316.18124pt x 
+<"MD_Final_files/figure-latex/""globalEnergyPlot-1".pdf, id=213, 316.18124pt x 
 205.76875pt>
 File: "MD_Final_files/figure-latex/""globalEnergyPlot-1".pdf Graphic file (type
  pdf)
 <use "MD_Final_files/figure-latex/""globalEnergyPlot-1".pdf>
 Package pdftex.def Info: "MD_Final_files/figure-latex/""globalEnergyPlot-1".pdf
-  used on input line 298.
+  used on input line 297.
 (pdftex.def)             Requested size: 316.18047pt x 205.76823pt.
 [5 <./MD_Final_files/figure-latex/populationGrowthPlot-1.pdf>]
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 3
-06.
+05.
 (/Users/alistairgj/Library/TinyTeX/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-warmingTrend".png, id=216, 1196.47pt x 625.33624pt>
+warmingTrend".png, id=231, 1196.47pt x 625.33624pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""warmingTrend".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""warmingTrend".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""warmingTrend".png  used on input line 327.
+t/IoT_November/images/""warmingTrend".png  used on input line 326.
 (pdftex.def)             Requested size: 400.09424pt x 209.10965pt.
 [6 <./MD_Final_files/figure-latex/globalEnergyPlot-1.pdf> </Users/alistairgj/Do
 cuments/GitHub/IoT_ResearchProject/IoT_November/images/warmingTrend.png>]
 
-Package xcolor Warning: Incompatible color definition on input line 345.
+Package xcolor Warning: Incompatible color definition on input line 344.
 
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 3
-46.
+45.
 (/Users/alistairgj/Library/TinyTeX/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 347.
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 346.
 LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 
-348.
+347.
 (/Users/alistairgj/Library/TinyTeX/texmf-dist/tex/latex/lm/ts1lmtt.fd
 File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 
-Package xcolor Warning: Incompatible color definition on input line 351.
+Package xcolor Warning: Incompatible color definition on input line 350.
 
 
-Package xcolor Warning: Incompatible color definition on input line 351.
+Package xcolor Warning: Incompatible color definition on input line 350.
 
-<"MD_Final_files/figure-latex/""sectorEnergyPlot-1".pdf, id=236, 316.18124pt x 
+<"MD_Final_files/figure-latex/""sectorEnergyPlot-1".pdf, id=251, 316.18124pt x 
 205.76875pt>
 File: "MD_Final_files/figure-latex/""sectorEnergyPlot-1".pdf Graphic file (type
  pdf)
 <use "MD_Final_files/figure-latex/""sectorEnergyPlot-1".pdf>
 Package pdftex.def Info: "MD_Final_files/figure-latex/""sectorEnergyPlot-1".pdf
-  used on input line 355.
+  used on input line 354.
 (pdftex.def)             Requested size: 316.18047pt x 205.76823pt.
 [7 <./MD_Final_files/figure-latex/sectorEnergyPlot-1.pdf>] [8] [9]
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-dash1234".png, id=275, 1789.68625pt x 464.73625pt>
+dash1234".png, id=291, 1789.68625pt x 464.73625pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""dash1234".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""dash1234".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""dash1234".png  used on input line 540.
+t/IoT_November/images/""dash1234".png  used on input line 539.
 (pdftex.def)             Requested size: 500.09833pt x 129.86288pt.
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-dash5678".png, id=276, 1730.465pt x 452.69125pt>
+dash5678".png, id=292, 1730.465pt x 452.69125pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""dash5678".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""dash5678".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""dash5678".png  used on input line 549.
+t/IoT_November/images/""dash5678".png  used on input line 548.
 (pdftex.def)             Requested size: 500.1057pt x 130.82811pt.
 [10 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
 /dash1234.png>]
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-kobusDash".png, id=284, 1347.0325pt x 503.8825pt>
+kobusDash".png, id=299, 1347.0325pt x 503.8825pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""kobusDash".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""kobusDash".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""kobusDash".png  used on input line 591.
+t/IoT_November/images/""kobusDash".png  used on input line 590.
 (pdftex.def)             Requested size: 300.06834pt x 112.24612pt.
 [11 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
 /dash5678.png> </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_Nove
 mber/images/kobusDash.png>]
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-cetinResults".png, id=293, 1134.2375pt x 925.4575pt>
+cetinResults".png, id=308, 1134.2375pt x 925.4575pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""cetinResults".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""cetinResults".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""cetinResults".png  used on input line 630.
+t/IoT_November/images/""cetinResults".png  used on input line 629.
 (pdftex.def)             Requested size: 325.06097pt x 265.22675pt.
 [12 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
 /cetinResults.png>] [13]
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-basuTree".png, id=308, 1089.06876pt x 641.39626pt>
+basuTree".png, id=323, 1089.06876pt x 641.39626pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""basuTree".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""basuTree".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""basuTree".png  used on input line 750.
+t/IoT_November/images/""basuTree".png  used on input line 749.
 (pdftex.def)             Requested size: 400.07425pt x 235.61977pt.
 [14 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
 /basuTree.png>] [15]
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-oldNewParadigm".png, id=321, 309.0747pt x 146.949pt>
+oldNewParadigm".png, id=336, 309.0747pt x 146.949pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""oldNewParadigm".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""oldNewParadigm".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""oldNewParadigm".png  used on input line 881.
+t/IoT_November/images/""oldNewParadigm".png  used on input line 880.
 (pdftex.def)             Requested size: 309.0928pt x 146.9576pt.
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-huangA".png, id=322, 1046.91125pt x 524.96124pt>
+huangA".png, id=337, 1046.91125pt x 524.96124pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""huangA".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""huangA".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""huangA".png  used on input line 902.
+t/IoT_November/images/""huangA".png  used on input line 901.
 (pdftex.def)             Requested size: 250.04976pt x 125.38449pt.
 [16 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
 /oldNewParadigm.png> </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/Io
 T_November/images/huangA.png>]
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-huangC".png, id=332, 1288.815pt x 558.085pt>
+huangC".png, id=347, 1288.815pt x 558.085pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""huangC".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""huangC".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""huangC".png  used on input line 936.
+t/IoT_November/images/""huangC".png  used on input line 935.
 (pdftex.def)             Requested size: 250.04947pt x 108.27687pt.
 [17 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
 /huangC.png>] [18]
-
-LaTeX Warning: Reference `tab:S1ActivitiesData' on page 19 undefined on input l
-ine 1082.
-
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 1094.
+(Font)              <5> on input line 1093.
 [19]
-Underfull \hbox (badness 10000) in paragraph at lines 1249--1254
-\TS1/lmtt/m/n/10.95 '\T1/lmtt/m/n/10.95 ligh|burn|mach|toas|freez|dvd|lamp|wash
-er|dry|exh|disp|frig|oven|hot|shower|micro\TS1/lmtt/m/n/10.95 ' \T1/lmr/m/n/10.
-95 to
- []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[20]
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-s1actExcel".png, id=367, 1331.97626pt x 347.2975pt>
+s1actExcel".png, id=383, 1331.97626pt x 347.2975pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""s1actExcel".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""s1actExcel".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""s1actExcel".png  used on input line 1311.
+t/IoT_November/images/""s1actExcel".png  used on input line 1289.
 (pdftex.def)             Requested size: 500.0996pt x 130.39522pt.
-[21 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
-/s1actExcel.png>]
+[20] [21 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/i
+mages/s1actExcel.png>]
 
-Package xcolor Warning: Incompatible color definition on input line 1453.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[22]
+[22] [23]
 
-Package xcolor Warning: Incompatible color definition on input line 1460.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1460.
+Package xcolor Warning: Incompatible color definition on input line 1652.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1662.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1662.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1662.
+
+[24]
+
+Package xcolor Warning: Incompatible color definition on input line 1662.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1662.
 
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-subAct60".png, id=382, 767.9892pt x 127.9179pt>
+lineChart".png, id=472, 3199.955pt x 2489.3pt>
+File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
+es/""lineChart".png Graphic file (type png)
+<use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
+s/""lineChart".png>
+Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
+t/IoT_November/images/""lineChart".png  used on input line 1665.
+(pdftex.def)             Requested size: 500.0894pt x 389.02814pt.
+[25]
+<"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
+subAct60".png, id=479, 767.9892pt x 127.9179pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""subAct60".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""subAct60".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""subAct60".png  used on input line 1524.
+t/IoT_November/images/""subAct60".png  used on input line 1669.
 (pdftex.def)             Requested size: 500.11282pt x 83.29984pt.
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""subAct60".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""subAct60".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""subAct60".png  used on input line 1528.
+t/IoT_November/images/""subAct60".png  used on input line 1673.
 (pdftex.def)             Requested size: 500.11282pt x 83.29984pt.
 
-Package xcolor Warning: Incompatible color definition on input line 1531.
+Package xcolor Warning: Incompatible color definition on input line 1676.
+
+[26 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
+/lineChart.png> </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_Nov
+ember/images/subAct60.png (PNG copy)>]
+
+Package xcolor Warning: Incompatible color definition on input line 1680.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1535.
-
-
-Package xcolor Warning: Incompatible color definition on input line 1535.
+Package xcolor Warning: Incompatible color definition on input line 1680.
 
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-iosMockUps".png, id=384, 437.2335pt x 285.7074pt>
+iosMockUps".png, id=489, 437.2335pt x 285.7074pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""iosMockUps".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""iosMockUps".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""iosMockUps".png  used on input line 1541.
+t/IoT_November/images/""iosMockUps".png  used on input line 1686.
 (pdftex.def)             Requested size: 400.09808pt x 261.44148pt.
-[23 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
-/subAct60.png (PNG copy)>]
-<"MD_Final_files/figure-latex/""fig1-1".pdf, id=394, 434.62375pt x 250.9375pt>
+<"MD_Final_files/figure-latex/""fig1-1".pdf, id=490, 434.62375pt x 250.9375pt>
 File: "MD_Final_files/figure-latex/""fig1-1".pdf Graphic file (type pdf)
 <use "MD_Final_files/figure-latex/""fig1-1".pdf>
 Package pdftex.def Info: "MD_Final_files/figure-latex/""fig1-1".pdf  used on in
-put line 1550.
+put line 1695.
 (pdftex.def)             Requested size: 434.64256pt x 250.94835pt.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1558.
-[24 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
+
+Package xcolor Warning: Incompatible color definition on input line 1702.
+
+[27 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
 /iosMockUps.png> <./MD_Final_files/figure-latex/fig1-1.pdf>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1558.
+
+Package xcolor Warning: Incompatible color definition on input line 1707.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1707.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1735.
+[28]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1735.
 (./MD_Final.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1558.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1558.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1735.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1735.
 
 Package rerunfilecheck Info: File `MD_Final.out' has not changed.
-(rerunfilecheck)             Checksum: 9604741D012EF2CF22B20C003CF02283;5639.
-
-LaTeX Warning: There were undefined references.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1558.
+(rerunfilecheck)             Checksum: B2610EBAB83ABA378B5BB20C72667C7C;6701.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1735.
  ) 
 Here is how much of TeX's memory you used:
- 14435 strings out of 494111
- 218590 string characters out of 6170577
- 293063 words of memory out of 5000000
- 18149 multiletter control sequences out of 15000+600000
- 61290 words of font info for 55 fonts, out of 8000000 for 9000
+ 15518 strings out of 494111
+ 236433 string characters out of 6172653
+ 366521 words of memory out of 5000000
+ 19140 multiletter control sequences out of 15000+600000
+ 64285 words of font info for 56 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 46i,10n,42p,514b,428s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/Users/alistairgj/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{
-/Users/alistairgj/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}</Use
+ 46i,15n,42p,683b,483s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/Users/alistairgj/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/
+Users/alistairgj/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}</Use
 rs/alistairgj/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></Use
 rs/alistairgj/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></Use
-rs/alistairgj/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr10.pfb></User
-s/alistairgj/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr17.pfb></Users
-/alistairgj/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr8.pfb></Users/a
-listairgj/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri10.pfb></Users/a
-listairgj/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri12.pfb></Users/a
-listairgj/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtk10.pfb></Users/a
-listairgj/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
-Output written on MD_Final.pdf (24 pages, 3226654 bytes).
+rs/alistairgj/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx8.pfb></User
+s/alistairgj/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr10.pfb></Users
+/alistairgj/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr17.pfb></Users/
+alistairgj/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr8.pfb></Users/al
+istairgj/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri10.pfb></Users/al
+istairgj/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri12.pfb></Users/al
+istairgj/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtk10.pfb></Users/al
+istairgj/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
+Output written on MD_Final.pdf (28 pages, 3929795 bytes).
 PDF statistics:
- 471 PDF objects out of 1000 (max. 8388607)
- 390 compressed objects within 4 object streams
- 112 named destinations out of 1000 (max. 500000)
- 304 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 604 PDF objects out of 1000 (max. 8388607)
+ 514 compressed objects within 6 object streams
+ 190 named destinations out of 1000 (max. 500000)
+ 333 words of extra memory for PDF output out of 10000 (max. 10000000)
 

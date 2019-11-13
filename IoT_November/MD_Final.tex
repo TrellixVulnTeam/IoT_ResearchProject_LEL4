@@ -69,7 +69,6 @@
 \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.34,0.68}{#1}}
 \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.75,0.01,0.01}{#1}}
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.75,0.01,0.01}{#1}}
-\usepackage{longtable,booktabs}
 \usepackage{graphicx,grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -141,7 +140,7 @@ Convenience}
 \usepackage[normalem]{ulem}
 \usepackage{makecell}
 
-\usepackage{booktabs} \usepackage{longtable} \usepackage{array} \usepackage{multirow} \usepackage[table]{xcolor} \usepackage{wrapfig} \usepackage{float} \floatplacement{figure}{H} \usepackage{caption, setspace} \captionsetup[figure]{font={stretch=1,scriptsize}} \captionsetup[table]{font={stretch=1,scriptsize}}
+\usepackage[ruled,vlined,linesnumbered]{algorithm2e} \usepackage{booktabs} \usepackage{longtable} \usepackage{array} \usepackage{multirow} \usepackage[table]{xcolor} \usepackage{wrapfig} \usepackage{float} \floatplacement{figure}{H} \usepackage{caption, setspace} \captionsetup[figure]{font={stretch=1,scriptsize}} \captionsetup[table]{font={stretch=1,scriptsize}} \captionsetup[table]{skip=2pt}
 
 \begin{document}
 \maketitle
@@ -1076,14 +1075,14 @@ Data}\label{importing-preprocessing-the-activities-meta-data}}
 
 The dataset \texttt{S1Activities.csv} was imported into the interactive
 development environment. These data contains a tabulated summary of
-Heading, Category, Subcategory and a corresponding code. After
+Heading, Category, Subcategory and a corresponding unique code. After
 importation, the dataset has dimensionality of {[}3, 33{]}, with
 \texttt{Heading}, \texttt{Category} \& \texttt{Subcategory} present as
-non-null objects, as seen in Table \ref{tab:S1ActivitiesData} below. The
-attribute \texttt{Code} (which codefies the unique set of Heading,
-Category) was imported as an index value. At this time, the activities
-data will not be kept in it's native state and will not be subject to
-preprocessing.
+non-null objects, as seen in Table \ref{tab:TAB_S1ActivitiesData} below.
+The attribute \texttt{Code} (which codefies the unique set of Heading,
+Category \& Subcategory) was imported as an index value (n=33). At this
+time, the activities data will be kept in it's native state and will not
+be subject to preprocessing.
 
 \rowcolors{2}{gray!6}{white}
 \begin{table}[!h]
@@ -1113,20 +1112,12 @@ Data}\label{importing-preprocessing-the-sensor-meta-data}}
 
 The dataset \texttt{S1sensors.csv} was imported into the interactive
 development environment. These data contains a tabulated values for
-Sensor ID, Room and Sensor Activity Type, with no header row present in
-the original dataset. After importation, the dataset has dimensionality
-of {[}3, 76{]}, with header 0, 1 \& 2 corresponding to SensorID, Room \&
-Sensor Activity Type, respectively, as seen in Table
-\ref{tab:TAB_sensorData}. All attributes are nominal, and were imported
-as dtype str, accordingly. Attribute attribute 1 \& 2 contain degenerate
-values (e.g., Bathroom \& Light Switch). This will be addressed in the
-subsequent data preprocessing. The preprocessing of the sensor data is a
-critical step in our analysis. Careful consideration of the data,
-including the presence of duplicates. This is because if we dont have a
-sufficient understanding of where and why duplicates exist, we will not
-be able to satisfactorarily preprocess them. Failure to do so we mean
-that there is potentail degeneracy in our source dataset, leading to
-unknown issues with our downstream analysis.
+Sensor ID, Room and Sensor Descriptor (e.g., light switch), with no
+header row present in the original dataset. After importation, the
+dataset has dimensionality of {[}3, 76{]}, with header 0, 1 \& 2
+corresponding to SensorID, Room \& Sensor Descriptor, respectively, as
+seen in Table \ref{tab:TAB_sensorData}. As all attributes are nominal,
+they were imported as String data types.
 
 \rowcolors{2}{gray!6}{white}
 \begin{table}[!h]
@@ -1150,25 +1141,16 @@ unknown issues with our downstream analysis.
 \end{table}
 \rowcolors{2}{white}{white}
 
-Column {[}1{]} \& Column {[}2{]} of the sensor data will be
-concatenated, whitespace will be removed, all text will be cast to
-lowercase and a final whitespace strip will be performed. The python
-script \texttt{S1sensorsPreprocessing.py} is run perform several
-preprocessing steps in these data. The script concatenates the
-attributes \texttt{dsS1Sensors{[}1{]}} and \texttt{dsS1Sensors{[}2{]}},
-with an underscore. Whitespace is then stripped and all string values
-are coerced to lowercase. This newly created attribute is then added to
-the dataframe, as seen below (REF). Additionally, the attributes
-\texttt{0}, \texttt{1} \& \texttt{2} are renamed \texttt{subActNum},
-\texttt{room} \& \texttt{activity}, respectively.
-
-\begin{itemize}
-\tightlist
-\item
-  Data types
-\item
-  IF a sub-act requires electricity
-\end{itemize}
+After importation these data were checked for duplicate values. The
+\texttt{Sensor\ ID} attribute had a 76 unique values, the \texttt{Room}
+attribute had only 7 unique values and the \texttt{Sensor\ Descriptor}
+attribute had 28 unique values. Examples of the degeneracy in these
+attributes can be seen in Table \ref{tab:TAB_sensorData}, e.g., Bathroom
+\& Light Switch. Room{[}1{]} and SensorDescriptor{[}2{]} were stripped
+of whitespace, coerced to lowercase and concatenated using an
+underscore. The concatenated vector was then bound to the dataframe and
+the column names updated, resulting in
+\ref{tab:TAB_sensorDataProcessed}, below.
 
 \rowcolors{2}{gray!6}{white}
 \begin{table}[!h]
@@ -1194,96 +1176,79 @@ subActNum & room & activity & concat\\
 \end{table}
 \rowcolors{2}{white}{white}
 
-The function \texttt{getUniqueValues.py} is invoked to provide a means
-of capturing a list of unique values in a given column of a dataset. The
-newly created \texttt{dsS1Sensors} is then checked for duplicates in two
-attributes, \texttt{subActNum} \& \texttt{concat}. The number of unique
-values in \texttt{dsS1Sensors.subActNum} is found to be 76,
-demonstrating that this attribute contains a set of completely unique
-values (recall n(rows) = 76). The number of unique values in
-\texttt{dsS1Sensors.concat} is found to be 41, demonstrating that
-despite the concatenation methodology, their are still duplicate values
-in the dataframe. These duplicate values warrant further investigation.
-The function \texttt{length(unique())} was used to list counts with
-their corresponding values.
-
-\begin{itemize}
-\tightlist
-\item
-  \texttt{length(unique(py\$dsS1Sensors\$subActNum))} = 76
-\item
-  \texttt{length(unique(py\$dsS1Sensors\$concat))} = 41
-\end{itemize}
-
-COMMENT
-
-Upon compilation of the above summary list, and with reference to the
-original work (REF) is was determined that these values result from
-multiple sensors with extremely similar functionality. For example,
-kitchen\_burner has a value of n=4 - this is because on the burner in
-the apartment under investigation, there were 4 individual burners
-present. Similarly, kitchen\_cabinet has a value of n=15, indicating
-that for the various cabinets in the apartment, each were given sensors.
-On the one-hand, this level of granularity may provide fertile grounds
-for advanced analysis, HOWEVER, for the purposes of this research
-project, such values will serve to increase the dimensionality of the
-overall dataset. High dimensionality can lead to difficulties with
-plotting, \ldots. ML (REF) and thus IN A SUBSEQUENT PREPROCESSING
-exercise these values will be collapsed down to have n=1.
-
-\textbf{Creation of JSON Catalogues PRIOR to dup removal} - why? Because
-even if a key-value pair cannot be matched it will simply be ignored
-\textbf{Prior to dupe removal} As this work is largely concerned with
-energy usage in the home, the sub-activities will be categorized based
-on their energy requirement. That is, if a sub-activity requires an
-input of energy beyond what the end user alone can provide, it will be
-classified as \texttt{energyReq} = true. Whereas, if a sub-activity is
-able to be performed through only interaction with the end user, it will
-be classified as \texttt{energyReq} = false. By way of example, the
-sub-activity \texttt{bathroom\_toiletflush} will have an
-\texttt{energyReq} equal to false, while the sub-activity
-\texttt{bathroom\_lightswitch} will have an \texttt{energyReq} equal to
-true. Each row (n=76) needs to be inspected manually to determine if the
-activity requires electricity.
-
-Function \texttt{reqEnergy\_containSpecialChar.py} is run - After visual
-inspection, uses
-\texttt{reqEnergy\ =\ \textquotesingle{}ligh\textbar{}burn\textbar{}mach\textbar{}toas\textbar{}freez\textbar{}dvd\textbar{}lamp\textbar{}washer\textbar{}dry\textbar{}exh\textbar{}disp\textbar{}frig\textbar{}oven\textbar{}hot\textbar{}shower\textbar{}micro\textquotesingle{}}
-to find subActivities which require energy input beyond that of the end
-user - Checked below for SPECIAL CHAR - Special CHARs removed
-
+The number of unique values in \texttt{dsS1Sensors.subActNum} is checked
+once more and found to be n=76, indicating no degeneracy in this
+attribute. The number of unique values in \texttt{dsS1Sensors.concat} is
+found to be n=41, indicating the presence of degeneracy. This was
+investigated by aggregating the duplicate attributes, which are
+summarised in Table \ref{tab:TAB_numDupes}, below.
 \rowcolors{2}{gray!6}{white}
+
 \begin{table}[!h]
 
-\caption{\label{tab:TAB_sensorDataCleansed}Demo table}
+\caption{\label{tab:TAB_numDupes}The first iteration of processed S1 sensor meta data}
 \centering
 \fontsize{8}{10}\selectfont
-\begin{tabular}[t]{lllllll}
+\begin{tabular}[t]{rl}
 \hiderowcolors
 \toprule
-  & subActNum & room & activity & concat & reqEnergy & specialChar\\
+n & concat\\
 \midrule
 \showrowcolors
-58 & 82 & Office/study & Drawer & office/study\_drawer & FALSE & TRUE\\
-68 & 92 & Office/study & Light switch & office/study\_lightswitch & TRUE & TRUE\\
+3 & kitchen\_lightswitch\\
+4 & kitchen\_burner\\
+2 & livingroom\_lightswitch\\
+7 & kitchen\_drawer\\
+3 & kitchen\_refrigerator\\
+\addlinespace
+15 & kitchen\_cabinet\\
+2 & kitchen\_door\\
+5 & bedroom\_drawer\\
+2 & bathroom\_medicinecabinet\\
+2 & bathroom\_cabinet\\
 \bottomrule
 \end{tabular}
 \end{table}
 \rowcolors{2}{white}{white}
 
-\rowcolors{2}{gray!6}{white}
+Referering to the work of (\textbf{REF}) it is was determined that these
+duplicate values are theresult of multiple sensors with extremely
+similar functionality. Kitchen\_burner has a value of n=4, accounted for
+by the presense of one sensor per burner in the original work.While this
+level of granularity may provide an avenue for further analysis, for the
+purposes of this research such values serve to significantly increase
+the dimensionality of the overall dataset, with a low corresponding gain
+in information. High dimensionality can also lead to difficulties in
+machine learning models and challenges with data visualisation. By way
+of example, kitchen\_cabinet has a value of n=15, indicating that for
+the various cabinets in the kitchen, a total of 15 sensors were fitted
+to monitor activity. It was determined that such values would aggregated
+and collapsed to a value of n=1 (with the first occurence of the
+degenerate subactivity thus providing the subActNum). The data set was
+inspected and stripped of special characters, and the sub activities
+requiring an input of energy (e.g., electrical, gas) were flagged with a
+boolean value, resulting in Table \ref{tab:TAB_sensorDataCleansedFinal}.
+EXPORTED as \texttt{S1Sensors\_preprocessed.csv} \textbf{DUPES NOT YET
+DROPPED} \rowcolors{2}{gray!6}{white}
+
 \begin{table}[!h]
 
 \caption{\label{tab:TAB_sensorDataCleansedFinal}Demo table}
 \centering
 \fontsize{8}{10}\selectfont
-\begin{tabular}[t]{lllllll}
+\begin{tabular}[t]{rlllll}
 \hiderowcolors
 \toprule
-  & subActNum & room & activity & concat & reqEnergy & subActNumConcat\\
+subActNum & room & activity & concat & reqEnergy & subActNumConcat\\
 \midrule
 \showrowcolors
-59 & 82 & Study & Drawer & study\_drawer & FALSE & subActNum\_82\\
+100 & Bathroom & Toilet Flush & bathroom\_toiletflush & False & subActNum\_100\\
+101 & Bathroom & Light switch & bathroom\_lightswitch & True & subActNum\_101\\
+104 & Foyer & Light switch & foyer\_lightswitch & True & subActNum\_104\\
+105 & Kitchen & Light switch & kitchen\_lightswitch & True & subActNum\_105\\
+106 & Kitchen & Burner & kitchen\_burner & True & subActNum\_106\\
+\addlinespace
+107 & Living room & Light switch & livingroom\_lightswitch & True & subActNum\_107\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1294,17 +1259,30 @@ user - Checked below for SPECIAL CHAR - Special CHARs removed
 Data}\label{importing-preprocessing-the-activities-data}}
 
 The activities data set \texttt{S1activities.csv} will be imported,
-evaluated and cleaned. The goal of the pre-processing will be to
+evaluated and cleansed. The goal of the pre-processing will be to
 restructure the dataset into a `tidy' format, that is, where the
 attributes are columns, the rows are instances, and each cell contains
-only one value. Given that the data is time-series, timestamps will be
-used as indexes. The data will also be cast into continuous 24 hour
-segments, with timestamps in the form \texttt{YYYY-MM-DD\ hh:mm:ss}
-(using datetime data type)
+only one value. As the data is time-series, timestamps may be used as
+indexes. Figure \ref{fig:s1actExcel} shows the data set open in a
+spreadsheet program. Inspection of the original dataset via an
+interactive development environment shows that the original dataset
+follows a structure such that each 5 rows contains is one discrete set
+of data.
 
-We aim to perform the preprocessing in such a way that is * minimally
-computationally intensive * reproducible / traceable code * reasonable
-checks (validation)
+\begin{itemize}
+\tightlist
+\item
+  Row 1: Activity, Date, Start Time, End Time
+\item
+  Row 2: Sub-activity (an action that can be executed as part of
+  performing the activity) code-values
+\item
+  Row 3: Sub-activity descriptive values
+\item
+  Row 4: Sub-activity start time
+\item
+  Row 5: Sub-activity end time
+\end{itemize}
 
 \begin{figure}[H]
 
@@ -1312,133 +1290,45 @@ checks (validation)
 
 }
 
-\caption{ADD TEXT}\label{fig:unnamed-chunk-15}
+\caption{ADD TEXT}\label{fig:s1actExcel}
 \end{figure}
 
-The activities data was imported into an indexed dataframe, containing
-only one column, with 1475 rows, with all values comma-separated (per
-row). This style of import had to be used, due to the varying number of
-comma-separated elements in each row (as seen in figure X, above).
+\rowcolors{2}{gray!6}{white}
+\begin{table}[!h]
 
-\begin{itemize}
-\tightlist
-\item
-  A array of strings, instead of an array of arrays
-\end{itemize}
-
-Analysis of the original dataset, and exploration during pre-processing
-to this point, shows us that the original dataset follows a structure
-such that each 5 rows of data contains is one discrete set of data. In
-this structure,
-
-\begin{itemize}
-\tightlist
-\item
-  Row 1 = Activity, Date, Start Time, End Time
-\item
-  Row 2 = Sub-activity (an action that can be executed as part of
-  performing the activity) code-values
-\item
-  Row 3 = Sub-activity descriptive values
-\item
-  Row 4 = Sub-activity start time
-\item
-  Row 5 = Sub-activity end time
-\end{itemize}
-
-In order to access the values programmatically, we will now turn the 1D
-array list back into a 2D array list, where each element array{[}i{]}
-contains the 5 rows of information, as described above.
-
-The activities data set \texttt{S1activities.csv} will be imported,
-evaluated and cleaned. The goal of the pre-processing will be to
-restructure the dataset into a `tidy' format, that is, where the
-attributes are columns, the rows are instances, and each cell contains
-only one value. Given that the data is time-series, timestamps will be
-used as indexes. The data will also be cast into continuous 24 hour
-segments, with timestamps in the form \texttt{YYYY-MM-DD\ hh:mm:ss}
-(using datetime data type)
-
-We aim to perform the preprocessing in such a way that is * minimally
-computationally intensive * reproducible / traceable code * reasonable
-checks (validation)
+\caption{\label{tab:TAB_rawDSS1}The S1 activities dataset after importation into the interactive development environment}
+\centering
+\fontsize{8}{10}\selectfont
+\begin{tabular}[t]{ll}
+\hiderowcolors
+\toprule
+  & 0\\
+\midrule
+\showrowcolors
+5 & Toileting,4/1/2003,17:30:36,17:46:41\\
+6 & 100,68\\
+7 & Toilet Flush,Sink faucet - hot\\
+8 & 17:39:37,17:39:46\\
+9 & 18:10:57,17:39:52\\
+\bottomrule
+\end{tabular}
+\end{table}
+\rowcolors{2}{white}{white}
 
 The activities data was imported into an indexed dataframe, containing
 only one column, with 1475 rows, with all values comma-separated (per
 row). This style of import had to be used, due to the varying number of
-comma-separated elements in each row (as seen in figure X, above). * A
-array of strings, instead of an array of arrays Analysis of the original
-dataset, and exploration during pre-processing to this point, shows us
-that the original dataset follows a structure such that each 5 rows of
-data contains is one discrete set of data. In this structure, * Row 1 =
-Activity, Date, Start Time, End Time * Row 2 = Sub-activity (an action
-that can be executed as part of performing the activity) code-values *
-Row 3 = Sub-activity descriptive values * Row 4 = Sub-activity start
-time * Row 5 = Sub-activity end time In order to access the values
-programmatically, we will now turn the 1D array list back into a 2D
-array list, where each element array{[}i{]} contains the 5 rows of
-information, as described above.
-
-\rowcolors{2}{gray!6}{white}
-\begin{table}[!h]
-
-\caption{\label{tab:TAB_processingExample}Demo table}
-\centering
-\resizebox{\linewidth}{!}{\fontsize{8}{10}\selectfont
-\begin{tabular}[t]{lll}
-\hiderowcolors
-\toprule
-Type & Description  & Desired Type\\
-\midrule
-\showrowcolors
-An array of comma-sep strings & Activity information, date, start time, end time & ...\\
-An array of comma-sep strings & Sub-activity reference value & Levels\\
-An array of comma-sep strings & Sub-activity descriptive value & Levels\\
-An array of comma-sep strings & Sub-activity start time & Datetime including the date extracted from the index 3 rows above\\
-An array of comma-sep strings & Sub-activity end time & Datetime including the date extracted from the index 4 rows above\\
-\bottomrule
-\end{tabular}}
-\end{table}
-\rowcolors{2}{white}{white}
-
-As mentioned above, in order to work with these data, they need to be in
-a `tidy' format {[}ref{]}, that is, the attributes are columns, the rows
-are instances, and each cell contains only one value. * Note: An array
-of arrays * An array where each element is an array (list?) * Between
-each increment of 5 (0 - 4), the sub-arrays have different lengths Table
-{[}ref{]}, below, contains a summary of the data structure after the
-operation \texttt{np.array(dsS1)} is performed. In order to continue
-pre-processing, the array had to be flattened from a 2D structure to a
-1D structure, using \texttt{flatten()}.
-
-\rowcolors{2}{gray!6}{white}
-\begin{table}[!h]
-
-\caption{\label{tab:TAB_rawDSS1}Demo table}
-\centering
-\resizebox{\linewidth}{!}{\fontsize{8}{10}\selectfont
-\begin{tabular}[t]{l}
-\hiderowcolors
-\toprule
-0\\
-\midrule
-\showrowcolors
-Bathing,4/1/2003,20:41:35,21:32:50\\
-100,68,81,101,93,137,93,58,57,67,93,58,68,88,57,67,100,68,67,76\\
-Toilet Flush,Sink faucet - hot,Closet,Light switch,Shower faucet,Freezer,Shower faucet,Medicine cabinet,Medicine cabinet,Cabinet,Shower faucet,Medicine cabinet,Sink faucet - hot,Sink faucet - cold,Medicine cabinet,Cabinet,Toilet Flush,Sink faucet - hot,Cabinet,Lamp\\
-20:51:52,20:51:58,20:53:36,20:53:49,20:53:52,20:58:22,20:58:43,21:5:23,21:5:46,21:5:47,21:18:34,21:18:55,21:19:41,21:20:4,21:20:38,21:20:39,21:21:13,21:21:16,21:21:37,21:22:8\\
-21:5:20,20:52:5,20:53:43,21:21:43,20:58:42,20:58:32,21:6:9,21:5:45,21:18:55,21:5:49,21:18:35,21:20:37,21:20:5,21:20:34,21:21:41,21:20:42,23:10:23,21:21:23,21:21:38,23:11:8\\
-\addlinespace
-Toileting,4/1/2003,17:30:36,17:46:41\\
-\bottomrule
-\end{tabular}}
-\end{table}
-\rowcolors{2}{white}{white}
+comma-separated elements in each row (as seen in Figure
+\ref{fig:s1actExcel}, above).
 
 \begin{itemize}
 \tightlist
 \item
-  len(dsS1) = 1475
+  Between each increment of 5 (0 - 4), the sub-arrays have different
+  lengths Table {[}ref{]}, below, contains a summary of the data
+  structure after the operation \texttt{np.array(dsS1)} is performed. In
+  order to continue pre-processing, the array had to be flattened from a
+  2D structure to a 1D structure, using \texttt{flatten()}.
 \end{itemize}
 
 The function \texttt{dsS1Activities\_processing.py} was run in-line to
@@ -1450,51 +1340,37 @@ group of observations was then chunked into a list of 5 {[}Step 3{]}
 
 Mention sanity checking here
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{i }\OperatorTok{=} \DecValTok{0}
-\ControlFlowTok{while}\NormalTok{ i }\OperatorTok{<} \DecValTok{5}\NormalTok{:}
-    \BuiltInTok{print}\NormalTok{(stepX[i])}
-\NormalTok{    i }\OperatorTok{+=} \DecValTok{1}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{longtable}[]{@{}ll@{}}
-\toprule
-\begin{minipage}[b]{0.47\columnwidth}\raggedright
-StepX\strut
-\end{minipage} & \begin{minipage}[b]{0.47\columnwidth}\raggedright
-Returns\strut
-\end{minipage}\tabularnewline
-\midrule
-\endhead
-\begin{minipage}[t]{0.47\columnwidth}\raggedright
-Step1\strut
-\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
-5 array structures corresponding to one row each from the original
-dataset\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.47\columnwidth}\raggedright
-Step2\strut
-\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
-5 elements from one array structure (no longer associated with
-rows)\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.47\columnwidth}\raggedright
-Step3\strut
-\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
-5 array structures, with each array containing a set of related activity
-and temporal data\strut
-\end{minipage}\tabularnewline
-\bottomrule
-\end{longtable}
-
 We used the Step 3 data structure to then extract the values for
 \texttt{activity}, \texttt{date}, \texttt{startTime} and
 \texttt{endTime}. These values were populated into a series of temporary
 arrays, which were then compiled into a dataset with the four attributes
 previously listed. We then used \texttt{Step3{[}i{]}{[}j{]}} to access
 all the required elements and parse them into the arrays.
+
+\hypertarget{algorithm-1}{%
+\paragraph{Algorithm 1}\label{algorithm-1}}
+
+Text
+
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetAlgoLined
+\KwResult{Write here the result}
+\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+\Input{Write here the input}
+\Output{Write here the output}
+\BlankLine
+\While{While condition}{
+    instructions\;
+    \eIf{condition}{
+        instructions1\;
+        instructions2\;
+    }{
+        instructions3\;
+    }
+}
+\caption{Extraction of data from S1 Activities dataset}
+\end{algorithm}
 
 \rowcolors{2}{gray!6}{white}
 \begin{table}[!h]
@@ -1519,6 +1395,275 @@ Preparing lunch & 4/1/2003 & 11:21:17 & 11:38:22\\
 \end{tabular}
 \end{table}
 \rowcolors{2}{white}{white}
+
+\hypertarget{algorithm-2}{%
+\paragraph{Algorithm 2}\label{algorithm-2}}
+
+Text
+
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetAlgoLined
+\KwResult{Write here the result}
+\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+\Input{Write here the input}
+\Output{Write here the output}
+\BlankLine
+\While{While condition}{
+    instructions\;
+    \eIf{condition}{
+        instructions1\;
+        instructions2\;
+    }{
+        instructions3\;
+    }
+}
+\caption{Extraction of data from S1 Activities dataset}
+\end{algorithm}
+
+\rowcolors{2}{gray!6}{white}
+\begin{table}[!h]
+
+\caption{\label{tab:TAB_dsActFinal}Demo table}
+\centering
+\fontsize{8}{10}\selectfont
+\begin{tabular}[t]{lll}
+\hiderowcolors
+\toprule
+activity & start & end\\
+\midrule
+\showrowcolors
+Bathing & 2003-04-01 20:41:35 & 2003-04-01 21:32:50\\
+Toileting & 2003-04-01 17:30:36 & 2003-04-01 17:46:41\\
+Toileting & 2003-04-01 18:04:43 & 2003-04-01 18:18:02\\
+Toileting & 2003-04-01 11:52:01 & 2003-04-01 11:58:50\\
+Going out to work & 2003-04-01 12:11:26 & 2003-04-01 12:15:12\\
+\addlinespace
+Preparing lunch & 2003-04-01 11:21:17 & 2003-04-01 11:38:22\\
+\bottomrule
+\end{tabular}
+\end{table}
+\rowcolors{2}{white}{white}
+
+\hypertarget{importing-visualizing-and-preprocessing-the-subactivities-data}{%
+\subsection{Importing, Visualizing and Preprocessing the SubActivities
+Data}\label{importing-visualizing-and-preprocessing-the-subactivities-data}}
+
+Importing \texttt{S1Activities\_data.csv}, convert df to an array
+(list?), flatten to a 1D array (list?), chunk the array {[}5{]}, extract
+subActNum, subActivity, time \& date. Merge time and date into datetime
+elements, determine start and end time. The variable \texttt{dsS1} was
+used (still on stack from previous section). As previously observed
+(FIGURE X, TABLE Y), data was all in one column. A processing method
+with additional steps BLAH BLAH.
+
+\hypertarget{algorithm-2-part-a}{%
+\paragraph{Algorithm 2 Part A}\label{algorithm-2-part-a}}
+
+Text
+
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetAlgoLined
+\KwResult{Write here the result}
+\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+\Input{Write here the input}
+\Output{Write here the output}
+\BlankLine
+\While{While condition}{
+    instructions\;
+    \eIf{condition}{
+        instructions1\;
+        instructions2\;
+    }{
+        instructions3\;
+    }
+}
+\caption{Extraction of data from S1 Activities dataset}
+\end{algorithm}
+
+\rowcolors{2}{gray!6}{white}
+\begin{table}[!h]
+
+\caption{\label{tab:TAB_dsSUBIntermediate}Demo table}
+\centering
+\fontsize{8}{10}\selectfont
+\begin{tabular}[t]{rllll}
+\hiderowcolors
+\toprule
+subActNum & subAct & date & startTime & endTime\\
+\midrule
+\showrowcolors
+100 & Toilet Flush & 4/1/2003 & 20:51:52 & 21:5:20\\
+68 & Sink faucet - hot & 4/1/2003 & 20:51:58 & 20:52:5\\
+81 & Closet & 4/1/2003 & 20:53:36 & 20:53:43\\
+101 & Light switch & 4/1/2003 & 20:53:49 & 21:21:43\\
+93 & Shower faucet & 4/1/2003 & 20:53:52 & 20:58:42\\
+\addlinespace
+137 & Freezer & 4/1/2003 & 20:58:22 & 20:58:32\\
+\bottomrule
+\end{tabular}
+\end{table}
+\rowcolors{2}{white}{white}
+
+\hypertarget{algorithm-2-part-b}{%
+\paragraph{Algorithm 2 Part B}\label{algorithm-2-part-b}}
+
+Text
+
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetAlgoLined
+\KwResult{Write here the result}
+\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+\Input{Write here the input}
+\Output{Write here the output}
+\BlankLine
+\While{While condition}{
+    instructions\;
+    \eIf{condition}{
+        instructions1\;
+        instructions2\;
+    }{
+        instructions3\;
+    }
+}
+\caption{Extraction of data from S1 Activities dataset}
+\end{algorithm}
+
+\rowcolors{2}{gray!6}{white}
+\begin{table}[!h]
+
+\caption{\label{tab:TAB_dsSUBActFinal}Demo table}
+\centering
+\fontsize{8}{10}\selectfont
+\begin{tabular}[t]{rlll}
+\hiderowcolors
+\toprule
+subActNum & subAct & start & end\\
+\midrule
+\showrowcolors
+67 & Cabinet & 2003-03-27 06:43:40 & 2003-03-27 06:43:43\\
+100 & Toilet Flush & 2003-03-27 06:44:06 & 2003-03-27 07:12:41\\
+101 & Light switch & 2003-03-27 06:44:20 & 2003-03-27 07:46:34\\
+57 & Medicine cabinet & 2003-03-27 06:44:35 & 2003-03-27 06:44:48\\
+58 & Medicine cabinet & 2003-03-27 06:44:36 & 2003-03-27 06:44:48\\
+\addlinespace
+67 & Cabinet & 2003-03-27 06:44:49 & 2003-03-27 06:44:56\\
+\bottomrule
+\end{tabular}
+\end{table}
+\rowcolors{2}{white}{white}
+
+\hypertarget{sub-activity-preprocessing---duplicate-sub-activities}{%
+\subsubsection{Sub Activity Preprocessing - Duplicate sub
+activities}\label{sub-activity-preprocessing---duplicate-sub-activities}}
+
+The following duplicate sensors were identified in section XX
+
+\begin{itemize}
+\tightlist
+\item
+  From \texttt{S1Sensors\_preprocessed.csv} I need to find the numbers
+  associated with these - SUBACTNUM
+\item
+  `Arbitrarily' choose one number to represent all of them
+\item
+  Fill them all with that one number
+\end{itemize}
+
+\textbf{For dicussion later} - The kitchen cabinets have 15 sensors, say
+one of these cabinets just contains a blender, so there will always be a
+one-to-one between the cabinet opening and the blendor being used. This
+isn't particularly helpful to us. Also, more sensors could always be
+added\ldots{} Better to do analysis with less (explain?) Note for
+discussion, S1Sensors\_preprocessed itself should no longer be modified,
+EXAMPLE, going back upstream to remove the `dupes', would perhaps cause
+an lack of traceability downstream later, Importing
+S1Sensors\_preprecessed now has been done to inform, how to remove
+`dupes' from the current ds
+
+\rowcolors{2}{gray!6}{white}
+\begin{table}[!h]
+
+\caption{\label{tab:unnamed-chunk-14}Demo table}
+\centering
+\resizebox{\linewidth}{!}{\fontsize{8}{10}\selectfont
+\begin{tabular}[t]{llllllllr}
+\hiderowcolors
+\toprule
+subActNum & subAct & start & end & dayNumeric & DAY & WDWE & HOUR & durationSec\\
+\midrule
+\showrowcolors
+67 & bathroom\_cabinet & 2003-03-27 06:43:40 & 2003-03-27 06:43:43 & 3 & Thu & WD & 6 & 4\\
+100 & bathroom\_toiletflush & 2003-03-27 06:44:06 & 2003-03-27 07:12:41 & 3 & Thu & WD & 6 & 1716\\
+101 & bathroom\_lightswitch & 2003-03-27 06:44:20 & 2003-03-27 07:46:34 & 3 & Thu & WD & 6 & 3735\\
+57 & bathroom\_medicinecabinet & 2003-03-27 06:44:35 & 2003-03-27 06:44:48 & 3 & Thu & WD & 6 & 14\\
+82 & study\_drawer & 2003-03-27 06:45:45 & 2003-03-27 06:45:48 & 3 & Thu & WD & 6 & 4\\
+\addlinespace
+146 & bedroom\_drawer & 2003-03-27 06:46:12 & 2003-03-27 06:46:20 & 3 & Thu & WD & 6 & 9\\
+132 & kitchen\_cabinet & 2003-03-27 06:51:43 & 2003-03-27 06:51:46 & 3 & Thu & WD & 6 & 4\\
+143 & kitchen\_microwave & 2003-03-27 06:54:09 & 2003-03-27 13:07:43 & 3 & Thu & WD & 6 & 22415\\
+141 & kitchen\_door & 2003-03-27 06:57:05 & 2003-03-27 06:57:08 & 3 & Thu & WD & 6 & 4\\
+93 & bathroom\_showerfaucet & 2003-03-27 07:05:22 & 2003-03-27 07:05:24 & 3 & Thu & WD & 7 & 3\\
+\addlinespace
+125 & kitchen\_drawer & 2003-03-27 07:38:48 & 2003-03-27 07:38:51 & 3 & Thu & WD & 7 & 4\\
+70 & kitchen\_dishwasher & 2003-03-27 07:40:32 & 2003-03-27 07:40:34 & 3 & Thu & WD & 7 & 3\\
+126 & kitchen\_refrigerator & 2003-03-27 07:41:08 & 2003-03-27 07:41:16 & 3 & Thu & WD & 7 & 9\\
+88 & bathroom\_sinkfaucet-cold & 2003-03-27 07:43:22 & 2003-03-27 07:43:48 & 3 & Thu & WD & 7 & 27\\
+68 & bathroom\_sinkfaucet-hot & 2003-03-27 07:43:23 & 2003-03-27 07:43:48 & 3 & Thu & WD & 7 & 26\\
+\addlinespace
+140 & foyer\_door & 2003-03-27 07:48:49 & 2003-03-27 07:48:53 & 3 & Thu & WD & 7 & 5\\
+137 & kitchen\_freezer & 2003-03-27 11:36:15 & 2003-03-27 11:36:21 & 3 & Thu & WD & 11 & 7\\
+106 & kitchen\_burner & 2003-03-27 11:37:13 & 2003-03-27 11:42:24 & 3 & Thu & WD & 11 & 312\\
+105 & kitchen\_lightswitch & 2003-03-27 11:38:54 & 2003-03-27 12:31:05 & 3 & Thu & WD & 11 & 3132\\
+92 & study\_lightwitch & 2003-03-27 16:28:23 & 2003-03-27 18:44:14 & 3 & Thu & WD & 16 & 8152\\
+\addlinespace
+130 & bathroom\_door & 2003-03-27 17:43:10 & 2003-03-27 17:43:12 & 3 & Thu & WD & 17 & 3\\
+104 & foyer\_lightswitch & 2003-03-27 19:36:32 & 2003-03-27 19:50:07 & 3 & Thu & WD & 19 & 816\\
+131 & kitchen\_toaster & 2003-03-28 12:32:00 & 2003-03-28 15:10:16 & 4 & Fri & WD & 12 & 9497\\
+96 & bathroom\_exhaustfan & 2003-03-28 17:43:17 & 2003-03-28 18:25:19 & 4 & Fri & WD & 17 & 2523\\
+108 & bedroom\_lightswitch & 2003-03-28 18:24:48 & 2003-03-28 19:55:44 & 4 & Fri & WD & 18 & 5457\\
+\addlinespace
+129 & kitchen\_oven & 2003-03-28 19:09:26 & 2003-03-28 19:09:30 & 4 & Fri & WD & 19 & 5\\
+56 & livingroom\_dvd & 2003-03-28 19:55:24 & 2003-03-28 19:55:29 & 4 & Fri & WD & 19 & 6\\
+76 & livingroom\_lamp & 2003-03-29 13:30:51 & 2003-03-29 18:50:13 & 5 & Sat & WE & 13 & 19163\\
+139 & bedroom\_jewelrybox & 2003-03-29 15:12:44 & 2003-03-29 15:12:45 & 5 & Sat & WE & 15 & 2\\
+142 & kitchen\_washingmachine & 2003-03-29 15:44:24 & 2003-03-29 15:44:26 & 5 & Sat & WE & 15 & 3\\
+\addlinespace
+90 & kitchen\_laundrydryer & 2003-03-29 15:48:18 & 2003-03-29 15:48:54 & 5 & Sat & WE & 15 & 37\\
+98 & kitchen\_garbagedisposal & 2003-03-29 15:54:50 & 2003-03-29 15:54:51 & 5 & Sat & WE & 15 & 2\\
+107 & livingroom\_lightswitch & 2003-03-29 18:50:43 & 2003-03-29 18:51:09 & 5 & Sat & WE & 18 & 27\\
+81 & foyer\_closet & 2003-04-01 06:13:26 & 2003-04-01 06:13:34 & 1 & Tue & WD & 6 & 9\\
+145 & kitchen\_cereal & 2003-04-01 06:37:18 & 2003-04-01 06:37:59 & 1 & Tue & WD & 6 & 42\\
+\addlinespace
+60 & kitchen\_containers & 2003-04-01 06:38:14 & 2003-04-01 06:38:48 & 1 & Tue & WD & 6 & 35\\
+119 & kitchen\_coffeemachine & 2003-04-09 08:46:07 & 2003-04-09 08:46:35 & 2 & Wed & WD & 8 & 29\\
+64 & bedroom\_lamp & 2003-04-09 20:16:36 & 2003-04-09 21:13:19 & 2 & Wed & WD & 20 & 3404\\
+\bottomrule
+\end{tabular}}
+\end{table}
+\rowcolors{2}{white}{white}
+
+\hypertarget{subactivity-visualisation-and-outlier-inspection}{%
+\subsubsection{SubActivity Visualisation and Outlier
+Inspection}\label{subactivity-visualisation-and-outlier-inspection}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(total_counts, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ subAct, }\DataTypeTok{y =}\NormalTok{ count, }\DataTypeTok{group =}\NormalTok{ DAY, }\DataTypeTok{color =}\NormalTok{ DAY))}
+\NormalTok{p <-}\StringTok{ }\NormalTok{p }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_line}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{theme_grey}\NormalTok{()}
+\NormalTok{p <-}\StringTok{ }\NormalTok{p }\OperatorTok{+}\StringTok{ }\KeywordTok{coord_flip}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \StringTok{"Plot of SubActivity Count versus SubActivity"}\NormalTok{,}
+                             \DataTypeTok{x =} \StringTok{"SubActivity"}\NormalTok{,}
+                             \DataTypeTok{y =} \StringTok{"Aggregated Count"}\NormalTok{)}
+\KeywordTok{ggsave}\NormalTok{(}\StringTok{"images/lineChart.png"}\NormalTok{, }\DataTypeTok{plot =} \KeywordTok{last_plot}\NormalTok{(), }\DataTypeTok{device =} \KeywordTok{png}\NormalTok{(), }
+       \DataTypeTok{scale =} \FloatTok{1.5}\NormalTok{, }\DataTypeTok{width =} \DecValTok{18}\NormalTok{, }\DataTypeTok{height =} \DecValTok{14}\NormalTok{, }\DataTypeTok{units =} \KeywordTok{c}\NormalTok{(}\StringTok{"cm"}\NormalTok{), }\DataTypeTok{dpi =} \DecValTok{300}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/lineChart} \caption{ADD TEXT}\label{fig:unnamed-chunk-17}
+\end{figure}
 
 \begin{figure}[H]
 \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct60} \caption{A caption}\label{fig:pressure}
@@ -1553,6 +1698,38 @@ Test for in \ref{fig:fig1} we see XYZ
 
 Reduce image border (not working???)
 \url{https://holtzy.github.io/Pimp-my-rmd/}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{object <-}\StringTok{ }\NormalTok{[some kind of calculation]}
+\NormalTok{Note that this; is not valid R code}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{algorithm-1-1}{%
+\paragraph{Algorithm 1}\label{algorithm-1-1}}
+
+Text
+
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetAlgoLined
+\KwResult{Write here the result}
+\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+\Input{Write here the input}
+\Output{Write here the output}
+\BlankLine
+\While{While condition}{
+    instructions\;
+    \eIf{condition}{
+        instructions1\;
+        instructions2\;
+    }{
+        instructions3\;
+    }
+}
+\caption{While loop with If/Else condition}
+\end{algorithm}
 
 
 \end{document}
