@@ -69,6 +69,7 @@
 \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.34,0.68}{#1}}
 \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.75,0.01,0.01}{#1}}
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.75,0.01,0.01}{#1}}
+\usepackage{longtable,booktabs}
 \usepackage{graphicx,grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -1270,17 +1271,6 @@ user - Checked below for SPECIAL CHAR - Special CHARs removed
 \end{table}
 \rowcolors{2}{white}{white}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{#%run -i reqEnergy_containSpecialCharClean.py}
-\NormalTok{dsS1Sensors[}\StringTok{'concat'}\NormalTok{].replace(}\StringTok{'office/study_drawer'}\NormalTok{,}\StringTok{'study_drawer'}\NormalTok{,inplace}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
-\NormalTok{dsS1Sensors[}\StringTok{'room'}\NormalTok{].replace(}\StringTok{'Office/study'}\NormalTok{,}\StringTok{'Study'}\NormalTok{,inplace}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
-\NormalTok{dsS1Sensors[}\StringTok{'concat'}\NormalTok{].replace(}\StringTok{'office/study_lightswitch'}\NormalTok{,}\StringTok{'study_lightwitch'}\NormalTok{,inplace}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
-\NormalTok{dsS1Sensors[}\StringTok{'subActNumConcat'}\NormalTok{] }\OperatorTok{=} \StringTok{'subActNum_'} \OperatorTok{+}\NormalTok{ dsS1Sensors[}\StringTok{'subActNum'}\NormalTok{].astype(}\BuiltInTok{str}\NormalTok{)}
-\NormalTok{dsS1Sensors.drop(columns}\OperatorTok{=}\NormalTok{[}\StringTok{'specialChar'}\NormalTok{], inplace}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
 \rowcolors{2}{gray!6}{white}
 \begin{table}[!h]
 
@@ -1294,6 +1284,237 @@ user - Checked below for SPECIAL CHAR - Special CHARs removed
 \midrule
 \showrowcolors
 59 & 82 & Study & Drawer & study\_drawer & FALSE & subActNum\_82\\
+\bottomrule
+\end{tabular}
+\end{table}
+\rowcolors{2}{white}{white}
+
+\hypertarget{importing-preprocessing-the-activities-data}{%
+\subsection{Importing \& Preprocessing the Activities
+Data}\label{importing-preprocessing-the-activities-data}}
+
+The activities data set \texttt{S1activities.csv} will be imported,
+evaluated and cleaned. The goal of the pre-processing will be to
+restructure the dataset into a `tidy' format, that is, where the
+attributes are columns, the rows are instances, and each cell contains
+only one value. Given that the data is time-series, timestamps will be
+used as indexes. The data will also be cast into continuous 24 hour
+segments, with timestamps in the form \texttt{YYYY-MM-DD\ hh:mm:ss}
+(using datetime data type)
+
+We aim to perform the preprocessing in such a way that is * minimally
+computationally intensive * reproducible / traceable code * reasonable
+checks (validation)
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/s1actExcel} 
+
+}
+
+\caption{ADD TEXT}\label{fig:unnamed-chunk-15}
+\end{figure}
+
+The activities data was imported into an indexed dataframe, containing
+only one column, with 1475 rows, with all values comma-separated (per
+row). This style of import had to be used, due to the varying number of
+comma-separated elements in each row (as seen in figure X, above).
+
+\begin{itemize}
+\tightlist
+\item
+  A array of strings, instead of an array of arrays
+\end{itemize}
+
+Analysis of the original dataset, and exploration during pre-processing
+to this point, shows us that the original dataset follows a structure
+such that each 5 rows of data contains is one discrete set of data. In
+this structure,
+
+\begin{itemize}
+\tightlist
+\item
+  Row 1 = Activity, Date, Start Time, End Time
+\item
+  Row 2 = Sub-activity (an action that can be executed as part of
+  performing the activity) code-values
+\item
+  Row 3 = Sub-activity descriptive values
+\item
+  Row 4 = Sub-activity start time
+\item
+  Row 5 = Sub-activity end time
+\end{itemize}
+
+In order to access the values programmatically, we will now turn the 1D
+array list back into a 2D array list, where each element array{[}i{]}
+contains the 5 rows of information, as described above.
+
+The activities data set \texttt{S1activities.csv} will be imported,
+evaluated and cleaned. The goal of the pre-processing will be to
+restructure the dataset into a `tidy' format, that is, where the
+attributes are columns, the rows are instances, and each cell contains
+only one value. Given that the data is time-series, timestamps will be
+used as indexes. The data will also be cast into continuous 24 hour
+segments, with timestamps in the form \texttt{YYYY-MM-DD\ hh:mm:ss}
+(using datetime data type)
+
+We aim to perform the preprocessing in such a way that is * minimally
+computationally intensive * reproducible / traceable code * reasonable
+checks (validation)
+
+The activities data was imported into an indexed dataframe, containing
+only one column, with 1475 rows, with all values comma-separated (per
+row). This style of import had to be used, due to the varying number of
+comma-separated elements in each row (as seen in figure X, above). * A
+array of strings, instead of an array of arrays Analysis of the original
+dataset, and exploration during pre-processing to this point, shows us
+that the original dataset follows a structure such that each 5 rows of
+data contains is one discrete set of data. In this structure, * Row 1 =
+Activity, Date, Start Time, End Time * Row 2 = Sub-activity (an action
+that can be executed as part of performing the activity) code-values *
+Row 3 = Sub-activity descriptive values * Row 4 = Sub-activity start
+time * Row 5 = Sub-activity end time In order to access the values
+programmatically, we will now turn the 1D array list back into a 2D
+array list, where each element array{[}i{]} contains the 5 rows of
+information, as described above.
+
+\rowcolors{2}{gray!6}{white}
+\begin{table}[!h]
+
+\caption{\label{tab:TAB_processingExample}Demo table}
+\centering
+\resizebox{\linewidth}{!}{\fontsize{8}{10}\selectfont
+\begin{tabular}[t]{lll}
+\hiderowcolors
+\toprule
+Type & Description  & Desired Type\\
+\midrule
+\showrowcolors
+An array of comma-sep strings & Activity information, date, start time, end time & ...\\
+An array of comma-sep strings & Sub-activity reference value & Levels\\
+An array of comma-sep strings & Sub-activity descriptive value & Levels\\
+An array of comma-sep strings & Sub-activity start time & Datetime including the date extracted from the index 3 rows above\\
+An array of comma-sep strings & Sub-activity end time & Datetime including the date extracted from the index 4 rows above\\
+\bottomrule
+\end{tabular}}
+\end{table}
+\rowcolors{2}{white}{white}
+
+As mentioned above, in order to work with these data, they need to be in
+a `tidy' format {[}ref{]}, that is, the attributes are columns, the rows
+are instances, and each cell contains only one value. * Note: An array
+of arrays * An array where each element is an array (list?) * Between
+each increment of 5 (0 - 4), the sub-arrays have different lengths Table
+{[}ref{]}, below, contains a summary of the data structure after the
+operation \texttt{np.array(dsS1)} is performed. In order to continue
+pre-processing, the array had to be flattened from a 2D structure to a
+1D structure, using \texttt{flatten()}.
+
+\rowcolors{2}{gray!6}{white}
+\begin{table}[!h]
+
+\caption{\label{tab:TAB_rawDSS1}Demo table}
+\centering
+\resizebox{\linewidth}{!}{\fontsize{8}{10}\selectfont
+\begin{tabular}[t]{l}
+\hiderowcolors
+\toprule
+0\\
+\midrule
+\showrowcolors
+Bathing,4/1/2003,20:41:35,21:32:50\\
+100,68,81,101,93,137,93,58,57,67,93,58,68,88,57,67,100,68,67,76\\
+Toilet Flush,Sink faucet - hot,Closet,Light switch,Shower faucet,Freezer,Shower faucet,Medicine cabinet,Medicine cabinet,Cabinet,Shower faucet,Medicine cabinet,Sink faucet - hot,Sink faucet - cold,Medicine cabinet,Cabinet,Toilet Flush,Sink faucet - hot,Cabinet,Lamp\\
+20:51:52,20:51:58,20:53:36,20:53:49,20:53:52,20:58:22,20:58:43,21:5:23,21:5:46,21:5:47,21:18:34,21:18:55,21:19:41,21:20:4,21:20:38,21:20:39,21:21:13,21:21:16,21:21:37,21:22:8\\
+21:5:20,20:52:5,20:53:43,21:21:43,20:58:42,20:58:32,21:6:9,21:5:45,21:18:55,21:5:49,21:18:35,21:20:37,21:20:5,21:20:34,21:21:41,21:20:42,23:10:23,21:21:23,21:21:38,23:11:8\\
+\addlinespace
+Toileting,4/1/2003,17:30:36,17:46:41\\
+\bottomrule
+\end{tabular}}
+\end{table}
+\rowcolors{2}{white}{white}
+
+\begin{itemize}
+\tightlist
+\item
+  len(dsS1) = 1475
+\end{itemize}
+
+The function \texttt{dsS1Activities\_processing.py} was run in-line to
+perform the required preprocessing. The dataframe was then converted to
+a 2D array, using \texttt{np.array()}, here, each row from the dataframe
+became an array within the 2D array {[}Step 1{]}. The 2D array was
+flattened to a 1D array using \texttt{.flatten()} {[}Step 2{]}. each
+group of observations was then chunked into a list of 5 {[}Step 3{]}
+
+Mention sanity checking here
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{i }\OperatorTok{=} \DecValTok{0}
+\ControlFlowTok{while}\NormalTok{ i }\OperatorTok{<} \DecValTok{5}\NormalTok{:}
+    \BuiltInTok{print}\NormalTok{(stepX[i])}
+\NormalTok{    i }\OperatorTok{+=} \DecValTok{1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+\begin{minipage}[b]{0.47\columnwidth}\raggedright
+StepX\strut
+\end{minipage} & \begin{minipage}[b]{0.47\columnwidth}\raggedright
+Returns\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
+Step1\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
+5 array structures corresponding to one row each from the original
+dataset\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
+Step2\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
+5 elements from one array structure (no longer associated with
+rows)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
+Step3\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
+5 array structures, with each array containing a set of related activity
+and temporal data\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+We used the Step 3 data structure to then extract the values for
+\texttt{activity}, \texttt{date}, \texttt{startTime} and
+\texttt{endTime}. These values were populated into a series of temporary
+arrays, which were then compiled into a dataset with the four attributes
+previously listed. We then used \texttt{Step3{[}i{]}{[}j{]}} to access
+all the required elements and parse them into the arrays.
+
+\rowcolors{2}{gray!6}{white}
+\begin{table}[!h]
+
+\caption{\label{tab:TAB_dsIntermediate}Demo table}
+\centering
+\fontsize{8}{10}\selectfont
+\begin{tabular}[t]{llll}
+\hiderowcolors
+\toprule
+activity & date & startTime & endTime\\
+\midrule
+\showrowcolors
+Bathing & 4/1/2003 & 20:41:35 & 21:32:50\\
+Toileting & 4/1/2003 & 17:30:36 & 17:46:41\\
+Toileting & 4/1/2003 & 18:4:43 & 18:18:2\\
+Toileting & 4/1/2003 & 11:52:1 & 11:58:50\\
+Going out to work & 4/1/2003 & 12:11:26 & 12:15:12\\
+\addlinespace
+Preparing lunch & 4/1/2003 & 11:21:17 & 11:38:22\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1317,11 +1538,11 @@ Test for in \ref{fig:fig1} we see XYZ
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.5\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/iosMockUps} 
+{\centering \includegraphics[width=0.8\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/iosMockUps} 
 
 }
 
-\caption{ADD TEXT}\label{fig:unnamed-chunk-17}
+\caption{ADD TEXT}\label{fig:unnamed-chunk-19}
 \end{figure}
 
 \begin{figure}
