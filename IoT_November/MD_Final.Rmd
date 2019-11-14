@@ -108,7 +108,7 @@ knitr::opts_chunk$set(
 
 ### Humankind, Technology & Development 
 
-Since the inception of the first home computers in the late 1970s [@pressAltairHistoryPersonal1993], modern society has become dependent on, and - indeed - inexorably bound to digital technology. The rapid and widespread adoption of computational technology has led to the fastest rate of societal and economic development our species has ever experienced. One of the most salient manifestations of progress has been the widespread availability and adoption of Information and Communications Technology (**ICT**), including the rise of the global network of networks known as the Internet.
+Since the inception of the first home computers in the late 1970s [@pressAltairHistoryPersonal1993], modern society has become dependent on, and - indeed - inexorably bound to digital technology. The rapid and widespread adoption of computational technology has led to the fastest rate of societal and economic development our species has ever experienced, as exemplified in Figure \ref{fig:satelliteImagesAsia} and Figure \ref{fig:globalPovertyPlot}, below. One of the most salient manifestations of progress has been the widespread availability and adoption of Information and Communications Technology (**ICT**), including the rise of the global network of networks known as the Internet.
 
 ```{r satelliteImagesAsia, echo=FALSE, fig.cap="Satellite images of South Asia by night. Left (South Asia in 1994) Right (South Asia in 2010). Images are taken from Maxim Pinkovskiy and Xavier Sala-i-Martin (2016) - Lights, Camera ... Income! Illuminating the National Accounts-Household Surveys Debate. The Quarterly Journal of Economics.", fig.align='center', out.width = '60%'}
 knit_hooks$set(crop = hook_pdfcrop)
@@ -119,7 +119,7 @@ poverty <- read_csv('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_
 colnames(poverty)[4] = 'Number'
 poverty <- poverty %>% filter(Entity != 'World')
 ```
-```{r globalPovertyPlot, echo=FALSE, fig.align='center', fig.cap="The number of people living in extreme poverty between the years of 1990 till 2015, segmented by region. Source: The World Bank", fig.height=3.5, fig.width=6, message=FALSE, warning=FALSE}
+```{r globalPovertyPlot, echo=FALSE, fig.align='center', fig.cap="The number of people living in extreme poverty between the years of 1990 till 2015, segmented by region. Source: The World Bank", fig.height=2.5, fig.width=6, message=FALSE, warning=FALSE}
 p <- ggplot(poverty, aes(x = Year, y = Number, fill = Entity))
 p <- p + geom_area(alpha=0.9 , size=.2, colour="white") +
   scale_x_continuous(limits = c(1990, 2015)) + 
@@ -138,12 +138,9 @@ p <- p + geom_area(alpha=0.9 , size=.2, colour="white") +
 p
 ```
 
-http://iresearch.worldbank.org/PovcalNet/
-
 ### The Rise and Rise of the World Wide Web
-
-According to the International Telecommunication Union (ITU) 2015 ICTs figures, Internet penetration has grown from just over 400 millions users (6 per cent of global population) in 2000 to 3.2 billion users in 2015 (43 per cent of global population), which includes around 2 billion users from developing countries (Dutta et al., 2015). ICTs bring a broad range of benefits and are recognised as a key to eradicating poverty and unemployment. They enable and facilitate the building a people-centred, inclusive and development-oriented Information Society, where everyone can create, access, utilize and share information and knowledge. This enables individuals, communities and peoples to achieve their full potential in promoting their sustainable development and improving their quality of life (“Information and communication technologies (ICTs) | Poverty Eradication,” n.d.). 
-In addition to a rapidly growing internet user-base both in the developing and developed world, the nature of internet usage has fundamentally changed. Once the purview of academics, engineers and computer scientists sending tiny packets of information back and forth, there are now some 2.5 quintillion bytes of data created each day by all manner of users, industry and sensors to name a few (“Data Never Sleeps 5.0 | Domo,” n.d.).
+According to the International Telecommunication Unions (**ITU**) 2015 figures, Internet penetration has grown from just over 400 millions users (6 per cent of global population) in 2000 to 3.2 billion users in 2015 (43 per cent of global population). This includes around 2 billion users from developing countries [@duttaGlobalInformationTechnology2015]. ICTs bring a broad range of benefits and are recognised as a key to eradicating poverty and unemployment. They enable and facilitate the building of a people-centred, inclusive and development-oriented Information Society, where everyone can create, access, utilise and share information and knowledge. This enables individuals, communities and peoples to achieve their full potential in promoting their sustainable development and improving their quality of life [@InformationCommunicationTechnologies]. 
+In addition to a rapidly growing internet user-base both in the developing and developed world, the nature of internet usage has fundamentally changed. Once the purview of academics, engineers and computer scientists sending tiny packets of information back and forth, there are now some 2.5 quintillion bytes of data created each day by all manner of users, industries and sensors, to name a few [@DataNeverSleeps].
 
 ```{r internetAccessPreprocessing, message=FALSE, warning=FALSE, include=FALSE}
 internet <- read_csv('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/datasets/number-of-internet-users-by-country.csv')
@@ -154,16 +151,15 @@ internet$Continent <- countrycode(sourcevar = internet$Code,
 internet <- na.omit(internet)
 internet <- internet %>% group_by(Continent, Year) %>% summarise(Number = sum(Number))
 internet <- internet %>% filter(Year != 2017)
-
 ```
 
-```{r internetAccessPlot, echo=FALSE, fig.align='center', fig.cap="ADD TEXT, Source: The World Bank, World Development Indicators", fig.height=3, fig.width=3.5, message=FALSE, warning=FALSE}
+```{r internetAccessPlot, echo=FALSE, fig.align='center', fig.cap="Internet access by total number of population, Source: The World Bank, World Development Indicators", fig.height=2.5, fig.width=4.5, message=FALSE, warning=FALSE}
 www <- ggplot(internet, aes(x = Year, y = Number, fill = Continent))
 www <- www + geom_area(alpha=0.9 , size=.2, colour="white") + 
   scale_fill_brewer(palette = 'Set1') +
   theme_grey() +
-  scale_x_continuous(limits = c(1995, 2015),expand = c(0.02, 0.02)) + 
-  scale_y_continuous(limits = c(0, 8000000000)) + 
+  scale_x_continuous(limits = c(1990, 2015),expand = c(0.02, 0.02)) + 
+  scale_y_continuous(limits = c(0, 4000000000)) + 
   #scale_y_continuous(labels = whole)
   labs(title="Internet access by total number of population",
        x="Year",
@@ -171,23 +167,19 @@ www <- www + geom_area(alpha=0.9 , size=.2, colour="white") +
   theme(text = element_text(size=8), 
         axis.title.x=element_blank(),
         legend.title = element_blank(),
-        legend.position = c(0.2,0.75),
+        legend.position = c(0.125,0.725),
         legend.box = "vertical",
         legend.background = element_rect(fill=alpha('white', 0)),
         legend.key.size = unit(5, "mm"))
 www
 ```
 
-http://data.worldbank.org/data-catalog/world-development-indicators/
-
 ### Forging a New Technological Paradigm
+Such rapid and widespread internet adoption has created a seemingly insatiable demand for exponentially greater computational power and digital storage capacity. This has led to a new and ubiquitous technological paradigm: Cloud Computing. Cloud Computing is succinctly defined as; the practice of using a network of remote servers hosted on the Internet to store, manage, and process data, rather than a local server or a personal computer [@CloudComputingDefinition]. 
 
-Such rapid and widespread internet adoption has created a seemingly insatiable demand for exponentially greater computational power and digital storage capacity. This has led to a new and utterly ubiquitous technological paradigm; Cloud Computing. Cloud Computing is succinctly defined as; The practice of using a network of remote servers hosted on the Internet to store, manage, and process data, rather than a local server or a personal computer (https://www.dictionary.com/browse/cloud-computing). 
-
-As with the initial rise and widespread implementation of the internet, Cloud Computing itself acts as a facilitator for new technologies. One such example being the Internet of Things (IoT) paradigm. The Internet of Things can be surmised as the extension of the Internet and the Web into the physical realm, by means of the widespread deployment of spatially distributed devices with embedded identification, sensing and/or actuation capabilities (Daniele Miorandi, 2012). The Internet of Things (IoT) paradigm enables physical devices to connect and exchange information, and also allows objects to be sensed or controlled remotely through the internet (Bing Huang, 2018). IoT devices allow objects to be sensed or controlled remotely through the Internet (Luigi Atzori, 2010). IoT thus represents a convergence of real-world objects and digital objects into a unified cyber-physical system. 
+As with the initial rise and widespread implementation of the Internet, Cloud Computing itself acts as a facilitator for new technologies. One such example being the Internet of Things (**IoT**) paradigm. The IoT can be surmised as the extension of the Internet and the Web into the physical realm, by means of the widespread deployment of spatially distributed devices with embedded identification, sensing and/or actuation capabilities, allowing objects to be sensed or controlled remotely through the internet [@danielemiorandiInternetThingsVision2012], [@binghuangServiceOrientedComputing16th2018], [@luigiatzoriInternetThingsSurvey2010]. IoT thus represents a convergence of real-world objects and digital objects into a unified cyber-physical system. 
 
 ### The Bigger Picture 
-
 Considering the bigger picture of societal benefit, as seen in figure \ref{fig:globalPovertyPlot}, from 1990 through 2015 the number of people living in extreme poverty has dropped by more than half. As evidenced by Figure \ref{fig:internetAccessPlot}, over the same time period, the percentage of people with access to the internet has move from around 1 per cent to an average of around 50 per cent (this trend is now moving exponentially as a function of time). And, figure \ref{fig:populationGrowthPlot} shows that over the last 100 years, the human population has experienced unprecedented growth from 1 billion individuals to in excess of 7 billion. Mankind have thus simultaneously increased our population, increased of technological development and decreased poverty (to name but a few, ‘key performance indicators’).
 
 ```{r populationGrowthPreprocessing, message=FALSE, warning=FALSE, include=FALSE}
@@ -203,7 +195,7 @@ population$Population <- population$Population * 10000
 #internet <- internet %>% filter(Year != 2017)
 ```
 
-```{r populationGrowthPlot, echo=FALSE, fig.align='center', fig.cap="ADD TEXT, Source: The World Bank, World Development Indicators", fig.height=3, fig.width=4.5, message=FALSE, warning=FALSE}
+```{r populationGrowthPlot, echo=FALSE, fig.align='center', fig.cap="Human population by continent, Source: The World Bank, World Development Indicators", fig.height=2.5, fig.width=5, message=FALSE, warning=FALSE}
 popu <- ggplot(population, aes(x = Year, y = Population, fill = Continent))
 popu <- popu + geom_area(alpha=0.9 , size=.2, colour="white") + 
   scale_fill_brewer(palette = 'Set1') +
@@ -241,7 +233,7 @@ energy <- energy %>% group_by(Continent, Year, Source) %>% summarise(`Consumed` 
 energy <- energy %>% group_by(Year, Source) %>% summarise(`Consumed` = sum(`Consumed`))
 ```
 
-```{r globalEnergyPlot, echo=FALSE, fig.align='center', fig.cap="ADD TEXT, Source: Our World in Data", fig.height=3, fig.width=4.5, message=FALSE, warning=FALSE}
+```{r globalEnergyPlot, echo=FALSE, fig.align='center', fig.cap="ADD TEXT, Source: Our World in Data", fig.height=3, fig.width=5, message=FALSE, warning=FALSE}
 p <- ggplot(energy, aes(x = Year, y = Consumed, fill = Source))
 p <- p + geom_area(alpha=0.9 , size=.2, colour="white") + 
   scale_fill_jco() +
@@ -261,24 +253,23 @@ p <- p + geom_area(alpha=0.9 , size=.2, colour="white") +
 p
 ```
 
-The International Panel on Climate Change (IPCC) finds that Human activities are estimated to have caused approximately 1.0°C of global warming above pre-industrial levels, with a likely range of 0.8°C to 1.2°C. Global warming is likely to reach 1.5°C between 2030 and 2052 if it continues to increase at the current rate (Intergovernmental Panel on Climate Change, 2018). 
+The International Panel on Climate Change (IPCC) finds that Human activities are estimated to have caused approximately 1.0°C of global warming above pre-industrial levels, with a likely range of 0.8°C to 1.2°C. Global warming is likely to reach 1.5°C between 2030 and 2052 if it continues to increase at the current rate [@intergovernmentalpanelonclimatechangeGlobalWarming2018]. 
 
-Climate change poses an existential threat to modern human civilisation, with warming of between 1.5°C and 2°C predicted to cause increases in mean temperature in most land and ocean regions, hot extremes in most inhabited regions, heavy precipitation changes including drought and precipitation deficits in some regions. Additionally, increases in ocean temperature as well as associated increases in ocean acidity and decreases in ocean oxygen levels are projected to reduce risks to marine biodiversity, fisheries, and ecosystems, and their functions and services to humans. Taken together, these effects will lead to risks of the health, livelihoods, food security, water supply, human security, and economic growth of mankind (Intergovernmental Panel on Climate Change, 2018 - OTHER REF?).
+Climate change poses an existential threat to modern human civilisation, with warming of between 1.5°C and 2°C predicted to cause increases in mean temperature in most land and ocean regions, hot extremes in most inhabited regions and heavy precipitation changes in some regions. Additionally, increases in ocean temperature as well as associated increases in ocean acidity and decreases in ocean oxygen levels are projected to reduce risks to marine biodiversity, fisheries, and ecosystems, and their functions and services to humans. Taken together, these effects will lead to risks of the health, livelihoods, food security, water supply, human security, and economic growth of mankind [@intergovernmentalpanelonclimatechangeGlobalWarming2018].
 
 
 ```{r warmingTrend, echo=FALSE, fig.cap="Atmospheric Changes with respect to Carbon Emissions and Global Warming - Observer and Projected. Source: Intergovernmental Panel on Climate Change, 2018", fig.align='center', out.width = '80%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/warmingTrend.png')
 ```
+It is therefore imperative moving forward as a species that all steps are be taken to mitigate the emission of greenhouse gases and abate the advance of anthropomorphic climate change. The scale of the challenge is such that technology itself will prove critical in effectively combating this existential threat to civilisation. When considering energy consumption, the industrial sector (including the non-combusted use of fuels) currently consumes around half of all global energy and feedstock fuels, with residential and commercial buildings (29%) and transport (21%) accounting for the remainder [@EnergyDemandSector]
 
-It is therefore imperative moving forward as a species that all steps are be taken to mitigate the emission of greenhouse gases and abate the advance of anthropomorphic climate change. The scale of the challenge is such that technology itself will prove critical in effectively combating this existential threat to civilisation. When considering energy consumption, the industrial sector (including the non-combusted use of fuels) currently consumes around half of all global energy and feedstock fuels, with residential and commercial buildings (29%) and transport (21%) accounting for the remainder (https://www.bp.com/en/global/corporate/energy-economics/energy-outlook/demand-by-sector.html). 
-
-```{r message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE, include=FALSE}
 energyBySector <- read_table2("/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/EnergySpecs/ElectricityTFCbySector.txt")
 energyBySector <- gather(energyBySector, `Industry`, `Residential`, `CommercialAndPublicServices`, 
                `Transport`, `Other`, key = "Source", value = "MTOE")
 ```
 
-```{r sectorEnergyPlot, echo=FALSE, fig.align='center', fig.cap="ADD TEXT, Source: Our World in Data", fig.height=3, fig.width=4.5, message=FALSE, warning=FALSE}
+```{r sectorEnergyPlot, echo=FALSE, fig.align='center', fig.cap="ADD TEXT", fig.height=3, fig.width=5, message=FALSE, warning=FALSE}
 p <- ggplot(energyBySector, aes(x = Year, y = MTOE, fill = Source))
 p <- p + geom_area(alpha=0.9 , size=.2, colour="white") + 
   scale_fill_npg() +
@@ -304,7 +295,7 @@ Thus far, our staggering global achievements, including lifting hundreds of mill
 
 ### The IoT Smart Home & Service Oriented Computing
 
-As mentioned above, residential and commercial buildings account for 29% of energy demand globally (REF). In this work we propose that an avenue for reduced energy consumption is the optimization of existing services and utilities to end users in an IoT Smart Home. In this proposed smart home, the daily activities of the end user can be performed with the support of a personalised artificial intelligence (AI) system, such that the timing and manner of energy intensive activities is optimised to reduce overall energy consumption, whilst still considering the level of convenience afforded to the end user. This work uses sensor data analogous to what would be expected to be produced from a sensor rich IoT smart home and considers the interplay between end user convenience; predictive analytics; predictive service offering; energy consumption; demand response and smart electricity grids.
+As mentioned above, residential and commercial buildings account for 29% of energy demand globally [@Consumption]. In this work we propose that an avenue for reduced energy consumption is the optimization of existing services and utilities to end users in an IoT Smart Home. In this proposed smart home, the daily activities of the end user can be performed with the support of a personalised artificial intelligence (AI) system, such that the timing and manner of energy intensive activities is optimised to reduce overall energy consumption, whilst still considering the level of convenience afforded to the end user. This work uses sensor data analogous to what would be expected to be produced from a sensor rich IoT smart home and considers the interplay between end user convenience; predictive analytics; predictive service offering; energy consumption; demand response and smart electricity grids.
 
 ## Aim
 
@@ -1174,6 +1165,16 @@ Text
 nocite: |
   @Svenssonguideornitho2007
   `r paste(packages_keys$value, collapse = "\n  ")`
+---
+---
+nocite: |
+  @article{owidextremepoverty,
+      author = {Max Roser and Esteban Ortiz-Ospina},
+      title = {Global Extreme Poverty},
+      journal = {Our World in Data},
+      year = {2019},
+      note = {https://ourworldindata.org/extreme-poverty}
+      }
 ---
 
 # References
