@@ -14,3 +14,4 @@ for subActName in subActNames:
 
 allMedianValues = pd.DataFrame(subActRows, index=None,
                                columns=['SubAct', 'Count', 'Median', 'Mean', 'Std'])
+allMedianValues.to_csv(PATH + '/intermediate_datasets/S1SubActivities_medianValues.csv', index = False) 

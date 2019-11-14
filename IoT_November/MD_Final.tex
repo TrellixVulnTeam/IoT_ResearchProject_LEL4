@@ -140,7 +140,7 @@ Convenience}
 \usepackage[normalem]{ulem}
 \usepackage{makecell}
 
-\usepackage[ruled,vlined,linesnumbered]{algorithm2e} \usepackage{booktabs} \usepackage{longtable} \usepackage{array} \usepackage{multirow} \usepackage[table]{xcolor} \usepackage{wrapfig} \usepackage{float} \floatplacement{figure}{H} \usepackage{caption, setspace} \captionsetup[figure]{font={stretch=1,scriptsize}} \captionsetup[table]{font={stretch=1,scriptsize}} \captionsetup[table]{skip=2pt}
+\usepackage[ruled,vlined,linesnumbered]{algorithm2e} \usepackage{booktabs} \usepackage{longtable} \usepackage{array} \usepackage{multirow} \usepackage[table]{xcolor} \usepackage{wrapfig} \usepackage{float} \floatplacement{figure}{H} \usepackage{caption, setspace} \captionsetup[figure]{font={stretch=1,scriptsize}} \captionsetup[figure]{skip=2pt} \captionsetup[table]{font={stretch=1,scriptsize}} \captionsetup[table]{skip=2pt}
 
 \begin{document}
 \maketitle
@@ -168,15 +168,16 @@ Second paragraph of abstract starts here. \pagebreak
 \subsubsection{Humankind, Technology \&
 Development}\label{humankind-technology-development}}
 
-Since the inception of the first home computers in the late 1970's
-(Press, 1993), modern society has become utterly dependent on and
-indeed, inexorably bound to digital technology. The rapid and widespread
-adoption of computational technology has led to the fastest rate of
-societal and economic development our species has ever experienced. One
-of the most salient manifestations of technical progress has been the
-widespread availability and adoption of Information and Communications
-Technology (ICT), including the rise of the global network of networks
-known as the Internet.
+Since the inception of the first home computers in the late 1970s
+{[}\protect\hyperlink{ref-pressAltairHistoryPersonal1993}{1}{]}, modern
+society has become dependent on, and - indeed - inexorably bound to
+digital technology. The rapid and widespread adoption of computational
+technology has led to the fastest rate of societal and economic
+development our species has ever experienced. One of the most salient
+manifestations of progress has been the widespread availability and
+adoption of Information and Communications Technology (\textbf{ICT}),
+including the rise of the global network of networks known as the
+Internet.
 
 \begin{figure}[H]
 
@@ -698,14 +699,14 @@ the highest benefit: its annual financial savings accumulate to €3.110M
 for both households and the service sector. This equals to relative
 savings of 2.83\% compared to a scenario without load shifting.}
 
-{[}@article\{feuerriegel2016\}{]} discuss electricity demand response -
-allowing the management of demand side resources in real-time.
-\textbf{Based on Darby and McKenna (REF), we define demand response and
-a household action (automated, manual, or both) due to which electricity
-use is shifted in time in response to a price signal of other stimuli.
-This can result in more efficient usage of the available sustainable
-electricity, like self-consumption of on-site PV electricity (REF) and
-peak demand reductions (REF) - all from @article\{kobus2015\}}
+{[}{\textbf{???}}{]} discuss electricity demand response - allowing the
+management of demand side resources in real-time. \textbf{Based on Darby
+and McKenna (REF), we define demand response and a household action
+(automated, manual, or both) due to which electricity use is shifted in
+time in response to a price signal of other stimuli. This can result in
+more efficient usage of the available sustainable electricity, like
+self-consumption of on-site PV electricity (REF) and peak demand
+reductions (REF) - all from \textbf{???}\{kobus2015\}}
 
 \hypertarget{predictive-modelling-and-forecasting}{%
 \subsubsection{Predictive Modelling and
@@ -839,16 +840,16 @@ cloud-hosted.
 \subsubsection{Smart Home and Energy
 Efficiency}\label{smart-home-and-energy-efficiency}}
 
-{[}@article\{bober2009distributed\}NOT IN LIB{]} - As recently as 2009
-it was posited that ``The proposed model allows for introduction of
-power priorities for consumer's electrical equipment by the importance
-of their functions. The relevance of the functions carried out by the
-data device is evaluated by each consumer individually. The relevance of
-functions and priorities assigned to power mode / groups of electrical
-equipment can be changed over time.''\\
-`Haseeb et al {[}@article\{haseeb2019does\}NOT IN LIB{]} have (through
-review) shown that at a macro scale, global adoption of internet reduces
-energy consumption' + At the micro scale (that is, the behaviour of
+{[}{\textbf{???}} NOT IN LIB{]} - As recently as 2009 it was posited
+that ``The proposed model allows for introduction of power priorities
+for consumer's electrical equipment by the importance of their
+functions. The relevance of the functions carried out by the data device
+is evaluated by each consumer individually. The relevance of functions
+and priorities assigned to power mode / groups of electrical equipment
+can be changed over time.''\\
+`Haseeb et al {[}{\textbf{???}} NOT IN LIB{]} have (through review)
+shown that at a macro scale, global adoption of internet reduces energy
+consumption' + At the micro scale (that is, the behaviour of
 individuals\ldots)
 
 \hypertarget{iot-and-end-user-convenience}{%
@@ -961,7 +962,7 @@ Output: Spatio-temporal proximity model
   Proximity and correlation strength
 \end{itemize}
 
-Service Mining on the Web @article\{zheng2009\}
+Service Mining on the Web \textbf{???}\{zheng2009\}
 
 In the domain of Service Mining and Service Recognition, Zheng et al aim
 to provide end users with value-added services through the composition
@@ -1506,6 +1507,20 @@ subActNum & subAct & date & startTime & endTime\\
 \end{table}
 \rowcolors{2}{white}{white}
 
+\textbf{Extracting the Activity, Time and Data} If we run
+\texttt{a{[}0{]}{[}0{]}}, we get
+\texttt{\textquotesingle{}Bathing,4/1/2003,20:41:35,21:32:50\textquotesingle{}}
+* A string with 4 comma-separated `items' * We won't check the entire
+DF, rather, will rely on errors thrown back to confirm validity
+(`validation of the method')
+
+\textbf{Constructing the while loop} * Create empty lists * Extracts the
+relevant elements * Adds (appends) the elements to the lists
+
+\textbf{Sanity Checks} * We won't check the entire DF, rather, will rely
+on errors thrown back to confirm validity (`validation of the method') *
+Divisible by 5
+
 \hypertarget{algorithm-2-part-b}{%
 \paragraph{Algorithm 2 Part B}\label{algorithm-2-part-b}}
 
@@ -1554,6 +1569,9 @@ subActNum & subAct & start & end\\
 \end{tabular}
 \end{table}
 \rowcolors{2}{white}{white}
+
+len(dsS1) = 1475 len(df) = 2772 ``We have a df of 2772 subActs over time
+period X in the MIT Place Lab''
 
 \hypertarget{sub-activity-preprocessing---duplicate-sub-activities}{%
 \subsubsection{Sub Activity Preprocessing - Duplicate sub
@@ -1652,24 +1670,22 @@ Inspection}\label{subactivity-visualisation-and-outlier-inspection}}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{p <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(total_counts, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ subAct, }\DataTypeTok{y =}\NormalTok{ count, }\DataTypeTok{group =}\NormalTok{ DAY, }\DataTypeTok{color =}\NormalTok{ DAY))}
-\NormalTok{p <-}\StringTok{ }\NormalTok{p }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_line}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{theme_grey}\NormalTok{()}
+\NormalTok{p <-}\StringTok{ }\NormalTok{p }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_line}\NormalTok{(}\DataTypeTok{size=}\FloatTok{0.5}\NormalTok{) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{size =} \FloatTok{0.5}\NormalTok{) }\OperatorTok{+}\StringTok{ }\KeywordTok{theme_grey}\NormalTok{()}
 \NormalTok{p <-}\StringTok{ }\NormalTok{p }\OperatorTok{+}\StringTok{ }\KeywordTok{coord_flip}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \StringTok{"Plot of SubActivity Count versus SubActivity"}\NormalTok{,}
                              \DataTypeTok{x =} \StringTok{"SubActivity"}\NormalTok{,}
                              \DataTypeTok{y =} \StringTok{"Aggregated Count"}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{text =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size=}\DecValTok{8}\NormalTok{), }
       \DataTypeTok{axis.title.x=}\KeywordTok{element_blank}\NormalTok{(),}
       \DataTypeTok{legend.title =} \KeywordTok{element_blank}\NormalTok{(),}
-      \DataTypeTok{legend.position =} \KeywordTok{c}\NormalTok{(}\FloatTok{0.9}\NormalTok{,}\FloatTok{0.85}\NormalTok{),}
+      \DataTypeTok{legend.position =} \KeywordTok{c}\NormalTok{(}\FloatTok{0.9}\NormalTok{,}\FloatTok{0.84}\NormalTok{),}
       \DataTypeTok{legend.background =} \KeywordTok{element_rect}\NormalTok{(}\DataTypeTok{fill=}\KeywordTok{alpha}\NormalTok{(}\StringTok{'white'}\NormalTok{, }\FloatTok{0.5}\NormalTok{)),}
       \DataTypeTok{legend.key.size =} \KeywordTok{unit}\NormalTok{(}\DecValTok{5}\NormalTok{, }\StringTok{"mm"}\NormalTok{))}
-\NormalTok{p}
+
+\KeywordTok{ggsave}\NormalTok{(}\StringTok{'/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/lineChart.png'}\NormalTok{, }
+       \DataTypeTok{plot =} \KeywordTok{last_plot}\NormalTok{(), }\DataTypeTok{device =} \KeywordTok{png}\NormalTok{(), }
+       \DataTypeTok{scale =} \FloatTok{1.5}\NormalTok{, }\DataTypeTok{width =} \DecValTok{8}\NormalTok{, }\DataTypeTok{height =} \DecValTok{10}\NormalTok{, }\DataTypeTok{units =} \KeywordTok{c}\NormalTok{(}\StringTok{"cm"}\NormalTok{), }\DataTypeTok{dpi =} \DecValTok{300}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
-
-\includegraphics{MD_Final_files/figure-latex/unnamed-chunk-16-1.pdf}
-
-ggsave(``images/lineChart.png'', plot = last\_plot(), device = png(),
-scale = 1.5, width = 12, height = 8, units = c(``cm''), dpi = 300)
 
 \hypertarget{aggregated-line-chart}{%
 \paragraph{Aggregated Line Chart}\label{aggregated-line-chart}}
@@ -1684,6 +1700,18 @@ The following figure shows XYZ
 \paragraph{Aggregated Box Plot}\label{aggregated-box-plot}}
 
 The following figure shows XYZ
+
+\begin{itemize}
+\tightlist
+\item
+  We can see many potential outliers.
+\item
+  Of particular concern Kitchen\_Toaster with a duration of almost
+  30,000 seconds, Bathroom\_toiletflush distributed up to the range of
+  20,000 seconds.
+\end{itemize}
+
+In order to investigate this we will work through each subAct
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1706,19 +1734,357 @@ The following figure shows XYZ
 \paragraph{Strip Plots}\label{strip-plots}}
 
 \begin{figure}[H]
-\includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/strip1} \caption{ADD TEXT}\label{fig:unnamed-chunk-20}
+\includegraphics[width=0.6\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/strip1} \caption{ADD TEXT}\label{fig:unnamed-chunk-20}
 \end{figure}
 
 \hypertarget{subactivity-cleansing---outlier-removal}{%
 \subsubsection{SubActivity Cleansing - Outlier
 Removal}\label{subactivity-cleansing---outlier-removal}}
 
-\begin{figure}[H]
-\includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct60} \caption{A caption}\label{fig:pressure}
-\end{figure}
+Based on the investigation of the strip plots + XYZ
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# valueDrop.py}
+\NormalTok{ds }\OperatorTok{=}\NormalTok{ ds[ds.subAct }\OperatorTok{!=} \StringTok{'bedroom_jewelrybox'}\NormalTok{]}
+\NormalTok{ds }\OperatorTok{=}\NormalTok{ ds[ds.subAct }\OperatorTok{!=} \StringTok{'foyer_closet'}\NormalTok{]}
+\NormalTok{ds }\OperatorTok{=}\NormalTok{ ds[ds.subAct }\OperatorTok{!=} \StringTok{'kitchen_cereal'}\NormalTok{]}
+\NormalTok{ds }\OperatorTok{=}\NormalTok{ ds[ds.subAct }\OperatorTok{!=} \StringTok{'kitchen_containers'}\NormalTok{]}
+\NormalTok{ds }\OperatorTok{=}\NormalTok{ ds[ds.subAct }\OperatorTok{!=} \StringTok{'bedroom_lamp'}\NormalTok{]}
+\NormalTok{ds }\OperatorTok{=}\NormalTok{ ds[ds.subAct }\OperatorTok{!=} \StringTok{'livingroom_dvd'}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{jewelry-foyer-closet-cereal-containers-lamp}{%
+\section{Jewelry + foyer closet + cereal + containers +
+lamp}\label{jewelry-foyer-closet-cereal-containers-lamp}}
+
+\%run -i valueDrop.py
+
+\textbf{Outliers as defined by how much from the mean / median /
+mode???}
+
+\rowcolors{2}{gray!6}{white}
+\begin{table}[!h]
+
+\caption{\label{tab:unnamed-chunk-21}Demo table}
+\centering
+\fontsize{8}{10}\selectfont
+\begin{tabular}[t]{lrrrr}
+\hiderowcolors
+\toprule
+SubAct & Count & Median & Mean & Std\\
+\midrule
+\showrowcolors
+bathroom\_cabinet & 104 & 4.0 & 460.22115 & 3176.1633\\
+bathroom\_medicinecabinet & 194 & 88.0 & 3188.97423 & 7354.1424\\
+study\_drawer & 45 & 6.0 & 1634.48889 & 5432.4063\\
+bedroom\_drawer & 99 & 10.0 & 273.47475 & 1918.7262\\
+kitchen\_cabinet & 406 & 7.0 & 112.82020 & 1864.0122\\
+\addlinespace
+kitchen\_microwave & 61 & 6.0 & 377.40984 & 2868.6679\\
+kitchen\_door & 134 & 4.0 & 46.11194 & 174.1857\\
+bathroom\_showerfaucet & 88 & 15.0 & 1754.35227 & 6540.7295\\
+kitchen\_drawer & 208 & 4.0 & 145.06250 & 1727.5767\\
+bathroom\_sinkfaucet-hot & 169 & 11.0 & 57.90533 & 501.2729\\
+\addlinespace
+kitchen\_freezer & 130 & 39.0 & 1738.10769 & 4512.5738\\
+bathroom\_door & 73 & 17.0 & 461.61644 & 2310.8116\\
+kitchen\_toaster & 71 & 5.0 & 790.36620 & 3793.6744\\
+kitchen\_lightswitch & 32 & 4454.0 & 9318.71875 & 13081.3404\\
+study\_lightwitch & 26 & 1728.5 & 6430.73077 & 11002.3025\\
+\addlinespace
+kitchen\_dishwasher & 86 & 63.5 & 1518.40698 & 4146.6375\\
+livingroom\_lightswitch & 8 & 6352.5 & 12545.12500 & 15556.6628\\
+\bottomrule
+\end{tabular}
+\end{table}
+\rowcolors{2}{white}{white}
+
+S1SubActivities\_temporalFeaturesCLEANSED.csv = `Final' dataset
+
+\hypertarget{bathroom-cabinet}{%
+\paragraph{Bathroom Cabinet}\label{bathroom-cabinet}}
 
 \begin{figure}[H]
-\includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct60} \caption{A caption}\label{fig:pressureFULL}
+\includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct67} \caption{A caption}\label{fig:subAct67}
+\end{figure}
+
+\hypertarget{bathroom-toiletflush}{%
+\paragraph{Bathroom Toiletflush}\label{bathroom-toiletflush}}
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct100} \caption{A caption}\label{fig:subAct100}
+\end{figure}
+
+\hypertarget{bathroom-lightswitch}{%
+\paragraph{Bathroom Lightswitch}\label{bathroom-lightswitch}}
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct101} \caption{A caption}\label{fig:subAct101}
+\end{figure}
+
+\hypertarget{bathroom-medicine-cabinet}{%
+\paragraph{Bathroom Medicine Cabinet}\label{bathroom-medicine-cabinet}}
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct57} \caption{A caption}\label{fig:subAct57}
+\end{figure}
+
+\hypertarget{study-drawer}{%
+\paragraph{Study Drawer}\label{study-drawer}}
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct82} \caption{A caption}\label{fig:subAct82}
+\end{figure}
+
+\hypertarget{bedroom-drawer}{%
+\paragraph{Bedroom Drawer}\label{bedroom-drawer}}
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct146} \caption{A caption}\label{fig:subAct146}
+\end{figure}
+
+\hypertarget{kitchen-cabinet}{%
+\paragraph{Kitchen Cabinet}\label{kitchen-cabinet}}
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct132} \caption{A caption}\label{fig:subAct132}
+\end{figure}
+
+\hypertarget{kitchen-microwave}{%
+\paragraph{Kitchen Microwave}\label{kitchen-microwave}}
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct143} \caption{A caption}\label{fig:subAct143}
+\end{figure}
+
+\hypertarget{kitchen-door}{%
+\paragraph{Kitchen Door}\label{kitchen-door}}
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct141} \caption{A caption}\label{fig:subAct141}
+\end{figure}
+
+\hypertarget{bathroom-shower-faucet}{%
+\paragraph{Bathroom Shower Faucet}\label{bathroom-shower-faucet}}
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct93} \caption{A caption}\label{fig:subAct93}
+\end{figure}
+
+\hypertarget{kitchen-drawer}{%
+\paragraph{Kitchen Drawer}\label{kitchen-drawer}}
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct125} \caption{A caption}\label{fig:subAct125}
+\end{figure}
+
+\hypertarget{kitchen-dishwasher}{%
+\paragraph{Kitchen Dishwasher}\label{kitchen-dishwasher}}
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct70} \caption{A caption}\label{fig:subAct70}
+\end{figure}
+
+\hypertarget{kitchen-refrigerator}{%
+\paragraph{Kitchen Refrigerator}\label{kitchen-refrigerator}}
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct126} \caption{A caption}\label{fig:subAct126}
+\end{figure}
+
+\hypertarget{bathroom-sink-faucet---cold}{%
+\paragraph{Bathroom Sink Faucet -
+Cold}\label{bathroom-sink-faucet---cold}}
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct88} \caption{A caption}\label{fig:subAct88}
+\end{figure}
+
+\hypertarget{bathroom-sink-faucet---hot}{%
+\paragraph{Bathroom Sink Faucet -
+Hot}\label{bathroom-sink-faucet---hot}}
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct68} \caption{A caption}\label{fig:subAct68}
+\end{figure}
+
+\hypertarget{foyer-door-subactnum-140}{%
+\paragraph{Foyer Door (SubActNum 140)}\label{foyer-door-subactnum-140}}
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct140} \caption{A caption}\label{fig:subAct140}
+\end{figure}
+
+\hypertarget{kitchen-freezer}{%
+\paragraph{Kitchen Freezer}\label{kitchen-freezer}}
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct137} \caption{A caption}\label{fig:subAct137}
+\end{figure}
+
+\hypertarget{kitchen-burner}{%
+\paragraph{Kitchen Burner}\label{kitchen-burner}}
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct106} \caption{A caption}\label{fig:subAct106}
+\end{figure}
+
+\hypertarget{kitchen-lightswitch}{%
+\paragraph{Kitchen Lightswitch}\label{kitchen-lightswitch}}
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct105} \caption{A caption}\label{fig:subAct105}
+\end{figure}
+
+\hypertarget{study-lightswitch-typo}{%
+\paragraph{Study Lightswitch (TYPO)}\label{study-lightswitch-typo}}
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct92} \caption{A caption}\label{fig:subAct92}
+\end{figure}
+
+\hypertarget{bathroom-door}{%
+\paragraph{Bathroom Door}\label{bathroom-door}}
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct130} \caption{A caption}\label{fig:subAct130}
+\end{figure}
+
+\hypertarget{foyer-lightswitch}{%
+\paragraph{Foyer Lightswitch}\label{foyer-lightswitch}}
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct104} \caption{A caption}\label{fig:subAct104}
+\end{figure}
+
+\hypertarget{kitchen-toaster}{%
+\paragraph{Kitchen Toaster}\label{kitchen-toaster}}
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct131} \caption{A caption}\label{fig:subAct131}
+\end{figure}
+
+\hypertarget{bathroom-exhaust-fan}{%
+\paragraph{Bathroom Exhaust Fan}\label{bathroom-exhaust-fan}}
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct96} \caption{A caption}\label{fig:subAct96}
+\end{figure}
+
+\hypertarget{bedroom-lightswitch}{%
+\paragraph{Bedroom Lightswitch}\label{bedroom-lightswitch}}
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct108} \caption{A caption}\label{fig:subAct108}
+\end{figure}
+
+\hypertarget{kitchen-oven}{%
+\paragraph{Kitchen Oven}\label{kitchen-oven}}
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct129} \caption{A caption}\label{fig:subAct129}
+\end{figure}
+
+\hypertarget{livingroom-dvd}{%
+\paragraph{Livingroom DVD}\label{livingroom-dvd}}
+
+DROPPED - One value only * 2
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct56} \caption{A caption}\label{fig:subAct56}
+\end{figure}
+
+\hypertarget{livingroom-lamp}{%
+\paragraph{Livingroom Lamp}\label{livingroom-lamp}}
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct76} \caption{A caption}\label{fig:subAct76}
+\end{figure}
+
+\hypertarget{bedroom-jewelrybox}{%
+\paragraph{Bedroom Jewelrybox}\label{bedroom-jewelrybox}}
+
+DROPPED
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct139} \caption{A caption}\label{fig:subAct139}
+\end{figure}
+
+\hypertarget{kitchen-washingmachine}{%
+\paragraph{Kitchen Washingmachine}\label{kitchen-washingmachine}}
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct142} \caption{A caption}\label{fig:subAct142}
+\end{figure}
+
+\hypertarget{kitchen-laundry-dryer}{%
+\paragraph{Kitchen Laundry Dryer}\label{kitchen-laundry-dryer}}
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct90} \caption{A caption}\label{fig:subAct90}
+\end{figure}
+
+\hypertarget{kitchen-garbage-disposal}{%
+\paragraph{Kitchen Garbage Disposal}\label{kitchen-garbage-disposal}}
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct98} \caption{A caption}\label{fig:subAct98}
+\end{figure}
+
+\hypertarget{livingroom-lightswitch}{%
+\paragraph{Livingroom Lightswitch}\label{livingroom-lightswitch}}
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct107} \caption{A caption}\label{fig:subAct107}
+\end{figure}
+
+\hypertarget{foyer-closet-subactnum-81}{%
+\paragraph{Foyer Closet (SubActNum
+81)}\label{foyer-closet-subactnum-81}}
+
+DROPPED
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct81} \caption{A caption}\label{fig:subAct81}
+\end{figure}
+
+\hypertarget{kitchen-cereal-subactnum-145}{%
+\paragraph{Kitchen Cereal (SubActNum
+145)}\label{kitchen-cereal-subactnum-145}}
+
+DROPPED
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct145} \caption{A caption}\label{fig:subAct145}
+\end{figure}
+
+\hypertarget{kitchen-containers-subactnum-60}{%
+\paragraph{Kitchen Containers (SubActNum
+60)}\label{kitchen-containers-subactnum-60}}
+
+DROPPED
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct60} \caption{A caption}\label{fig:subAct60}
+\end{figure}
+
+\hypertarget{kitchen-coffee-machine}{%
+\paragraph{Kitchen Coffee Machine}\label{kitchen-coffee-machine}}
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct119} \caption{A caption}\label{fig:subAct119}
+\end{figure}
+
+\hypertarget{bedroom-lamp-subactnum-64}{%
+\paragraph{Bedroom Lamp (SubActNum
+64)}\label{bedroom-lamp-subactnum-64}}
+
+DROPPED
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct64} \caption{A caption}\label{fig:subAct64}
 \end{figure}
 
 \begin{Shaded}
@@ -1735,7 +2101,7 @@ Test for in \ref{fig:fig1} we see XYZ
 
 }
 
-\caption{ADD TEXT}\label{fig:unnamed-chunk-21}
+\caption{ADD TEXT}\label{fig:unnamed-chunk-22}
 \end{figure}
 
 \begin{figure}
@@ -1778,6 +2144,93 @@ Text
 }
 \caption{While loop with If/Else condition}
 \end{algorithm}
+
+Any text\ldots{}
+
+Data analyzed with R {[}{\textbf{???}}{]}\footnote{R version 3.4.4
+  (2018-03-15), with : bibtex 0.4.2, bibtex 0.4.2, countrycode 1.1.0,
+  cowplot 0.9.3, dplyr 0.8.3, ggExtra 0.8, ggplot2 3.2.1, ggridges
+  0.5.0, ggsci 2.8, kableExtra 0.8.0, knitr 1.25, lubridate 1.7.4, readr
+  1.1.1, reticulate 1.13, scales 1.0.0, tidyr 0.8.0, tidyverse 1.2.1,
+  viridis 0.5.1.}.
+
+We can easily cite references (menu Addins / Insert citations) after
+having run the setup chunk to create the bibliography file
+{[}{\textbf{???}}{]}.
+
+Lorem Ipsum
+
+\hypertarget{references}{%
+\section*{References}\label{references}}
+\addcontentsline{toc}{section}{References}
+
+\hypertarget{refs}{}
+\leavevmode\hypertarget{ref-pressAltairHistoryPersonal1993}{}%
+1. Press L (1993) Before the Altair: The history of personal computing.
+Commun ACM 36:27--33. \url{https://doi.org/10.1145/162685.162697}
+
+\leavevmode\hypertarget{ref-countrycode}{}%
+2. Arel-Bundock V, Enevoldsen N, Yetman C (2018) Countrycode: An r
+package to convert country names and country codes. Journal of Open
+Source Software 3:848
+
+\leavevmode\hypertarget{ref-cowplot}{}%
+3. Wilke CO (2018) Cowplot: Streamlined plot theme and plot annotations
+for 'ggplot2'
+
+\leavevmode\hypertarget{ref-bibtex}{}%
+4. Francois R (2017) Bibtex: Bibtex parser
+
+\leavevmode\hypertarget{ref-dplyr}{}%
+5. Wickham H, François R, Henry L, Müller K (2019) Dplyr: A grammar of
+data manipulation
+
+\leavevmode\hypertarget{ref-ggExtra}{}%
+6. Attali D, Baker C (2018) GgExtra: Add marginal histograms to
+'ggplot2', and more 'ggplot2' enhancements
+
+\leavevmode\hypertarget{ref-tidyverse}{}%
+7. Wickham H (2017) Tidyverse: Easily install and load the 'tidyverse'
+
+\leavevmode\hypertarget{ref-ggplot2}{}%
+8. Wickham H (2016) Ggplot2: Elegant graphics for data analysis.
+Springer-Verlag New York
+
+\leavevmode\hypertarget{ref-ggridges}{}%
+9. Wilke CO (2018) Ggridges: Ridgeline plots in 'ggplot2'
+
+\leavevmode\hypertarget{ref-kableExtra}{}%
+10. Zhu H (2018) KableExtra: Construct complex table with 'kable' and
+pipe syntax
+
+\leavevmode\hypertarget{ref-knitr1}{}%
+11. Xie Y (2019) Knitr: A general-purpose package for dynamic report
+generation in r
+
+\leavevmode\hypertarget{ref-lubridate}{}%
+12. Grolemund G, Wickham H (2011) Dates and times made easy with
+lubridate. Journal of Statistical Software 40:1--25
+
+\leavevmode\hypertarget{ref-readr}{}%
+13. Wickham H, Hester J, Francois R (2017) Readr: Read rectangular text
+data
+
+\leavevmode\hypertarget{ref-tidyr}{}%
+14. Wickham H, Henry L (2018) Tidyr: Easily tidy data with 'spread()'
+and 'gather()' functions
+
+\leavevmode\hypertarget{ref-viridis}{}%
+15. Garnier S (2018) Viridis: Default color maps from 'matplotlib'
+
+\leavevmode\hypertarget{ref-reticulate}{}%
+16. Ushey K, Allaire J, Tang Y (2019) Reticulate: Interface to 'python'
+
+\leavevmode\hypertarget{ref-ggsci}{}%
+17. Xiao N (2017) Ggsci: Scientific journal and sci-fi themed color
+palettes for 'ggplot2'
+
+\leavevmode\hypertarget{ref-scales}{}%
+18. Wickham H (2018) Scales: Scale functions for visualization
 
 
 \end{document}

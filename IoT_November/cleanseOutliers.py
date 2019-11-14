@@ -5,4 +5,4 @@ for row in allMedianValues.iterrows():
 
 from datetime import datetime, timedelta
 ds.end = ds.apply(lambda x: x.start + timedelta(seconds=x.durationSec), axis=1)
-ds['durationSec'] += 1
+#ds['durationSec'] += 1 

@@ -23,6 +23,9 @@ output:
     fig_caption: yes
     keep_tex: yes
     highlight: "kate"
+bibliography: biblio.bib
+csl: computer-science-research-and-development.csl
+link-citations: yes
 fontsize: 11pt
 geometry: margin=0.79in
 header-includes:
@@ -37,27 +40,46 @@ header-includes:
  \floatplacement{figure}{H}
  \usepackage{caption, setspace}
  \captionsetup[figure]{font={stretch=1,scriptsize}}
+ \captionsetup[figure]{skip=2pt}
  \captionsetup[table]{font={stretch=1,scriptsize}}
  \captionsetup[table]{skip=2pt}
 ---
 
 ```{r message=FALSE, warning=FALSE, include=FALSE}
-library(countrycode)
-library(cowplot)
-library(dplyr)
-library(ggExtra) # because remembering ggplot theme options is beyond me
-library(ggplot2)
-library(ggridges)
-library(kableExtra)
-library(knitr)
-library(lubridate)
-library(readr)
-library(tidyr)
-library(viridis)
-library(reticulate)
+# all your necessary packages
+packages <- c("countrycode",  "cowplot",  "bibtex", "dplyr", "ggExtra", "tidyverse",
+              "ggplot2",  "ggridges", "kableExtra", "knitr", "lubridate", "readr",
+             "tidyr", "viridis", "reticulate", "ggsci", "scales", "bibtex") 
+# install if needed and loading packages
+to_install <- packages[! packages %in% installed.packages()[, "Package"]]
+if (length(to_install)) { 
+  install.packages(to_install, repos = "https://cloud.r-project.org")
+}
+invisible(lapply(packages, library, character.only = TRUE))
+# get the packages version 
+packages_versions <- function(p) {
+  paste(packageDescription(p)$Package, packageDescription(p)$Version, sep = " ")
+}
+
+# Get the packages references
+write.bib(packages, "packages.bib")
+
+# merge the zotero references and the packages references
+cat(paste("% Automatically generated", Sys.time()), "\n% DO NOT EDIT",
+    { readLines("zotero.bib") %>% 
+      paste(collapse = "\n") },
+    { readLines("packages.bib") %>% 
+      paste(collapse = "\n") },
+    file = "biblio.bib",
+    sep = "\n")
+# Some packages reference keys must be modified
+# (their key is not the package name)
+# check in packages.bib
+packages_keys <- packages %>% enframe() %>% 
+  mutate(value = case_when(value == "knitr" ~ "@knitr1",
+                           #value == "boot" ~ "@boot1",
+                           TRUE ~ paste0("@", value)))
 use_python("/anaconda3/envs/IoT_ResearchProject/bin/python", required = T)
-library(ggsci)
-library(scales)
 ```
 
 ```{python include=FALSE}
@@ -84,9 +106,9 @@ knitr::opts_chunk$set(
 
 ## Background
 
-### Humankind, Technology & Development
+### Humankind, Technology & Development 
 
-Since the inception of the first home computers in the late 1970’s (Press, 1993), modern society has become utterly dependent on and indeed, inexorably bound to digital technology. The rapid and widespread adoption of computational technology has led to the fastest rate of societal and economic development our species has ever experienced. One of the most salient manifestations of technical progress has been the widespread availability and adoption of Information and Communications Technology (ICT), including the rise of the global network of networks known as the Internet.
+Since the inception of the first home computers in the late 1970s [@pressAltairHistoryPersonal1993], modern society has become dependent on, and - indeed - inexorably bound to digital technology. The rapid and widespread adoption of computational technology has led to the fastest rate of societal and economic development our species has ever experienced. One of the most salient manifestations of progress has been the widespread availability and adoption of Information and Communications Technology (**ICT**), including the rise of the global network of networks known as the Internet.
 
 ```{r satelliteImagesAsia, echo=FALSE, fig.cap="Satellite images of South Asia by night. Left (South Asia in 1994) Right (South Asia in 2010). Images are taken from Maxim Pinkovskiy and Xavier Sala-i-Martin (2016) - Lights, Camera ... Income! Illuminating the National Accounts-Household Surveys Debate. The Quarterly Journal of Economics.", fig.align='center', out.width = '60%'}
 knit_hooks$set(crop = hook_pdfcrop)
@@ -695,6 +717,21 @@ head(df) %>% kable(format = "latex", caption = "Demo table", booktabs = T) %>%
                 font_size = 8)
 ```
 
+**Extracting the Activity, Time and Data** </br>
+If we run `a[0][0]`, we get `'Bathing,4/1/2003,20:41:35,21:32:50'`
+* A string with 4 comma-separated 'items'
+* We won't check the entire DF, rather, will rely on errors thrown back to confirm validity ('validation of the method')
+
+**Constructing the while loop** </br>
+* Create empty lists
+* Extracts the relevant elements
+* Adds (appends) the elements to the lists
+
+**Sanity Checks** 
+* We won't check the entire DF, rather, will rely on errors thrown back to confirm validity ('validation of the method')
+* Divisible by 5
+
+
 #### Algorithm 2 Part B
 Text
 \begin{algorithm}[H]
@@ -724,6 +761,9 @@ head(df) %>% kable(format = "latex", caption = "Demo table", booktabs = T) %>%
                 bootstrap_options = c("striped", "hover", "condensed"),
                 font_size = 8)
 ```
+
+len(dsS1) = 1475
+len(df) = 2772 "We have a df of 2772 subActs over time period X in the MIT Place Lab"
 
 ### Sub Activity Preprocessing - Duplicate sub activities
 
@@ -770,7 +810,8 @@ p <- p + coord_flip() + labs(title = "Plot of SubActivity Count versus SubActivi
       legend.background = element_rect(fill=alpha('white', 0.5)),
       legend.key.size = unit(5, "mm"))
 
-ggsave("images/lineChart.png", plot = last_plot(), device = png(), 
+ggsave('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/lineChart.png', 
+       plot = last_plot(), device = png(), 
        scale = 1.5, width = 8, height = 10, units = c("cm"), dpi = 300)
 ```
 
@@ -785,6 +826,11 @@ knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/
 #### Aggregated Box Plot
 
 The following figure shows XYZ
+
+* We can see many potential outliers.
+* Of particular concern Kitchen_Toaster with a duration of almost 30,000 seconds, Bathroom_toiletflush distributed up to the range of 20,000 seconds.
+
+In order to investigate this we will work through each subAct
 
 ```{r}
 p <- ggplot(df, aes(subAct, durationSec))
@@ -810,18 +856,273 @@ knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/
 ###  SubActivity Cleansing - Outlier Removal
 
 
+Based on the investigation of the strip plots + XYZ
+
+```Python
+# valueDrop.py
+ds = ds[ds.subAct != 'bedroom_jewelrybox']
+ds = ds[ds.subAct != 'foyer_closet']
+ds = ds[ds.subAct != 'kitchen_cereal']
+ds = ds[ds.subAct != 'kitchen_containers']
+ds = ds[ds.subAct != 'bedroom_lamp']
+ds = ds[ds.subAct != 'livingroom_dvd']
+```
+# Jewelry + foyer closet + cereal + containers + lamp
+%run -i valueDrop.py
+
+**Outliers as defined by how much from the mean / median / mode???**
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+check <- read_csv('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/S1SubActivities_medianValues.csv')
+check %>% kable(format = "latex", caption = "Demo table", booktabs = T) %>% 
+  kable_styling(latex_options = c("hold_position", "striped"),
+                bootstrap_options = c("striped", "hover", "condensed"),
+                font_size = 8)
+```
+
+S1SubActivities_temporalFeaturesCLEANSED.csv = 'Final' dataset
 
 
 
+#### Bathroom Cabinet
 
+```{r subAct67, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct67.png')
+```
 
-```{r pressure, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+#### Bathroom Toiletflush
+
+```{r subAct100, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct100.png')
+```
+
+#### Bathroom Lightswitch
+
+```{r subAct101, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct101.png')
+```
+
+#### Bathroom Medicine Cabinet
+
+```{r subAct57, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct57.png')
+```
+
+#### Study Drawer
+
+```{r subAct82, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct82.png')
+```
+
+#### Bedroom Drawer
+
+```{r subAct146, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct146.png')
+```
+
+#### Kitchen Cabinet
+
+```{r subAct132, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct132.png')
+```
+
+#### Kitchen Microwave
+
+```{r subAct143, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct143.png')
+```
+
+#### Kitchen Door
+
+```{r subAct141, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct141.png')
+```
+
+#### Bathroom Shower Faucet
+
+```{r subAct93, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct93.png')
+```
+
+#### Kitchen Drawer
+
+```{r subAct125, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct125.png')
+```
+
+#### Kitchen Dishwasher
+
+```{r subAct70, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct70.png')
+```
+
+#### Kitchen Refrigerator
+
+```{r subAct126, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct126.png')
+```
+
+#### Bathroom Sink Faucet - Cold
+
+```{r subAct88, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct88.png')
+```
+
+#### Bathroom Sink Faucet - Hot
+
+```{r subAct68, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct68.png')
+```
+
+#### Foyer Door (SubActNum 140)
+
+```{r subAct140, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct140.png')
+```
+
+#### Kitchen Freezer
+
+```{r subAct137, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct137.png')
+```
+
+#### Kitchen Burner
+
+```{r subAct106, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct106.png')
+```
+
+#### Kitchen Lightswitch
+
+```{r subAct105, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct105.png')
+```
+
+#### Study Lightswitch (TYPO)
+
+```{r subAct92, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct92.png')
+```
+
+#### Bathroom Door
+
+```{r subAct130, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct130.png')
+```
+
+#### Foyer Lightswitch
+
+```{r subAct104, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct104.png')
+```
+
+#### Kitchen Toaster
+
+```{r subAct131, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct131.png')
+```
+
+#### Bathroom Exhaust Fan
+
+```{r subAct96, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct96.png')
+```
+
+#### Bedroom Lightswitch
+
+```{r subAct108, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct108.png')
+```
+
+#### Kitchen Oven
+
+```{r subAct129, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct129.png')
+```
+
+#### Livingroom DVD
+
+DROPPED - One value only * 2
+
+```{r subAct56, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct56.png')
+```
+#### Livingroom Lamp
+
+```{r subAct76, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct76.png')
+```
+
+#### Bedroom Jewelrybox
+
+DROPPED
+
+```{r subAct139, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct139.png')
+```
+
+#### Kitchen Washingmachine
+
+```{r subAct142, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct142.png')
+```
+#### Kitchen Laundry Dryer
+
+```{r subAct90, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct90.png')
+```
+
+#### Kitchen Garbage Disposal
+
+```{r subAct98, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct98.png')
+```
+
+#### Livingroom Lightswitch
+
+```{r subAct107, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct107.png')
+```
+
+#### Foyer Closet (SubActNum 81)
+
+DROPPED
+
+```{r subAct81, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct81.png')
+```
+
+#### Kitchen Cereal (SubActNum 145)
+
+DROPPED
+
+```{r subAct145, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct145.png')
+```
+
+#### Kitchen Containers (SubActNum 60)
+
+DROPPED
+
+```{r subAct60, echo=FALSE, fig.cap="A caption", out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct60.png')
 ```
 
-```{r pressureFULL, echo=FALSE, fig.cap="A caption", out.width = '100%'}
-knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct60.png')
+#### Kitchen Coffee Machine
+
+```{r subAct119, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct119.png')
 ```
+
+#### Bedroom Lamp (SubActNum 64)
+
+DROPPED
+
+```{r subAct64, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct64.png')
+```
+
+
 
 ```python
 %run -i reqEnergy_containSpecialCharClean.py
@@ -868,5 +1169,15 @@ Text
 }
 \caption{While loop with If/Else condition}
 \end{algorithm} 
+
+---
+nocite: |
+  @Svenssonguideornitho2007
+  `r paste(packages_keys$value, collapse = "\n  ")`
+---
+
+# References
+
+
 
 
