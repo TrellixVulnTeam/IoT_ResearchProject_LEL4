@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.11.13)  14 NOV 2019 00:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.11.13)  14 NOV 2019 13:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -906,7 +906,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 [2]
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-satelliteImages".png, id=164, 753.0534pt x 326.4195pt>
+satelliteImages".png, id=169, 753.0534pt x 326.4195pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""satelliteImages".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
@@ -914,7 +914,7 @@ s/""satelliteImages".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
 t/IoT_November/images/""satelliteImages".png  used on input line 183.
 (pdftex.def)             Requested size: 300.06696pt x 130.0674pt.
-<"MD_Final_files/figure-latex/""globalPovertyPlot-1".pdf, id=165, 420.57124pt x
+<"MD_Final_files/figure-latex/""globalPovertyPlot-1".pdf, id=170, 420.57124pt x
  241.90375pt>
 File: "MD_Final_files/figure-latex/""globalPovertyPlot-1".pdf Graphic file (typ
 e pdf)
@@ -925,7 +925,7 @@ f  used on input line 192.
 [3 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/
 satelliteImages.png (PNG copy)> <./MD_Final_files/figure-latex/globalPovertyPlo
 t-1.pdf>]
-<"MD_Final_files/figure-latex/""internetAccessPlot-1".pdf, id=189, 247.92625pt 
+<"MD_Final_files/figure-latex/""internetAccessPlot-1".pdf, id=194, 247.92625pt 
 x 205.76875pt>
 File: "MD_Final_files/figure-latex/""internetAccessPlot-1".pdf Graphic file (ty
 pe pdf)
@@ -934,7 +934,7 @@ Package pdftex.def Info: "MD_Final_files/figure-latex/""internetAccessPlot-1".p
 df  used on input line 227.
 (pdftex.def)             Requested size: 247.92564pt x 205.76823pt.
 [4 <./MD_Final_files/figure-latex/internetAccessPlot-1.pdf>]
-<"MD_Final_files/figure-latex/""populationGrowthPlot-1".pdf, id=211, 318.18875p
+<"MD_Final_files/figure-latex/""populationGrowthPlot-1".pdf, id=216, 318.18875p
 t x 205.76875pt>
 File: "MD_Final_files/figure-latex/""populationGrowthPlot-1".pdf Graphic file (
 type pdf)
@@ -942,7 +942,7 @@ type pdf)
 Package pdftex.def Info: "MD_Final_files/figure-latex/""populationGrowthPlot-1"
 .pdf  used on input line 281.
 (pdftex.def)             Requested size: 318.18796pt x 205.76823pt.
-<"MD_Final_files/figure-latex/""globalEnergyPlot-1".pdf, id=213, 316.18124pt x 
+<"MD_Final_files/figure-latex/""globalEnergyPlot-1".pdf, id=218, 316.18124pt x 
 205.76875pt>
 File: "MD_Final_files/figure-latex/""globalEnergyPlot-1".pdf Graphic file (type
  pdf)
@@ -957,7 +957,7 @@ LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 3
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-warmingTrend".png, id=231, 1196.47pt x 625.33624pt>
+warmingTrend".png, id=236, 1196.47pt x 625.33624pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""warmingTrend".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
@@ -988,7 +988,7 @@ Package xcolor Warning: Incompatible color definition on input line 350.
 
 Package xcolor Warning: Incompatible color definition on input line 350.
 
-<"MD_Final_files/figure-latex/""sectorEnergyPlot-1".pdf, id=251, 316.18124pt x 
+<"MD_Final_files/figure-latex/""sectorEnergyPlot-1".pdf, id=256, 316.18124pt x 
 205.76875pt>
 File: "MD_Final_files/figure-latex/""sectorEnergyPlot-1".pdf Graphic file (type
  pdf)
@@ -998,7 +998,7 @@ Package pdftex.def Info: "MD_Final_files/figure-latex/""sectorEnergyPlot-1".pdf
 (pdftex.def)             Requested size: 316.18047pt x 205.76823pt.
 [7 <./MD_Final_files/figure-latex/sectorEnergyPlot-1.pdf>] [8] [9]
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-dash1234".png, id=291, 1789.68625pt x 464.73625pt>
+dash1234".png, id=296, 1789.68625pt x 464.73625pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""dash1234".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
@@ -1007,7 +1007,7 @@ Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
 t/IoT_November/images/""dash1234".png  used on input line 539.
 (pdftex.def)             Requested size: 500.09833pt x 129.86288pt.
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-dash5678".png, id=292, 1730.465pt x 452.69125pt>
+dash5678".png, id=297, 1730.465pt x 452.69125pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""dash5678".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
@@ -1018,7 +1018,7 @@ t/IoT_November/images/""dash5678".png  used on input line 548.
 [10 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
 /dash1234.png>]
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-kobusDash".png, id=299, 1347.0325pt x 503.8825pt>
+kobusDash".png, id=304, 1347.0325pt x 503.8825pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""kobusDash".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
@@ -1030,7 +1030,7 @@ t/IoT_November/images/""kobusDash".png  used on input line 590.
 /dash5678.png> </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_Nove
 mber/images/kobusDash.png>]
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-cetinResults".png, id=308, 1134.2375pt x 925.4575pt>
+cetinResults".png, id=313, 1134.2375pt x 925.4575pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""cetinResults".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
@@ -1041,7 +1041,7 @@ t/IoT_November/images/""cetinResults".png  used on input line 629.
 [12 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
 /cetinResults.png>] [13]
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-basuTree".png, id=323, 1089.06876pt x 641.39626pt>
+basuTree".png, id=328, 1089.06876pt x 641.39626pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""basuTree".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
@@ -1052,7 +1052,7 @@ t/IoT_November/images/""basuTree".png  used on input line 749.
 [14 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
 /basuTree.png>] [15]
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-oldNewParadigm".png, id=336, 309.0747pt x 146.949pt>
+oldNewParadigm".png, id=341, 309.0747pt x 146.949pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""oldNewParadigm".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
@@ -1061,7 +1061,7 @@ Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
 t/IoT_November/images/""oldNewParadigm".png  used on input line 880.
 (pdftex.def)             Requested size: 309.0928pt x 146.9576pt.
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-huangA".png, id=337, 1046.91125pt x 524.96124pt>
+huangA".png, id=342, 1046.91125pt x 524.96124pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""huangA".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
@@ -1073,7 +1073,7 @@ t/IoT_November/images/""huangA".png  used on input line 901.
 /oldNewParadigm.png> </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/Io
 T_November/images/huangA.png>]
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-huangC".png, id=347, 1288.815pt x 558.085pt>
+huangC".png, id=352, 1288.815pt x 558.085pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""huangC".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
@@ -1087,7 +1087,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 1093.
 [19]
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-s1actExcel".png, id=383, 1331.97626pt x 347.2975pt>
+s1actExcel".png, id=388, 1331.97626pt x 347.2975pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""s1actExcel".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
@@ -1108,101 +1108,149 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 Package xcolor Warning: Incompatible color definition on input line 1652.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1662.
+Package xcolor Warning: Incompatible color definition on input line 1667.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1662.
+Package xcolor Warning: Incompatible color definition on input line 1667.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1662.
+Package xcolor Warning: Incompatible color definition on input line 1667.
 
 [24]
 
-Package xcolor Warning: Incompatible color definition on input line 1662.
+Package xcolor Warning: Incompatible color definition on input line 1667.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1662.
+Package xcolor Warning: Incompatible color definition on input line 1667.
 
+<"MD_Final_files/figure-latex/""unnamed-chunk-16-1".pdf, id=477, 351.3125pt x 2
+78.03876pt>
+File: "MD_Final_files/figure-latex/""unnamed-chunk-16-1".pdf Graphic file (type
+ pdf)
+<use "MD_Final_files/figure-latex/""unnamed-chunk-16-1".pdf>
+Package pdftex.def Info: "MD_Final_files/figure-latex/""unnamed-chunk-16-1".pdf
+  used on input line 1669.
+(pdftex.def)             Requested size: 351.31699pt x 278.04231pt.
+[25]
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-lineChart".png, id=472, 3199.955pt x 2489.3pt>
+lineChart".png, id=484, 2132.96875pt x 2132.96875pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""lineChart".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""lineChart".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""lineChart".png  used on input line 1665.
-(pdftex.def)             Requested size: 500.0894pt x 389.02814pt.
-[25]
+t/IoT_November/images/""lineChart".png  used on input line 1680.
+(pdftex.def)             Requested size: 500.10861pt x 500.10861pt.
+[26 <./MD_Final_files/figure-latex/unnamed-chunk-16-1.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 1688.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1699.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1699.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1699.
+
+[27 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
+/lineChart.png>]
+
+Package xcolor Warning: Incompatible color definition on input line 1699.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1699.
+
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-subAct60".png, id=479, 767.9892pt x 127.9179pt>
+boxPlots".png, id=509, 3199.955pt x 2132.96875pt>
+File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
+es/""boxPlots".png Graphic file (type png)
+<use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
+s/""boxPlots".png>
+Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
+t/IoT_November/images/""boxPlots".png  used on input line 1702.
+(pdftex.def)             Requested size: 500.0894pt x 333.34064pt.
+<"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
+strip1".png, id=510, 1467.4825pt x 760.8425pt>
+File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
+es/""strip1".png Graphic file (type png)
+<use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
+s/""strip1".png>
+Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
+t/IoT_November/images/""strip1".png  used on input line 1709.
+(pdftex.def)             Requested size: 500.10184pt x 259.28671pt.
+[28 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
+/boxPlots.png>]
+<"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
+subAct60".png, id=519, 767.9892pt x 127.9179pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""subAct60".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""subAct60".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""subAct60".png  used on input line 1669.
+t/IoT_November/images/""subAct60".png  used on input line 1717.
 (pdftex.def)             Requested size: 500.11282pt x 83.29984pt.
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""subAct60".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""subAct60".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""subAct60".png  used on input line 1673.
+t/IoT_November/images/""subAct60".png  used on input line 1721.
 (pdftex.def)             Requested size: 500.11282pt x 83.29984pt.
 
-Package xcolor Warning: Incompatible color definition on input line 1676.
-
-[26 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
-/lineChart.png> </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_Nov
-ember/images/subAct60.png (PNG copy)>]
-
-Package xcolor Warning: Incompatible color definition on input line 1680.
+Package xcolor Warning: Incompatible color definition on input line 1724.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1680.
+Package xcolor Warning: Incompatible color definition on input line 1728.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1728.
 
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-iosMockUps".png, id=489, 437.2335pt x 285.7074pt>
+iosMockUps".png, id=521, 437.2335pt x 285.7074pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""iosMockUps".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""iosMockUps".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""iosMockUps".png  used on input line 1686.
+t/IoT_November/images/""iosMockUps".png  used on input line 1734.
 (pdftex.def)             Requested size: 400.09808pt x 261.44148pt.
-<"MD_Final_files/figure-latex/""fig1-1".pdf, id=490, 434.62375pt x 250.9375pt>
+[29 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
+/strip1.png> </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_Novemb
+er/images/subAct60.png (PNG copy)>]
+<"MD_Final_files/figure-latex/""fig1-1".pdf, id=533, 434.62375pt x 250.9375pt>
 File: "MD_Final_files/figure-latex/""fig1-1".pdf Graphic file (type pdf)
 <use "MD_Final_files/figure-latex/""fig1-1".pdf>
 Package pdftex.def Info: "MD_Final_files/figure-latex/""fig1-1".pdf  used on in
-put line 1695.
+put line 1743.
 (pdftex.def)             Requested size: 434.64256pt x 250.94835pt.
 
-Package xcolor Warning: Incompatible color definition on input line 1702.
-
-[27 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
-/iosMockUps.png> <./MD_Final_files/figure-latex/fig1-1.pdf>]
-
-Package xcolor Warning: Incompatible color definition on input line 1707.
+Package xcolor Warning: Incompatible color definition on input line 1750.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1707.
+Package xcolor Warning: Incompatible color definition on input line 1755.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1735.
-[28]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1735.
+
+Package xcolor Warning: Incompatible color definition on input line 1755.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1783.
+[30 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
+/iosMockUps.png> <./MD_Final_files/figure-latex/fig1-1.pdf>] [31]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1783.
 (./MD_Final.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1735.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1735.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1783.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1783.
 
 Package rerunfilecheck Info: File `MD_Final.out' has not changed.
-(rerunfilecheck)             Checksum: B2610EBAB83ABA378B5BB20C72667C7C;6701.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1735.
+(rerunfilecheck)             Checksum: 73452B37DC3553764F3E2C9A292AFE89;6976.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1783.
  ) 
 Here is how much of TeX's memory you used:
- 15518 strings out of 494111
- 236433 string characters out of 6172653
- 366521 words of memory out of 5000000
- 19140 multiletter control sequences out of 15000+600000
+ 15554 strings out of 494111
+ 238072 string characters out of 6172653
+ 366847 words of memory out of 5000000
+ 19163 multiletter control sequences out of 15000+600000
  64285 words of font info for 56 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  46i,15n,42p,683b,483s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1218,10 +1266,10 @@ istairgj/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri10.pfb></Users/al
 istairgj/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri12.pfb></Users/al
 istairgj/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtk10.pfb></Users/al
 istairgj/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
-Output written on MD_Final.pdf (28 pages, 3929795 bytes).
+Output written on MD_Final.pdf (31 pages, 4112973 bytes).
 PDF statistics:
- 604 PDF objects out of 1000 (max. 8388607)
- 514 compressed objects within 6 object streams
- 190 named destinations out of 1000 (max. 500000)
- 333 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 648 PDF objects out of 1000 (max. 8388607)
+ 548 compressed objects within 6 object streams
+ 203 named destinations out of 1000 (max. 500000)
+ 356 words of extra memory for PDF output out of 10000 (max. 10000000)
 

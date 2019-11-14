@@ -1655,15 +1655,63 @@ Inspection}\label{subactivity-visualisation-and-outlier-inspection}}
 \NormalTok{p <-}\StringTok{ }\NormalTok{p }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_line}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{theme_grey}\NormalTok{()}
 \NormalTok{p <-}\StringTok{ }\NormalTok{p }\OperatorTok{+}\StringTok{ }\KeywordTok{coord_flip}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \StringTok{"Plot of SubActivity Count versus SubActivity"}\NormalTok{,}
                              \DataTypeTok{x =} \StringTok{"SubActivity"}\NormalTok{,}
-                             \DataTypeTok{y =} \StringTok{"Aggregated Count"}\NormalTok{)}
-\KeywordTok{ggsave}\NormalTok{(}\StringTok{"images/lineChart.png"}\NormalTok{, }\DataTypeTok{plot =} \KeywordTok{last_plot}\NormalTok{(), }\DataTypeTok{device =} \KeywordTok{png}\NormalTok{(), }
-       \DataTypeTok{scale =} \FloatTok{1.5}\NormalTok{, }\DataTypeTok{width =} \DecValTok{18}\NormalTok{, }\DataTypeTok{height =} \DecValTok{14}\NormalTok{, }\DataTypeTok{units =} \KeywordTok{c}\NormalTok{(}\StringTok{"cm"}\NormalTok{), }\DataTypeTok{dpi =} \DecValTok{300}\NormalTok{)}
+                             \DataTypeTok{y =} \StringTok{"Aggregated Count"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{text =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size=}\DecValTok{8}\NormalTok{), }
+      \DataTypeTok{axis.title.x=}\KeywordTok{element_blank}\NormalTok{(),}
+      \DataTypeTok{legend.title =} \KeywordTok{element_blank}\NormalTok{(),}
+      \DataTypeTok{legend.position =} \KeywordTok{c}\NormalTok{(}\FloatTok{0.9}\NormalTok{,}\FloatTok{0.85}\NormalTok{),}
+      \DataTypeTok{legend.background =} \KeywordTok{element_rect}\NormalTok{(}\DataTypeTok{fill=}\KeywordTok{alpha}\NormalTok{(}\StringTok{'white'}\NormalTok{, }\FloatTok{0.5}\NormalTok{)),}
+      \DataTypeTok{legend.key.size =} \KeywordTok{unit}\NormalTok{(}\DecValTok{5}\NormalTok{, }\StringTok{"mm"}\NormalTok{))}
+\NormalTok{p}
 \end{Highlighting}
 \end{Shaded}
+
+\includegraphics{MD_Final_files/figure-latex/unnamed-chunk-16-1.pdf}
+
+ggsave(``images/lineChart.png'', plot = last\_plot(), device = png(),
+scale = 1.5, width = 12, height = 8, units = c(``cm''), dpi = 300)
+
+\hypertarget{aggregated-line-chart}{%
+\paragraph{Aggregated Line Chart}\label{aggregated-line-chart}}
+
+The following figure shows XYZ
 
 \begin{figure}[H]
 \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/lineChart} \caption{ADD TEXT}\label{fig:unnamed-chunk-17}
 \end{figure}
+
+\hypertarget{aggregated-box-plot}{%
+\paragraph{Aggregated Box Plot}\label{aggregated-box-plot}}
+
+The following figure shows XYZ
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(subAct, durationSec))}
+\NormalTok{p <-}\StringTok{ }\NormalTok{p }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_boxplot}\NormalTok{(}\DataTypeTok{fill=} \StringTok{"plum"}\NormalTok{, }\DataTypeTok{outlier.alpha =} \FloatTok{0.8}\NormalTok{) }\OperatorTok{+}\StringTok{ }\CommentTok{# aes(colour = WDWE) #, outlier.size = 1}
+\StringTok{  }\KeywordTok{coord_flip}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{theme_grey}\NormalTok{() }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \StringTok{"Box Plots"}\NormalTok{,}
+       \DataTypeTok{x =} \StringTok{"SubActivity"}\NormalTok{,}
+       \DataTypeTok{y =} \StringTok{"Duration (sec)"}\NormalTok{) }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{text =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size=}\DecValTok{8}\NormalTok{))}
+\KeywordTok{ggsave}\NormalTok{(}\StringTok{"images/boxPlots.png"}\NormalTok{, }\DataTypeTok{plot =} \KeywordTok{last_plot}\NormalTok{(), }\DataTypeTok{device =} \KeywordTok{png}\NormalTok{(), }
+       \DataTypeTok{scale =} \FloatTok{1.5}\NormalTok{, }\DataTypeTok{width =} \DecValTok{18}\NormalTok{, }\DataTypeTok{height =} \DecValTok{12}\NormalTok{, }\DataTypeTok{units =} \KeywordTok{c}\NormalTok{(}\StringTok{"cm"}\NormalTok{), }\DataTypeTok{dpi =} \DecValTok{300}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/boxPlots} \caption{ADD TEXT}\label{fig:unnamed-chunk-19}
+\end{figure}
+
+\hypertarget{strip-plots}{%
+\paragraph{Strip Plots}\label{strip-plots}}
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/strip1} \caption{ADD TEXT}\label{fig:unnamed-chunk-20}
+\end{figure}
+
+\hypertarget{subactivity-cleansing---outlier-removal}{%
+\subsubsection{SubActivity Cleansing - Outlier
+Removal}\label{subactivity-cleansing---outlier-removal}}
 
 \begin{figure}[H]
 \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct60} \caption{A caption}\label{fig:pressure}
@@ -1687,7 +1735,7 @@ Test for in \ref{fig:fig1} we see XYZ
 
 }
 
-\caption{ADD TEXT}\label{fig:unnamed-chunk-19}
+\caption{ADD TEXT}\label{fig:unnamed-chunk-21}
 \end{figure}
 
 \begin{figure}
