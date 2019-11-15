@@ -157,7 +157,7 @@ internet <- internet %>% group_by(Continent, Year) %>% summarise(Number = sum(Nu
 internet <- internet %>% filter(Year != 2017)
 ```
 
-```{r internetAccessPlot, echo=FALSE, fig.align='center', fig.cap="Internet access by total number of population, Source: The World Bank, World Development Indicators", fig.height=2.5, fig.width=4.5, message=FALSE, warning=FALSE}
+```{r internetAccessPlot, echo=FALSE, fig.align='center', fig.cap="Internet access by total number of population, Source: The World Bank, World Development Indicators", fig.height=2.75, fig.width=4, message=FALSE, warning=FALSE}
 www <- ggplot(internet, aes(x = Year, y = Number, fill = Continent))
 www <- www + geom_area(alpha=0.9 , size=.2, colour="white") + 
   scale_fill_brewer(palette = 'Set1') +
@@ -199,7 +199,7 @@ population$Population <- population$Population * 10000
 #internet <- internet %>% filter(Year != 2017)
 ```
 
-```{r populationGrowthPlot, echo=FALSE, fig.align='center', fig.cap="Human population by continent, Source: The World Bank, World Development Indicators", fig.height=2.5, fig.width=5, message=FALSE, warning=FALSE}
+```{r populationGrowthPlot, echo=FALSE, fig.align='center', fig.cap="Human population by continent, Source: The World Bank, World Development Indicators", fig.height=2.75, fig.width=5, message=FALSE, warning=FALSE}
 popu <- ggplot(population, aes(x = Year, y = Population, fill = Continent))
 popu <- popu + geom_area(alpha=0.9 , size=.2, colour="white") + 
   scale_fill_brewer(palette = 'Set1') +
@@ -237,7 +237,7 @@ energy <- energy %>% group_by(Continent, Year, Source) %>% summarise(`Consumed` 
 energy <- energy %>% group_by(Year, Source) %>% summarise(`Consumed` = sum(`Consumed`))
 ```
 
-```{r globalEnergyPlot, echo=FALSE, fig.align='center', fig.cap="ADD TEXT, Source: Our World in Data", fig.height=3, fig.width=5, message=FALSE, warning=FALSE}
+```{r globalEnergyPlot, echo=FALSE, fig.align='center', fig.cap="ADD TEXT, Source: Our World in Data", fig.height=2.75, fig.width=5, message=FALSE, warning=FALSE}
 p <- ggplot(energy, aes(x = Year, y = Consumed, fill = Source))
 p <- p + geom_area(alpha=0.9 , size=.2, colour="white") + 
   scale_fill_jco() +
@@ -250,10 +250,10 @@ p <- p + geom_area(alpha=0.9 , size=.2, colour="white") +
   theme(text = element_text(size=8), 
         axis.title.x=element_blank(),
         legend.title = element_blank(),
-        legend.position = c(0.175,0.71),
+        legend.position = c(0.155,0.70),
         legend.box = "vertical",
         legend.background = element_rect(fill=alpha('white', 0)),
-        legend.key.size = unit(4.5, "mm"))
+        legend.key.size = unit(4.25, "mm"))
 p
 ```
 
@@ -273,7 +273,7 @@ energyBySector <- gather(energyBySector, `Industry`, `Residential`, `CommercialA
                `Transport`, `Other`, key = "Source", value = "MTOE")
 ```
 
-```{r sectorEnergyPlot, echo=FALSE, fig.align='center', fig.cap="ADD TEXT", fig.height=3, fig.width=5, message=FALSE, warning=FALSE}
+```{r sectorEnergyPlot, echo=FALSE, fig.align='center', fig.cap="ADD TEXT", fig.height=2.75, fig.width=5, message=FALSE, warning=FALSE}
 p <- ggplot(energyBySector, aes(x = Year, y = MTOE, fill = Source))
 p <- p + geom_area(alpha=0.9 , size=.2, colour="white") + 
   scale_fill_npg() +
@@ -286,7 +286,7 @@ p <- p + geom_area(alpha=0.9 , size=.2, colour="white") +
   theme(text = element_text(size=8), 
         axis.title.x=element_blank(),
         legend.title = element_blank(),
-        legend.position = c(0.21,0.77),
+        legend.position = c(0.185,0.77),
         legend.box = "vertical",
         legend.background = element_rect(fill=alpha('white', 0)),
         legend.key.size = unit(4.5, "mm"))
@@ -348,24 +348,24 @@ Kavousian et al identify the need for developing an analytical method that can l
 
 Karjalainen considers the manner in which smart meter data is communicated to end users, with the principal purpose of the paper being to study what kind of electricity consumption feedback consumers understand and prefer (Karjalainen, 2011). It is noted that the most effective feedback tools for engaging households in reducing energy consumption are both computerized and interactive. In this work a series of options for feedback is gathered, for example consumption (kHh), power (W), cost ($), environmental impact (e.g., kg CO2), total for household, disaggregation by appliance, real time, hour, day, and so on. Examples of feedback options are shown in Figure **X**, below.
 
-```{r echo=FALSE, fig.cap="ADD TEXT", fig.align='center', out.width = '100%'}
+```{r dash1to4, echo=FALSE, fig.cap="Option One, message=FALSE, warning=FALSE, out.width=, Two, Three & Four of the smart meter data dashboards proposed by Karjalainen", fig.align='center', out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/dash1234.png')
 ```
 
-```{r echo=FALSE, fig.cap="ADD TEXT", fig.align='center', out.width = '100%'}
+```{r dash5to8, echo=FALSE, fig.cap="Option Five, message=FALSE, warning=FALSE, out.width=, Six, Seven & Eight of the smart meter data dashboards proposed by Karjalainen", fig.align='center', out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/dash5678.png')
 ```
 
 The results of qualitative participant interviews clearly showed that while some consumers are very interested in saving household electricity, other consumers show only a little interest (**NOTE they were asked about saving electricity, not about saving money or convenience**). When specifically asked to list what measures (if any) were typically taken at home to realize reductions in energy usage, some respondents listed numerous measures, while others just said they turn lights off in rooms that are empty. The author also found some participants were unaware of differences in stand-by versus active modes of operation for electrical appliances, resulting in practising inefficient energy saving measures in the home environment. When trialling feedback prototypes to participants, two main issues were encountered: (1) many people are not familiar with scientific units and do not understand the difference between W and kWh and (2) many people do not understand how carbon dioxide emissions are related to electricity consumption. It is perhaps surprising that the overall most popular prototype was ‘6’, below. Perhaps because unlike the other prototypes, this clearly (the most clearly) articulates cost. The concept of convenience was absent entirely from consideration.
 
-In the domain of supply and demand economics, consumer behaviour and smart appliances Kobus et al investigated if households can shift their electricity demand to times when electricity is abundantly available (Charlotte B.A. Kobus, 2015). Using a household electrical monitoring system (EMS) coupled to a smart appliance (smart washing machine), photovoltaic cells and the electricity grid, they were able to show that households can shift 10–77% of the electricity demand of their washing machine. This longitudinal study was conducted via the participation of 50 Dutch households over a period of one year. By utilizing an EMS which shows appliance status, dynamic tariff information and current status of household electricity usage, participants are able to schedule smart washing machine use in such a way that cost is minimized.
+In the domain of supply and demand economics, consumer behaviour and smart appliances Kobus et al investigated if households can shift their electricity demand to times when electricity is abundantly available [@charlotteb.a.kobusReallifeAssessmentEffect2015]. Using a household electrical monitoring system (**EMS**) coupled to a smart appliance (smart washing machine), photovoltaic cells and the electricity grid, they were able to show that households can shift 10–77% of the electricity demand of their washing machine. This longitudinal study was conducted via the participation of 50 Dutch households over a period of one year. By utilizing an EMS which shows appliance status, dynamic tariff information and current status of household electricity usage, participants are able to schedule smart washing machine use in such a way that cost is minimized.
 
 ```{r echo=FALSE, fig.cap="ADD TEXT", fig.align='center', out.width = '60%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/kobusDash.png')
 ```
-Their work is in response to two major challenges to domestic electricity supply and demand. **REMOVED: It is well observed that over electricity grids, demand shows a pattern over time, influenced by natural and social circumstances. This poses a great challenge when considering renewable energy sources like PV – people are generally not at home when local electricity is abundantly produced (for example the daylight hours of Monday till Friday)** The first being that the amount of distributed renewable electricity generation is increasing with time (for example, as more households install photovoltaic (PV) panels), and the second that electricity demand will continue to significantly increase moving into the foreseeable future. These developments pose great challenges to ‘traditional’ power systems, where supply follows demand entirely. Smart grids are proposed as a potential solution to facilitate the affordable introduction of cleaner electricity producing and consuming technologies. 
+Their work is in response to two major challenges to domestic electricity supply and demand. **REMOVED: It is well observed that over electricity grids, demand shows a pattern over time, influenced by natural and social circumstances. This poses a great challenge when considering renewable energy sources like PV – people are generally not at home when local electricity is abundantly produced (for example the daylight hours of Monday till Friday)** The first being that the amount of distributed renewable electricity generation is increasing with time (for example, as more households install photovoltaic (**PV**) panels), and the second that electricity demand will continue to significantly increase moving into the foreseeable future. These developments pose great challenges to ‘traditional’ power systems, where supply follows demand entirely. Smart grids are proposed as a potential solution to facilitate the affordable introduction of cleaner electricity producing and consuming technologies. 
 
-Cetin et al consider electricity usage of appliance, as when aggregated, this accounts for approximately 30 per cent of electricity used in the residential building sector (K.S. Cetin, 2014). This, together with small appliances, home electronics and lighting, account for more than 2/3 of total residential electricity use. Cetin et al also highlight that influencing ‘time of use’ is becoming increasingly important to control the stress on today’s electrical grid infrastructure. The authors seek to determine when refrigerators, clothes washers, clothes dryers and dishwashers are predominantly used (and thus consume energy) and what causes variation in their use. Using disaggregated energy data from 40 homes over a period of 1-year, normalized load profiles for the four target appliances were generated, as a percentage of daily electricity load.
+Cetin et al consider electricity usage of appliance, as when aggregated, this accounts for approximately 30 per cent of electricity used in the residential building sector [@k.s.cetinApplianceDailyEnergy2014]. This, together with small appliances, home electronics and lighting, account for more than 2/3 of total residential electricity use. Cetin et al also highlight that influencing ‘time of use’ is becoming increasingly important to control the stress on today’s electrical grid infrastructure. The authors seek to determine when refrigerators, clothes washers, clothes dryers and dishwashers are predominantly used (and thus consume energy) and what causes variation in their use. Using disaggregated energy data from 40 homes over a period of 1-year, normalized load profiles for the four target appliances were generated, as a percentage of daily electricity load.
 
 ```{r echo=FALSE, fig.cap="ADD TEXT", fig.align='center', out.width = '65%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/cetinResults.png')
@@ -957,27 +957,27 @@ def id_delta(events, n=1, delta_threshold=dt.timedelta(-99)):
 
 #### 
 
-```{r echo=FALSE, fig.cap="ADD TEXT", fig.align='center', out.width = '100%'}
+```{r sankey_WeekdayMorningds_1n_60s, echo=FALSE, fig.align='center', fig.cap="Sankey Diagram of Weekday Mornings, considering all one neighbour per instance within a 60 second period", out.width='100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/WeekdayMorningds_1n_60s.png')
 ```
 
-```{r echo=FALSE, fig.cap="ADD TEXT", fig.align='center', out.width = '100%'}
+```{r sankey_WeekdayAfternoonds_1n_60s, echo=FALSE, fig.align='center', fig.cap="Sankey Diagram of Weekday Afternoons, considering all one neighbour per instance within a 60 second period", out.width='100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/WeekdayAfternoonds_1n_60s.png')
 ```
 
-```{r echo=FALSE, fig.cap="ADD TEXT", fig.align='center', out.width = '100%'}
+```{r sankey_WeekdayEveningds_1n_60s, echo=FALSE, fig.align='center', fig.cap="Sankey Diagram of Weekday Evenings, considering all one neighbour per instance within a 60 second period", out.width='100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/WeekdayEveningds_1n_60s.png')
 ```
 
-```{r echo=FALSE, fig.cap="ADD TEXT", fig.align='center', out.width = '100%'}
+```{r sankey_WeekendMorningds_1n_60s, echo=FALSE, fig.align='center', fig.cap="Sankey Diagram of Weekend Mornings, considering all one neighbour per instance within a 60 second period", out.width='100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/WeekendMorningds_1n_60s.png')
 ```
 
-```{r echo=FALSE, fig.cap="ADD TEXT", fig.align='center', out.width = '100%'}
+```{r sankey_WeekendAfternoonds_1n_60s, echo=FALSE, fig.align='center', fig.cap="Sankey Diagram of Weekend Afternoons, considering all one neighbour per instance within a 60 second period", out.width='100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/WeekendAfternoonds_1n_60s.png')
 ```
 
-```{r echo=FALSE, fig.cap="ADD TEXT", fig.align='center', out.width = '100%'}
+```{r sankey_WeekendEveningds_1n_60s, echo=FALSE, fig.align='center', fig.cap="Sankey Diagram of Weekend Evenings, considering all one neighbour per instance within a 60 second period", out.width='100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/WeekendEveningds_1n_60s.png')
 ```
 
