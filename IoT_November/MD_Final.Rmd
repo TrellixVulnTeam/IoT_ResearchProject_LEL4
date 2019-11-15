@@ -31,6 +31,7 @@ geometry: margin=0.79in
 header-includes:
  \usepackage[ruled,vlined,linesnumbered]{algorithm2e}
  \SetAlFnt{\tiny}
+ \SetAlCapNameFnt{\small}
  \usepackage{booktabs}
  \usepackage{longtable}
  \usepackage{array}
@@ -46,7 +47,7 @@ header-includes:
  \captionsetup[table]{skip=2pt}
 ---
 
-```{r message=FALSE, warning=FALSE, include=FALSE}
+```{r Rpackages, message=FALSE, warning=FALSE, include=FALSE}
 # all your necessary packages
 packages <- c("countrycode",  "cowplot",  "bibtex", "dplyr", "ggExtra", "tidyverse",
               "ggplot2",  "ggridges", "kableExtra", "knitr", "lubridate", "readr",
@@ -83,7 +84,7 @@ packages_keys <- packages %>% enframe() %>%
 use_python("/anaconda3/envs/IoT_ResearchProject/bin/python", required = T)
 ```
 
-```{python include=FALSE}
+```{python PythonPackages, include=FALSE}
 import numpy as np
 import pandas as pd
 import json
@@ -94,6 +95,7 @@ PATH = '/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November'
 
 ```{r global_options, include=FALSE}
 knitr::opts_chunk$set(
+  fig.align='center',
   fig.pos = 'H',
 	echo = TRUE,
 	message = FALSE,
@@ -120,6 +122,7 @@ poverty <- read_csv('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_
 colnames(poverty)[4] = 'Number'
 poverty <- poverty %>% filter(Entity != 'World')
 ```
+
 ```{r globalPovertyPlot, echo=FALSE, fig.align='center', fig.cap="The number of people living in extreme poverty between the years of 1990 till 2015, segmented by region. Source: The World Bank", fig.height=2.5, fig.width=6, message=FALSE, warning=FALSE}
 p <- ggplot(poverty, aes(x = Year, y = Number, fill = Entity))
 p <- p + geom_area(alpha=0.9 , size=.2, colour="white") +
@@ -264,7 +267,7 @@ knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/
 ```
 It is therefore imperative moving forward as a species that all steps are be taken to mitigate the emission of greenhouse gases and abate the advance of anthropomorphic climate change. The scale of the challenge is such that technology itself will prove critical in effectively combating this existential threat to civilisation. When considering energy consumption, the industrial sector (including the non-combusted use of fuels) currently consumes around half of all global energy and feedstock fuels, with residential and commercial buildings (29%) and transport (21%) accounting for the remainder [@EnergyDemandSector]
 
-```{r message=FALSE, warning=FALSE, include=FALSE}
+```{r SectorEnergyPlotProcessing, message=FALSE, warning=FALSE, include=FALSE}
 energyBySector <- read_table2("/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/EnergySpecs/ElectricityTFCbySector.txt")
 energyBySector <- gather(energyBySector, `Industry`, `Residential`, `CommercialAndPublicServices`, 
                `Transport`, `Other`, key = "Source", value = "MTOE")
@@ -514,7 +517,6 @@ Between 80-100 reed switch sensors where installed in two single-person apartmen
 
 \pagebreak
 
-
 # Data Preprocessing & Visualisation
 
 ## Importing & Preprocessing the Activities Meta Data
@@ -529,6 +531,7 @@ head(py$ds, n=5) %>% kable(format = "latex", caption = "The S1 activities datase
                 bootstrap_options = c("striped", "hover", "condensed"),
                 font_size = 8)
 ```
+
 ## Importing & Preprocessing the Sensor Meta Data
 The dataset `S1sensors.csv` was imported into the interactive development environment. These data contains a tabulated values for Sensor ID, Room and Sensor Descriptor (e.g., light switch), with no header row present in the original dataset. After importation, the dataset has dimensionality of [3, 76], with header 0, 1 & 2 corresponding to SensorID, Room & Sensor Descriptor, respectively, as seen in Table \ref{tab:TAB_sensorData}. As all attributes are nominal, they were imported as String data types. 
 ```{python READ_sensors, include=FALSE}
@@ -542,7 +545,7 @@ head(py$dsS1Sensors, n=5) %>% kable(format = "latex", caption = "The S1 sensor m
                 bootstrap_options = c("striped", "hover", "condensed"),
                 font_size = 8)
 ```
-After importation these data were checked for duplicate values. The `Sensor ID` attribute had a 76 unique values, the `Room` attribute had only 7 unique values and the `Sensor Descriptor` attribute had 28 unique values. Examples of the degeneracy in these attributes can be seen in Table \ref{tab:TAB_sensorData}, e.g., Bathroom & Light Switch. Room[1] and SensorDescriptor[2] were stripped of whitespace, coerced to lowercase and concatenated using an underscore. The concatenated vector was then bound to the dataframe and the column names updated, resulting in \ref{tab:TAB_sensorDataProcessed}, below.
+After importation these data were checked for duplicate values. The `Sensor ID` attribute had a 76 unique values, the `Room` attribute had only 7 unique values and the `Activity` attribute had 28 unique values. Examples of the degeneracy in these attributes can be seen in Table \ref{tab:TAB_sensorData}, e.g., Bathroom & Light Switch. Room[1] and Activity[2] were stripped of whitespace, coerced to lowercase and concatenated using an underscore. The concatenated vector was then bound to the dataframe and the column names updated, resulting in \ref{tab:TAB_sensorDataProcessed}, below.
 ```{python FUNC_S1sensorsPreprocessing, include=FALSE}
 # %run -i S1sensorsPreprocessing.py
 temp1 = dsS1Sensors[1] + '_' + dsS1Sensors[2]   # Creating a new vector of concatenated column 1 & 2
@@ -566,57 +569,48 @@ head(py$dsS1Sensors) %>% kable(format = "latex", caption = "The first iteration 
 The number of unique values in `dsS1Sensors.subActNum` is checked once more and found to be n=76, indicating no degeneracy in this attribute. The number of unique values in `dsS1Sensors.concat` is found to be n=41, indicating the presence of degeneracy. This was investigated by aggregating the duplicate attributes, which are summarised in Table \ref{tab:TAB_numDupes}, below.
 ```{r TAB_numDupes, echo=FALSE, results='asis'}
 dupes <- read_csv('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/datasets/dupes.csv')
-head(dupes, n=10) %>% kable(format = "latex", caption = "The first iteration of processed S1 sensor meta data", booktabs = T) %>% 
+head(dupes, n=10) %>% kable(format = "latex", caption = "Summary of the number of degenerate values (n) for each subactivity, where applicable.", booktabs = T) %>% 
   kable_styling(latex_options = c("hold_position", "striped"),
                 bootstrap_options = c("striped", "hover", "condensed"),
                 font_size = 8)
 ```
-Referering to the work of (**REF**) it is was determined that these duplicate values are theresult of multiple sensors with extremely similar functionality. Kitchen_burner has a value of n=4, accounted for by the presense of one sensor per burner in the original work.While this level of granularity may provide an avenue for further analysis, for the purposes of this research such values serve to significantly increase the dimensionality of the overall dataset, with a low corresponding gain in information. High dimensionality can also lead to difficulties in machine learning models and challenges with data visualisation. By way of example, kitchen_cabinet has a value of n=15, indicating that for the various cabinets in the kitchen, a total of 15 sensors were fitted to monitor activity. It was determined that such values would aggregated and collapsed to a value of n=1 (with the first occurence of the degenerate subactivity thus providing the subActNum). The data set was inspected and stripped of special characters, and the sub activities requiring an input of energy (e.g., electrical, gas) were flagged with a boolean value, resulting in Table \ref{tab:TAB_sensorDataCleansedFinal}. EXPORTED as `S1Sensors_preprocessed.csv` **DUPES NOT YET DROPPED**
+Referering to the work of Rockinson (from where the data originated) it is was determined that these duplicate values are theresult of multiple sensors with extremely similar functionality [@rockinsonActivityRecognitionHome]. For example, kitchen_burner has a value of n=4, accounted for by the presense of one sensor per burner in the original work. While this level of granularity may provide an avenue for further analysis, for the purposes of this research such values serve to significantly increase the dimensionality of the overall dataset, with a low corresponding gain in information. High dimensionality can also lead to difficulties in machine learning models and challenges with data visualisation. The sensor class kitchen_cabinet has a value of n=15, indicating that for the various cabinets in the kitchen, a total of 15 sensors were fitted to monitor activity. This information will be used to inform the pre-processing methodology for the sub activity data in subsequent analysis (**section XXX**). The sensor meta data set was inspected and stripped of special characters, and the sub activities requiring an input of energy (e.g., electrical, gas) were flagged with a boolean value, resulting in Table \ref{tab:TAB_sensorDataCleansedFinal}. The pre-processed sensor data was exported as `S1Sensors_preprocessed.csv`.
 ```{r TAB_sensorDataCleansedFinal, echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
 df <- read_csv('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/S1Sensors_preprocessed.csv')
-head(df) %>% kable(format = "latex", caption = "Demo table", booktabs = T) %>% 
+head(df) %>% kable(format = "latex", caption = "Pre-processed sensor data table with addition columns for concatenated value, energy requirement and sub activity number", booktabs = T) %>% 
   kable_styling(latex_options = c("hold_position", "striped"),
                 bootstrap_options = c("striped", "hover", "condensed"),
                 font_size = 8)
 ```
+
+
+
 
 
 ## Importing & Preprocessing the Activities Data
-The activities data set `S1activities.csv` will be imported, evaluated and cleansed. The goal of the pre-processing will be to restructure the dataset into a 'tidy' format, that is, where the attributes are columns, the rows are instances, and each cell contains only one value. As the data is time-series, timestamps may be used as indexes. Figure \ref{fig:s1actExcel} shows the data set open in a spreadsheet program. Inspection of the original dataset via an interactive development environment shows that the original dataset follows a structure such that each 5 rows contains is one discrete set of data. 
-
+The `S1activities.csv` dataset contains the collated activity and subactivity data from the work of Rockinson [@rockinsonActivityRecognitionHome]. The goal of pre-processing the `S1activities.csv` will be to restructure the dataset into a 'tidy' format, where the attributes are columns, the rows are instances, and each cell contains only one value (**REF Hadley**). Figure \ref{fig:s1actExcel} shows the data set open in a spreadsheet program and Table \ref{tab:TAB_rawDSS1} shows a sample of the dataset after importation of the dataset into the interactve development environment. Inspection of the original dataset via an interactive development environment shows a structure such that each 5 rows contains is one discrete set of data, for example:
 * Row 1: Activity, Date, Start Time, End Time
 * Row 2: Sub-activity (an action that can be executed as part of performing the activity) code-values
 * Row 3: Sub-activity descriptive values
 * Row 4: Sub-activity start time
 * Row 5: Sub-activity end time
 
-```{r s1actExcel, echo=FALSE, fig.align='center', fig.cap="ADD TEXT", out.width = '100%'}
+```{r s1actExcel, echo=FALSE, fig.align='center', fig.cap="The S1 Activities dataset shown in a spreadsheet program. The structure of the data, a mixture of tab delimited and comma delimited values with unequal row lengths, presents a variety of challenges with respect to pre-processing", out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/s1actExcel.png')
 ```
-
 ```{python include=FALSE}
 dsS1 = pd.read_csv(PATH + '/datasets/S1activities_data.csv', sep = 'delimiter', header = None, engine = 'python')
 dsS1 = dsS1.loc[[5,6,7,8,9],:]
 ```
 ```{r TAB_rawDSS1, echo=FALSE, results='asis'}
-head(py$dsS1) %>% kable(format = "latex", caption = "The S1 activities dataset after importation into the interactive development environment", booktabs = T) %>% 
+head(py$dsS1) %>% kable(format = "latex", caption = "A sample of the S1 activities dataset after importation into the interactive development environment", booktabs = T) %>% 
   kable_styling(latex_options = c("hold_position", "striped"),
                 bootstrap_options = c("striped", "hover", "condensed"),
                 font_size = 8)
 ```
 
-The activities data was imported into an indexed dataframe, containing only one column, with 1475 rows, with all values comma-separated (per row). This style of import had to be used, due to the varying number of comma-separated elements in each row (as seen in Figure \ref{fig:s1actExcel}, above).
+Due to the varying number of comma-separated elements in each row (Figure \ref{fig:s1actExcel}) the `S1activities.csv` data was imported as an indexed dataframe, containing only one column, with 1475 rows. In each row, values were comma-separated. After initial imporation the dataframe was converted to a 2D array, using `np.array()`, where each row from the dataframe became an array within the 2D array. The 2D array was flattened to a 1D array using `.flatten()` and each group of observations was then chunked into a list of 5. Using the logic shown in Algorithm \ref{alg:actExtraction}, below, the activity, date and time data was extracted. During extraction in intermediate activities dataset was generated as seen below in Table \ref{tab:TAB_dsActIntermediate} followed by the tidy pre-processed activities dataset, as seen in Table \ref{tab:TAB_dsActFinal}.
 
-* Between each increment of 5 (0 - 4), the sub-arrays have different lengths Table [ref], below, contains a summary of the data structure after the operation `np.array(dsS1)` is performed. In order to continue pre-processing, the array had to be flattened from a 2D structure to a 1D structure, using `flatten()`.
-
-The function `dsS1Activities_processing.py` was run in-line to perform the required preprocessing. The dataframe was then converted to a 2D array, using `np.array()`, here, each row from the dataframe became an array within the 2D array [Step 1]. The 2D array was flattened to a 1D array using `.flatten()` [Step 2]. each group of observations was then chunked into a list of 5 [Step 3]
-
-Mention sanity checking here
-
-We used the Step 3 data structure to then extract the values for `activity`, `date`, `startTime` and `endTime`. These values were populated into a series of temporary arrays, which were then compiled into a dataset with the four attributes previously listed. We then used `Step3[i][j]` to access all the required elements and parse them into the arrays.
-
-#### Algorithm 1
-Text
 \begin{algorithm}[H]
 \DontPrintSemicolon
 \SetAlgoLined
@@ -626,14 +620,8 @@ Text
 \Output{S1 Activities Intermediate}
 \BlankLine
 \Begin{
-  array1 = [ ]\;
-  array2 = [ ]\;
-  array3 = [ ]\;
-  array4 = [ ]\;
-  array5 = [ ]\;
-  array6 = [ ]\;
-  array7 = [ ]\;
-  array8 = [ ]\;
+  array1-8 = [ ]\;
+  i = 0\;
   \While{i < length(dataframe)}{
     array1.append(dataframe[i][0])\;
     array2.append([x.strip() for x in array1[i].split(',')])\;
@@ -646,6 +634,7 @@ Text
   dfIntermediate = pandas.DataFrame(list(zip(array3, array4, array5, array6)))\;
   start = (dfIntermediate.date + " " + dfIntermediate.startTime)\;
   end = (dfIntermediate.date + " " + dfIntermediate.endTime)\;
+  i = 0\;
   \While{i < length(start)}{
     array7.append(datetime.strptime(start[i], mm/dd/yyyy HH:MM:SS))\;
     array8.append(datetime.strptime(end[i], mm/dd/yyyy HH:MM:SS))\;
@@ -656,11 +645,12 @@ Text
   \KwRet dfFinal\;
 }
 \caption{Extraction of data from S1 Activities dataset}
+\label{alg:actExtraction}
 \end{algorithm} 
 
-```{r TAB_dsIntermediate, echo=FALSE, results='asis'}
+```{r TAB_dsActIntermediate, echo=FALSE, results='asis'}
 df <- read_csv('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/S1Activities_intermediate.csv')
-head(df) %>% kable(format = "latex", caption = "Demo table", booktabs = T) %>% 
+head(df) %>% kable(format = "latex", caption = "The S1 Activities intermediate dataset", booktabs = T) %>% 
   kable_styling(latex_options = c("hold_position", "striped"),
                 bootstrap_options = c("striped", "hover", "condensed"),
                 font_size = 8)
@@ -668,18 +658,15 @@ head(df) %>% kable(format = "latex", caption = "Demo table", booktabs = T) %>%
 
 ```{r TAB_dsActFinal, echo=FALSE, results='asis'}
 df <- read_csv('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/S1Activities_ds.csv')
-head(df) %>% kable(format = "latex", caption = "Demo table", booktabs = T) %>% 
+head(df) %>% kable(format = "latex", caption = "The S1 activities tidy dataset", booktabs = T) %>% 
   kable_styling(latex_options = c("hold_position", "striped"),
                 bootstrap_options = c("striped", "hover", "condensed"),
                 font_size = 8)
 ```
 
 ## Importing, Visualizing and Preprocessing the SubActivities Data
+As mentioned above, the `S1Activities_data.csv` dataset contains the collated activity and subactivity data from the work of Rockinson [@rockinsonActivityRecognitionHome]. As with the activities data extraction, the dataframe was converted to a 2D array, using `np.array()`, where each row from the dataframe became an array within the 2D array. The 2D array was flattened to a 1D array using `.flatten()` and each group of observations was then chunked into a list of 5. The sub-activity, date and time data was then extracted from the dataset, by employing the logic shown in Algorithm \ref{alg:subActExtraction}, below.An intermediate sub-activities dataset was generated as seen below in Table \ref{tab:TAB_dsSUBIntermediate} followed by the tidy pre-processed sub-activities dataset, as seen in Table \ref{tab:TAB_dsSUBActFinal}. This dataset was exported as `S1SubActivities_ds.csv`.
 
-Importing `S1Activities_data.csv`, convert df to an array (list?), flatten to a 1D array (list?), chunk the array [5], extract subActNum, subActivity, time & date. Merge time and date into datetime elements, determine start and end time. The variable `dsS1` was used (still on stack from previous section). As previously observed (FIGURE X, TABLE Y), data was all in one column. A processing method with additional steps BLAH BLAH. 
-
-#### Algorithm 1
-Text
 \begin{algorithm}[H]
 \DontPrintSemicolon
 \SetAlgoLined
@@ -731,66 +718,68 @@ Text
   \KwRet dfIntermediate\;
   \KwRet dfFinal\;
 }
-\caption{Extraction of data from S1 Activities dataset}
+\caption{Extraction of sub-activity data from S1 activities dataset}
+\label{alg:subActExtraction}
 \end{algorithm} 
+
+\pagebreak
 
 ```{r TAB_dsSUBIntermediate, echo=FALSE, results='asis'}
 df <- read_csv('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/S1SubActivities_intermediate.csv')
-head(df) %>% kable(format = "latex", caption = "Demo table", booktabs = T) %>% 
+head(df) %>% kable(format = "latex", caption = "The S1 sub-activities intermediate dataset", booktabs = T) %>% 
   kable_styling(latex_options = c("hold_position", "striped"),
                 bootstrap_options = c("striped", "hover", "condensed"),
                 font_size = 8)
 ```
-
-
 ```{r TAB_dsSUBActFinal, echo=FALSE, results='asis'}
 df <- read_csv('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/S1SubActivities_ds.csv')
-head(df) %>% kable(format = "latex", caption = "Demo table", booktabs = T) %>% 
+head(df) %>% kable(format = "latex", caption = "The S1 sub-activities tidy dataset", booktabs = T) %>% 
   kable_styling(latex_options = c("hold_position", "striped"),
                 bootstrap_options = c("striped", "hover", "condensed"),
                 font_size = 8)
 ```
 
-**Extracting the Activity, Time and Data** </br>
-If we run `a[0][0]`, we get `'Bathing,4/1/2003,20:41:35,21:32:50'`
-* A string with 4 comma-separated 'items'
-* We won't check the entire DF, rather, will rely on errors thrown back to confirm validity ('validation of the method')
+### Amalgamating 'duplicate' sub-activity instances
 
-**Constructing the while loop** </br>
-* Create empty lists
-* Extracts the relevant elements
-* Adds (appends) the elements to the lists
+As mentioned in _Importing & Preprocessing the Sensor Meta Data_, 10 of the sensors have duplicated values, owing to the presence of more than one sensor for certain activities. The sub-activity `kitchen_refrigerator`, for example, has the numbers [91, 126, 144] associated with it, as seen in Table \ref{tab:TAB_fridge}, below. These values are subsequently replaced with [126]. As is the case with all sub-activities with degenerate numbers, the end value is chosen based on the first appearance in the S1 Sensors dataset.
 
-**Sanity Checks** 
-* We won't check the entire DF, rather, will rely on errors thrown back to confirm validity ('validation of the method')
-* Divisible by 5
+All duplicated values, as seen in Table \ref{tab:TAB_numDupes} were aggregated to have the same sensor ID / subAct number, thus giving a value of n=1 with respect to duplication.The first occurence of each degenerate subactivity provided the subAct number to be used for all subsequent instances. This dataset was exported as `S1SubActivities_preprocessed.csv`. **It was found these data has dimensionality of ___**
+
+```{r TAB_fridge, echo=FALSE, results='asis'}
+fridge <- read_csv('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/S1SubActivities_fridge.csv')
+head(fridge, n=5) %>% kable(format = "latex", caption = "Example of duplicate sub-activity number removal", booktabs = T) %>% 
+  kable_styling(latex_options = c("hold_position", "striped", "scale_down"),
+                bootstrap_options = c("striped", "hover", "condensed"),
+                font_size = 8) %>% add_header_above(c("Prior to duplicate removal" = 4, "Post to duplicate removal" = 4))
+```
 
 
-len(dsS1) = 1475
-len(df) = 2772 "We have a df of 2772 subActs over time period X in the MIT Place Lab"
+### Addition of Temporal Features to the pre-processed sub-activities data
 
-### Sub Activity Preprocessing - Duplicate sub activities
+As noted by Basu et al, human behavior with respect to home appliance interaction and activity, is typically periodic in nature [@kaustavbasuApplianceUsagePrediction2012], that is, certain activities occur at specific times of day or in a particular sequence. It is helpful therefore to add categorical temporal features to our dataset, in order to inform further analysis. Using the Python `pandas` and `datetime` packages, the following features were added to all instances of the pre-processed S1 sub activities dataset; `dayNumeric`, `DAY`, `WDWE` (where WD is weekday and WE is weekend), `HOUR` (based on 24-hour time) and `durationSec` (the delta seconds value between `start` and `end`). This dataset was exported as `S1SubActivities_preprocessedWfeatures.csv`.
 
-The following duplicate sensors were identified in section XX
-
-* From `S1Sensors_preprocessed.csv` I need to find the numbers associated with these - SUBACTNUM
-* 'Arbitrarily' choose one number to represent all of them
-* Fill them all with that one number
-
-**For dicussion later** - The kitchen cabinets have 15 sensors, say one of these cabinets just contains a blender, so there will always be a one-to-one between the cabinet opening and the blendor being used. This isn't particularly helpful to us. Also, more sensors could always be added... Better to do analysis with less (explain?)
-Note for discussion, S1Sensors_preprocessed itself should no longer be modified, EXAMPLE, going back upstream to remove the 'dupes', would perhaps cause an lack of traceability downstream later, Importing S1Sensors_preprecessed now has been done to inform, how to remove 'dupes' from the current ds
-
-```{r echo=FALSE, message=FALSE, warning=FALSE}
+```{r TAB_, echo=FALSE, message=FALSE, warning=FALSE}
 df <- read_csv('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/S1SubActivities_preprocessedWfeatures.csv', 
                col_types = cols(subActNum = col_character(), dayNumeric = col_character(), HOUR = col_character()))
 dfNoDupes = df[!duplicated(df$subActNum),]
-dfNoDupes %>% kable(format = "latex", caption = "Demo table", booktabs = T) %>% 
+dfNoDupes %>% kable(format = "latex", caption = "A sample of n=1 of each sub-activity from the pre-processed dataset. The table has been coloured to indicate futher pre-processing steps, as discussed below.", booktabs = T) %>% 
   kable_styling(latex_options = c("hold_position", "striped", "scale_down"),
                 bootstrap_options = c("striped", "hover", "condensed"),
-                font_size = 8)
+                font_size = 8) %>% 
+  column_spec(c(1,2)) %>%
+  row_spec(c(27,29,34,35,36,38), background = "#CEF5E7") %>%
+  row_spec(c(1,4,5,6,7,8,9,10,11,12,15,17,19,20,21,23,33), background = "#C6CDF2") %>%
+  row_spec(c(3,13,14,16,18,22,24,25,26,28,30,31,32,37), background = "#EACBF2") %>%
+  row_spec(2, background = "#FAF8B9")
 ```
 
+
+\pagebreak
+
 ### SubActivity Visualisation and Outlier Inspection
+
+#### Aggregated Line Chart
+The `S1SubActivities_preprocessedWfeatures.csv` dataset was analysed using data visualisation techniques. A plot of aggregated sub-activity count versus sub-activity was generated, as seen in Figure \ref{fig:FIG_aggLineChart}, below. The chart shows that there is a high level of consistency with respect to the overall aggregated count of each sub-activity, when compared to the feature `Day of the Week`. **This is helpful for subsequent analysis.**
 
 ```{r message=FALSE, warning=FALSE, include=FALSE}
 df$start <- ymd_hms(df$start)
@@ -801,82 +790,57 @@ df$subAct <- as.factor(df$subAct)
 total_counts <- df %>% group_by(DAY, subAct) %>% summarise(count=n())
 ```
 
-```{r}
+```{r FIG_aggLineChart, echo=FALSE, fig.align='center', fig.cap="ADD Text", fig.pos='H', fig.height=5, fig.width=7, message=FALSE, warning=FALSE}
 p <- ggplot(total_counts, aes(x = subAct, y = count, group = DAY, color = DAY))
 p <- p + geom_line(size=0.5) + geom_point(size = 0.5) + theme_grey()
-p <- p + coord_flip() + labs(title = "Plot of SubActivity Count versus SubActivity",
-                             x = "SubActivity",
-                             y = "Aggregated Count") +
+p <- p + coord_flip() + labs(title = "Plot of aggregated sub-activity count versus sub-activity",
+                             x = "Sub-activity",
+                             y = "Aggregated count") +
   theme(text = element_text(size=8), 
-      axis.title.x=element_blank(),
+      axis.title.y=element_blank(),
       legend.title = element_blank(),
-      legend.position = c(0.9,0.84),
+      legend.position = c(0.9,0.82),
       legend.background = element_rect(fill=alpha('white', 0.5)),
       legend.key.size = unit(5, "mm"))
-
-ggsave('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/lineChart.png', 
-       plot = last_plot(), device = png(), 
-       scale = 1.5, width = 8, height = 10, units = c("cm"), dpi = 300)
+p
 ```
 
-#### Aggregated Line Chart
+\pagebreak
 
-The following figure shows XYZ
+#### Aggregated Box Plot of Sub-Activities
 
-```{r echo=FALSE, fig.cap="ADD TEXT", out.width = '100%'}
-knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/lineChart.png')
-```
+Figure \ref{fig:FIG_allBoxPlots}, below, shows boxplots of all sub-activities versus their duration values. In this plot, we can see many outliers, which will inform further analysis. We also note that many of the outliers are extremely unrealistic. Of particular concern Kitchen_Toaster with a duration of almost 30,000 seconds, Bathroom_toiletflush distributed up to the range of 20,000 seconds. This potentially indicates challenges with the initial data collection methodology or experimental conditions / setup. Each sub-activity will be individually considered with respect to it's outliers.
 
-#### Aggregated Box Plot
-
-The following figure shows XYZ
-
-* We can see many potential outliers.
-* Of particular concern Kitchen_Toaster with a duration of almost 30,000 seconds, Bathroom_toiletflush distributed up to the range of 20,000 seconds.
-
-In order to investigate this we will work through each subAct
-
-```{r}
+```{r FIG_allBoxPlots, echo=FALSE, fig.align='center', fig.cap="ADD Text", fig.height=5, fig.pos='H', fig.width=7, message=FALSE, warning=FALSE}
 p <- ggplot(df, aes(subAct, durationSec))
-p <- p + geom_boxplot(fill= "plum", outlier.alpha = 0.8) + # aes(colour = WDWE) #, outlier.size = 1
+p <- p + geom_boxplot(outlier.alpha = 0.8, outlier.size = 0.8) + # aes(colour = WDWE) #
   coord_flip() + theme_grey() +
   labs(title = "Box Plots",
        x = "SubActivity",
-       y = "Duration (sec)") + theme(text = element_text(size=8))
-ggsave("images/boxPlots.png", plot = last_plot(), device = png(), 
-       scale = 1.5, width = 18, height = 12, units = c("cm"), dpi = 300)
+       y = "Duration (sec)") + 
+  theme(text = element_text(size=8),
+        axis.title.y=element_blank())
+p
 ```
 
-```{r echo=FALSE, fig.cap="ADD TEXT", out.width = '100%'}
-knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/boxPlots.png')
+\pagebreak
+
+### Sub-Activity Cleansing - Outlier Removal
+
+Via the inspection of each sub-activity the following set of instances were identified, as seen in Table \ref{tab:outlierSTATS}. In all cases the standard deviation (**Std**) of each aggregated instance (n=Count) is found to be greater than the mean, indicating **___**. THe bathroom medicine cabinet, for example, has a mean value of 3188 seconds (53 minutes) and a median value of 88 seconds. Accross all sub-activities seen in Table \ref{tab:outlierSTATS}, the median gives more reasonable values. Therefore the median will be used to fill the outlier values. 
+
+```python
+# cleanseOutliers.py
+for row in allMedianValues.iterrows():
+    ds.loc[(ds['subAct'] == row[1].SubAct) &
+           (ds['durationSec'] > row[1].Median + 0.5 * row[1].Std),
+           'durationSec'] = round(row[1].Median)
+
+from datetime import datetime, timedelta
+ds.end = ds.apply(lambda x: x.start + timedelta(seconds=x.durationSec), axis=1)
 ```
 
-#### Strip Plots
-
-```{r echo=FALSE, fig.cap="ADD TEXT", out.width = '60%'}
-knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/strip1.png')
-```
-
-###  SubActivity Cleansing - Outlier Removal
-
-
-Based on the investigation of the strip plots + XYZ
-
-```Python
-# valueDrop.py
-ds = ds[ds.subAct != 'bedroom_jewelrybox']
-ds = ds[ds.subAct != 'foyer_closet']
-ds = ds[ds.subAct != 'kitchen_cereal']
-ds = ds[ds.subAct != 'kitchen_containers']
-ds = ds[ds.subAct != 'bedroom_lamp']
-ds = ds[ds.subAct != 'livingroom_dvd']
-```
-# Jewelry + foyer closet + cereal + containers + lamp
-%run -i valueDrop.py
-
-**Outliers as defined by how much from the mean / median / mode???**
-
-```{r echo=FALSE, message=FALSE, warning=FALSE}
+```{r outlierSTATS, echo=FALSE, message=FALSE, warning=FALSE}
 check <- read_csv('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/S1SubActivities_medianValues.csv')
 check %>% kable(format = "latex", caption = "Demo table", booktabs = T) %>% 
   kable_styling(latex_options = c("hold_position", "striped"),
@@ -884,27 +848,188 @@ check %>% kable(format = "latex", caption = "Demo table", booktabs = T) %>%
                 font_size = 8)
 ```
 
-S1SubActivities_temporalFeaturesCLEANSED.csv = 'Final' dataset
+There were in total 4 pre-processing methodologies used.
+1. Filling outliers with median
+2. All values replaced with one value
+3. No futher processing required
+3. Sub-activity dropped
 
+### Sub-Activity Cleansing - 1) Filling outliers with median
 
+This methodology is exemplified by the bathroom cabinet. This was also applied to 
 
 #### Bathroom Cabinet
 
-```{r subAct67, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+```{r subAct67, echo=FALSE, fig.cap="A caption", fig.pos='H', out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct67.png')
 ```
 
+### SubActivity Cleansing - 2) All values replaced with one value
+
+This methodology was applied only to the bathroom toiletflush, with all values being set to 1 second.
+
 #### Bathroom Toiletflush
 
-```{r subAct100, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+```{r subAct100, echo=FALSE, fig.cap="A caption", fig.pos='H', out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct100.png')
 ```
+
+###  SubActivity Cleansing Review - 3) No futher processing required
+
+Based on the investigation of the box plots (A in all sub activity plots), heat maps of day of week versus duration in seconds mapped by count (B in all subactivity plots) and heat maps of day of week versus hour of day mapped by count (C in all subactivity plots) the following sub activities were left in their native state; `bathroom_lightswitch`, `kitchen_refrigerator`, `bathroom_sinkfaucet-cold`, `foyer_door`, `kitchen_burner`, `foyer_lightswitch`, `bathroom_exhaustfan`, `bedroom_lightswitch`, `kitchen_oven`, `livingroom_lamp`, `kitchen_washingmachine`, `kitchen_laundrydryer`, `kitchen_garbagedisposal`, `kitchen_coffeemachine`, `foyer_closet` as seen highlighted **COLOUR** in .
 
 #### Bathroom Lightswitch
 
 ```{r subAct101, echo=FALSE, fig.cap="A caption", out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct101.png')
 ```
+
+
+###  SubActivity Cleansing - 4) Sub-activity dropped
+
+Based on the investigation of the box plots (A in all sub activity plots), heat maps of day of week versus duration in seconds mapped by count (B in all subactivity plots) and heat maps of day of week versus hour of day mapped by count (C in all subactivity plots) the following sub activities were dropped from the dataset.
+
+
+#### Livingroom DVD - SubAct56
+
+This livingroom DVD sub activity, as plotted below in Figure \ref{fig:subAct56} was dropped from the dataset due to it's sparsity (only two instances in the dataset).
+
+```{r subAct56, echo=FALSE, fig.cap="Box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Livingroom DVD sub activity.", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct56.png')
+```
+
+#### Bedroom Jewelrybox - SubAct139
+
+The bedroom jewelrybox subactivity, as seen in Figure \ref{fig:subAct139} was dropped due to the extremely specific nature of this subactivity. In building a generalized model, we do not wish to have such datapoints present for our analysis.
+
+```{r subAct139, echo=FALSE, fig.cap="Box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Bedroom Jewelrybox sub activity.", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct139.png')
+```
+
+###  The Final pre-processed dataset
+
+XYZ
+
+## Data Analysis and Manipulation
+
+The primary focus of this section will be XYZ
+
+### Sequential Analysis Algorithm
+
+The following algorithm was created to evaluate the 
+
+```python
+def id_delta(events, n=1, delta_threshold=dt.timedelta(-99)):
+    nns = []
+    for row in events.itertuples():
+        start_time = getattr(row, 'start')
+        end_time = getattr(row, 'end')
+        subActNum = getattr(row, 'subActNum')
+        row_index = getattr(row, 'Index')
+        
+        nn = events[(events.start >= start_time) & 
+                    (events.index != row_index) & 
+                    ((start_time - events.start) > delta_threshold)][:n]
+        
+        ordered = pd.DataFrame()
+        ordered['Dummy'] = nn['subActNum']
+        ordered['EventA'] = subActNum
+        ordered['EventB'] = nn['subActNum']
+        ordered['EvA_Start'] = start_time
+        ordered['EvB_Start'] = nn['start']
+        ordered['EvA_End'] = end_time
+        ordered['EvB_End'] = nn['end']
+        del ordered['Dummy']
+        nns.append(ordered)
+  
+    
+    result = pd.concat(nns)
+    result['Delta'] = np.where(result['EvA_Start']==result['EvB_Start'], 
+                               0,
+                               (result['EvB_Start'] - result['EvA_Start']))
+    result['Delta'] = result['Delta'].dt.total_seconds()
+    return result
+```
+
+\pagebreak
+
+### Qualitative Sequential Analysis via Sankey Diagram
+
+#### 
+
+```{r echo=FALSE, fig.cap="ADD TEXT", fig.align='center', out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/WeekdayMorningds_1n_60s.png')
+```
+
+```{r echo=FALSE, fig.cap="ADD TEXT", fig.align='center', out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/WeekdayAfternoonds_1n_60s.png')
+```
+
+```{r echo=FALSE, fig.cap="ADD TEXT", fig.align='center', out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/WeekdayEveningds_1n_60s.png')
+```
+
+```{r echo=FALSE, fig.cap="ADD TEXT", fig.align='center', out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/WeekendMorningds_1n_60s.png')
+```
+
+```{r echo=FALSE, fig.cap="ADD TEXT", fig.align='center', out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/WeekendAfternoonds_1n_60s.png')
+```
+
+```{r echo=FALSE, fig.cap="ADD TEXT", fig.align='center', out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/WeekendEveningds_1n_60s.png')
+```
+
+\pagebreak
+
+
+
+
+
+
+Test for in \ref{fig:fig1} we see XYZ
+
+```{r echo=FALSE, fig.cap="ADD TEXT", fig.align='center', out.width = '80%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/iosMockUps.png')
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\pagebreak
+
+\pagebreak
+
+#### Bedroom Lamp - SubAct64
+
+The bedroom lamp was only present in the dataset for one instance, as seen in Figure \ref{fig:subAct64}, and thus this sub activity was dropped from the dataset.
+
+#### Kitchen Cereal - SubAct145
+
+Likewise with the bedroom jewelry box, the kitchen cereal subactivity, Figure \ref{fig:subAct145} below, was dropped due to the extremely specific nature of this activity.
+
+#### Kitchen Containers - SubAct60
+
+Likewise with the bedroom jewelry box, the kitchen containers subactivity, Figure \ref{fig:subAct60} below, was dropped due to the extremely specific nature of this activity.
+
+#### Foyer Closet - subAct81
+
+```{r subAct81, echo=FALSE, fig.cap="Box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Foyer Closet sub activity.", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct81.png')
+```
+
 
 #### Bathroom Medicine Cabinet
 
@@ -1044,25 +1169,11 @@ knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct129.png')
 ```
 
-#### Livingroom DVD
 
-DROPPED - One value only * 2
-
-```{r subAct56, echo=FALSE, fig.cap="A caption", out.width = '100%'}
-knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct56.png')
-```
 #### Livingroom Lamp
 
 ```{r subAct76, echo=FALSE, fig.cap="A caption", out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct76.png')
-```
-
-#### Bedroom Jewelrybox
-
-DROPPED
-
-```{r subAct139, echo=FALSE, fig.cap="A caption", out.width = '100%'}
-knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct139.png')
 ```
 
 #### Kitchen Washingmachine
@@ -1088,13 +1199,6 @@ knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct107.png')
 ```
 
-#### Foyer Closet (SubActNum 81)
-
-DROPPED
-
-```{r subAct81, echo=FALSE, fig.cap="A caption", out.width = '100%'}
-knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct81.png')
-```
 
 #### Kitchen Cereal (SubActNum 145)
 
@@ -1128,28 +1232,16 @@ knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/
 
 
 
-```python
-%run -i reqEnergy_containSpecialCharClean.py
-```
 
-
-Test for in \ref{fig:fig1} we see XYZ
-
-```{r echo=FALSE, fig.cap="ADD TEXT", fig.align='center', out.width = '80%'}
-knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/iosMockUps.png')
-```
 
 ```{r fig1, echo=FALSE, fig.cap="\\label{fig:fig1}This is a caption"}
 plot(pressure)
 ```
 
 Reduce image border (not working???)
-https://holtzy.github.io/Pimp-my-rmd/
+https://holtzy.github.io/Pimp-my-rmd/ 
 
-```{r, eval = FALSE}
-object <- [some kind of calculation]
-Note that this; is not valid R code
-```
+S1SubActivities_temporalFeaturesCLEANSED.csv = 'Final' dataset
 
 
 #### Algorithm 1
@@ -1173,6 +1265,14 @@ Text
 }
 \caption{While loop with If/Else condition}
 \end{algorithm} 
+
+https://daattali.com/shiny/colourInput/
+
+#### Strip Plots
+
+```{r echo=FALSE, fig.cap="ADD TEXT", out.width = '60%'}
+#knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/strip1.png')
+```
 
 ---
 nocite: |

@@ -1,6 +1,6 @@
 seen = {}
 dupes = []
-dsFridge = ds[ds['subAct'].str.contains("kitchen_refrigerator")]
+dsFridge = ds[ds['subAct'].str.contains("kitchen_refrigerator")] 
 for x in dsFridge.subActNum:
     if x not in seen:
         seen[x] = 1
