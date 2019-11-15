@@ -227,19 +227,3 @@ knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/
 ```{r subAct64, echo=FALSE, fig.cap="A caption", out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct64.png')
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

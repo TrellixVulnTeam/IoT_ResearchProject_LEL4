@@ -1,0 +1,205 @@
+---
+title: 'A Model for Energy-Saving in an IoT Smarthome accounting for End-User Convenience'
+author: 'Alistair Francis Bowman Grevis-James'
+date: 'November 2019'
+institution: 'Royal Melbourne Institute of Technology'
+division: 'Computer Sciences'
+advisor: 'Dr Hai Dong'
+abstract: |
+  `r if(knitr:::is_latex_output()) paste(readLines("00-abstract.Rmd"), collapse = '\n  ')` \pagebreak
+acknowledgements: |
+  I want to thank a few people.
+dedication: |
+  You can have a dedication here if you wish. 
+preface: |
+  This is an example of a thesis setup to use the reed thesis document class
+  (for LaTeX) and the R bookdown package, in general.
+output: 
+  pdf_document:
+    toc: true
+    toc_depth: 3
+    number_sections: true
+    fig_crop: true
+    fig_caption: yes
+    keep_tex: yes
+    highlight: "kate"
+link-citations: yes
+fontsize: 11pt
+geometry: margin=0.79in
+header-includes:
+ \usepackage[ruled,vlined,linesnumbered]{algorithm2e}
+ \SetAlFnt{\tiny}
+ \usepackage{booktabs}
+ \usepackage{longtable}
+ \usepackage{array}
+ \usepackage{multirow}
+ \usepackage[table]{xcolor}
+ \usepackage{wrapfig}
+ \usepackage{float}
+ \floatplacement{figure}{H}
+ \usepackage{caption, setspace}
+ \captionsetup[figure]{font={stretch=1,scriptsize}}
+ \captionsetup[figure]{skip=2pt}
+ \captionsetup[table]{font={stretch=1,scriptsize}}
+ \captionsetup[table]{skip=2pt}
+---
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+# all your necessary packages
+packages <- c("countrycode",  "cowplot",  "bibtex", "dplyr", "ggExtra", "tidyverse",
+              "ggplot2",  "ggridges", "kableExtra", "knitr", "lubridate", "readr",
+             "tidyr", "viridis", "reticulate", "ggsci", "scales", "bibtex") 
+# install if needed and loading packages
+to_install <- packages[! packages %in% installed.packages()[, "Package"]]
+if (length(to_install)) { 
+  install.packages(to_install, repos = "https://cloud.r-project.org")
+}
+invisible(lapply(packages, library, character.only = TRUE))
+# get the packages version 
+packages_versions <- function(p) {
+  paste(packageDescription(p)$Package, packageDescription(p)$Version, sep = " ")
+}
+
+# Get the packages references
+write.bib(packages, "packages.bib")
+
+# merge the zotero references and the packages references
+cat(paste("% Automatically generated", Sys.time()), "\n% DO NOT EDIT",
+    { readLines("zotero.bib") %>% 
+      paste(collapse = "\n") },
+    { readLines("packages.bib") %>% 
+      paste(collapse = "\n") },
+    file = "biblio.bib",
+    sep = "\n")
+# Some packages reference keys must be modified
+# (their key is not the package name)
+# check in packages.bib
+packages_keys <- packages %>% enframe() %>% 
+  mutate(value = case_when(value == "knitr" ~ "@knitr1",
+                           #value == "boot" ~ "@boot1",
+                           TRUE ~ paste0("@", value)))
+use_python("/anaconda3/envs/IoT_ResearchProject/bin/python", required = T)
+```
+
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(
+  fig.pos = 'H',
+	echo = TRUE,
+	message = FALSE,
+	warning = FALSE
+)
+```
+
+
+
+#### Algorithm 1
+Text
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetAlgoLined
+\KwResult{Intermediate dataframe with 'activity', 'date', 'startTime', 'endTime' as attributes}
+\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+\Input{S1 Activities}
+\Output{S1 Activities Intermediate}
+\BlankLine
+\Begin{
+  array1-21 = [ ]\;
+  
+  \While{i < length(dataframe)}{
+    array1.append(dataframe[i][0])\;
+    array2.append([x.strip() for x in array1[i].split(',')])\;
+    array3.append(array2[i][0])\;
+    array4.append(array2[i][1])\;
+    array5.append(array2[i][2])\;
+    array6.append(array2[i][3])\;
+    i = i + 1\;
+    }
+  \While{i < length(dataframe)}{
+    array7.append(dataframe[i][1])\;
+    array8.append([x.strip() for x in array7[i].split(',')])\;
+    array9.append(dataframe[i][2])\;
+    array10.append([x.strip() for x in array9[i].split(',')])\;
+    array11.append(dataframe[i][3])\;
+    array12.append([x.strip() for x in array11[i].split(',')])\;
+    array13.append(dataframe[i][4])\;
+    array14.append([x.strip() for x in array13[i].split(',')])\;
+    i = i + 1\;  
+    }
+  \While{i < length(dataframe)}{
+    for x in range(len(array8[i])) : array15.append(array4[i])\;
+    i = i + 1\;  
+    }
+  for sublist in array8: for item in sublist: array16.append(item)\;
+  for sublist in array10: for item in sublist: array17.append(item)\;
+  for sublist in array12: for item in sublist: array18.append(item)\;
+  for sublist in array13: for item in sublist: array19.append(item)\;
+  dfIntermediate = pandas.DataFrame(list(zip(array16, array17, array15, array18, array19)))\;
+  start = (dfIntermediate.date + " " + dfIntermediate.startTime)\;
+  end = (dfIntermediate.date + " " + dfIntermediate.endTime)\;
+  \While{i < length(start)}{
+    array20.append(datetime.strptime(start[i], mm/dd/yyyy HH:MM:SS))\;
+    array21.append(datetime.strptime(end[i], mm/dd/yyyy HH:MM:SS))\;
+    i = i + 1\;
+    }
+  dfFinal = pandas.DataFrame(list(zip(array16, array17, array20, array21)))\;
+  \KwRet dfIntermediate\;
+  \KwRet dfFinal\;
+}
+\caption{Extraction of data from S1 Activities dataset}
+\end{algorithm} 
+
+
+%algorithm usage
+\begin{algorithm}
+	\KwIn{entities; actors; player; customRules;}
+	\KwOut{new world state}
+	let \textit{entities} be all entities, excluding actors and the player\;
+	let \textit{actors} be all actors, including the player\;
+	\ForEach{actor in actors}{
+		actor.rules.Invoke()\;
+	}
+	\tcc{It's possible that one of the rules gave the player a constraint, so we'll check}
+	\If{player.constraint == null}{
+		GenerateConstraint(player)\;
+	}
+	\ForEach{rule in customRules}{
+		rule.Invoke()\;
+	}
+	\caption{Step planning}\label{alg:step_planning}
+\end{algorithm}
+
+%procedure usage
+\begin{procedure}
+	\KwIn{player}
+	\KwOut{new constraint for the player}
+		\eIf{rules.count $\geq$ 0}{
+			\ForEach{item in rules}{
+				rules.invoke(player)\;
+			}}{
+				\textbf{select random} \textit{e} \textbf{from} \textit{entities}\;
+				player.constraint = \textit{e}\;
+			}
+	\caption{GenerateConstraint(Player)}\label{proc:generate_constraint}
+\end{procedure}
+
+
+\begin{algorithm}[htp]
+  \SetAlgoLined\DontPrintSemicolon
+  \SetKwFunction{algo}{algo}\SetKwFunction{proc}{proc}
+  \SetKwProg{myalg}{Algorithm}{}{}
+  \myalg{\algo{}}{
+  \nl xxx\;
+  \nl xxx\;
+  \nl \proc{}\;
+  \nl \KwRet\;}{}
+  \setcounter{AlgoLine}{0}
+  \SetKwProg{myproc}{Procedure}{}{}
+  \myproc{\proc{}}{
+  \nl xxx\;
+  \nl \KwRet\;}
+  \caption{Algorithm with procedure}
+\end{algorithm} 
+
+
+
+

@@ -363,7 +363,9 @@ plot_grid(p1, p2,
 ds.to_csv('S1SubActivities_temporalFeaturesCLEANSED.csv', index = False)
 ds.to_csv(PATH + '/intermediate_datasets/S1SubActivities_preprocessedWfeatures.csv', index = False)
 
+https://www.zotero.org/styles?q=computer 
 
-
+https://www.r-bloggers.com/bibliography-with-knitr-cite-your-references-and-packages/
+https://tex.stackexchange.com/questions/26566/reduce-pseudocode-font-size-not-global 
 
 

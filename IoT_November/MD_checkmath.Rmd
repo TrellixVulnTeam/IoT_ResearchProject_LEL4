@@ -1,0 +1,93 @@
+---
+title: 'A Model for Energy-Saving in an IoT Smarthome accounting for End-User Convenience'
+author: 'Alistair Francis Bowman Grevis-James'
+date: 'November 2019'
+institution: 'Royal Melbourne Institute of Technology'
+division: 'Computer Sciences'
+advisor: 'Dr Hai Dong'
+abstract: |
+  `r if(knitr:::is_latex_output()) paste(readLines("00-abstract.Rmd"), collapse = '\n  ')` \pagebreak
+acknowledgements: |
+  I want to thank a few people.
+dedication: |
+  You can have a dedication here if you wish. 
+preface: |
+  This is an example of a thesis setup to use the reed thesis document class
+  (for LaTeX) and the R bookdown package, in general.
+output: 
+  pdf_document:
+    toc: true
+    toc_depth: 3
+    number_sections: true
+    fig_crop: true
+    fig_caption: yes
+    keep_tex: yes
+    highlight: "kate"
+bibliography: biblio.bib
+csl: computer-science-research-and-development.csl
+link-citations: yes
+fontsize: 11pt
+geometry: margin=0.79in
+header-includes:
+ \usepackage[ruled,vlined,linesnumbered]{algorithm2e}
+ \usepackage{booktabs}
+ \usepackage{longtable}
+ \usepackage{array}
+ \usepackage{multirow}
+ \usepackage[table]{xcolor}
+ \usepackage{wrapfig}
+ \usepackage{float}
+ \floatplacement{figure}{H}
+ \usepackage{caption, setspace}
+ \captionsetup[figure]{font={stretch=1,scriptsize}}
+ \captionsetup[figure]{skip=2pt}
+ \captionsetup[table]{font={stretch=1,scriptsize}}
+ \captionsetup[table]{skip=2pt}
+---
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+# all your necessary packages
+packages <- c("countrycode",  "cowplot",  "bibtex", "dplyr", "ggExtra", "tidyverse",
+              "ggplot2",  "ggridges", "kableExtra", "knitr", "lubridate", "readr",
+             "tidyr", "viridis", "reticulate", "ggsci", "scales", "bibtex") 
+```
+
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(
+  fig.pos = 'H',
+	echo = TRUE,
+	message = FALSE,
+	warning = FALSE
+)
+```
+
+\pagebreak
+
+
+
+#### Algorithm 1
+Text
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetAlgoLined
+\KwResult{Write here the result}
+\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+\Input{[array1]}
+\Output{Write here the output}
+\BlankLine
+\While{While condition}{
+    instructions\;
+    \eIf{condition}{
+        instructions1\;
+        instructions2\;
+    }{
+        instructions3\;
+    }
+}
+\caption{Extraction of data from S1 Activities dataset}
+\end{algorithm} 
+
+
+
+
+

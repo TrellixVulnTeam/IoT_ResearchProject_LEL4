@@ -30,6 +30,7 @@ fontsize: 11pt
 geometry: margin=0.79in
 header-includes:
  \usepackage[ruled,vlined,linesnumbered]{algorithm2e}
+ \SetAlFnt{\tiny}
  \usepackage{booktabs}
  \usepackage{longtable}
  \usepackage{array}
@@ -320,19 +321,19 @@ rm(poverty)
 
 # Preliminaries
 
-Significant growth in digital interconnectivity over the last 20 years has given the internet a pivotal role as an essential element of economic growth (Haseeb et al., 2019). Cloud computing and the IoT paradigm has enabled the association of previously disparate fields into a larger coherent framework. Namely, smart home appliances, demand-response, energy consumption, predictive analytics predictive service offering and end user convenience.  This work proposes a framework for the association of sensor data into a model which can do X Y Z. **Mention internet in general?**
+Significant growth in digital interconnectivity over the last 20 years has given the internet a pivotal role as an essential element of economic growth [@haseebDoesInformationCommunication2019]. Cloud computing and the IoT paradigm has enabled the association of previously disparate fields into a larger coherent framework. Namely, smart home appliances, demand-response, energy consumption, predictive analytics predictive service offering and end user convenience.  This work proposes a framework for the association of sensor data into a model which can do X Y Z. **Mention internet in general?**
 
 ## Related Work
 
 ### Ubiquity of the World Wide Web and Implications for Energy Consumption
 
-The International Telecommunication Union estimated about 3.2 billion people, or almost half of the world's population, would be online by the end of the 2015  (“Information and communication technologies (ICTs) | Poverty Eradication,” n.d.). The impact of ICTs (i.e., internet usage and mobile cellular subscriptions), globalization, electricity consumption, financial development, and economic growth on environmental quality has been examined (Haseeb et al., 2019). By using 1994–2014 panel data of BRICS (Brazil, Russia, India, China & South Africa) economies, empirical results demonstrate that rise in both internet usage and mobile cellular subscription (ICTs) likely mitigates CO2 emissions in BRICS economies. 
+The International Telecommunication Union estimated about 3.2 billion people, or almost half of the world's population, would be online by the end of the 2015  [@InformationCommunicationTechnologies]. The impact of ICTs (i.e., internet usage and mobile cellular subscriptions), globalization, electricity consumption, financial development, and economic growth on environmental quality has been examined [@haseebDoesInformationCommunication2019]. By using 1994–2014 panel data of BRICS (Brazil, Russia, India, China & South Africa) economies, empirical results demonstrate that rise in both internet usage and mobile cellular subscription (ICTs) likely mitigates CO2 emissions in BRICS economies. 
 
 **BRIDGE** – Greater internet availability / connectivity facilitates the deployment of smart electricity grids  
 
 ### Smart Metering
 
-A Smart meter is an electronic device that records consumption of electric energy and communicates the information to the electricity supplier for monitoring and billing. In the Unites States (for example) smart meters are a significant part of the larger Smart Grid infrastructure, and as far back as 2012, had been installed in over 25 million U.S. homes (Horne et al., 2015). Smart Meters transmit information about consumer electricity use to utility companies at vastly shorter time intervals than before and this information helps utility companies to coordinate power supply and demand, detect outages, implement time-of-use and dynamic pricing, and in other ways improve system efficiency and reliability. Additionally, these data are also becoming increasingly available, and sought-after, by end-users themselves. Indeed, the main purpose of provisioning smart metering data to end users is to encourage the use of less electricity, by better informing users of their consumption patterns (Jui-Sheng Chou, 2019). In the aggregate, these savings can significantly reduce national energy use and curb energy emissions while addressing pressing geopolitical and environmental concerns related to energy security and sustainability (Graab, 2011). 
+A Smart meter is an electronic device that records consumption of electric energy and communicates the information to the electricity supplier for monitoring and billing. In the Unites States (for example) smart meters are a significant part of the larger Smart Grid infrastructure, and as far back as 2012, had been installed in over 25 million U.S. homes [@hornePrivacyTechnologyNorms2015]. Smart Meters transmit information about consumer electricity use to utility companies at vastly shorter time intervals than before and this information helps utility companies to coordinate power supply and demand, detect outages, implement time-of-use and dynamic pricing, and in other ways improve system efficiency and reliability. Additionally, these data are also becoming increasingly available, and sought-after, by end-users themselves. Indeed, the main purpose of provisioning smart metering data to end users is to encourage the use of less electricity, by better informing users of their consumption patterns (Jui-Sheng Chou, 2019). In the aggregate, these savings can significantly reduce national energy use and curb energy emissions while addressing pressing geopolitical and environmental concerns related to energy security and sustainability (Graab, 2011). 
 
 Since the widespread deployment of smart meter technology, there has been huge interest in the capability of these technologies with respect to the technical capacity of utility companies to manage demand (through demand response programs), incorporate renewable sources of electricity into the system, and increase the overall efficiency and reliability of the system (Horne et al., 2015). **It is worth noting, however, that the scenario described above relies on end user intervention.**
 
@@ -619,19 +620,40 @@ Text
 \begin{algorithm}[H]
 \DontPrintSemicolon
 \SetAlgoLined
-\KwResult{Write here the result}
+\KwResult{Intermediate dataframe with 'activity', 'date', 'startTime', 'endTime' as attributes}
 \SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
-\Input{Write here the input}
-\Output{Write here the output}
+\Input{S1 Activities}
+\Output{S1 Activities Intermediate}
 \BlankLine
-\While{While condition}{
-    instructions\;
-    \eIf{condition}{
-        instructions1\;
-        instructions2\;
-    }{
-        instructions3\;
+\Begin{
+  array1 = [ ]\;
+  array2 = [ ]\;
+  array3 = [ ]\;
+  array4 = [ ]\;
+  array5 = [ ]\;
+  array6 = [ ]\;
+  array7 = [ ]\;
+  array8 = [ ]\;
+  \While{i < length(dataframe)}{
+    array1.append(dataframe[i][0])\;
+    array2.append([x.strip() for x in array1[i].split(',')])\;
+    array3.append(array2[i][0])\;
+    array4.append(array2[i][1])\;
+    array5.append(array2[i][2])\;
+    array6.append(array2[i][3])\;
+    i = i + 1\;
     }
+  dfIntermediate = pandas.DataFrame(list(zip(array3, array4, array5, array6)))\;
+  start = (dfIntermediate.date + " " + dfIntermediate.startTime)\;
+  end = (dfIntermediate.date + " " + dfIntermediate.endTime)\;
+  \While{i < length(start)}{
+    array7.append(datetime.strptime(start[i], mm/dd/yyyy HH:MM:SS))\;
+    array8.append(datetime.strptime(end[i], mm/dd/yyyy HH:MM:SS))\;
+    i = i + 1\;
+    }
+  dfFinal = pandas.DataFrame(list(zip(array3, array7, array8)))\;
+  \KwRet dfIntermediate\;
+  \KwRet dfFinal\;
 }
 \caption{Extraction of data from S1 Activities dataset}
 \end{algorithm} 
@@ -643,28 +665,6 @@ head(df) %>% kable(format = "latex", caption = "Demo table", booktabs = T) %>%
                 bootstrap_options = c("striped", "hover", "condensed"),
                 font_size = 8)
 ```
-
-#### Algorithm 2
-Text
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetAlgoLined
-\KwResult{Write here the result}
-\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
-\Input{Write here the input}
-\Output{Write here the output}
-\BlankLine
-\While{While condition}{
-    instructions\;
-    \eIf{condition}{
-        instructions1\;
-        instructions2\;
-    }{
-        instructions3\;
-    }
-}
-\caption{Extraction of data from S1 Activities dataset}
-\end{algorithm} 
 
 ```{r TAB_dsActFinal, echo=FALSE, results='asis'}
 df <- read_csv('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/S1Activities_ds.csv')
@@ -678,30 +678,73 @@ head(df) %>% kable(format = "latex", caption = "Demo table", booktabs = T) %>%
 
 Importing `S1Activities_data.csv`, convert df to an array (list?), flatten to a 1D array (list?), chunk the array [5], extract subActNum, subActivity, time & date. Merge time and date into datetime elements, determine start and end time. The variable `dsS1` was used (still on stack from previous section). As previously observed (FIGURE X, TABLE Y), data was all in one column. A processing method with additional steps BLAH BLAH. 
 
-#### Algorithm 2 Part A
+#### Algorithm 1
 Text
 \begin{algorithm}[H]
 \DontPrintSemicolon
 \SetAlgoLined
-\KwResult{Write here the result}
+\KwResult{Intermediate dataframe with 'activity', 'date', 'startTime', 'endTime' as attributes}
 \SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
-\Input{Write here the input}
-\Output{Write here the output}
+\Input{S1 Activities}
+\Output{S1 Activities Intermediate}
 \BlankLine
-\While{While condition}{
-    instructions\;
-    \eIf{condition}{
-        instructions1\;
-        instructions2\;
-    }{
-        instructions3\;
+\Begin{
+  array1-21 = [ ]\;
+  
+  \While{i < length(dataframe)}{
+    array1.append(dataframe[i][0])\;
+    array2.append([x.strip() for x in array1[i].split(',')])\;
+    array3.append(array2[i][0])\;
+    array4.append(array2[i][1])\;
+    array5.append(array2[i][2])\;
+    array6.append(array2[i][3])\;
+    i = i + 1\;
     }
+  \While{i < length(dataframe)}{
+    array7.append(dataframe[i][1])\;
+    array8.append([x.strip() for x in array7[i].split(',')])\;
+    array9.append(dataframe[i][2])\;
+    array10.append([x.strip() for x in array9[i].split(',')])\;
+    array11.append(dataframe[i][3])\;
+    array12.append([x.strip() for x in array11[i].split(',')])\;
+    array13.append(dataframe[i][4])\;
+    array14.append([x.strip() for x in array13[i].split(',')])\;
+    i = i + 1\;  
+    }
+  \While{i < length(dataframe)}{
+    for x in range(len(array8[i])) : array15.append(array4[i])\;
+    i = i + 1\;  
+    }
+  for sublist in array8: for item in sublist: array16.append(item)\;
+  for sublist in array10: for item in sublist: array17.append(item)\;
+  for sublist in array12: for item in sublist: array18.append(item)\;
+  for sublist in array13: for item in sublist: array19.append(item)\;
+  dfIntermediate = pandas.DataFrame(list(zip(array16, array17, array15, array18, array19)))\;
+  start = (dfIntermediate.date + " " + dfIntermediate.startTime)\;
+  end = (dfIntermediate.date + " " + dfIntermediate.endTime)\;
+  \While{i < length(start)}{
+    array20.append(datetime.strptime(start[i], mm/dd/yyyy HH:MM:SS))\;
+    array21.append(datetime.strptime(end[i], mm/dd/yyyy HH:MM:SS))\;
+    i = i + 1\;
+    }
+  dfFinal = pandas.DataFrame(list(zip(array16, array17, array20, array21)))\;
+  \KwRet dfIntermediate\;
+  \KwRet dfFinal\;
 }
 \caption{Extraction of data from S1 Activities dataset}
 \end{algorithm} 
 
 ```{r TAB_dsSUBIntermediate, echo=FALSE, results='asis'}
 df <- read_csv('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/S1SubActivities_intermediate.csv')
+head(df) %>% kable(format = "latex", caption = "Demo table", booktabs = T) %>% 
+  kable_styling(latex_options = c("hold_position", "striped"),
+                bootstrap_options = c("striped", "hover", "condensed"),
+                font_size = 8)
+```
+
+
+```{r TAB_dsSUBActFinal, echo=FALSE, results='asis'}
+df <- read_csv('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/S1SubActivities_ds.csv')
 head(df) %>% kable(format = "latex", caption = "Demo table", booktabs = T) %>% 
   kable_styling(latex_options = c("hold_position", "striped"),
                 bootstrap_options = c("striped", "hover", "condensed"),
@@ -722,36 +765,6 @@ If we run `a[0][0]`, we get `'Bathing,4/1/2003,20:41:35,21:32:50'`
 * We won't check the entire DF, rather, will rely on errors thrown back to confirm validity ('validation of the method')
 * Divisible by 5
 
-
-#### Algorithm 2 Part B
-Text
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetAlgoLined
-\KwResult{Write here the result}
-\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
-\Input{Write here the input}
-\Output{Write here the output}
-\BlankLine
-\While{While condition}{
-    instructions\;
-    \eIf{condition}{
-        instructions1\;
-        instructions2\;
-    }{
-        instructions3\;
-    }
-}
-\caption{Extraction of data from S1 Activities dataset}
-\end{algorithm} 
-
-```{r TAB_dsSUBActFinal, echo=FALSE, results='asis'}
-df <- read_csv('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/S1SubActivities_ds.csv')
-head(df) %>% kable(format = "latex", caption = "Demo table", booktabs = T) %>% 
-  kable_styling(latex_options = c("hold_position", "striped"),
-                bootstrap_options = c("striped", "hover", "condensed"),
-                font_size = 8)
-```
 
 len(dsS1) = 1475
 len(df) = 2772 "We have a df of 2772 subActs over time period X in the MIT Place Lab"

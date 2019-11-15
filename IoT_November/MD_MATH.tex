@@ -1,0 +1,231 @@
+\documentclass[11pt,]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=0.79in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={A Model for Energy-Saving in an IoT Smarthome accounting for End-User Convenience},
+            pdfauthor={Alistair Francis Bowman Grevis-James},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\providecommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{A Model for Energy-Saving in an IoT Smarthome accounting for End-User
+Convenience}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{Alistair Francis Bowman Grevis-James}
+    \preauthor{\centering\large\emph}
+  \postauthor{\par}
+      \predate{\centering\large\emph}
+  \postdate{\par}
+    \date{November 2019}
+
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage[table]{xcolor}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+
+\usepackage[ruled,vlined,linesnumbered]{algorithm2e} \SetAlFnt{\tiny} \usepackage{booktabs} \usepackage{longtable} \usepackage{array} \usepackage{multirow} \usepackage[table]{xcolor} \usepackage{wrapfig} \usepackage{float} \floatplacement{figure}{H} \usepackage{caption, setspace} \captionsetup[figure]{font={stretch=1,scriptsize}} \captionsetup[figure]{skip=2pt} \captionsetup[table]{font={stretch=1,scriptsize}} \captionsetup[table]{skip=2pt}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+The preface pretty much says it all.
+
+\par
+
+Second paragraph of abstract starts here. \pagebreak
+\end{abstract}
+
+{
+\setcounter{tocdepth}{3}
+\tableofcontents
+}
+\hypertarget{algorithm-1}{%
+\paragraph{Algorithm 1}\label{algorithm-1}}
+
+Text
+
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetAlgoLined
+\KwResult{Intermediate dataframe with 'activity', 'date', 'startTime', 'endTime' as attributes}
+\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+\Input{S1 Activities}
+\Output{S1 Activities Intermediate}
+\BlankLine
+\Begin{
+  array1-21 = [ ]\;
+  
+  \While{i < length(dataframe)}{
+    array1.append(dataframe[i][0])\;
+    array2.append([x.strip() for x in array1[i].split(',')])\;
+    array3.append(array2[i][0])\;
+    array4.append(array2[i][1])\;
+    array5.append(array2[i][2])\;
+    array6.append(array2[i][3])\;
+    i = i + 1\;
+    }
+  \While{i < length(dataframe)}{
+    array7.append(dataframe[i][1])\;
+    array8.append([x.strip() for x in array7[i].split(',')])\;
+    array9.append(dataframe[i][2])\;
+    array10.append([x.strip() for x in array9[i].split(',')])\;
+    array11.append(dataframe[i][3])\;
+    array12.append([x.strip() for x in array11[i].split(',')])\;
+    array13.append(dataframe[i][4])\;
+    array14.append([x.strip() for x in array13[i].split(',')])\;
+    i = i + 1\;  
+    }
+  \While{i < length(dataframe)}{
+    for x in range(len(array8[i])) : array15.append(array4[i])\;
+    i = i + 1\;  
+    }
+  for sublist in array8: for item in sublist: array16.append(item)\;
+  for sublist in array10: for item in sublist: array17.append(item)\;
+  for sublist in array12: for item in sublist: array18.append(item)\;
+  for sublist in array13: for item in sublist: array19.append(item)\;
+  dfIntermediate = pandas.DataFrame(list(zip(array16, array17, array15, array18, array19)))\;
+  start = (dfIntermediate.date + " " + dfIntermediate.startTime)\;
+  end = (dfIntermediate.date + " " + dfIntermediate.endTime)\;
+  \While{i < length(start)}{
+    array20.append(datetime.strptime(start[i], mm/dd/yyyy HH:MM:SS))\;
+    array21.append(datetime.strptime(end[i], mm/dd/yyyy HH:MM:SS))\;
+    i = i + 1\;
+    }
+  dfFinal = pandas.DataFrame(list(zip(array16, array17, array20, array21)))\;
+  \KwRet dfIntermediate\;
+  \KwRet dfFinal\;
+}
+\caption{Extraction of data from S1 Activities dataset}
+\end{algorithm}
+
+\%algorithm usage
+
+\begin{algorithm}
+    \KwIn{entities; actors; player; customRules;}
+    \KwOut{new world state}
+    let \textit{entities} be all entities, excluding actors and the player\;
+    let \textit{actors} be all actors, including the player\;
+    \ForEach{actor in actors}{
+        actor.rules.Invoke()\;
+    }
+    \tcc{It's possible that one of the rules gave the player a constraint, so we'll check}
+    \If{player.constraint == null}{
+        GenerateConstraint(player)\;
+    }
+    \ForEach{rule in customRules}{
+        rule.Invoke()\;
+    }
+    \caption{Step planning}\label{alg:step_planning}
+\end{algorithm}
+
+\%procedure usage
+
+\begin{procedure}
+    \KwIn{player}
+    \KwOut{new constraint for the player}
+        \eIf{rules.count $\geq$ 0}{
+            \ForEach{item in rules}{
+                rules.invoke(player)\;
+            }}{
+                \textbf{select random} \textit{e} \textbf{from} \textit{entities}\;
+                player.constraint = \textit{e}\;
+            }
+    \caption{GenerateConstraint(Player)}\label{proc:generate_constraint}
+\end{procedure}
+
+\begin{algorithm}[htp]
+  \SetAlgoLined\DontPrintSemicolon
+  \SetKwFunction{algo}{algo}\SetKwFunction{proc}{proc}
+  \SetKwProg{myalg}{Algorithm}{}{}
+  \myalg{\algo{}}{
+  \nl xxx\;
+  \nl xxx\;
+  \nl \proc{}\;
+  \nl \KwRet\;}{}
+  \setcounter{AlgoLine}{0}
+  \SetKwProg{myproc}{Procedure}{}{}
+  \myproc{\proc{}}{
+  \nl xxx\;
+  \nl \KwRet\;}
+  \caption{Algorithm with procedure}
+\end{algorithm}
+
+
+\end{document}
