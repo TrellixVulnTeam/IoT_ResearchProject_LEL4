@@ -253,7 +253,7 @@ ggsave("/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
        plot = last_plot(), device = png(), 
        scale = 1.5, width = 18, height = 3, units = c("cm"), dpi = 300)
 ```
-
+ <- 
 #### Kitchen Coffee Machine (SubActNum 119)
 
 ```{r subAct119, echo=FALSE, fig.cap="A caption", out.width = '100%'}

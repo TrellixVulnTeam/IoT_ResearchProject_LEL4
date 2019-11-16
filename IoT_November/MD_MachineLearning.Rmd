@@ -1,0 +1,102 @@
+---
+title: 'A Model for Energy-Saving in an IoT Smarthome accounting for End-User Convenience'
+author: 'Alistair Francis Bowman Grevis-James'
+date: 'November 2019'
+output: 
+  pdf_document:
+    toc: true
+    toc_depth: 3
+    number_sections: true
+    fig_crop: true
+    fig_caption: yes
+    keep_tex: yes
+    highlight: "kate"
+bibliography: biblio.bib
+csl: computer-science-research-and-development.csl
+link-citations: yes
+fontsize: 11pt
+geometry: margin=0.79in
+header-includes:
+ \usepackage[ruled,vlined,linesnumbered]{algorithm2e}
+ \SetAlFnt{\tiny}
+ \SetAlCapNameFnt{\small}
+ \usepackage{booktabs}
+ \usepackage{longtable}
+ \usepackage{array}
+ \usepackage{multirow}
+ \usepackage[table]{xcolor}
+ \usepackage{wrapfig}
+ \usepackage{float}
+ \floatplacement{figure}{H}
+ \usepackage{caption, setspace}
+ \captionsetup[figure]{font={stretch=1,scriptsize}}
+ \captionsetup[figure]{skip=2pt}
+ \captionsetup[table]{font={stretch=1,scriptsize}}
+ \captionsetup[table]{skip=2pt}
+---
+
+```{r Rpackages, message=FALSE, warning=FALSE, include=FALSE}
+# all your necessary packages
+packages <- c("countrycode",  "cowplot",  "bibtex", "dplyr", "ggExtra", "tidyverse",
+              "ggplot2",  "ggridges", "kableExtra", "knitr", "lubridate", "readr",
+             "tidyr", "viridis", "reticulate", "ggsci", "scales", "bibtex") 
+# install if needed and loading packages
+to_install <- packages[! packages %in% installed.packages()[, "Package"]]
+if (length(to_install)) { 
+  install.packages(to_install, repos = "https://cloud.r-project.org")
+}
+invisible(lapply(packages, library, character.only = TRUE))
+# get the packages version 
+packages_versions <- function(p) {
+  paste(packageDescription(p)$Package, packageDescription(p)$Version, sep = " ")
+}
+
+use_python("/anaconda3/envs/IoT_ResearchProject/bin/python", required = T)
+```
+
+```{python PythonPackages, include=FALSE}
+import numpy as np
+import pandas as pd
+import json
+from tabulate import tabulate
+from more_itertools import chunked   
+PATH = '/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November'
+```
+
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(
+  fig.align='center',
+  fig.pos = 'H',
+	echo = TRUE,
+	message = FALSE,
+	warning = FALSE
+)
+```
+
+\pagebreak
+
+# Introduction
+
+#
+
+
+Test for in \ref{fig:fig1} we see XYZ
+
+```{r echo=FALSE, fig.cap="ADD TEXT", fig.align='center', out.width = '80%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/iosMockUps.png')
+```
+
+
+
+
+
+
+
+
+
+
+# References
+
+
+
+

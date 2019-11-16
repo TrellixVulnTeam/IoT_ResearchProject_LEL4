@@ -263,18 +263,13 @@ https://www.bp.com/content/dam/bp/business-sites/en/global/corporate/pdfs/energy
 https://www.iea.org/statistics/kwes/consumption/ 
 https://www.bp.com/en/global/corporate/energy-economics/energy-outlook/demand-by-sector.html  
 https://www.iea.org/statistics/kwes/consumption/
-
 https://www.r-bloggers.com/bibliography-with-knitr-cite-your-references-and-packages/ 
 https://github.com/retorquere/zotero-better-bibtex 
-
 https://stackoverflow.com/questions/29696172/how-to-hold-figure-position-with-figure-caption-in-pdf-output-of-knitr 
-
 https://haozhu233.github.io/kableExtra/awesome_table_in_pdf.pdf 
 https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html
-
 https://stackoverflow.com/questions/11948245/markdown-to-create-pages-and-table-of-contents 
 https://tex.stackexchange.com/questions/58674/the-space-between-the-table-and-its-caption-is-very-small 
-
 https://tex.stackexchange.com/questions/452552/algorithm-pseudocode-in-markdown
 
 
@@ -367,5 +362,99 @@ https://www.zotero.org/styles?q=computer
 
 https://www.r-bloggers.com/bibliography-with-knitr-cite-your-references-and-packages/
 https://tex.stackexchange.com/questions/26566/reduce-pseudocode-font-size-not-global 
+
+
+
+**Extracting the Activity, Time and Data** </br>
+If we run `a[0][0]`, we get `'Bathing,4/1/2003,20:41:35,21:32:50'`
+* A string with 4 comma-separated 'items'
+* We won't check the entire DF, rather, will rely on errors thrown back to confirm validity ('validation of the method')
+
+**Constructing the while loop** </br>
+* Create empty lists
+* Extracts the relevant elements
+* Adds (appends) the elements to the lists
+
+**Sanity Checks** 
+* We won't check the entire DF, rather, will rely on errors thrown back to confirm validity ('validation of the method')
+* Divisible by 5
+
+
+len(dsS1) = 1475
+len(df) = 2772 "We have a df of 2772 subActs over time period X in the MIT Place Lab"
+
+### Sub Activity Preprocessing - Duplicate sub activities
+
+The following duplicate sensors were identified in section XX
+
+* From `S1Sensors_preprocessed.csv` I need to find the numbers associated with these - SUBACTNUM
+* 'Arbitrarily' choose one number to represent all of them
+* Fill them all with that one number
+
+**For dicussion later** - The kitchen cabinets have 15 sensors, say one of these cabinets just contains a blender, so there will always be a one-to-one between the cabinet opening and the blendor being used. This isn't particularly helpful to us. Also, more sensors could always be added... Better to do analysis with less (explain?)
+Note for discussion, S1Sensors_preprocessed itself should no longer be modified, EXAMPLE, going back upstream to remove the 'dupes', would perhaps cause an lack of traceability downstream later, Importing S1Sensors_preprecessed now has been done to inform, how to remove 'dupes' from the current ds
+
+
+
+```{r TAB_, echo=FALSE, message=FALSE, warning=FALSE}
+df <- read_csv('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/S1SubActivities_preprocessedWfeatures.csv', 
+               col_types = cols(subActNum = col_character(), dayNumeric = col_character(), HOUR = col_character()))
+dfNoDupes = df[!duplicated(df$subActNum),]
+dfNoDupes <- dfNoDupes %>% slice(1:19)
+dfNoDupes %>% kable(format = "latex", caption = "A sample of n=1 of each sub-activity from the pre-processed dataset. The table has been coloured to indicate futher pre-processing steps, as discussed below.", booktabs = T) %>% 
+  kable_styling(latex_options = c("hold_position", "striped", "scale_down"),
+                bootstrap_options = c("striped", "hover", "condensed"),
+                font_size = 8) %>% 
+  column_spec(c(1,2)) %>%
+  row_spec(c(1,4,5,6,7,8,9,10,11,12,15,17,19), background = "#C6CDF2") %>%
+  row_spec(c(3,13,14,16,18), background = "#EACBF2") %>%
+  row_spec(2, background = "#FAF8B9")
+```
+
+```{r TAB_cont, echo=FALSE, message=FALSE, warning=FALSE}
+df <- read_csv('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/S1SubActivities_preprocessedWfeatures.csv', 
+               col_types = cols(subActNum = col_character(), dayNumeric = col_character(), HOUR = col_character()))
+dfNoDupes <- df[!duplicated(df$subActNum),]
+dfNoDupes <- dfNoDupes %>% slice(20:38)
+dfNoDupes %>% kable(format = "latex", caption = "A sample of n=1 of each sub-activity from the pre-processed dataset. The table has been coloured to indicate futher pre-processing steps, as discussed below.", booktabs = T) %>% 
+  kable_styling(latex_options = c("hold_position", "striped", "scale_down"),
+                bootstrap_options = c("striped", "hover", "condensed"),
+                font_size = 8) %>% 
+  column_spec(c(1,2)) %>%
+  row_spec(c(27,29,34,35,36,38), background = "#CEF5E7") %>%
+  row_spec(c(20,21,23,33), background = "#C6CDF2") %>%
+  row_spec(c(22,24,25,26,28,30,31,32,37), background = "#EACBF2")
+```
+
+
+The bathroom cabinet 
+As per Table 13, above, the bathroom cabinet has an overall count of n=104 in the dataset. The boxplot (A) in row one shows several outliers, most noteably around the 20,000 second mark for Friday and the 25,000 mark for Sunday. When considering all weekday and weekend values together, the mean is found to be 460.22 seconds, while the standard deviation is found to be 3176.16. As the SD in this case greatly overwhelms the mean, and the values of 20,000 seconds and 25,000 seconds are highly unrealistic for the sub-activity in question, the outliers will be filled with the median (4.0 seconds). The resultant plots can be seen in the second row.
+
+Both these values  
+
+
+Based on the investigation of the box plots (A in all sub activity plots), heat maps of day of week versus duration in seconds mapped by count (B in all subactivity plots) and heat maps of day of week versus hour of day mapped by count (C in all subactivity plots) the following sub activities were left in their native state
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

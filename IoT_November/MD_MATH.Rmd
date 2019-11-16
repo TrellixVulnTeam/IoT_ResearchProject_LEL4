@@ -1,19 +1,8 @@
 ---
-title: 'A Model for Energy-Saving in an IoT Smarthome accounting for End-User Convenience'
-author: 'Alistair Francis Bowman Grevis-James'
-date: 'November 2019'
-institution: 'Royal Melbourne Institute of Technology'
-division: 'Computer Sciences'
-advisor: 'Dr Hai Dong'
-abstract: |
-  `r if(knitr:::is_latex_output()) paste(readLines("00-abstract.Rmd"), collapse = '\n  ')` \pagebreak
-acknowledgements: |
-  I want to thank a few people.
-dedication: |
-  You can have a dedication here if you wish. 
-preface: |
-  This is an example of a thesis setup to use the reed thesis document class
-  (for LaTeX) and the R bookdown package, in general.
+title: ''
+author: ''
+date: ''
+institution: ''
 output: 
   pdf_document:
     toc: true
@@ -46,9 +35,9 @@ header-includes:
 
 ```{r message=FALSE, warning=FALSE, include=FALSE}
 # all your necessary packages
-packages <- c("countrycode",  "cowplot",  "bibtex", "dplyr", "ggExtra", "tidyverse",
-              "ggplot2",  "ggridges", "kableExtra", "knitr", "lubridate", "readr",
-             "tidyr", "viridis", "reticulate", "ggsci", "scales", "bibtex") 
+packages <- c("bibtex", "dplyr", "ggExtra", "tidyverse",
+              "ggplot2", "kableExtra", "knitr", "lubridate", "readr",
+             "tidyr", "reticulate", "ggsci", "scales") 
 # install if needed and loading packages
 to_install <- packages[! packages %in% installed.packages()[, "Package"]]
 if (length(to_install)) { 
