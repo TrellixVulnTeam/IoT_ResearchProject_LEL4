@@ -85,26 +85,25 @@ Convenience}
   \postdate{\par}
     \date{November 2019}
 
-\usepackage[ruled,vlined,linesnumbered]{algorithm2e} \usepackage{booktabs} \usepackage{longtable} \usepackage{array} \usepackage{multirow} \usepackage[table]{xcolor} \usepackage{wrapfig} \usepackage{float}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage[table]{xcolor}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
 
-\floatplacement{figure}{H}
-
-\usepackage{caption, setspace}
-
-\captionsetup[figure]{font={stretch=1,scriptsize}}
-\captionsetup[figure]{skip=2pt}
-\captionsetup[table]{font={stretch=1,scriptsize}}
-\captionsetup[table]{skip=2pt}
+\usepackage[ruled,vlined,linesnumbered]{algorithm2e} \SetAlFnt{\tiny} \SetAlCapNameFnt{\small} \usepackage{booktabs} \usepackage{longtable} \usepackage{array} \usepackage{multirow} \usepackage[table]{xcolor} \usepackage{wrapfig} \usepackage{float} \floatplacement{figure}{H} \usepackage{caption, setspace} \captionsetup[figure]{font={stretch=1,scriptsize}} \captionsetup[figure]{skip=2pt} \captionsetup[table]{font={stretch=1,scriptsize}} \captionsetup[table]{skip=2pt}
 
 \begin{document}
 \maketitle
-\begin{abstract}
-The preface pretty much says it all.
-
-\par
-
-Second paragraph of abstract starts here. \pagebreak
-\end{abstract}
 
 {
 \setcounter{tocdepth}{3}
@@ -112,30 +111,25 @@ Second paragraph of abstract starts here. \pagebreak
 }
 \pagebreak
 
-\hypertarget{algorithm-1}{%
-\paragraph{Algorithm 1}\label{algorithm-1}}
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
 
-Text
+\hypertarget{section}{%
+\section{}\label{section}}
 
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetAlgoLined
-\KwResult{Write here the result}
-\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
-\Input{[array1]}
-\Output{Write here the output}
-\BlankLine
-\While{While condition}{
-    instructions\;
-    \eIf{condition}{
-        instructions1\;
-        instructions2\;
-    }{
-        instructions3\;
-    }
+Test for in \ref{fig:fig1} we see XYZ
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/MLtest} 
+
 }
-\caption{Extraction of data from S1 Activities dataset}
-\end{algorithm}
+
+\caption{ADD TEXT}\label{fig:unnamed-chunk-1}
+\end{figure}
+
+\hypertarget{references}{%
+\section{References}\label{references}}
 
 
 \end{document}

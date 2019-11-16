@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.11.13)  15 NOV 2019 00:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.11.13)  16 NOV 2019 23:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**MD_checkmath.tex
-(./MD_checkmath.tex
+**MD_MachineLearning.tex
+(./MD_MachineLearning.tex
 LaTeX2e <2019-10-01> patch level 1
 (/Users/alistairgj/Library/TinyTeX/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2019/08/27 v1.4j Standard LaTeX document class
@@ -733,9 +733,8 @@ Package caption Info: threeparttable package is loaded.
 Package caption Info: wrapfig package is loaded.
 ) (/Users/alistairgj/Library/TinyTeX/texmf-dist/tex/latex/setspace/setspace.sty
 Package: setspace 2011/12/19 v6.7a set line spacing
-)
-No file MD_checkmath.aux.
-\openout1 = `MD_checkmath.aux'.
+) (./MD_MachineLearning.aux)
+\openout1 = `MD_MachineLearning.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 105.
 LaTeX Font Info:    ... okay on input line 105.
@@ -815,8 +814,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 105.
 LaTeX Info: Redefining \pageref on input line 105.
 LaTeX Info: Redefining \nameref on input line 105.
+(./MD_MachineLearning.out) (./MD_MachineLearning.out)
 \@outlinefile=\write3
-\openout3 = `MD_checkmath.out'.
+\openout3 = `MD_MachineLearning.out'.
 
 
 (/Users/alistairgj/Library/TinyTeX/texmf-dist/tex/latex/oberdiek/epstopdf-base.
@@ -839,30 +839,63 @@ e
 ))
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
+(./MD_MachineLearning.toc)
+\tf@toc=\write4
+\openout4 = `MD_MachineLearning.toc'.
+
 [1
 
 {/Users/alistairgj/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 }]
-\tf@toc=\write4
-\openout4 = `MD_checkmath.toc'.
 
-[2]
+LaTeX Warning: Reference `fig:fig1' on page 2 undefined on input line 120.
 
-! LaTeX Error: Not in outer par mode.
+<"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
+MLtest".png, id=30, 3199.955pt x 799.98875pt>
+File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
+es/""MLtest".png Graphic file (type png)
+<use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
+s/""MLtest".png>
+Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
+t/IoT_November/images/""MLtest".png  used on input line 124.
+(pdftex.def)             Requested size: 500.0894pt x 125.02234pt.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.135 \begin{algorithm}[htp]
-                             
+Package caption Warning: Unused \captionsetup[table] on input line 103.
+See the caption package documentation for explanation.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 135.
+[2 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/
+MLtest.png>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 135.
+(./MD_MachineLearning.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 135.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 135.
+Package rerunfilecheck Info: File `MD_MachineLearning.out' has not changed.
+(rerunfilecheck)             Checksum: BC6DE67C01FF7E9ACDEE4E2FEE966EA2;231.
+
+LaTeX Warning: There were undefined references.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 135.
+ ) 
 Here is how much of TeX's memory you used:
- 14427 strings out of 494111
- 210680 string characters out of 6172653
+ 14460 strings out of 494111
+ 211504 string characters out of 6172653
  295524 words of memory out of 5000000
- 18310 multiletter control sequences out of 15000+600000
- 33058 words of font info for 26 fonts, out of 8000000 for 9000
+ 18326 multiletter control sequences out of 15000+600000
+ 30065 words of font info for 25 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 46i,8n,42p,719b,429s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 46i,6n,42p,767b,372s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/Users/alistairgj/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}</
+Users/alistairgj/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></
+Users/alistairgj/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></
+Users/alistairgj/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr10.pfb></U
+sers/alistairgj/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr17.pfb></Us
+ers/alistairgj/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr8.pfb></User
+s/alistairgj/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri12.pfb>
+Output written on MD_MachineLearning.pdf (2 pages, 287596 bytes).
+PDF statistics:
+ 68 PDF objects out of 1000 (max. 8388607)
+ 55 compressed objects within 1 object stream
+ 11 named destinations out of 1000 (max. 500000)
+ 30 words of extra memory for PDF output out of 10000 (max. 10000000)
 
-!  ==> Fatal error occurred, no output PDF file produced!

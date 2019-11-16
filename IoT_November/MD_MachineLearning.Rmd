@@ -82,8 +82,8 @@ knitr::opts_chunk$set(
 
 Test for in \ref{fig:fig1} we see XYZ
 
-```{r echo=FALSE, fig.cap="ADD TEXT", fig.align='center', out.width = '80%'}
-knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/iosMockUps.png')
+```{r echo=FALSE, fig.cap="ADD TEXT", fig.align='center', out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/bathroom_exhaustfan_energyOnly.png')
 ```
 
 

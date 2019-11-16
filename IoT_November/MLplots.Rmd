@@ -25,6 +25,216 @@ dsPRE <- read_csv('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_No
 http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf
 
 ```{r}
+library(readr)
+files <- read_csv('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/allFeatures/files.csv', 
+    col_names = FALSE)
+```
+
+```{r}
+best_feats <- dplyr::filter(files, grepl("best_feats", X1))
+dt <- dplyr::filter(files, grepl("_dt", X1))
+roc <- dplyr::filter(files, grepl("_roc", X1))
+report <- dplyr::filter(files, grepl("_rep", X1))
+confusion <- dplyr::filter(files, grepl("confusion", X1))
+```
+
+```{r message=FALSE, warning=FALSE}
+featPlots <- list()
+for(i in 1:nrow(best_feats)) {
+  filePath <- paste("/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/allFeatures/", best_feats[[i,1]], sep = "")
+  df <- read_csv(filePath)
+  f <- ggplot(df, aes(reorder(feature, score), score)) + geom_bar(stat="identity")
+  f <- f + coord_flip() + theme_gray()
+  f <- f + labs(x = "Feature", y = "Importance") + 
+    theme(text = element_text(size=8), 
+        legend.title = element_blank(),
+        axis.title.y=element_blank(),
+        legend.position = c(0.9,0.12),
+        legend.background = element_rect(fill=alpha('white', 0.5)),
+        legend.key.size = unit(5, "mm"))
+  list(i = i)
+  featPlots[[i]] <- f
+}
+```
+
+```{r}
+#featPlots[[19]]
+```
+
+```{r message=FALSE, warning=FALSE}
+dtPlots <- list()
+for(i in 1:nrow(dt)) {
+  filePath <- paste("/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/allFeatures/", dt[[i,1]], sep = "")
+  df <- read_csv(filePath)
+  d <- ggplot(df, aes(max_depth, test_score, group = criterion, color = criterion))
+  d <- d + geom_line(size=0.5) + geom_point(size = 0.5) + scale_colour_startrek() + theme_grey()
+  d <- d + labs(x = "Maximum Depth", y = "Mean CV Score") +
+  theme(text = element_text(size=8), 
+        legend.title = element_blank(),
+        legend.position = c(0.5,0.125),
+        legend.background = element_rect(fill=alpha('white', 0.0)),
+        legend.key.size = unit(2.5, "mm"))
+  list(i = i)
+  dtPlots[[i]] <- d
+}
+#dtPlots[[19]]
+```
+
+```{r message=FALSE, warning=FALSE}
+rocPlots <- list()
+for(i in 1:nrow(roc)) {
+  filePath <- paste("/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/allFeatures/", roc[[i,1]], sep = "")
+  df <- read_csv(filePath)
+  r <- ggplot(df, aes(fpr, tpr))
+  r <- r + geom_line(size=0.5, colour="dodgerblue2") + geom_point(size = 0.5, colour="dodgerblue2") + theme_grey()
+  r <- r + labs(x = "False Positive Rate (FPR)", y = "True Positive Rate (TPR)") + 
+    scale_y_continuous(limits=c(0,1), expand = c(0, 0.01)) +
+    scale_x_continuous(limits=c(0,1), expand = c(0, 0.01)) +
+    theme(text = element_text(size=8))
+  r <- r + geom_segment(aes(x = 0, y = 0, xend = 1, yend = 1))
+  list(i = i)
+  rocPlots[[i]] <- r
+}
+```
+
+```{r}
+rocPlots[[19]]
+```
+
+```{r}
+nameVector <- gsub("_roc.csv", "_allFeatures.png", roc$X1)
+```
+
+```{r fig.width=10, fig.height=2.75}
+for(i in 1:21) {
+  filePath <- paste("/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/allFeatures/", nameVector[i], sep = "")
+  plot <- plot_grid(featPlots[[i]], dtPlots[[i]], rocPlots[[i]], labels = "AUTO", label_size = 8, nrow = 1,  rel_widths = c(1, 1, 1))
+  plot
+  ggsave(filePath, plot = last_plot(), device = png(), 
+         scale = 1.5, width = 18, height = 4.5, units = c("cm"), dpi = 300)
+  }
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+library(readr)
+files <- read_csv('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/energyOnly/files.csv', 
+    col_names = FALSE)
+```
+
+```{r}
+best_feats <- dplyr::filter(files, grepl("best_feats", X1))
+dt <- dplyr::filter(files, grepl("_dt", X1))
+roc <- dplyr::filter(files, grepl("_roc", X1))
+report <- dplyr::filter(files, grepl("_rep", X1))
+confusion <- dplyr::filter(files, grepl("confusion", X1))
+```
+
+```{r message=FALSE, warning=FALSE}
+featPlots <- list()
+for(i in 1:nrow(best_feats)) {
+  filePath <- paste("/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/energyOnly/", best_feats[[i,1]], sep = "")
+  df <- read_csv(filePath)
+  f <- ggplot(df, aes(reorder(feature, score), score)) + geom_bar(stat="identity")
+  f <- f + coord_flip() + theme_gray()
+  f <- f + labs(x = "Feature", y = "Importance") +  
+    theme(text = element_text(size=8), 
+        legend.title = element_blank(),
+        axis.title.y=element_blank(),
+        legend.position = c(0.9,0.12),
+        legend.background = element_rect(fill=alpha('white', 0.5)),
+        legend.key.size = unit(5, "mm"))
+  list(i = i)
+  featPlots[[i]] <- f
+}
+```
+
+```{r}
+#featPlots[[19]]
+```
+
+```{r message=FALSE, warning=FALSE}
+dtPlots <- list()
+for(i in 1:nrow(dt)) {
+  filePath <- paste("/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/energyOnly/", dt[[i,1]], sep = "")
+  df <- read_csv(filePath)
+  d <- ggplot(df, aes(max_depth, test_score, group = criterion, color = criterion))
+  d <- d + geom_line(size=0.5) + geom_point(size = 0.5) + scale_colour_startrek() + theme_grey()
+  d <- d + labs(x = "Maximum Depth", y = "Mean CV Score") +
+  theme(text = element_text(size=8), 
+        legend.title = element_blank(),
+        legend.position = c(0.5,0.125),
+        legend.background = element_rect(fill=alpha('white', 0.0)),
+        legend.key.size = unit(2.5, "mm"))
+  list(i = i)
+  dtPlots[[i]] <- d
+}
+```
+
+```{r}
+#dtPlots[[19]]
+```
+
+
+```{r message=FALSE, warning=FALSE}
+rocPlots <- list()
+for(i in 1:nrow(roc)) {
+  filePath <- paste("/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/energyOnly/", roc[[i,1]], sep = "")
+  df <- read_csv(filePath)
+  r <- ggplot(df, aes(fpr, tpr))
+  r <- r + geom_line(size=0.5, colour="dodgerblue2") + geom_point(size = 0.5, colour="dodgerblue2") + theme_grey()
+  r <- r + labs(x = "False Positive Rate (FPR)", y = "True Positive Rate (TPR)") + 
+    scale_y_continuous(limits=c(0,1), expand = c(0, 0.01)) +
+    scale_x_continuous(limits=c(0,1), expand = c(0, 0.01)) +
+    theme(text = element_text(size=8), 
+          legend.title = element_blank(),
+          legend.position = c(0.9,0.12),
+          legend.background = element_rect(fill=alpha('white', 0.5)),
+          legend.key.size = unit(5, "mm"))
+  r <- r + geom_segment(aes(x = 0, y = 0, xend = 1, yend = 1))
+  list(i = i)
+  rocPlots[[i]] <- r
+}
+```
+
+```{r}
+rocPlots[[19]]
+```
+
+```{r}
+nameVector <- gsub("_roc.csv", "_energyOnly.png", roc$X1)
+```
+
+```{r fig.width=10, fig.height=2.75}
+for(i in 1:21) {
+  filePath <- paste("/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/energyOnly/", nameVector[i], sep = "")
+  plot <- plot_grid(featPlots[[i]], dtPlots[[i]], rocPlots[[i]], labels = "AUTO", label_size = 8, nrow = 1,  rel_widths = c(1, 1, 1))
+  plot
+  ggsave(filePath, plot = last_plot(), device = png(), 
+         scale = 1.5, width = 18, height = 4.5, units = c("cm"), dpi = 300)
+  }
+```
+
+
+
+
+
+
+
+
+
+```{r}
 feat <- read_csv('/Users/alistairgj/kitchen_refrigerator_best_feats.csv')
 dt <- read_csv('/Users/alistairgj/kitchen_refrigerator_dt.csv')
 roc <- read_csv('/Users/alistairgj/kitchen_refrigerator_roc.csv')
@@ -50,11 +260,12 @@ d <- d + geom_line(size=0.5) + geom_point(size = 0.5) + scale_colour_startrek() 
 d <- d + labs(x = "Depth", y = "Score") +
   theme(text = element_text(size=8), 
         legend.title = element_blank(),
-        legend.position = c(0.8,0.15),
+        legend.position = "right",
         legend.background = element_rect(fill=alpha('white', 0.5)),
         legend.key.size = unit(5, "mm"))
 d
 ```
+
 
 
 ```{r}
@@ -68,21 +279,18 @@ r <- r + labs(x = "False Positive Rate", y = "True Positive Rate (Recall)") +
         legend.position = c(0.9,0.12),
         legend.background = element_rect(fill=alpha('white', 0.5)),
         legend.key.size = unit(5, "mm"))
-r <- r + geom_segment(aes(x = 0, y = 0, xend = 1, yend = 1, fill = "black"))
+r <- r + geom_segment(aes(x = 0, y = 0, xend = 1, yend = 1))
 r
 ```
-
-
-
 
 
 
 ```{r fig.width=10, fig.height=2.75}
 plot <- plot_grid(f, d, r, labels = "AUTO", label_size = 8, nrow = 1,  rel_widths = c(1, 1, 1))
 plot
-ggsave("/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/MLtest.png", 
-       plot = last_plot(), device = png(), 
-       scale = 1.5, width = 18, height = 4.5, units = c("cm"), dpi = 300)
+##ggsave("/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/MLtest.png", 
+##       plot = last_plot(), device = png(), 
+#       scale = 1.5, width = 18, height = 4.5, units = c("cm"), dpi = 300)
 ```
 
 

@@ -234,7 +234,7 @@ https://github.com/yihui/knitr/issues/1102
 https://alanarnholt.github.io/GeneralStatistics/rmarkdown/FormattingTables.html 
 https://github.com/tidyverse/ggplot2/wiki/legend-attributes
 knit_hooks$set(crop = hook_pdfcrop)
-
+https://docs.anaconda.com/mkl-optimizations/
 
 http://www.sthda.com/english/wiki/ggplot2-axis-ticks-a-guide-to-customize-tick-marks-and-labels 
 http://www.sthda.com/english/wiki/ggplot2-axis-scales-and-transformations 
