@@ -1,18 +1,5 @@
 ds.to_csv(PATH + '/intermediate_datasets/S1SubActivities_temporalFeaturesCLEANSED.csv', index = False)
 
-* len(ds_10n_60s) = 5385
-* File = /intermediate_datasets/ds_10n_60s.csv
-
-* len(ds_10n_10s) = 1536
-* File = /intermediate_datasets/ds_10n_10s.csv
-
-
-
-
-bathroom_lightswitch_allFeatures.png
-
-kitchen_dishwasher_allFeatures.png  
-kitchen_washingmachine_allFeatures.png 
 
 
 Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the bathroom toiletflush sub activity.
@@ -24,7 +11,21 @@ df_ACC <- read_csv("/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_N
 ```
 
 
+```r TAB_fridge, echo=FALSE, results='asis'
+fridge <- read_csv('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/S1SubActivities_fridge.csv')
+head(fridge, n=5) %>% kable(format = "latex", caption = "Example of duplicate sub-activity number removal", booktabs = T) %>% 
+  kable_styling(latex_options = c("hold_position", "striped", "scale_down"),
+                bootstrap_options = c("striped", "hover", "condensed"),
+                font_size = 8) %>% add_header_above(c("Prior to duplicate removal" = 4, "Post to duplicate removal" = 4))
+```
 
+```r TAB_dsSUBActFinal, echo=FALSE, results='asis'}
+df <- read_csv('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/S1SubActivities_ds.csv')
+head(df) %>% kable(format = "latex", caption = "The S1 sub-activities tidy dataset", booktabs = T) %>% 
+  kable_styling(latex_options = c("hold_position", "striped"),
+                bootstrap_options = c("striped", "hover", "condensed"),
+                font_size = 8)
+```
 
 
 
