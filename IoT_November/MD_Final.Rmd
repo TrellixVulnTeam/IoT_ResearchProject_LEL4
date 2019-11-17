@@ -1116,49 +1116,90 @@ We are focussing our analysis on the sequential analysis algorithm run with the 
 df <- read_csv('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/ds_1n_60s.csv')
 head(df) %>% kable(format = "latex", caption = "Sequential analysis result: one neighbouring sub-activity over a sixty second period", 
                    booktabs = T) %>% 
-  kable_styling(latex_options = c("hold_position", "striped"),
+  kable_styling(latex_options = c("hold_position", "striped", "scale_down"),
                 bootstrap_options = c("striped", "hover", "condensed"),
                 font_size = 8)
 ```
 
 ### Qualitative Sequential Analysis via Sankey Diagram
-In order to develop understanding of the interrelaterness of the sub-activites, the data from the sequential analysis `ds_1n_60s.csv` were plotted as Sankey diagrams using a bespoke wrapper method written in Python. Using the previously mentioned temporal features of `HOUR` and ``
+In order to develop understanding of the interrelaterness of the sub-activites, the data from the sequential analysis `ds_1n_60s.csv` were plotted as Sankey diagrams using a bespoke wrapper method written in Python. Using the previously mentioned features of `HOUR` and `WDWE` in the dataset, the resultant diagrams were segmented over 6 time periods, namely:
 
-In addition to the previously mentioned temporal features 
+1. Figure \ref{fig:sankey_WeekdayMorningds_1n_60s} - Weekday Morning, initial morning sub-activity until 11.59 am
+2. Figure \ref{fig:sankey_WeekdayAfternoonds_1n_60s} - Weekday Afternoon, 12 noon until 17.59 pm
+3. Figure \ref{fig:sankey_WeekdayEveningds_1n_60s} - Weekday Evening, 18:00 pm until mid-night
+4. Figure \ref{fig:sankey_WeekendMorningds_1n_60s} - Weekend Morning, initial morning sub-activity until 11.59 am
+5. Figure \ref{fig:sankey_WeekendAfternoonds_1n_60s} - Weekend Afternoon, 12 noon until 17.59pm
+6. Figure \ref{fig:sankey_WeekendEveningds_1n_60s} - Weekend Evening, 18:00pm untill mid-night
 
+Sankey diagrams are used to visualise flows of energy, materials or other resources in a variety of applications (Lupton, 2017).In our case, the Sankey diagrams will allow us to visualise the flow of end-user interaction with each sub-activity over the time-boxes 1 through 6, as described above. Our Sankey diagrams (derived from the 1 neighbour over 60 seconds sequential analysis) have the following features i) The each represent a specific aggregated time period from the dataset, ii) In each Sankey, the sub-acitivity nodes that require energy input only from the end user (e.g., Kitchen Door) are blue, while the sub-activity nodes that require external energy to function (e.g., Kitchen Toaster), iii) The width of each sub-activity in the Sankey diagram is indicative to the number of times interaction occured, a thicker node means more interaction, iv) The lines between each node indicate the event of one sub-activity proceeding or preceeding another and v) Some events nodes are centralised, with at least one activity 'flowing in' and at least one 'flowing out' while other nodes a terminal, with only activities 'flowing in' or 'flowing out' (but not both).
 
-(`DAY`, `WDWE`)
+Each Sankey diagram, as seen below, shows a high level of interactivity between the various sub-acitivities. We observer that of all the 'no external energy' sub-activities, only the foyer closet (as seen in Figure \ref{fig:sankey_WeekdayAfternoonds_1n_60s} and Figure \ref{fig:sankey_WeekdayEveningds_1n_60s}) acts as a terminal node. In comparision, numerous sub-activities that require energy (as seen in Figure \ref{fig:sankey_WeekdayEveningds_1n_60s} and Figure \ref{fig:sankey_WeekendEveningds_1n_60s}) act as terminal nodes. We also observe that there is a very level of interactivity between the sub-activities that do and do no require an external energy source (red and blue nodes, respectively) to function. This will provide direction for further analyis.
 
-
-#### 
-
+#### Weekday Morning, initial morning sub-activity until 11.59 am
 ```{r sankey_WeekdayMorningds_1n_60s, echo=FALSE, fig.align='center', fig.cap="Sankey Diagram of Weekday Mornings, considering all one neighbour per instance within a 60 second period", out.width='100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/WeekdayMorningds_1n_60s.png')
 ```
-
+#### Weekday Afternoon, 12 noon until 17.59 pm
 ```{r sankey_WeekdayAfternoonds_1n_60s, echo=FALSE, fig.align='center', fig.cap="Sankey Diagram of Weekday Afternoons, considering all one neighbour per instance within a 60 second period", out.width='100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/WeekdayAfternoonds_1n_60s.png')
 ```
-
+#### Weekday Evening, 18:00 pm until mid-night
 ```{r sankey_WeekdayEveningds_1n_60s, echo=FALSE, fig.align='center', fig.cap="Sankey Diagram of Weekday Evenings, considering all one neighbour per instance within a 60 second period", out.width='100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/WeekdayEveningds_1n_60s.png')
 ```
-
+#### Weekend Morning, initial morning sub-activity until 11.59 am
 ```{r sankey_WeekendMorningds_1n_60s, echo=FALSE, fig.align='center', fig.cap="Sankey Diagram of Weekend Mornings, considering all one neighbour per instance within a 60 second period", out.width='100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/WeekendMorningds_1n_60s.png')
 ```
-
+#### Weekend Afternoon, 12 noon until 17.59pm
 ```{r sankey_WeekendAfternoonds_1n_60s, echo=FALSE, fig.align='center', fig.cap="Sankey Diagram of Weekend Afternoons, considering all one neighbour per instance within a 60 second period", out.width='100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/WeekendAfternoonds_1n_60s.png')
 ```
-
+#### Weekend Evening, 18:00pm untill mid-night
 ```{r sankey_WeekendEveningds_1n_60s, echo=FALSE, fig.align='center', fig.cap="Sankey Diagram of Weekend Evenings, considering all one neighbour per instance within a 60 second period", out.width='100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/WeekendEveningds_1n_60s.png')
 ```
 
-\pagebreak
+### Re-casting the Dataset as a Boolean Array
+Based on the analysis above, we sought a data structure whereby every simultaneous subactivity occuring at one point in time could potentially be evaluated. In order to acheive this without having to place a large emphasis on complex combinatorics, it was decided to cast the data structure into a Boolean Array. In this structure, each sub-activity will become an attribute, with every row is a timestamp index. This structure will span the duration of the dataset - in other words, every second that was accounted for in the original dataset will have an instance (a row). 
+
+The required transformations were for performed on the pre-processed dataset, and a sample (with omitted attributes) can be seen below in Table \ref{tab:TAB_S1SubAct_B_s_EXAMPLE}. This example subset has its first instance at 01/04/2003 6:54:50 am. Here we can see the following sub-activities in an 'active' state; 57 (bathroom medicine cabinet), 101 (bathroom lightswitch) and 96 (bathroom exhaustfan). All other sub-activities are inactive. At 01/04/2003 6:54:56 am sub-activity 88 (bathroom sinkfaucet - hot) becomes active, followed by one second later at 01/04/2003 6:54:57 am sub-activity 68 (bathroom sinkfaucet - cold) becoming active. Sub-activity 57, 101, 68, 88 and 96 all remain active at 01/04/2003 6:55:01 am. 
+
+```{r TAB_S1SubAct_B_s_EXAMPLE, echo=FALSE, results='asis'}
+df <- read_csv('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/S1SubAct_B_s_EXAMPLE.csv')
+head(df) %>% kable(format = "latex", caption = "Add text", 
+                   booktabs = T) %>% 
+  kable_styling(latex_options = c("hold_position", "striped", "scale_down"),
+                bootstrap_options = c("striped", "hover", "condensed"),
+                font_size = 8)
+```
+
+This data structure thus offers the following benefit;
+
+- Simultaneous consideration of the state of multiple sub-activities
+- Present in a format that is still readily human interprettable
+- Present in a format that can be easily consumed by a machine
+
+And the following challenges:
+
+- The dataset is overall very large, potentially requiring large amounts of computational power for downstream analysis
+- The dataset is potentially highly homogeneous in certain temporal regions
+- A second-by-second analysis is most likely to granular for the purposes of this work
 
 
+
+
+
+
+27/3/2003  6:43:40 am
+11/4/2003  10:24:18 pm
+
+If the sub-actitivity is occuring at that point in time, the value in the cell will be `1`. If the 
+As demonstrated 
+
+
+
+bathroom_toiletflush	bathroom_lightswitch	foyer_lightswitch	bathroom_medicinecabinet	bathroom_cabinet	bathrooom-sinkfaucet-hot	bathroom_showerfaucet	bathrooom-sinkfaucet-cold	kitchen_laundrydryer	bathroom_exhaustfan	bathroom_door
 
 
 

@@ -94,7 +94,7 @@ The F1 score can be interpreted as a weighted average of the precision and recal
 F1 = 2 * (precision * recall) / (precision + recall) https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html
 
 
-
+\pagebreak
 
 
 ### Bedroom Lightswitch
@@ -130,7 +130,7 @@ Fitting 15 folds for each of 18 candidates, totalling 270 fits
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/bedroom_lightswitch_allFeatures.png')
 ```
 
-
+\pagebreak
 ### Kitchen Laundrydryer
 
 * Confusion matrix
@@ -160,7 +160,7 @@ Fitting 15 folds for each of 18 candidates, totalling 270 fits
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/kitchen_laundrydryer_allFeatures.png')
 ```
 
-
+\pagebreak
 ### Kitchen Freezer
 
 * Confusion matrix
@@ -191,7 +191,7 @@ Fitting 15 folds for each of 18 candidates, totalling 270 fits
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/kitchen_freezer_allFeatures.png')
 ```
 
-
+\pagebreak
 ### Kitchen Toaster
 
 * Confusion matrix
@@ -222,7 +222,7 @@ Fitting 15 folds for each of 18 candidates, totalling 270 fits
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/kitchen_toaster_allFeatures.png')
 ```
 
-
+\pagebreak
 ### Bathroom Exhaustfan
 
 * Confusion matrix
@@ -252,7 +252,7 @@ Fitting 15 folds for each of 18 candidates, totalling 270 fits
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/bathroom_exhaustfan_allFeatures.png')
 ```
 
-
+\pagebreak
 ### Bathroom Showerfaucet
 
 * Confusion matrix
@@ -282,7 +282,7 @@ Fitting 15 folds for each of 18 candidates, totalling 270 fits
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/bathroom_showerfaucet_allFeatures.png')
 ```
 
-
+\pagebreak
 ### bathroom_lightswitch
 
 * Confusion matrix
@@ -312,6 +312,7 @@ Fitting 15 folds for each of 18 candidates, totalling 270 fits
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/bathroom_lightswitch_allFeatures.png')
 ```
 
+\pagebreak
 ### kitchen_refrigerator
 
 * Confusion matrix
@@ -343,7 +344,7 @@ knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/
 ```
 
 
-
+\pagebreak
 ### foyer_lightswitch
 
 * Confusion matrix
@@ -373,7 +374,7 @@ Fitting 15 folds for each of 18 candidates, totalling 270 fits
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/foyer_lightswitch_allFeatures.png')
 ```
 
-
+\pagebreak
 ### kitchen_burner
 
 * Confusion matrix
@@ -403,7 +404,7 @@ Fitting 15 folds for each of 18 candidates, totalling 270 fits
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/kitchen_burner_allFeatures.png')
 ```
 
-
+\pagebreak
 ### study Lightswitch
 
 * Confusion matrix
@@ -433,6 +434,7 @@ Fitting 15 folds for each of 18 candidates, totalling 270 fits
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/study_lightwitch_allFeatures.png')
 ```
 
+\pagebreak
 ### kitchen_washingmachine
 
 * Confusion matrix
@@ -462,7 +464,7 @@ Fitting 15 folds for each of 18 candidates, totalling 270 fits
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/kitchen_washingmachine_allFeatures.png')
 ```
 
-
+\pagebreak
 ### Kitchen Lightswitch
 
 * Confusion matrix
@@ -493,7 +495,7 @@ Fitting 15 folds for each of 18 candidates, totalling 270 fits
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/kitchen_lightswitch_allFeatures.png')
 ```
 
-
+\pagebreak
 ### Livingroom Lamp
 
 * Confusion matrix
@@ -523,7 +525,7 @@ Fitting 15 folds for each of 18 candidates, totalling 270 fits
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/livingroom_lamp_allFeatures.png')
 ```
 
-
+\pagebreak
 ### kitchen_microwave
 
 * Confusion matrix
@@ -554,7 +556,7 @@ knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/
 ```
 
 
-
+\pagebreak
 ### kitchen_garbagedisposal
 
 * Confusion matrix
@@ -584,8 +586,9 @@ Fitting 15 folds for each of 18 candidates, totalling 270 fits
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/kitchen_garbagedisposal_allFeatures.png')
 ```
 
-
+\pagebreak
 ### kitchen_coffeemachine
+For the analysis of the kitchen coffee machine feature it was determined that the best parameters were 'gini' with a max tree depth of 2. However, looking at the plot of Mean CV Score versus Maximum depth, it is noted that the 'gini' and 'entropy' values are identical. While the shape of the ROC curve and the corresponding ROC_AUC value of 0.9599 are indicative of a good fit, overall the model would be considered to be overfit. To support this, the we observe recall and precision scores of 1.0. The overfitting of this model is attributed to the extreme weighting towards the value of 0, as opposed to 1. Overall, of the 1588 instances, 1587 of them are 0, while only 1 value is one. Thus the model has not successfully fit.
 
 * Confusion matrix
 * KPIs
@@ -614,7 +617,7 @@ Fitting 15 folds for each of 18 candidates, totalling 270 fits
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/kitchen_coffeemachine_allFeatures.png')
 ```
 
-
+\pagebreak
 ### livingroom_lightswitch
 
 * Confusion matrix
@@ -644,7 +647,7 @@ Fitting 15 folds for each of 18 candidates, totalling 270 fits
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/livingroom_lightswitch_allFeatures.png')
 ```
 
-
+\pagebreak
 ### kitchen_oven
 
 * Confusion matrix
@@ -674,6 +677,7 @@ Fitting 15 folds for each of 18 candidates, totalling 270 fits
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/kitchen_oven_allFeatures.png')
 ```
 
+\pagebreak
 ### kitchen_dishwasher
 
 * Confusion matrix
@@ -703,7 +707,7 @@ Fitting 15 folds for each of 18 candidates, totalling 270 fits
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/kitchen_dishwasher_allFeatures.png')
 ```
 
-
+\pagebreak
 ### bathroom_sinkfaucet-hot
 
 * Confusion matrix

@@ -1604,66 +1604,64 @@ time) and \texttt{durationSec} (the delta seconds value between
 \rowcolors{2}{gray!6}{white}
 \begin{table}[!h]
 
-\caption{\label{tab:TAB_ALL}A sample of n=1 of each sub-activity from the pre-processed dataset. The table has been coloured to indicate futher pre-processing steps, as discussed below.}
+\caption{\label{tab:TAB_ALL}A sample of n=1 of each sub-activity from the pre-processed dataset}
 \centering
 \resizebox{\linewidth}{!}{\fontsize{8}{10}\selectfont
-\begin{tabular}[t]{>{}l>{}lllllllr}
+\begin{tabular}[t]{llllllllr}
 \hiderowcolors
 \toprule
 subActNum & subAct & start & end & dayNumeric & DAY & WDWE & HOUR & durationSec\\
 \midrule
 \showrowcolors
-\rowcolor[HTML]{C6CDF2}  67 & bathroom\_cabinet & 2003-03-27 06:43:40 & 2003-03-27 06:43:43 & 3 & Thu & WD & 6 & 4\\
-\rowcolor[HTML]{FAF8B9}  100 & bathroom\_toiletflush & 2003-03-27 06:44:06 & 2003-03-27 07:12:41 & 3 & Thu & WD & 6 & 1716\\
-\rowcolor[HTML]{EACBF2}  101 & bathroom\_lightswitch & 2003-03-27 06:44:20 & 2003-03-27 07:46:34 & 3 & Thu & WD & 6 & 3735\\
-\rowcolor[HTML]{C6CDF2}  57 & bathroom\_medicinecabinet & 2003-03-27 06:44:35 & 2003-03-27 06:44:48 & 3 & Thu & WD & 6 & 14\\
-\rowcolor[HTML]{C6CDF2}  82 & study\_drawer & 2003-03-27 06:45:45 & 2003-03-27 06:45:48 & 3 & Thu & WD & 6 & 4\\
+67 & bathroom\_cabinet & 2003-03-27 06:43:40 & 2003-03-27 06:43:43 & 3 & Thu & WD & 6 & 4\\
+100 & bathroom\_toiletflush & 2003-03-27 06:44:06 & 2003-03-27 07:12:41 & 3 & Thu & WD & 6 & 1716\\
+101 & bathroom\_lightswitch & 2003-03-27 06:44:20 & 2003-03-27 07:46:34 & 3 & Thu & WD & 6 & 3735\\
+57 & bathroom\_medicinecabinet & 2003-03-27 06:44:35 & 2003-03-27 06:44:48 & 3 & Thu & WD & 6 & 14\\
+82 & study\_drawer & 2003-03-27 06:45:45 & 2003-03-27 06:45:48 & 3 & Thu & WD & 6 & 4\\
 \addlinespace
-\rowcolor[HTML]{C6CDF2}  146 & bedroom\_drawer & 2003-03-27 06:46:12 & 2003-03-27 06:46:20 & 3 & Thu & WD & 6 & 9\\
-\rowcolor[HTML]{C6CDF2}  132 & kitchen\_cabinet & 2003-03-27 06:51:43 & 2003-03-27 06:51:46 & 3 & Thu & WD & 6 & 4\\
-\rowcolor[HTML]{C6CDF2}  143 & kitchen\_microwave & 2003-03-27 06:54:09 & 2003-03-27 13:07:43 & 3 & Thu & WD & 6 & 22415\\
-\rowcolor[HTML]{C6CDF2}  141 & kitchen\_door & 2003-03-27 06:57:05 & 2003-03-27 06:57:08 & 3 & Thu & WD & 6 & 4\\
-\rowcolor[HTML]{C6CDF2}  93 & bathroom\_showerfaucet & 2003-03-27 07:05:22 & 2003-03-27 07:05:24 & 3 & Thu & WD & 7 & 3\\
+146 & bedroom\_drawer & 2003-03-27 06:46:12 & 2003-03-27 06:46:20 & 3 & Thu & WD & 6 & 9\\
+132 & kitchen\_cabinet & 2003-03-27 06:51:43 & 2003-03-27 06:51:46 & 3 & Thu & WD & 6 & 4\\
+143 & kitchen\_microwave & 2003-03-27 06:54:09 & 2003-03-27 13:07:43 & 3 & Thu & WD & 6 & 22415\\
+141 & kitchen\_door & 2003-03-27 06:57:05 & 2003-03-27 06:57:08 & 3 & Thu & WD & 6 & 4\\
+93 & bathroom\_showerfaucet & 2003-03-27 07:05:22 & 2003-03-27 07:05:24 & 3 & Thu & WD & 7 & 3\\
 \addlinespace
-\rowcolor[HTML]{C6CDF2}  125 & kitchen\_drawer & 2003-03-27 07:38:48 & 2003-03-27 07:38:51 & 3 & Thu & WD & 7 & 4\\
-\rowcolor[HTML]{C6CDF2}  70 & kitchen\_dishwasher & 2003-03-27 07:40:32 & 2003-03-27 07:40:34 & 3 & Thu & WD & 7 & 3\\
-\rowcolor[HTML]{EACBF2}  126 & kitchen\_refrigerator & 2003-03-27 07:41:08 & 2003-03-27 07:41:16 & 3 & Thu & WD & 7 & 9\\
-\rowcolor[HTML]{EACBF2}  88 & bathroom\_sinkfaucet-cold & 2003-03-27 07:43:22 & 2003-03-27 07:43:48 & 3 & Thu & WD & 7 & 27\\
-\rowcolor[HTML]{C6CDF2}  68 & bathroom\_sinkfaucet-hot & 2003-03-27 07:43:23 & 2003-03-27 07:43:48 & 3 & Thu & WD & 7 & 26\\
+125 & kitchen\_drawer & 2003-03-27 07:38:48 & 2003-03-27 07:38:51 & 3 & Thu & WD & 7 & 4\\
+70 & kitchen\_dishwasher & 2003-03-27 07:40:32 & 2003-03-27 07:40:34 & 3 & Thu & WD & 7 & 3\\
+126 & kitchen\_refrigerator & 2003-03-27 07:41:08 & 2003-03-27 07:41:16 & 3 & Thu & WD & 7 & 9\\
+88 & bathroom\_sinkfaucet-cold & 2003-03-27 07:43:22 & 2003-03-27 07:43:48 & 3 & Thu & WD & 7 & 27\\
+68 & bathroom\_sinkfaucet-hot & 2003-03-27 07:43:23 & 2003-03-27 07:43:48 & 3 & Thu & WD & 7 & 26\\
 \addlinespace
-\rowcolor[HTML]{EACBF2}  140 & foyer\_door & 2003-03-27 07:48:49 & 2003-03-27 07:48:53 & 3 & Thu & WD & 7 & 5\\
-\rowcolor[HTML]{C6CDF2}  137 & kitchen\_freezer & 2003-03-27 11:36:15 & 2003-03-27 11:36:21 & 3 & Thu & WD & 11 & 7\\
-\rowcolor[HTML]{EACBF2}  106 & kitchen\_burner & 2003-03-27 11:37:13 & 2003-03-27 11:42:24 & 3 & Thu & WD & 11 & 312\\
-\rowcolor[HTML]{C6CDF2}  105 & kitchen\_lightswitch & 2003-03-27 11:38:54 & 2003-03-27 12:31:05 & 3 & Thu & WD & 11 & 3132\\
-\rowcolor[HTML]{C6CDF2}  92 & study\_lightwitch & 2003-03-27 16:28:23 & 2003-03-27 18:44:14 & 3 & Thu & WD & 16 & 8152\\
+140 & foyer\_door & 2003-03-27 07:48:49 & 2003-03-27 07:48:53 & 3 & Thu & WD & 7 & 5\\
+137 & kitchen\_freezer & 2003-03-27 11:36:15 & 2003-03-27 11:36:21 & 3 & Thu & WD & 11 & 7\\
+106 & kitchen\_burner & 2003-03-27 11:37:13 & 2003-03-27 11:42:24 & 3 & Thu & WD & 11 & 312\\
+105 & kitchen\_lightswitch & 2003-03-27 11:38:54 & 2003-03-27 12:31:05 & 3 & Thu & WD & 11 & 3132\\
+92 & study\_lightwitch & 2003-03-27 16:28:23 & 2003-03-27 18:44:14 & 3 & Thu & WD & 16 & 8152\\
 \addlinespace
-\rowcolor[HTML]{C6CDF2}  130 & bathroom\_door & 2003-03-27 17:43:10 & 2003-03-27 17:43:12 & 3 & Thu & WD & 17 & 3\\
-\rowcolor[HTML]{EACBF2}  104 & foyer\_lightswitch & 2003-03-27 19:36:32 & 2003-03-27 19:50:07 & 3 & Thu & WD & 19 & 816\\
-\rowcolor[HTML]{C6CDF2}  131 & kitchen\_toaster & 2003-03-28 12:32:00 & 2003-03-28 15:10:16 & 4 & Fri & WD & 12 & 9497\\
-\rowcolor[HTML]{EACBF2}  96 & bathroom\_exhaustfan & 2003-03-28 17:43:17 & 2003-03-28 18:25:19 & 4 & Fri & WD & 17 & 2523\\
-\rowcolor[HTML]{EACBF2}  108 & bedroom\_lightswitch & 2003-03-28 18:24:48 & 2003-03-28 19:55:44 & 4 & Fri & WD & 18 & 5457\\
+130 & bathroom\_door & 2003-03-27 17:43:10 & 2003-03-27 17:43:12 & 3 & Thu & WD & 17 & 3\\
+104 & foyer\_lightswitch & 2003-03-27 19:36:32 & 2003-03-27 19:50:07 & 3 & Thu & WD & 19 & 816\\
+131 & kitchen\_toaster & 2003-03-28 12:32:00 & 2003-03-28 15:10:16 & 4 & Fri & WD & 12 & 9497\\
+96 & bathroom\_exhaustfan & 2003-03-28 17:43:17 & 2003-03-28 18:25:19 & 4 & Fri & WD & 17 & 2523\\
+108 & bedroom\_lightswitch & 2003-03-28 18:24:48 & 2003-03-28 19:55:44 & 4 & Fri & WD & 18 & 5457\\
 \addlinespace
-\rowcolor[HTML]{EACBF2}  129 & kitchen\_oven & 2003-03-28 19:09:26 & 2003-03-28 19:09:30 & 4 & Fri & WD & 19 & 5\\
-\rowcolor[HTML]{CEF5E7}  56 & livingroom\_dvd & 2003-03-28 19:55:24 & 2003-03-28 19:55:29 & 4 & Fri & WD & 19 & 6\\
-\rowcolor[HTML]{EACBF2}  76 & livingroom\_lamp & 2003-03-29 13:30:51 & 2003-03-29 18:50:13 & 5 & Sat & WE & 13 & 19163\\
-\rowcolor[HTML]{CEF5E7}  139 & bedroom\_jewelrybox & 2003-03-29 15:12:44 & 2003-03-29 15:12:45 & 5 & Sat & WE & 15 & 2\\
-\rowcolor[HTML]{EACBF2}  142 & kitchen\_washingmachine & 2003-03-29 15:44:24 & 2003-03-29 15:44:26 & 5 & Sat & WE & 15 & 3\\
+129 & kitchen\_oven & 2003-03-28 19:09:26 & 2003-03-28 19:09:30 & 4 & Fri & WD & 19 & 5\\
+56 & livingroom\_dvd & 2003-03-28 19:55:24 & 2003-03-28 19:55:29 & 4 & Fri & WD & 19 & 6\\
+76 & livingroom\_lamp & 2003-03-29 13:30:51 & 2003-03-29 18:50:13 & 5 & Sat & WE & 13 & 19163\\
+139 & bedroom\_jewelrybox & 2003-03-29 15:12:44 & 2003-03-29 15:12:45 & 5 & Sat & WE & 15 & 2\\
+142 & kitchen\_washingmachine & 2003-03-29 15:44:24 & 2003-03-29 15:44:26 & 5 & Sat & WE & 15 & 3\\
 \addlinespace
-\rowcolor[HTML]{EACBF2}  90 & kitchen\_laundrydryer & 2003-03-29 15:48:18 & 2003-03-29 15:48:54 & 5 & Sat & WE & 15 & 37\\
-\rowcolor[HTML]{EACBF2}  98 & kitchen\_garbagedisposal & 2003-03-29 15:54:50 & 2003-03-29 15:54:51 & 5 & Sat & WE & 15 & 2\\
-\rowcolor[HTML]{C6CDF2}  107 & livingroom\_lightswitch & 2003-03-29 18:50:43 & 2003-03-29 18:51:09 & 5 & Sat & WE & 18 & 27\\
-\rowcolor[HTML]{CEF5E7}  81 & foyer\_closet & 2003-04-01 06:13:26 & 2003-04-01 06:13:34 & 1 & Tue & WD & 6 & 9\\
-\rowcolor[HTML]{CEF5E7}  145 & kitchen\_cereal & 2003-04-01 06:37:18 & 2003-04-01 06:37:59 & 1 & Tue & WD & 6 & 42\\
+90 & kitchen\_laundrydryer & 2003-03-29 15:48:18 & 2003-03-29 15:48:54 & 5 & Sat & WE & 15 & 37\\
+98 & kitchen\_garbagedisposal & 2003-03-29 15:54:50 & 2003-03-29 15:54:51 & 5 & Sat & WE & 15 & 2\\
+107 & livingroom\_lightswitch & 2003-03-29 18:50:43 & 2003-03-29 18:51:09 & 5 & Sat & WE & 18 & 27\\
+81 & foyer\_closet & 2003-04-01 06:13:26 & 2003-04-01 06:13:34 & 1 & Tue & WD & 6 & 9\\
+145 & kitchen\_cereal & 2003-04-01 06:37:18 & 2003-04-01 06:37:59 & 1 & Tue & WD & 6 & 42\\
 \addlinespace
-\rowcolor[HTML]{CEF5E7}  60 & kitchen\_containers & 2003-04-01 06:38:14 & 2003-04-01 06:38:48 & 1 & Tue & WD & 6 & 35\\
-\rowcolor[HTML]{EACBF2}  119 & kitchen\_coffeemachine & 2003-04-09 08:46:07 & 2003-04-09 08:46:35 & 2 & Wed & WD & 8 & 29\\
-\rowcolor[HTML]{CEF5E7}  64 & bedroom\_lamp & 2003-04-09 20:16:36 & 2003-04-09 21:13:19 & 2 & Wed & WD & 20 & 3404\\
+60 & kitchen\_containers & 2003-04-01 06:38:14 & 2003-04-01 06:38:48 & 1 & Tue & WD & 6 & 35\\
+119 & kitchen\_coffeemachine & 2003-04-09 08:46:07 & 2003-04-09 08:46:35 & 2 & Wed & WD & 8 & 29\\
+64 & bedroom\_lamp & 2003-04-09 20:16:36 & 2003-04-09 21:13:19 & 2 & Wed & WD & 20 & 3404\\
 \bottomrule
 \end{tabular}}
 \end{table}
 \rowcolors{2}{white}{white}
-
-\pagebreak
 
 \hypertarget{subactivity-visualisation-and-outlier-inspection}{%
 \subsubsection{SubActivity Visualisation and Outlier
@@ -1690,8 +1688,6 @@ analysis.}
 \caption{ADD Text}\label{fig:FIG_aggLineChart}
 \end{figure}
 
-\pagebreak
-
 \hypertarget{aggregated-box-plot-of-sub-activities}{%
 \paragraph{Aggregated Box Plot of
 Sub-Activities}\label{aggregated-box-plot-of-sub-activities}}
@@ -1715,39 +1711,29 @@ be individually considered with respect to it's outliers.
 \caption{ADD Text}\label{fig:FIG_allBoxPlots}
 \end{figure}
 
-\pagebreak
-
 \hypertarget{sub-activity-cleansing---outlier-removal}{%
 \subsubsection{Sub-Activity Cleansing - Outlier
 Removal}\label{sub-activity-cleansing---outlier-removal}}
 
 Via the inspection of each sub-activity the following set of instances
 were identified, as seen in Table \ref{tab:outlierSTATS}. In all cases
-the standard deviation (\textbf{Std}) of each aggregated instance
-(n=Count) is found to be greater than the mean, indicating **\_\_\_**.
-THe bathroom medicine cabinet, for example, has a mean value of 3188
-seconds (53 minutes) and a median value of 88 seconds. Accross all
-sub-activities seen in Table \ref{tab:outlierSTATS}, the median gives
-more reasonable values. Therefore the median will be used to fill the
-outlier values.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{# cleanseOutliers.py}
-\ControlFlowTok{for}\NormalTok{ row }\KeywordTok{in}\NormalTok{ allMedianValues.iterrows():}
-\NormalTok{    ds.loc[(ds[}\StringTok{'subAct'}\NormalTok{] }\OperatorTok{==}\NormalTok{ row[}\DecValTok{1}\NormalTok{].SubAct) }\OperatorTok{&}
-\NormalTok{           (ds[}\StringTok{'durationSec'}\NormalTok{] }\OperatorTok{>}\NormalTok{ row[}\DecValTok{1}\NormalTok{].Median }\OperatorTok{+} \FloatTok{0.5} \OperatorTok{*}\NormalTok{ row[}\DecValTok{1}\NormalTok{].Std),}
-           \StringTok{'durationSec'}\NormalTok{] }\OperatorTok{=} \BuiltInTok{round}\NormalTok{(row[}\DecValTok{1}\NormalTok{].Median)}
-
-\ImportTok{from}\NormalTok{ datetime }\ImportTok{import}\NormalTok{ datetime, timedelta}
-\NormalTok{ds.end }\OperatorTok{=}\NormalTok{ ds.}\BuiltInTok{apply}\NormalTok{(}\KeywordTok{lambda}\NormalTok{ x: x.start }\OperatorTok{+}\NormalTok{ timedelta(seconds}\OperatorTok{=}\NormalTok{x.durationSec), axis}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
+the standard deviation of each aggregated instance (n=Count) is found to
+be greater than the mean, indicating that the data points are not even
+distributed with respect to total duration of the sub-activity,
+additionally, the median in all cases is found to be vastly different
+from the mean. The bathroom medicine cabinet, for example, has a mean
+value of 3188 seconds (53 minutes) and a median value of 88 seconds.
+Accross all sub-activities seen in Table \ref{tab:outlierSTATS}, the
+median gives more reasonable values. Therefore the median value for each
+sub-activity below will be used to fill the outlier values. There were
+in total 4 pre-processing methodologies used. 1. Filling outliers with
+median 2. All values replaced with one value 3. No further processing
+required 4. Sub-activity dropped
 
 \rowcolors{2}{gray!6}{white}
 \begin{table}[!h]
 
-\caption{\label{tab:outlierSTATS}Demo table}
+\caption{\label{tab:outlierSTATS}Summary table of outliers with respect to sub-activity duration over all instances}
 \centering
 \fontsize{8}{10}\selectfont
 \begin{tabular}[t]{lrrrr}
@@ -1782,10 +1768,6 @@ foyer\_closet & 29 & 8.0 & 42.44828 & 174.4286\\
 \end{table}
 \rowcolors{2}{white}{white}
 
-There were in total 4 pre-processing methodologies used. 1. Filling
-outliers with median 2. All values replaced with one value 3. No further
-processing required 4. Sub-activity dropped
-
 \hypertarget{sub-activity-cleansing---1-filling-outliers-with-median}{%
 \subsubsection{Sub-Activity Cleansing - 1) Filling outliers with
 median}\label{sub-activity-cleansing---1-filling-outliers-with-median}}
@@ -1794,8 +1776,9 @@ An example of this methodology can be seen with the bathroom cabinet.
 This methodology was also applied to all of the other sub-activities in
 Table \ref{tab:outlierSTATS}.
 
-\hypertarget{bathroom-cabinet}{%
-\paragraph{Bathroom Cabinet}\label{bathroom-cabinet}}
+\hypertarget{bathroom-cabinet---sub-activity-67}{%
+\paragraph{Bathroom Cabinet - Sub-Activity
+67}\label{bathroom-cabinet---sub-activity-67}}
 
 As per Table \ref{tab:outlierSTATS}, above, the bathroom cabinet has an
 overall count of n=104 in the dataset. In Figure \ref{fig:subAct67} the
@@ -1817,8 +1800,9 @@ median (4.0 seconds). The resultant plots can be seen in the second row.
 \caption{Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the bathroom cabinet sub-activity.}\label{fig:subAct67}
 \end{figure}
 
-\hypertarget{bathroom-medicine-cabinet}{%
-\paragraph{Bathroom Medicine Cabinet}\label{bathroom-medicine-cabinet}}
+\hypertarget{bathroom-medicine-cabinet---sub-activity-57}{%
+\paragraph{Bathroom Medicine Cabinet - Sub-Activity
+57}\label{bathroom-medicine-cabinet---sub-activity-57}}
 
 The bathroom medicine cabinet has an overall count of n=194 in the
 dataset. In Figure \ref{fig:subAct57} boxplot (A) in row one shows a
@@ -1838,8 +1822,9 @@ in the second row.
 \caption{Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Bathroom Medicine Cabinet sub activity.}\label{fig:subAct57}
 \end{figure}
 
-\hypertarget{study-drawer}{%
-\paragraph{Study Drawer}\label{study-drawer}}
+\hypertarget{study-drawer---sub-activity-82}{%
+\paragraph{Study Drawer - Sub-Activity
+82}\label{study-drawer---sub-activity-82}}
 
 The study drawer has an overall count of n=45 in the dataset. In Figure
 \ref{fig:subAct82} boxplot (A) in row one shows some abnormal results
@@ -1860,8 +1845,9 @@ second row.
 \caption{Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Study Drawer sub activity.}\label{fig:subAct82}
 \end{figure}
 
-\hypertarget{bedroom-drawer}{%
-\paragraph{Bedroom Drawer}\label{bedroom-drawer}}
+\hypertarget{bedroom-drawer---sub-activity-146}{%
+\paragraph{Bedroom Drawer - Sub-Activity
+146}\label{bedroom-drawer---sub-activity-146}}
 
 The bedroom drawer has an overall count of n=99. In Figure
 \ref{fig:subAct146} boxplot (A) in row one shows two main outliers, one
@@ -1882,8 +1868,9 @@ row.
 \caption{Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Bedroom Drawer sub activity.}\label{fig:subAct146}
 \end{figure}
 
-\hypertarget{kitchen-cabinet}{%
-\paragraph{Kitchen Cabinet}\label{kitchen-cabinet}}
+\hypertarget{kitchen-cabinet---sub-activity-132}{%
+\paragraph{Kitchen Cabinet - Sub-Activity
+132}\label{kitchen-cabinet---sub-activity-132}}
 
 The kitchen cabinet has an overall count of n=406. Figure
 \ref{fig:subAct132} boxplot (A) in row one shows one main outlier on
@@ -1902,8 +1889,9 @@ median (7.0 seconds). The resultant plots can be seen in the second row.
 \caption{Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Kitchen Cabinet sub activity.}\label{fig:subAct132}
 \end{figure}
 
-\hypertarget{kitchen-microwave}{%
-\paragraph{Kitchen Microwave}\label{kitchen-microwave}}
+\hypertarget{kitchen-microwave---sub-activity-143}{%
+\paragraph{Kitchen Microwave - Sub-Activity
+143}\label{kitchen-microwave---sub-activity-143}}
 
 The kitchen microwave has an overall count of n=61.Figure
 \ref{fig:subAct143} boxplot (A) in row one shows one main outlier on
@@ -1922,8 +1910,9 @@ median (6.0 seconds). The resultant plots can be seen in the second row.
 \caption{Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Kitchen Microwave sub activity.}\label{fig:subAct143}
 \end{figure}
 
-\hypertarget{kitchen-door}{%
-\paragraph{Kitchen Door}\label{kitchen-door}}
+\hypertarget{kitchen-door---sub-activity-141}{%
+\paragraph{Kitchen Door - Sub-Activity
+141}\label{kitchen-door---sub-activity-141}}
 
 The kitchen door has an overall count of n=134. Figure
 \ref{fig:subAct141} boxplot (A) in row one shows several key outliers,
@@ -1943,8 +1932,9 @@ in the second row.
 \caption{Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Kitchen Door sub activity.}\label{fig:subAct141}
 \end{figure}
 
-\hypertarget{bathroom-shower-faucet}{%
-\paragraph{Bathroom Shower Faucet}\label{bathroom-shower-faucet}}
+\hypertarget{bathroom-shower-faucet---sub-activity-93}{%
+\paragraph{Bathroom Shower Faucet - Sub-Activity
+93}\label{bathroom-shower-faucet---sub-activity-93}}
 
 The bathroom shower faucet has an overall count of n=88. Figure
 \ref{fig:subAct93} boxplot (A) in row one shows several outliers, with
@@ -1965,8 +1955,9 @@ row.
 \caption{Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Bathroom Shower Faucet sub activity.}\label{fig:subAct93}
 \end{figure}
 
-\hypertarget{kitchen-drawer}{%
-\paragraph{Kitchen Drawer}\label{kitchen-drawer}}
+\hypertarget{kitchen-drawer---sub-activity-125}{%
+\paragraph{Kitchen Drawer - Sub-Activity
+125}\label{kitchen-drawer---sub-activity-125}}
 
 The kitchen drawer has an overall count of n=208. Figure
 \ref{fig:subAct125} boxplot (A) in row one shows one main outlier on
@@ -1985,8 +1976,9 @@ median (4.0 seconds). The resultant plots can be seen in the second row.
 \caption{Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Kitchen Drawer sub activity.}\label{fig:subAct125}
 \end{figure}
 
-\hypertarget{kitchen-dishwasher}{%
-\paragraph{Kitchen Dishwasher}\label{kitchen-dishwasher}}
+\hypertarget{kitchen-dishwasher---sub-activity-70}{%
+\paragraph{Kitchen Dishwasher - Sub-Activity
+70}\label{kitchen-dishwasher---sub-activity-70}}
 
 The kitchen dishwasher has an overall count of n=86. Figure
 \ref{fig:subAct70} boxplot (A) in row one shows several outliers,
@@ -2008,9 +2000,9 @@ plots can be seen in the second row.
 \caption{Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Kitchen Dishwasher sub activity.}\label{fig:subAct70}
 \end{figure}
 
-\hypertarget{bathroom-sink-faucet---hot}{%
-\paragraph{Bathroom Sink Faucet -
-Hot}\label{bathroom-sink-faucet---hot}}
+\hypertarget{bathroom-sink-faucet-hot---sub-activity-68}{%
+\paragraph{Bathroom Sink Faucet (Hot) - Sub-Activity
+68}\label{bathroom-sink-faucet-hot---sub-activity-68}}
 
 The bathroom sink faucet has an overall count of n=169. Figure
 \ref{fig:subAct68} boxplot (A) in row one shows one main outlier on
@@ -2029,8 +2021,9 @@ deviation of 501.27 seconds. This outlier will be filled with the median
 \caption{Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Bathroom Sink Faucet sub activity.}\label{fig:subAct68}
 \end{figure}
 
-\hypertarget{kitchen-freezer}{%
-\paragraph{Kitchen Freezer}\label{kitchen-freezer}}
+\hypertarget{kitchen-freezer---sub-activity-137}{%
+\paragraph{Kitchen Freezer - Sub-Activity
+137}\label{kitchen-freezer---sub-activity-137}}
 
 The kitchen freezer has an overall count of n=130. Figure
 \ref{fig:subAct137} boxplot (A) in row one shows many outliers on all
@@ -2050,8 +2043,9 @@ seconds). The resultant plots can be seen in the second row.
 \caption{Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Kitchen Freezer sub activity.}\label{fig:subAct137}
 \end{figure}
 
-\hypertarget{kitchen-lightswitch}{%
-\paragraph{Kitchen Lightswitch}\label{kitchen-lightswitch}}
+\hypertarget{kitchen-lightswitch---sub-activity-105}{%
+\paragraph{Kitchen Lightswitch - Sub-Activity
+105}\label{kitchen-lightswitch---sub-activity-105}}
 
 The kitchen lightswitch has an overall count of n=32. Figure
 \ref{fig:subAct105} boxplot (A) in row one shows many abnormal results,
@@ -2073,8 +2067,9 @@ row.
 \caption{Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Kitchen Lightswitch sub activity.}\label{fig:subAct105}
 \end{figure}
 
-\hypertarget{study-lightswitch}{%
-\paragraph{Study Lightswitch}\label{study-lightswitch}}
+\hypertarget{study-lightswitch---sub-activity-92}{%
+\paragraph{Study Lightswitch - Sub-Activity
+92}\label{study-lightswitch---sub-activity-92}}
 
 The study lightswitch has an overall count of n=26. Figure
 \ref{fig:subAct92} boxplot (A) in row one shows abnormal results for
@@ -2094,8 +2089,9 @@ plots can be seen in the second row.
 \caption{Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Study Lightswitch sub-activity.}\label{fig:subAct92}
 \end{figure}
 
-\hypertarget{bathroom-door}{%
-\paragraph{Bathroom Door}\label{bathroom-door}}
+\hypertarget{bathroom-door---sub-activity-130}{%
+\paragraph{Bathroom Door - Sub-Activity
+130}\label{bathroom-door---sub-activity-130}}
 
 The bathroom door has an overall count of n=73. Figure
 \ref{fig:subAct130} boxplot (A) in row one shows six extreme outliers,
@@ -2116,8 +2112,9 @@ be seen in the second row.
 \caption{Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Bathroom Door sub-activity.}\label{fig:subAct130}
 \end{figure}
 
-\hypertarget{kitchen-toaster}{%
-\paragraph{Kitchen Toaster}\label{kitchen-toaster}}
+\hypertarget{kitchen-toaster---sub-activity-131}{%
+\paragraph{Kitchen Toaster - Sub-Activity
+131}\label{kitchen-toaster---sub-activity-131}}
 
 The kitchen toaster has an overall count of n=71. Figure
 \ref{fig:subAct131} boxplot (A) in row one shows two main extreme
@@ -2139,8 +2136,9 @@ resultant plots can be seen in the second row.
 \caption{Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Kitchen Toaster sub-activity.}\label{fig:subAct131}
 \end{figure}
 
-\hypertarget{livingroom-lightswitch}{%
-\paragraph{Livingroom Lightswitch}\label{livingroom-lightswitch}}
+\hypertarget{livingroom-lightswitch---sub-activity-107}{%
+\paragraph{Livingroom Lightswitch - Sub-Activity
+107}\label{livingroom-lightswitch---sub-activity-107}}
 
 The livingroom lightswitch has an overall count of n=8. Figure
 \ref{fig:subAct107} boxplot (A) in row one shows variable results due to
@@ -2159,8 +2157,9 @@ seconds). The resultant plots can be seen in the second row.
 \caption{Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Livingroom Lightswitch sub-activity.}\label{fig:subAct107}
 \end{figure}
 
-\hypertarget{foyer-closet---subact81}{%
-\subsubsection{Foyer Closet - subAct81}\label{foyer-closet---subact81}}
+\hypertarget{foyer-closet---sub-activity-81}{%
+\subsubsection{Foyer Closet - Sub-Activity
+81}\label{foyer-closet---sub-activity-81}}
 
 The foyer closer has an overall count of n=29 in the dataset. In Figure
 \ref{fig:subAct81} boxplot (A) in row one shows one key outlier just
@@ -2188,8 +2187,9 @@ value}\label{subactivity-cleansing---2-all-values-replaced-with-one-value}}
 This methodology was applied only to the bathroom toiletflush, with all
 values being set to 1 second.
 
-\hypertarget{bathroom-toiletflush}{%
-\paragraph{Bathroom Toiletflush}\label{bathroom-toiletflush}}
+\hypertarget{bathroom-toiletflush---sub-activity-100}{%
+\paragraph{Bathroom Toiletflush - Sub-Activity
+100}\label{bathroom-toiletflush---sub-activity-100}}
 
 Given the domain knowledge that it is unrealistic for a toilet flush to
 last for thousands of seconds, and the lack of variability of the length
@@ -2229,10 +2229,11 @@ sub activities were left in their native state;
 \texttt{kitchen\_washingmachine} (Figure \ref{fig:subAct142}, below),
 \texttt{kitchen\_laundrydryer} (Figure \ref{fig:subAct90}, below),
 \texttt{kitchen\_garbagedisposal} (Figure \ref{fig:subAct98}, below) and
-\texttt{kitchen\_coffeemachine} (Figure \ref{fig:subAct60}, below).
+\texttt{kitchen\_coffeemachine} (Figure \ref{fig:subAct119}, below).
 
-\hypertarget{bathroom-lightswitch}{%
-\paragraph{Bathroom Lightswitch}\label{bathroom-lightswitch}}
+\hypertarget{bathroom-lightswitch---sub-activity-101}{%
+\paragraph{Bathroom Lightswitch - Sub-Activity
+101}\label{bathroom-lightswitch---sub-activity-101}}
 
 \begin{figure}[H]
 
@@ -2243,8 +2244,9 @@ sub activities were left in their native state;
 \caption{A caption}\label{fig:subAct101}
 \end{figure}
 
-\hypertarget{kitchen-refrigerator}{%
-\paragraph{Kitchen Refrigerator}\label{kitchen-refrigerator}}
+\hypertarget{kitchen-refrigerator---sub-activity-126}{%
+\paragraph{Kitchen Refrigerator - Sub-Activity
+126}\label{kitchen-refrigerator---sub-activity-126}}
 
 \begin{figure}[H]
 
@@ -2255,9 +2257,9 @@ sub activities were left in their native state;
 \caption{Box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Kitchen Refrigerator sub activity.}\label{fig:subAct126}
 \end{figure}
 
-\hypertarget{bathroom-sink-faucet---cold---sub-activity-88}{%
-\paragraph{Bathroom Sink Faucet - Cold - Sub-Activity
-88}\label{bathroom-sink-faucet---cold---sub-activity-88}}
+\hypertarget{bathroom-sink-faucet-cold---sub-activity-88}{%
+\paragraph{Bathroom Sink Faucet (Cold) - Sub-Activity
+88}\label{bathroom-sink-faucet-cold---sub-activity-88}}
 
 \begin{figure}[H]
 
@@ -2500,63 +2502,208 @@ below, were dropped for the same reason.
 \subsubsection{The Final pre-processed
 dataset}\label{the-final-pre-processed-dataset}}
 
-The final pre-processed dataset
+The final pre-processed dataset had the following attributes;
+\texttt{subActNum} (the aub-activity number from the original
+\texttt{S1\ Activities} dataset), \texttt{subAct} (the aub-activity
+descriptor from the original \texttt{S1\ Activities} dataset),
+\texttt{start} (the start datetime for this specific instance of the
+sub-activity), \texttt{end} (the end datetime for this specific instance
+of the aub-activity), \texttt{dayNumeric} (a categorical variable to
+indiate day), \texttt{DAY} (e.g., `Fri', `Sat'), \texttt{WDWE} (WD
+signifies `weekday' and WE signifies `weekend'), \texttt{HOUR} (a
+categorical value to indicate time of the day, by the hour). And a
+dimensionality of {[}\textbf{DIM}{]}.
 
 \hypertarget{data-analysis-and-manipulation}{%
 \subsection{Data Analysis and
 Manipulation}\label{data-analysis-and-manipulation}}
 
-The primary focus of this section will be XYZ
+The primary focus of this section will be qualitative and quantitative
+analysis of the pre-processed data. This includes casting the data into
+a structure for sequential analysis via Sankey diagrams, and into a
+Boolean Array structure for subsequent machine learning.
 
 \hypertarget{sequential-analysis-algorithm}{%
 \subsubsection{Sequential Analysis
 Algorithm}\label{sequential-analysis-algorithm}}
 
-The following algorithm was created to evaluate the
+An algorithm was created to capture the amount of time between the start
+of one event (\texttt{Event\ A}) and the start of another event
+(\texttt{Event\ B}). In is worth noting that as the target dataset
+(Table \ref{tab:}) is row-wise event data on a continuous scale, without
+correct bounds, this algorithm would consider the start of every
+\texttt{Event\ B} after each \texttt{Event\ A}, subsequently creating an
+extremely noisy and large dataset via a combinatorial explosion. In this
+scenario, we would have meaningless associations with delta values in
+the order of hundreds of thousands of seconds.
+
+The algorithm \texttt{id\_delta} was created to perform sequential
+analysis without combinatorial explosion and to capture the amount of
+time between the start of \texttt{Event\ A} and the start of event
+\texttt{Event\ B}, as the value \texttt{Delta} in seconds. The algorithm
+does this by taking three arguments. The first argument,
+\texttt{events}, is the dataset with each event occuring as a row
+instance. The second argument, \texttt{n}, is the total number of
+subsequent \texttt{Event\ B} for any one \texttt{Event\ A}. The final
+argument, \texttt{delta\_threshold} takes interger quantities
+representative of the number of seconds into the future to consider.
+
+By way of an example \texttt{id\_delta(ds,\ 10,\ dt.timedelta(0,-60))}
+for each event row instance in \texttt{ds}, \texttt{10} neighbouring
+subevents will be captured, as long as they occur within a range of
+\texttt{0} till \texttt{60} seconds forward. In this scenario, if only
+four \texttt{Event\ B} occur within sixty seconds of \texttt{EventA}
+then only these four will be captured. Likewise, if thirteen
+\texttt{EventB} occur within sixty seconds of \texttt{EventA}, then only
+ten will be captured.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{def}\NormalTok{ id_delta(events, n}\OperatorTok{=}\DecValTok{1}\NormalTok{, delta_threshold}\OperatorTok{=}\NormalTok{dt.timedelta(}\OperatorTok{-}\DecValTok{99}\NormalTok{)):}
-\NormalTok{    nns }\OperatorTok{=}\NormalTok{ []}
+\KeywordTok{def}\NormalTok{ id_delta(events, n}\OperatorTok{=}\DecValTok{1}\NormalTok{, delta_threshold}\OperatorTok{=}\NormalTok{dt.timedelta(}\OperatorTok{-}\DecValTok{99}\NormalTok{)): }\CommentTok{# D}
+\NormalTok{    nns }\OperatorTok{=}\NormalTok{ [] }\CommentTok{# Create an empty array}
     \ControlFlowTok{for}\NormalTok{ row }\KeywordTok{in}\NormalTok{ events.itertuples():}
-\NormalTok{        start_time }\OperatorTok{=} \BuiltInTok{getattr}\NormalTok{(row, }\StringTok{'start'}\NormalTok{)}
-\NormalTok{        end_time }\OperatorTok{=} \BuiltInTok{getattr}\NormalTok{(row, }\StringTok{'end'}\NormalTok{)}
-\NormalTok{        subActNum }\OperatorTok{=} \BuiltInTok{getattr}\NormalTok{(row, }\StringTok{'subActNum'}\NormalTok{)}
-\NormalTok{        row_index }\OperatorTok{=} \BuiltInTok{getattr}\NormalTok{(row, }\StringTok{'Index'}\NormalTok{)}
+\NormalTok{        start_time }\OperatorTok{=} \BuiltInTok{getattr}\NormalTok{(row, }\StringTok{'start'}\NormalTok{) }\CommentTok{# Extract `start` from data set}
+\NormalTok{        end_time }\OperatorTok{=} \BuiltInTok{getattr}\NormalTok{(row, }\StringTok{'end'}\NormalTok{) }\CommentTok{# Extract `end` from data set}
+\NormalTok{        subActNum }\OperatorTok{=} \BuiltInTok{getattr}\NormalTok{(row, }\StringTok{'subActNum'}\NormalTok{) }\CommentTok{# Extract `subActNum` from data set}
+\NormalTok{        row_index }\OperatorTok{=} \BuiltInTok{getattr}\NormalTok{(row, }\StringTok{'Index'}\NormalTok{) }\CommentTok{# Extract `index` from data set}
         
-\NormalTok{        nn }\OperatorTok{=}\NormalTok{ events[(events.start }\OperatorTok{>=}\NormalTok{ start_time) }\OperatorTok{&} 
-\NormalTok{                    (events.index }\OperatorTok{!=}\NormalTok{ row_index) }\OperatorTok{&} 
+\NormalTok{        nn }\OperatorTok{=}\NormalTok{ events[(events.start }\OperatorTok{>=}\NormalTok{ start_time) }\OperatorTok{&} \CommentTok{# }
+\NormalTok{                    (events.index }\OperatorTok{!=}\NormalTok{ row_index) }\OperatorTok{&} \CommentTok{# }
 \NormalTok{                    ((start_time }\OperatorTok{-}\NormalTok{ events.start) }\OperatorTok{>}\NormalTok{ delta_threshold)][:n]}
-        
 \NormalTok{        ordered }\OperatorTok{=}\NormalTok{ pd.DataFrame()}
-\NormalTok{        ordered[}\StringTok{'Dummy'}\NormalTok{] }\OperatorTok{=}\NormalTok{ nn[}\StringTok{'subActNum'}\NormalTok{]}
+\NormalTok{        ordered[}\StringTok{'Dummy'}\NormalTok{] }\OperatorTok{=}\NormalTok{ nn[}\StringTok{'subActNum'}\NormalTok{] }\CommentTok{# Created for indexing purposes}
 \NormalTok{        ordered[}\StringTok{'EventA'}\NormalTok{] }\OperatorTok{=}\NormalTok{ subActNum}
 \NormalTok{        ordered[}\StringTok{'EventB'}\NormalTok{] }\OperatorTok{=}\NormalTok{ nn[}\StringTok{'subActNum'}\NormalTok{]}
 \NormalTok{        ordered[}\StringTok{'EvA_Start'}\NormalTok{] }\OperatorTok{=}\NormalTok{ start_time}
 \NormalTok{        ordered[}\StringTok{'EvB_Start'}\NormalTok{] }\OperatorTok{=}\NormalTok{ nn[}\StringTok{'start'}\NormalTok{]}
 \NormalTok{        ordered[}\StringTok{'EvA_End'}\NormalTok{] }\OperatorTok{=}\NormalTok{ end_time}
 \NormalTok{        ordered[}\StringTok{'EvB_End'}\NormalTok{] }\OperatorTok{=}\NormalTok{ nn[}\StringTok{'end'}\NormalTok{]}
-        \KeywordTok{del}\NormalTok{ ordered[}\StringTok{'Dummy'}\NormalTok{]}
+        \KeywordTok{del}\NormalTok{ ordered[}\StringTok{'Dummy'}\NormalTok{] }\CommentTok{# Dropped}
 \NormalTok{        nns.append(ordered)}
   
-    
 \NormalTok{    result }\OperatorTok{=}\NormalTok{ pd.concat(nns)}
-\NormalTok{    result[}\StringTok{'Delta'}\NormalTok{] }\OperatorTok{=}\NormalTok{ np.where(result[}\StringTok{'EvA_Start'}\NormalTok{]}\OperatorTok{==}\NormalTok{result[}\StringTok{'EvB_Start'}\NormalTok{], }
-                               \DecValTok{0}\NormalTok{,}
+\NormalTok{    result[}\StringTok{'Delta'}\NormalTok{] }\OperatorTok{=}\NormalTok{ np.where(result[}\StringTok{'EvA_Start'}\NormalTok{] }\OperatorTok{==}\NormalTok{ result[}\StringTok{'EvB_Start'}\NormalTok{], }\DecValTok{0}\NormalTok{,}
 \NormalTok{                               (result[}\StringTok{'EvB_Start'}\NormalTok{] }\OperatorTok{-}\NormalTok{ result[}\StringTok{'EvA_Start'}\NormalTok{]))}
 \NormalTok{    result[}\StringTok{'Delta'}\NormalTok{] }\OperatorTok{=}\NormalTok{ result[}\StringTok{'Delta'}\NormalTok{].dt.total_seconds()}
     \ControlFlowTok{return}\NormalTok{ result}
 \end{Highlighting}
 \end{Shaded}
 
-\pagebreak
+A shotgun analysis of the combinatorics associated with varying input
+arguments resulted in the following observations; * One neighbour for 10
+seconds gave a dataset of 1063 instances
+(\texttt{id\_delta(ds,\ 1,\ dt.timedelta(0,-10))}) * One neighbour for
+60 seconds gave a dataset of 1989 instances
+(\texttt{id\_delta(ds,\ 1,\ dt.timedelta(0,-60))}) * Ten neighbours for
+10 seconds gave a dataset of 1536 instances
+(\texttt{id\_delta(ds,\ 10,\ dt.timedelta(0,-10))}) * Ten neighbours for
+60 seconds gave a dataset of 5385 instances
+(\texttt{id\_delta(ds,\ 10,\ dt.timedelta(0,-60))})
+
+We are focussing our analysis on the sequential analysis algorithm run
+with the parameters of one neighbouring sub-activity over a sixty second
+period (\texttt{id\_delta(ds,\ 1,\ dt.timedelta(0,-60))}), the head of
+the resultant dataset (\texttt{ds\_1n\_60s.csv}) can be Table
+\ref{tab:}, below. The reasoning behind chosing this dataset being 1) It
+is best practise to start with the most `simple' form of a problem in
+order to develop understanding, in this case being that one neighbour
+only is considered for each row and 2) For further analysis these data
+may be collapsed from a seconds time scale to a minute time scale, so it
+is useful to know the variety of activities that can occur within one
+minute (60 seconds of each other).
+
+\rowcolors{2}{gray!6}{white}
+\begin{table}[!h]
+
+\caption{\label{tab:TAB_ds_1n_60s}Sequential analysis result: one neighbouring sub-activity over a sixty second period}
+\centering
+\fontsize{8}{10}\selectfont
+\begin{tabular}[t]{rrllllrllr}
+\hiderowcolors
+\toprule
+EventA & EventB & EvA\_Start & EvB\_Start & EvA\_End & EvB\_End & Delta & DAY & WDWE & Hour\\
+\midrule
+\showrowcolors
+67 & 100 & 2003-03-27 06:43:40 & 2003-03-27 06:44:06 & 2003-03-27 06:43:44 & 2003-03-27 06:44:07 & 26 & Thu & WD & 6\\
+100 & 101 & 2003-03-27 06:44:06 & 2003-03-27 06:44:20 & 2003-03-27 06:44:07 & 2003-03-27 07:46:35 & 14 & Thu & WD & 6\\
+101 & 57 & 2003-03-27 06:44:20 & 2003-03-27 06:44:35 & 2003-03-27 07:46:35 & 2003-03-27 06:44:49 & 15 & Thu & WD & 6\\
+57 & 57 & 2003-03-27 06:44:35 & 2003-03-27 06:44:36 & 2003-03-27 06:44:49 & 2003-03-27 06:44:49 & 1 & Thu & WD & 6\\
+57 & 67 & 2003-03-27 06:44:36 & 2003-03-27 06:44:49 & 2003-03-27 06:44:49 & 2003-03-27 06:44:57 & 13 & Thu & WD & 6\\
+\addlinespace
+67 & 82 & 2003-03-27 06:44:49 & 2003-03-27 06:45:45 & 2003-03-27 06:44:57 & 2003-03-27 06:45:49 & 56 & Thu & WD & 6\\
+\bottomrule
+\end{tabular}
+\end{table}
+\rowcolors{2}{white}{white}
 
 \hypertarget{qualitative-sequential-analysis-via-sankey-diagram}{%
 \subsubsection{Qualitative Sequential Analysis via Sankey
 Diagram}\label{qualitative-sequential-analysis-via-sankey-diagram}}
 
-\hypertarget{section}{%
-\paragraph{}\label{section}}
+In order to develop understanding of the interrelaterness of the
+sub-activites, the data from the sequential analysis
+\texttt{ds\_1n\_60s.csv} were plotted as Sankey diagrams using a bespoke
+wrapper method written in Python. Using the previously mentioned
+features of \texttt{HOUR} and \texttt{WDWE} in the dataset, the
+resultant diagrams were segmented over 6 time periods, namely:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Figure \ref{fig:sankey_WeekdayMorningds_1n_60s} - Weekday Morning,
+  initial morning sub-activity until 11.59 am
+\item
+  Figure \ref{fig:sankey_WeekdayAfternoonds_1n_60s} - Weekday Afternoon,
+  12 noon until 17.59 pm
+\item
+  Figure \ref{fig:sankey_WeekdayEveningds_1n_60s} - Weekday Evening,
+  18:00 pm until mid-night
+\item
+  Figure \ref{fig:sankey_WeekendMorningds_1n_60s} - Weekend Morning,
+  initial morning sub-activity until 11.59 am
+\item
+  Figure \ref{fig:sankey_WeekendAfternoonds_1n_60s} - Weekend Afternoon,
+  12 noon until 17.59pm
+\item
+  Figure \ref{fig:sankey_WeekendEveningds_1n_60s} - Weekend Evening,
+  18:00pm untill mid-night
+\end{enumerate}
+
+Sankey diagrams are used to visualise flows of energy, materials or
+other resources in a variety of applications (Lupton, 2017).In our case,
+the Sankey diagrams will allow us to visualise the flow of end-user
+interaction with each sub-activity over the time-boxes 1 through 6, as
+described above. Our Sankey diagrams (derived from the 1 neighbour over
+60 seconds sequential analysis) have the following features i) The each
+represent a specific aggregated time period from the dataset, ii) In
+each Sankey, the sub-acitivity nodes that require energy input only from
+the end user (e.g., Kitchen Door) are blue, while the sub-activity nodes
+that require external energy to function (e.g., Kitchen Toaster), iii)
+The width of each sub-activity in the Sankey diagram is indicative to
+the number of times interaction occured, a thicker node means more
+interaction, iv) The lines between each node indicate the event of one
+sub-activity proceeding or preceeding another and v) Some events nodes
+are centralised, with at least one activity `flowing in' and at least
+one `flowing out' while other nodes a terminal, with only activities
+`flowing in' or `flowing out' (but not both).
+
+Each Sankey diagram, as seen below, shows a high level of interactivity
+between the various sub-acitivities. We observer that of all the `no
+external energy' sub-activities, only the foyer closet (as seen in
+Figure \ref{fig:sankey_WeekdayAfternoonds_1n_60s} and Figure
+\ref{fig:sankey_WeekdayEveningds_1n_60s}) acts as a terminal node. In
+comparision, numerous sub-activities that require energy (as seen in
+Figure \ref{fig:sankey_WeekdayEveningds_1n_60s} and Figure
+\ref{fig:sankey_WeekendEveningds_1n_60s}) act as terminal nodes. We also
+observe that there is a very level of interactivity between the
+sub-activities that do and do no require an external energy source (red
+and blue nodes, respectively) to function. This will provide direction
+for further analyis.
+
+\hypertarget{weekday-morning-initial-morning-sub-activity-until-11.59-am}{%
+\paragraph{Weekday Morning, initial morning sub-activity until 11.59
+am}\label{weekday-morning-initial-morning-sub-activity-until-11.59-am}}
 
 \begin{figure}[H]
 
@@ -2567,6 +2714,10 @@ Diagram}\label{qualitative-sequential-analysis-via-sankey-diagram}}
 \caption{Sankey Diagram of Weekday Mornings, considering all one neighbour per instance within a 60 second period}\label{fig:sankey_WeekdayMorningds_1n_60s}
 \end{figure}
 
+\hypertarget{weekday-afternoon-12-noon-until-17.59-pm}{%
+\paragraph{Weekday Afternoon, 12 noon until 17.59
+pm}\label{weekday-afternoon-12-noon-until-17.59-pm}}
+
 \begin{figure}[H]
 
 {\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/WeekdayAfternoonds_1n_60s} 
@@ -2575,6 +2726,10 @@ Diagram}\label{qualitative-sequential-analysis-via-sankey-diagram}}
 
 \caption{Sankey Diagram of Weekday Afternoons, considering all one neighbour per instance within a 60 second period}\label{fig:sankey_WeekdayAfternoonds_1n_60s}
 \end{figure}
+
+\hypertarget{weekday-evening-1800-pm-until-mid-night}{%
+\paragraph{Weekday Evening, 18:00 pm until
+mid-night}\label{weekday-evening-1800-pm-until-mid-night}}
 
 \begin{figure}[H]
 
@@ -2585,6 +2740,10 @@ Diagram}\label{qualitative-sequential-analysis-via-sankey-diagram}}
 \caption{Sankey Diagram of Weekday Evenings, considering all one neighbour per instance within a 60 second period}\label{fig:sankey_WeekdayEveningds_1n_60s}
 \end{figure}
 
+\hypertarget{weekend-morning-initial-morning-sub-activity-until-11.59-am}{%
+\paragraph{Weekend Morning, initial morning sub-activity until 11.59
+am}\label{weekend-morning-initial-morning-sub-activity-until-11.59-am}}
+
 \begin{figure}[H]
 
 {\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/WeekendMorningds_1n_60s} 
@@ -2593,6 +2752,10 @@ Diagram}\label{qualitative-sequential-analysis-via-sankey-diagram}}
 
 \caption{Sankey Diagram of Weekend Mornings, considering all one neighbour per instance within a 60 second period}\label{fig:sankey_WeekendMorningds_1n_60s}
 \end{figure}
+
+\hypertarget{weekend-afternoon-12-noon-until-17.59pm}{%
+\paragraph{Weekend Afternoon, 12 noon until
+17.59pm}\label{weekend-afternoon-12-noon-until-17.59pm}}
 
 \begin{figure}[H]
 
@@ -2603,6 +2766,10 @@ Diagram}\label{qualitative-sequential-analysis-via-sankey-diagram}}
 \caption{Sankey Diagram of Weekend Afternoons, considering all one neighbour per instance within a 60 second period}\label{fig:sankey_WeekendAfternoonds_1n_60s}
 \end{figure}
 
+\hypertarget{weekend-evening-1800pm-untill-mid-night}{%
+\paragraph{Weekend Evening, 18:00pm untill
+mid-night}\label{weekend-evening-1800pm-untill-mid-night}}
+
 \begin{figure}[H]
 
 {\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/WeekendEveningds_1n_60s} 
@@ -2612,7 +2779,17 @@ Diagram}\label{qualitative-sequential-analysis-via-sankey-diagram}}
 \caption{Sankey Diagram of Weekend Evenings, considering all one neighbour per instance within a 60 second period}\label{fig:sankey_WeekendEveningds_1n_60s}
 \end{figure}
 
-\pagebreak
+\hypertarget{re-casting-the-dataset-as-a-boolean-array}{%
+\subsubsection{Re-casting the Dataset as a Boolean
+Array}\label{re-casting-the-dataset-as-a-boolean-array}}
+
+Based on the analysis above, we sought a data structure whereby every
+simultaneous subactivity occuring at one point in time could be
+evaluated. In order to acheive this without having to place a large
+emphasis on complex combinatorics, it was decided to cast the data
+structure into a Boolean Array.
+
+As demonstrated
 
 Test for in \ref{fig:fig1} we see XYZ
 

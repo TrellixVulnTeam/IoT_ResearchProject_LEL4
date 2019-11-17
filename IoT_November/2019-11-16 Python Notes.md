@@ -30,6 +30,9 @@ head(df) %>% kable(format = "latex", caption = "The S1 sub-activities tidy datas
 
 
 
+s 
+
+
 `s = ds.apply(lambda x: pd.Series(x['timeStampArrayList']),axis=1).stack().reset_index(level=1, drop=True)`
 
 ```python
