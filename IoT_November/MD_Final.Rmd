@@ -762,19 +762,17 @@ As noted by Basu et al, human behavior with respect to home appliance interactio
 df <- read_csv('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/S1SubActivities_preprocessedWfeatures.csv', 
                col_types = cols(subActNum = col_character(), dayNumeric = col_character(), HOUR = col_character()))
 dfNoDupes = df[!duplicated(df$subActNum),]
-dfNoDupes %>% kable(format = "latex", caption = "A sample of n=1 of each sub-activity from the pre-processed dataset. The table has been coloured to indicate futher pre-processing steps, as discussed below.", booktabs = T) %>% 
+dfNoDupes %>% kable(format = "latex", caption = "A sample of n=1 of each sub-activity from the pre-processed dataset", booktabs = T) %>% 
   kable_styling(latex_options = c("hold_position", "striped", "scale_down"),
                 bootstrap_options = c("striped", "hover", "condensed"),
-                font_size = 8) %>% 
-  column_spec(c(1,2)) %>%
-  row_spec(c(27,29,34,35,36,38), background = "#CEF5E7") %>%
-  row_spec(c(1,4,5,6,7,8,9,10,11,12,15,17,19,20,21,23,33), background = "#C6CDF2") %>%
-  row_spec(c(3,13,14,16,18,22,24,25,26,28,30,31,32,37), background = "#EACBF2") %>%
-  row_spec(2, background = "#FAF8B9")
+                font_size = 8)
+  #column_spec(c(1,2)) %>%
+  #row_spec(c(27,29,34,35,36,38), background = "#CEF5E7") %>%
+  #row_spec(c(1,4,5,6,7,8,9,10,11,12,15,17,19,20,21,23,33), background = "#C6CDF2") %>%
+  #row_spec(c(3,13,14,16,18,22,24,25,26,28,30,31,32,37), background = "#EACBF2") %>%
+  #row_spec(2, background = "#FAF8B9")
 ```
 
-
-\pagebreak
 
 ### SubActivity Visualisation and Outlier Inspection
 
@@ -805,8 +803,6 @@ p <- p + coord_flip() + labs(title = "Plot of aggregated sub-activity count vers
 p
 ```
 
-\pagebreak
-
 #### Aggregated Box Plot of Sub-Activities
 
 Figure \ref{fig:FIG_allBoxPlots}, below, shows boxplots of all sub-activities versus their duration values. In this plot, we can see many outliers, which will inform further analysis. We also note that many of the outliers are extremely unrealistic. Of particular concern Kitchen_Toaster with a duration of almost 30,000 seconds, Bathroom_toiletflush distributed up to the range of 20,000 seconds. This potentially indicates challenges with the initial data collection methodology or experimental conditions / setup. Each sub-activity will be individually considered with respect to it's outliers.
@@ -823,32 +819,17 @@ p <- p + geom_boxplot(outlier.alpha = 0.8, outlier.size = 0.8) + # aes(colour = 
 p
 ```
 
-\pagebreak
-
 ### Sub-Activity Cleansing - Outlier Removal
 
-Via the inspection of each sub-activity the following set of instances were identified, as seen in Table \ref{tab:outlierSTATS}. In all cases the standard deviation (**Std**) of each aggregated instance (n=Count) is found to be greater than the mean, indicating **___**. THe bathroom medicine cabinet, for example, has a mean value of 3188 seconds (53 minutes) and a median value of 88 seconds. Accross all sub-activities seen in Table \ref{tab:outlierSTATS}, the median gives more reasonable values. Therefore the median will be used to fill the outlier values. 
-
-```python
-# cleanseOutliers.py
-for row in allMedianValues.iterrows():
-    ds.loc[(ds['subAct'] == row[1].SubAct) &
-           (ds['durationSec'] > row[1].Median + 0.5 * row[1].Std),
-           'durationSec'] = round(row[1].Median)
-
-from datetime import datetime, timedelta
-ds.end = ds.apply(lambda x: x.start + timedelta(seconds=x.durationSec), axis=1)
-```
+Via the inspection of each sub-activity the following set of instances were identified, as seen in Table \ref{tab:outlierSTATS}. In all cases the standard deviation of each aggregated instance (n=Count) is found to be greater than the mean, indicating that the data points are not even distributed with respect to total duration of the sub-activity, additionally, the median in all cases is found to be vastly different from the mean. The bathroom medicine cabinet, for example, has a mean value of 3188 seconds (53 minutes) and a median value of 88 seconds. Accross all sub-activities seen in Table \ref{tab:outlierSTATS}, the median gives more reasonable values. Therefore the median value for each sub-activity below will be used to fill the outlier values. There were in total 4 pre-processing methodologies used. 1. Filling outliers with median 2. All values replaced with one value 3. No further processing required 4. Sub-activity dropped
 
 ```{r outlierSTATS, echo=FALSE, message=FALSE, warning=FALSE}
 check <- read_csv('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/S1SubActivities_medianValues.csv')
-check %>% kable(format = "latex", caption = "Demo table", booktabs = T) %>% 
+check %>% kable(format = "latex", caption = "Summary table of outliers with respect to sub-activity duration over all instances", booktabs = T) %>% 
   kable_styling(latex_options = c("hold_position", "striped"),
                 bootstrap_options = c("striped", "hover", "condensed"),
                 font_size = 8)
 ```
-
-There were in total 4 pre-processing methodologies used. 1. Filling outliers with median 2. All values replaced with one value 3. No further processing required 4. Sub-activity dropped
 
 ### Sub-Activity Cleansing - 1) Filling outliers with median
 
@@ -978,7 +959,7 @@ knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/
 
 ###  SubActivity Cleansing Review - 3) No futher processing required
 
-Based on the investigation of the box plots (A in all sub activity plots), heat maps of day of week versus duration in seconds mapped by count (B in all subactivity plots) and heat maps of day of week versus hour of day mapped by count (C in all subactivity plots) the following sub activities were left in their native state; `bathroom_lightswitch` (Figure \ref{fig:subAct101}, below), `kitchen_refrigerator` (Figure \ref{fig:subAct126}, below), `bathroom_sinkfaucet-cold` (Figure \ref{fig:subAct88}, below), `foyer_door` (Figure \ref{fig:subAct}, below), `kitchen_burner` (Figure \ref{fig:subAct}, below), `foyer_lightswitch` (Figure \ref{fig:subAct}, below), `bathroom_exhaustfan` (Figure \ref{fig:subAct}, below), `bedroom_lightswitch` (Figure \ref{fig:subAct}, below), `kitchen_oven` (Figure \ref{fig:subAct}, below), `livingroom_lamp` (Figure \ref{fig:subAct}, below), `kitchen_washingmachine` (Figure \ref{fig:subAct}, below), `kitchen_laundrydryer` (Figure \ref{fig:subAct}, below), `kitchen_garbagedisposal` (Figure \ref{fig:subAct}, below), `kitchen_coffeemachine` (Figure \ref{fig:subAct}, below) and `foyer_closet` (Figure \ref{fig:subAct}, below).
+Based on the investigation of the box plots (A in all sub activity plots), heat maps of day of week versus duration in seconds mapped by count (B in all subactivity plots) and heat maps of day of week versus hour of day mapped by count (C in all subactivity plots) the following sub activities were left in their native state; `bathroom_lightswitch` (Figure \ref{fig:subAct101}, below), `kitchen_refrigerator` (Figure \ref{fig:subAct126}, below), `bathroom_sinkfaucet-cold` (Figure \ref{fig:subAct88}, below), `foyer_door` (Figure \ref{fig:subAct140}, below), `kitchen_burner` (Figure \ref{fig:subAct140}, below), `foyer_lightswitch` (Figure \ref{fig:subAct104}, below), `bathroom_exhaustfan` (Figure \ref{fig:subAct96}, below), `bedroom_lightswitch` (Figure \ref{fig:subAct108}, below), `kitchen_oven` (Figure \ref{fig:subAct129}, below), `livingroom_lamp` (Figure \ref{fig:subAct76}, below), `kitchen_washingmachine` (Figure \ref{fig:subAct142}, below), `kitchen_laundrydryer` (Figure \ref{fig:subAct90}, below), `kitchen_garbagedisposal` (Figure \ref{fig:subAct98}, below) and `kitchen_coffeemachine` (Figure \ref{fig:subAct119}, below).
 
 #### Bathroom Lightswitch
 ```{r subAct101, echo=FALSE, fig.cap="A caption", out.width = '100%'}
@@ -986,78 +967,82 @@ knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/
 ```
 
 #### Kitchen Refrigerator
-```{r subAct126, echo=FALSE, fig.cap="Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Kitchen Refrigerator sub activity.", out.width = '100%'}
+```{r subAct126, echo=FALSE, fig.cap="Box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Kitchen Refrigerator sub activity.", out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct126.png')
 ```
 
 #### Bathroom Sink Faucet - Cold - Sub-Activity 88
-```{r subAct88, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+```{r subAct88, echo=FALSE, fig.cap="Box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Bathroom sick faucted - cold sub-activity.", out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct88.png')
 ```
 
 #### Foyer Door - Sub-Activity 140
-```{r subAct140, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+```{r subAct140, echo=FALSE, fig.cap="Box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Foyer Door sub-activity.", out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct140.png')
 ```
 
 #### Kitchen Burner - Sub-Activity 140
-```{r subAct106, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+```{r subAct106, echo=FALSE, fig.cap="Box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Kitchen Burner sub-activity.", out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct106.png')
 ```
 
 #### Foyer Lightswitch - Sub-Activity 104
-```{r subAct104, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+```{r subAct104, echo=FALSE, fig.cap="Box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Foyer Lightswitch sub-activity.", out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct104.png')
 ```
 
 #### Bathroom Exhaust Fan - Sub-Activity 96
-```{r subAct96, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+```{r subAct96, echo=FALSE, fig.cap="Box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Bathroom Exhaust Fan sub-activity.", out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct96.png')
 ```
 
 #### Bedroom Lightswitch  - Sub-Activity 108
-```{r subAct108, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+```{r subAct108, echo=FALSE, fig.cap="Box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Bedroom Lightswitch sub-activity.", out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct108.png')
 ```
 
 #### Kitchen Oven  - Sub-Activity 129
-```{r subAct129, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+```{r subAct129, echo=FALSE, fig.cap="Box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Kitchen Oven sub-activity.", out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct129.png')
 ```
 
 #### Livingroom Lamp - Sub-Activity 76
-```{r subAct76, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+```{r subAct76, echo=FALSE, fig.cap="Box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Livingroom Lamp sub-activity.", out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct76.png')
 ```
 
 #### Kitchen Washingmachine - Sub-Activity 142
-```{r subAct142, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+```{r subAct142, echo=FALSE, fig.cap="Box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Kitchen Washingmachine sub-activity.", out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct142.png')
 ```
 
 #### Kitchen Laundry Dryer - Sub-Activity 90
-```{r subAct90, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+```{r subAct90, echo=FALSE, fig.cap="Box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Kitchen Laundry Dryer sub-activity.", out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct90.png')
 ```
 
 #### Kitchen Garbage Disposal - Sub-Activity 98
-```{r subAct98, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+```{r subAct98, echo=FALSE, fig.cap="Box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Kitchen Garbage Disposal sub-activity.", out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct98.png')
 ```
 
-
-
-
-
+#### Kitchen Coffee Machine - Sub-Activity 119
+```{r subAct119, echo=FALSE, fig.cap="Box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Kitchen Coffee Machine sub-activity.", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct119.png')
+```
 
 ###  SubActivity Cleansing - 4) Sub-activity dropped
 
-Based on the investigation of the box plots (A in all sub activity plots), heat maps of day of week versus duration in seconds mapped by count (B in all subactivity plots) and heat maps of day of week versus hour of day mapped by count (C in all subactivity plots) the following sub activities were dropped from the dataset. This livingroom DVD sub activity, as plotted below in Figure \ref{fig:subAct56} was dropped from the dataset due to it's sparsity (only two instances in the dataset). The bedroom jewelrybox subactivity, as seen in Figure \ref{fig:subAct139} was dropped due to the extremely specific nature of this subactivity. In building a generalized model, we do not wish to have such datapoints present for our analysis.
-
+Based on the investigation of the box plots (A in all sub activity plots), heat maps of day of week versus duration in seconds mapped by count (B in all subactivity plots) and heat maps of day of week versus hour of day mapped by count (C in all subactivity plots) the following sub activities were dropped from the dataset. This livingroom DVD sub activity, as plotted below in Figure \ref{fig:subAct56} was dropped from the dataset due to it's sparsity (only two instances in the dataset). Similarly, the bedroom lamp sub-activity, as plotted below in Figure \ref{fig:subAct64} also had only two instances in the dataset and was dropped. The bedroom jewelrybox subactivity, as seen in Figure \ref{fig:subAct139} was dropped due to the extremely specific nature of this subactivity. In building a generalized model, we do not wish to have such datapoints present for our analysis. Likewise with the bedroom jewelry box, the kitchen cereal subactivity, Figure \ref{fig:subAct145} below, were dropped for the same reason.
 
 #### Livingroom DVD - Sub-Activity 56
 ```{r subAct56, echo=FALSE, fig.cap="Box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Livingroom DVD sub activity.", out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct56.png')
+```
+
+#### Bedroom Lamp - Sub-Activity 64
+```{r subAct64, echo=FALSE, fig.cap="Box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Bedroom Lamp sub-activity.", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct64.png')
 ```
 
 #### Bedroom Jewelrybox - Sub-Activity 139
@@ -1065,14 +1050,18 @@ knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct139.png')
 ```
 
+#### Kitchen Cereal - Sub-Activity 145
+```{r subAct145, echo=FALSE, fig.cap="Box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Kitchen Cereal sub-activity.", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct145.png')
+```
 
-
-
-
+#### Kitchen Containers - Sub-Activity 60
+```{r subAct60, echo=FALSE, fig.cap="Box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Kitchen Containers sub-activity.", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct60.png')
+```
 
 ###  The Final pre-processed dataset
-
-XYZ
+The final pre-processed dataset had the following attributes; ``
 
 ## Data Analysis and Manipulation
 
@@ -1174,51 +1163,9 @@ knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/
 
 \pagebreak
 
-\pagebreak
-
-#### Bedroom Lamp - SubAct64
-
-The bedroom lamp was only present in the dataset for one instance, as seen in Figure \ref{fig:subAct64}, and thus this sub activity was dropped from the dataset.
-
-#### Kitchen Cereal - SubAct145
-
-Likewise with the bedroom jewelry box, the kitchen cereal subactivity, Figure \ref{fig:subAct145} below, was dropped due to the extremely specific nature of this activity.
-
-#### Kitchen Containers - SubAct60
-
-Likewise with the bedroom jewelry box, the kitchen containers subactivity, Figure \ref{fig:subAct60} below, was dropped due to the extremely specific nature of this activity.
 
 
 
-
-
-
-
-#### Kitchen Cereal (SubActNum 145) DROPPED
-
-```{r subAct145, echo=FALSE, fig.cap="A caption", out.width = '100%'}
-knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct145.png')
-```
-
-#### Kitchen Containers (SubActNum 60) DROPPED
-
-```{r subAct60, echo=FALSE, fig.cap="A caption", out.width = '100%'}
-knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct60.png')
-```
-
-#### Kitchen Coffee Machine
-
-```{r subAct119, echo=FALSE, fig.cap="A caption", out.width = '100%'}
-knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct119.png')
-```
-
-#### Bedroom Lamp (SubActNum 64)
-
-DROPPED
-
-```{r subAct64, echo=FALSE, fig.cap="A caption", out.width = '100%'}
-knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct64.png')
-```
 
 
 

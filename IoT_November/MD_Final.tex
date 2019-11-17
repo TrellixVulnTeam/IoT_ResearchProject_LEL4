@@ -1251,13 +1251,13 @@ pre-processed sensor data was exported as
 subActNum & room & activity & concat & reqEnergy & subActNumConcat\\
 \midrule
 \showrowcolors
-100 & Bathroom & Toilet Flush & bathroom\_toiletflush & False & subActNum\_100\\
-101 & Bathroom & Light switch & bathroom\_lightswitch & True & subActNum\_101\\
-104 & Foyer & Light switch & foyer\_lightswitch & True & subActNum\_104\\
-105 & Kitchen & Light switch & kitchen\_lightswitch & True & subActNum\_105\\
-106 & Kitchen & Burner & kitchen\_burner & True & subActNum\_106\\
+100 & Bathroom & Toilet Flush & bathroom\_toiletflush & FALSE & subActNum\_100\\
+101 & Bathroom & Light switch & bathroom\_lightswitch & TRUE & subActNum\_101\\
+104 & Foyer & Light switch & foyer\_lightswitch & TRUE & subActNum\_104\\
+105 & Kitchen & Light switch & kitchen\_lightswitch & TRUE & subActNum\_105\\
+106 & Kitchen & Burner & kitchen\_burner & TRUE & subActNum\_106\\
 \addlinespace
-107 & Living room & Light switch & livingroom\_lightswitch & True & subActNum\_107\\
+107 & Living room & Light switch & livingroom\_lightswitch & TRUE & subActNum\_107\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1604,7 +1604,7 @@ time) and \texttt{durationSec} (the delta seconds value between
 \rowcolors{2}{gray!6}{white}
 \begin{table}[!h]
 
-\caption{\label{tab:TAB_}A sample of n=1 of each sub-activity from the pre-processed dataset. The table has been coloured to indicate futher pre-processing steps, as discussed below.}
+\caption{\label{tab:TAB_ALL}A sample of n=1 of each sub-activity from the pre-processed dataset. The table has been coloured to indicate futher pre-processing steps, as discussed below.}
 \centering
 \resizebox{\linewidth}{!}{\fontsize{8}{10}\selectfont
 \begin{tabular}[t]{>{}l>{}lllllllr}
@@ -1783,18 +1783,30 @@ foyer\_closet & 29 & 8.0 & 42.44828 & 174.4286\\
 \rowcolors{2}{white}{white}
 
 There were in total 4 pre-processing methodologies used. 1. Filling
-outliers with median 2. All values replaced with one value 3. No futher
-processing required 3. Sub-activity dropped
+outliers with median 2. All values replaced with one value 3. No further
+processing required 4. Sub-activity dropped
 
 \hypertarget{sub-activity-cleansing---1-filling-outliers-with-median}{%
 \subsubsection{Sub-Activity Cleansing - 1) Filling outliers with
 median}\label{sub-activity-cleansing---1-filling-outliers-with-median}}
 
-This methodology is exemplified by the bathroom cabinet. This was also
-applied to
+An example of this methodology can be seen with the bathroom cabinet.
+This methodology was also applied to all of the other sub-activities in
+Table \ref{tab:outlierSTATS}.
 
 \hypertarget{bathroom-cabinet}{%
 \paragraph{Bathroom Cabinet}\label{bathroom-cabinet}}
+
+As per Table \ref{tab:outlierSTATS}, above, the bathroom cabinet has an
+overall count of n=104 in the dataset. In Figure \ref{fig:subAct67} the
+boxplot (A) in row one shows several outliers, most notably around the
+20,000 second mark for Friday and the 25,000 mark for Sunday. When
+considering all weekday and weekend values together, the mean is found
+to be 460.22 seconds, while the standard deviation is found to be
+3176.16. As the SD in this case greatly overwhelms the mean, and the
+values of 20,000 seconds and 25,000 seconds are highly unrealistic for
+the sub-activity in question, the outliers will be filled with the
+median (4.0 seconds). The resultant plots can be seen in the second row.
 
 \begin{figure}[H]
 
@@ -1802,7 +1814,371 @@ applied to
 
 }
 
-\caption{A caption}\label{fig:subAct67}
+\caption{Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the bathroom cabinet sub-activity.}\label{fig:subAct67}
+\end{figure}
+
+\hypertarget{bathroom-medicine-cabinet}{%
+\paragraph{Bathroom Medicine Cabinet}\label{bathroom-medicine-cabinet}}
+
+The bathroom medicine cabinet has an overall count of n=194 in the
+dataset. In Figure \ref{fig:subAct57} boxplot (A) in row one shows a
+large amount of outliers, ranging all the way to nearly 40,000 seconds
+(over 11 hours). This is clearly outside the expected range for this
+sub-activity, with a median of 88.0 seconds, a mean of 460.22 seconds,
+and a standard deviation of 7354.14 seconds. These outliers will be
+filled with the median (88.0 seconds). The resultant plots can be seen
+in the second row.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct57} 
+
+}
+
+\caption{Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Bathroom Medicine Cabinet sub activity.}\label{fig:subAct57}
+\end{figure}
+
+\hypertarget{study-drawer}{%
+\paragraph{Study Drawer}\label{study-drawer}}
+
+The study drawer has an overall count of n=45 in the dataset. In Figure
+\ref{fig:subAct82} boxplot (A) in row one shows some abnormal results
+for Monday, Friday and Saturday. While the median is 6.0 seconds, there
+are results for Saturday that stretch beyond 30,000 seconds, clearly
+indicating sensor or measurement error. It is also outside the expected
+range for this sub-activity, causing the mean to be 1634.49 seconds with
+a standard deviation of 5432.41 seconds. These outliers will be filled
+with the median (6.0 seconds). The resultant plots can be seen in the
+second row.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct82} 
+
+}
+
+\caption{Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Study Drawer sub activity.}\label{fig:subAct82}
+\end{figure}
+
+\hypertarget{bedroom-drawer}{%
+\paragraph{Bedroom Drawer}\label{bedroom-drawer}}
+
+The bedroom drawer has an overall count of n=99. In Figure
+\ref{fig:subAct146} boxplot (A) in row one shows two main outliers, one
+on Friday at just under 10,000 seconds, and one on Wednesday at around
+17,000 seconds. The median for this sub-activity is 10.0 seconds, and
+such outliers are clearly outside the expected range for this
+sub-activity, causing the mean to be 273.47 seconds with a standard
+deviation of 1918.73 seconds. These outliers will be filled with the
+median (10.0 seconds). The resultant plots can be seen in the second
+row.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct146} 
+
+}
+
+\caption{Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Bedroom Drawer sub activity.}\label{fig:subAct146}
+\end{figure}
+
+\hypertarget{kitchen-cabinet}{%
+\paragraph{Kitchen Cabinet}\label{kitchen-cabinet}}
+
+The kitchen cabinet has an overall count of n=406. Figure
+\ref{fig:subAct132} boxplot (A) in row one shows one main outlier on
+Tuesday, at nearly 40,000 seconds. The median for this sub-activity is
+7.0 seconds, and this outlier is clearly outside the expected range for
+this sub-activity, causing the mean to be 112.82 seconds with a standard
+deviation of 1864.01 seconds. This outlier will be filled with the
+median (7.0 seconds). The resultant plots can be seen in the second row.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct132} 
+
+}
+
+\caption{Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Kitchen Cabinet sub activity.}\label{fig:subAct132}
+\end{figure}
+
+\hypertarget{kitchen-microwave}{%
+\paragraph{Kitchen Microwave}\label{kitchen-microwave}}
+
+The kitchen microwave has an overall count of n=61.Figure
+\ref{fig:subAct143} boxplot (A) in row one shows one main outlier on
+Thursday, at nearly 22,500 seconds. The median for this sub-activity is
+6.0 seconds, and this outlier is clearly outside the expected range for
+this sub-activity, causing the mean to be 377.41 seconds with a standard
+deviation of 2868.67 seconds. This outlier will be filled with the
+median (6.0 seconds). The resultant plots can be seen in the second row.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct143} 
+
+}
+
+\caption{Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Kitchen Microwave sub activity.}\label{fig:subAct143}
+\end{figure}
+
+\hypertarget{kitchen-door}{%
+\paragraph{Kitchen Door}\label{kitchen-door}}
+
+The kitchen door has an overall count of n=134. Figure
+\ref{fig:subAct141} boxplot (A) in row one shows several key outliers,
+notably one on Friday at over 1,750 seconds. The median for this
+sub-activity is 4.0 seconds, and these outliers are clearly outside the
+expected range for this sub-activity, causing the mean to be 46.11
+seconds with a standard deviation of 174.19 seconds. These outliers will
+be filled with the median (4.0 seconds). The resultant plots can be seen
+in the second row.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct141} 
+
+}
+
+\caption{Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Kitchen Door sub activity.}\label{fig:subAct141}
+\end{figure}
+
+\hypertarget{bathroom-shower-faucet}{%
+\paragraph{Bathroom Shower Faucet}\label{bathroom-shower-faucet}}
+
+The bathroom shower faucet has an overall count of n=88. Figure
+\ref{fig:subAct93} boxplot (A) in row one shows several outliers, with
+six of particular concern that range from over 10,000 seconds to 40,000
+seconds. The median for this sub-activity is 15.0 seconds, and these
+extreme outliers are clearly outside the expected range for this
+sub-activity, causing the mean to be 1754.35 seconds with a standard
+deviation of 6540.73 seconds. The outliers will be filled with the
+median (15.0 seconds). The resultant plots can be seen in the second
+row.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct93} 
+
+}
+
+\caption{Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Bathroom Shower Faucet sub activity.}\label{fig:subAct93}
+\end{figure}
+
+\hypertarget{kitchen-drawer}{%
+\paragraph{Kitchen Drawer}\label{kitchen-drawer}}
+
+The kitchen drawer has an overall count of n=208. Figure
+\ref{fig:subAct125} boxplot (A) in row one shows one main outlier on
+Sunday, at nearly 25,000 seconds. The median for this sub-activity is
+4.0 seconds, and this outlier is clearly outside the expected range for
+this sub-activity, causing the mean to be 145.06 seconds with a standard
+deviation of 1727.58 seconds. This outlier will be filled with the
+median (4.0 seconds). The resultant plots can be seen in the second row.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct125} 
+
+}
+
+\caption{Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Kitchen Drawer sub activity.}\label{fig:subAct125}
+\end{figure}
+
+\hypertarget{kitchen-dishwasher}{%
+\paragraph{Kitchen Dishwasher}\label{kitchen-dishwasher}}
+
+The kitchen dishwasher has an overall count of n=86. Figure
+\ref{fig:subAct70} boxplot (A) in row one shows several outliers,
+particularly six in the range of 7500 seconds to nearly 25,000 seconds.
+The observations for Thursdays are also much higher on average than the
+observations for the other days. The median for this sub-activity is
+63.5 seconds, and these outliers and abnormal results are clearly
+outside the expected range for this sub-activity, causing the mean to be
+1518.41 seconds with a standard deviation of 4146.64 seconds. These
+outliers will be filled with the median (63.5 seconds). The resultant
+plots can be seen in the second row.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct70} 
+
+}
+
+\caption{Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Kitchen Dishwasher sub activity.}\label{fig:subAct70}
+\end{figure}
+
+\hypertarget{bathroom-sink-faucet---hot}{%
+\paragraph{Bathroom Sink Faucet -
+Hot}\label{bathroom-sink-faucet---hot}}
+
+The bathroom sink faucet has an overall count of n=169. Figure
+\ref{fig:subAct68} boxplot (A) in row one shows one main outlier on
+Saturday, at over 6000 seconds. The median for this sub-activity is 11.0
+seconds, and this outlier is clearly outside the expected range for this
+sub-activity, causing the mean to be 57.91 seconds with a standard
+deviation of 501.27 seconds. This outlier will be filled with the median
+(11.0 seconds). The resultant plots can be seen in the second row.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct68} 
+
+}
+
+\caption{Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Bathroom Sink Faucet sub activity.}\label{fig:subAct68}
+\end{figure}
+
+\hypertarget{kitchen-freezer}{%
+\paragraph{Kitchen Freezer}\label{kitchen-freezer}}
+
+The kitchen freezer has an overall count of n=130. Figure
+\ref{fig:subAct137} boxplot (A) in row one shows many outliers on all
+days but Monday, and abnormal results on Monday compared to the other
+days. The median for this sub-activity is 39.0 seconds, and these
+outliers are clearly outside the expected range for this sub-activity,
+causing the mean to be 1738.11 seconds with a standard deviation of
+4512.57 seconds. These outliers will be filled with the median (39.0
+seconds). The resultant plots can be seen in the second row.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct137} 
+
+}
+
+\caption{Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Kitchen Freezer sub activity.}\label{fig:subAct137}
+\end{figure}
+
+\hypertarget{kitchen-lightswitch}{%
+\paragraph{Kitchen Lightswitch}\label{kitchen-lightswitch}}
+
+The kitchen lightswitch has an overall count of n=32. Figure
+\ref{fig:subAct105} boxplot (A) in row one shows many abnormal results,
+including one observation on Sunday at nearly 55,000 seconds, and
+abnormally high results for Saturday when compared to the other days.
+The median for this sub-activity is 4454.0 seconds, and many of these
+results and outliers are clearly outside the expected range for this
+sub-activity, causing the mean to be 9318.72 seconds with a standard
+deviation of 13,081.34 seconds. The outliers will be filled with the
+median (4454.0 seconds). The resultant plots can be seen in the second
+row.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct105} 
+
+}
+
+\caption{Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Kitchen Lightswitch sub activity.}\label{fig:subAct105}
+\end{figure}
+
+\hypertarget{study-lightswitch}{%
+\paragraph{Study Lightswitch}\label{study-lightswitch}}
+
+The study lightswitch has an overall count of n=26. Figure
+\ref{fig:subAct92} boxplot (A) in row one shows abnormal results for
+Saturday and Sunday as compared to the other days. The median for this
+sub-activity is 1728.5 seconds, and these abnormal results are clearly
+outside the expected range for this sub-activity, causing the mean to be
+6430.73 seconds with a standard deviation of 11,002.30 seconds. These
+outliers will be filled with the median (1728.50 seconds). The resultant
+plots can be seen in the second row.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct92} 
+
+}
+
+\caption{Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Study Lightswitch sub-activity.}\label{fig:subAct92}
+\end{figure}
+
+\hypertarget{bathroom-door}{%
+\paragraph{Bathroom Door}\label{bathroom-door}}
+
+The bathroom door has an overall count of n=73. Figure
+\ref{fig:subAct130} boxplot (A) in row one shows six extreme outliers,
+with two of particular concern -- one on Thursday at around 10,000
+seconds and one on Sunday at around 17,500 seconds. The median for this
+sub-activity is 17.0 seconds, and these outliers are clearly outside the
+expected range for this sub-activity, causing the mean to be 461.62
+seconds with a standard deviation of 2310.81 seconds. These outliers
+will be filled with the median (17.0 seconds). The resultant plots can
+be seen in the second row.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct130} 
+
+}
+
+\caption{Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Bathroom Door sub-activity.}\label{fig:subAct130}
+\end{figure}
+
+\hypertarget{kitchen-toaster}{%
+\paragraph{Kitchen Toaster}\label{kitchen-toaster}}
+
+The kitchen toaster has an overall count of n=71. Figure
+\ref{fig:subAct131} boxplot (A) in row one shows two main extreme
+outliers, one on Thursday at nearly 10,000 seconds and one on Friday at
+nearly 30,000 seconds. There are also general abnormal results on Friday
+as compared to the other days. The median for this sub-activity is 5.0
+seconds, and these outliers and abnormal results are clearly outside the
+expected range for this sub-activity, causing the mean to be 790.37
+seconds with a standard deviation of 3793.67 seconds. These outliers and
+abnormal results will be filled with the median (5.0 seconds). The
+resultant plots can be seen in the second row.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct131} 
+
+}
+
+\caption{Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Kitchen Toaster sub-activity.}\label{fig:subAct131}
+\end{figure}
+
+\hypertarget{livingroom-lightswitch}{%
+\paragraph{Livingroom Lightswitch}\label{livingroom-lightswitch}}
+
+The livingroom lightswitch has an overall count of n=8. Figure
+\ref{fig:subAct107} boxplot (A) in row one shows variable results due to
+the low count, with abnormally high results for Friday as compared to
+the other days. The median for this sub-activity is 6352.5 seconds, with
+a mean of 12,545.13 seconds and a standard deviation of 15,556.66
+seconds. The abnormal values will be filled with the median (6352.50
+seconds). The resultant plots can be seen in the second row.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct107} 
+
+}
+
+\caption{Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Livingroom Lightswitch sub-activity.}\label{fig:subAct107}
+\end{figure}
+
+\hypertarget{foyer-closet---subact81}{%
+\subsubsection{Foyer Closet - subAct81}\label{foyer-closet---subact81}}
+
+The foyer closer has an overall count of n=29 in the dataset. In Figure
+\ref{fig:subAct81} boxplot (A) in row one shows one key outlier just
+under 1000 seconds. When considering all values together, the mean is
+found to be 42.45 seconds, while the standard deviation is found to be
+174.43 second. As the observation is so far from the median, it is
+clearly having a large impact on the mean and standard deviation, and
+the value of nearly 1000 seconds is unrealistic for the sub-activity in
+question, the outlier will be filled with the median (8.0 seconds). The
+resultant plots can be seen in the second row.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct81} 
+
+}
+
+\caption{Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Foyer Closet sub activity.}\label{fig:subAct81}
 \end{figure}
 
 \hypertarget{subactivity-cleansing---2-all-values-replaced-with-one-value}{%
@@ -1815,13 +2191,20 @@ values being set to 1 second.
 \hypertarget{bathroom-toiletflush}{%
 \paragraph{Bathroom Toiletflush}\label{bathroom-toiletflush}}
 
+Given the domain knowledge that it is unrealistic for a toilet flush to
+last for thousands of seconds, and the lack of variability of the length
+of toilet flushes, it was appropriate in this circumstance to presume
+sensor or measurement error, and to replace the values instead with one
+value -- 1 second. The initial (row one) and resultant (row two) plots
+can be seen in Figure \ref{fig:subAct100}
+
 \begin{figure}[H]
 
 {\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct100} 
 
 }
 
-\caption{A caption}\label{fig:subAct100}
+\caption{Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the bathroom toiletflush sub-activity.}\label{fig:subAct100}
 \end{figure}
 
 \hypertarget{subactivity-cleansing-review---3-no-futher-processing-required}{%
@@ -1833,14 +2216,20 @@ plots), heat maps of day of week versus duration in seconds mapped by
 count (B in all subactivity plots) and heat maps of day of week versus
 hour of day mapped by count (C in all subactivity plots) the following
 sub activities were left in their native state;
-\texttt{bathroom\_lightswitch}, \texttt{kitchen\_refrigerator},
-\texttt{bathroom\_sinkfaucet-cold}, \texttt{foyer\_door},
-\texttt{kitchen\_burner}, \texttt{foyer\_lightswitch},
-\texttt{bathroom\_exhaustfan}, \texttt{bedroom\_lightswitch},
-\texttt{kitchen\_oven}, \texttt{livingroom\_lamp},
-\texttt{kitchen\_washingmachine}, \texttt{kitchen\_laundrydryer},
-\texttt{kitchen\_garbagedisposal}, \texttt{kitchen\_coffeemachine},
-\texttt{foyer\_closet} as seen highlighted \textbf{COLOUR} in .
+\texttt{bathroom\_lightswitch} (Figure \ref{fig:subAct101}, below),
+\texttt{kitchen\_refrigerator} (Figure \ref{fig:subAct126}, below),
+\texttt{bathroom\_sinkfaucet-cold} (Figure \ref{fig:subAct88}, below),
+\texttt{foyer\_door} (Figure \ref{fig:subAct140}, below),
+\texttt{kitchen\_burner} (Figure \ref{fig:subAct140}, below),
+\texttt{foyer\_lightswitch} (Figure \ref{fig:subAct104}, below),
+\texttt{bathroom\_exhaustfan} (Figure \ref{fig:subAct96}, below),
+\texttt{bedroom\_lightswitch} (Figure \ref{fig:subAct108}, below),
+\texttt{kitchen\_oven} (Figure \ref{fig:subAct129}, below),
+\texttt{livingroom\_lamp} (Figure \ref{fig:subAct76}, below),
+\texttt{kitchen\_washingmachine} (Figure \ref{fig:subAct142}, below),
+\texttt{kitchen\_laundrydryer} (Figure \ref{fig:subAct90}, below),
+\texttt{kitchen\_garbagedisposal} (Figure \ref{fig:subAct98}, below) and
+\texttt{kitchen\_coffeemachine} (Figure \ref{fig:subAct60}, below).
 
 \hypertarget{bathroom-lightswitch}{%
 \paragraph{Bathroom Lightswitch}\label{bathroom-lightswitch}}
@@ -1854,6 +2243,174 @@ sub activities were left in their native state;
 \caption{A caption}\label{fig:subAct101}
 \end{figure}
 
+\hypertarget{kitchen-refrigerator}{%
+\paragraph{Kitchen Refrigerator}\label{kitchen-refrigerator}}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct126} 
+
+}
+
+\caption{Box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Kitchen Refrigerator sub activity.}\label{fig:subAct126}
+\end{figure}
+
+\hypertarget{bathroom-sink-faucet---cold---sub-activity-88}{%
+\paragraph{Bathroom Sink Faucet - Cold - Sub-Activity
+88}\label{bathroom-sink-faucet---cold---sub-activity-88}}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct88} 
+
+}
+
+\caption{Box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Bathroom sick faucted - cold sub-activity.}\label{fig:subAct88}
+\end{figure}
+
+\hypertarget{foyer-door---sub-activity-140}{%
+\paragraph{Foyer Door - Sub-Activity
+140}\label{foyer-door---sub-activity-140}}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct140} 
+
+}
+
+\caption{Box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Foyer Door sub-activity.}\label{fig:subAct140}
+\end{figure}
+
+\hypertarget{kitchen-burner---sub-activity-140}{%
+\paragraph{Kitchen Burner - Sub-Activity
+140}\label{kitchen-burner---sub-activity-140}}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct106} 
+
+}
+
+\caption{Box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Kitchen Burner sub-activity.}\label{fig:subAct106}
+\end{figure}
+
+\hypertarget{foyer-lightswitch---sub-activity-104}{%
+\paragraph{Foyer Lightswitch - Sub-Activity
+104}\label{foyer-lightswitch---sub-activity-104}}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct104} 
+
+}
+
+\caption{Box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Foyer Lightswitch sub-activity.}\label{fig:subAct104}
+\end{figure}
+
+\hypertarget{bathroom-exhaust-fan---sub-activity-96}{%
+\paragraph{Bathroom Exhaust Fan - Sub-Activity
+96}\label{bathroom-exhaust-fan---sub-activity-96}}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct96} 
+
+}
+
+\caption{Box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Bathroom Exhaust Fan sub-activity.}\label{fig:subAct96}
+\end{figure}
+
+\hypertarget{bedroom-lightswitch---sub-activity-108}{%
+\paragraph{Bedroom Lightswitch - Sub-Activity
+108}\label{bedroom-lightswitch---sub-activity-108}}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct108} 
+
+}
+
+\caption{Box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Bedroom Lightswitch sub-activity.}\label{fig:subAct108}
+\end{figure}
+
+\hypertarget{kitchen-oven---sub-activity-129}{%
+\paragraph{Kitchen Oven - Sub-Activity
+129}\label{kitchen-oven---sub-activity-129}}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct129} 
+
+}
+
+\caption{Box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Kitchen Oven sub-activity.}\label{fig:subAct129}
+\end{figure}
+
+\hypertarget{livingroom-lamp---sub-activity-76}{%
+\paragraph{Livingroom Lamp - Sub-Activity
+76}\label{livingroom-lamp---sub-activity-76}}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct76} 
+
+}
+
+\caption{Box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Livingroom Lamp sub-activity.}\label{fig:subAct76}
+\end{figure}
+
+\hypertarget{kitchen-washingmachine---sub-activity-142}{%
+\paragraph{Kitchen Washingmachine - Sub-Activity
+142}\label{kitchen-washingmachine---sub-activity-142}}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct142} 
+
+}
+
+\caption{Box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Kitchen Washingmachine sub-activity.}\label{fig:subAct142}
+\end{figure}
+
+\hypertarget{kitchen-laundry-dryer---sub-activity-90}{%
+\paragraph{Kitchen Laundry Dryer - Sub-Activity
+90}\label{kitchen-laundry-dryer---sub-activity-90}}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct90} 
+
+}
+
+\caption{Box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Kitchen Laundry Dryer sub-activity.}\label{fig:subAct90}
+\end{figure}
+
+\hypertarget{kitchen-garbage-disposal---sub-activity-98}{%
+\paragraph{Kitchen Garbage Disposal - Sub-Activity
+98}\label{kitchen-garbage-disposal---sub-activity-98}}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct98} 
+
+}
+
+\caption{Box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Kitchen Garbage Disposal sub-activity.}\label{fig:subAct98}
+\end{figure}
+
+\hypertarget{kitchen-coffee-machine---sub-activity-119}{%
+\paragraph{Kitchen Coffee Machine - Sub-Activity
+119}\label{kitchen-coffee-machine---sub-activity-119}}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct119} 
+
+}
+
+\caption{Box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Kitchen Coffee Machine sub-activity.}\label{fig:subAct119}
+\end{figure}
+
 \hypertarget{subactivity-cleansing---4-sub-activity-dropped}{%
 \subsubsection{SubActivity Cleansing - 4) Sub-activity
 dropped}\label{subactivity-cleansing---4-sub-activity-dropped}}
@@ -1862,14 +2419,21 @@ Based on the investigation of the box plots (A in all sub activity
 plots), heat maps of day of week versus duration in seconds mapped by
 count (B in all subactivity plots) and heat maps of day of week versus
 hour of day mapped by count (C in all subactivity plots) the following
-sub activities were dropped from the dataset.
+sub activities were dropped from the dataset. This livingroom DVD sub
+activity, as plotted below in Figure \ref{fig:subAct56} was dropped from
+the dataset due to it's sparsity (only two instances in the dataset).
+Similarly, the bedroom lamp sub-activity, as plotted below in Figure
+\ref{fig:subAct64} also had only two instances in the dataset and was
+dropped. The bedroom jewelrybox subactivity, as seen in Figure
+\ref{fig:subAct139} was dropped due to the extremely specific nature of
+this subactivity. In building a generalized model, we do not wish to
+have such datapoints present for our analysis. Likewise with the bedroom
+jewelry box, the kitchen cereal subactivity, Figure \ref{fig:subAct145}
+below, were dropped for the same reason.
 
-\hypertarget{livingroom-dvd---subact56}{%
-\paragraph{Livingroom DVD - SubAct56}\label{livingroom-dvd---subact56}}
-
-This livingroom DVD sub activity, as plotted below in Figure
-\ref{fig:subAct56} was dropped from the dataset due to it's sparsity
-(only two instances in the dataset).
+\hypertarget{livingroom-dvd---sub-activity-56}{%
+\paragraph{Livingroom DVD - Sub-Activity
+56}\label{livingroom-dvd---sub-activity-56}}
 
 \begin{figure}[H]
 
@@ -1880,14 +2444,22 @@ This livingroom DVD sub activity, as plotted below in Figure
 \caption{Box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Livingroom DVD sub activity.}\label{fig:subAct56}
 \end{figure}
 
-\hypertarget{bedroom-jewelrybox---subact139}{%
-\paragraph{Bedroom Jewelrybox -
-SubAct139}\label{bedroom-jewelrybox---subact139}}
+\hypertarget{bedroom-lamp---sub-activity-64}{%
+\paragraph{Bedroom Lamp - Sub-Activity
+64}\label{bedroom-lamp---sub-activity-64}}
 
-The bedroom jewelrybox subactivity, as seen in Figure
-\ref{fig:subAct139} was dropped due to the extremely specific nature of
-this subactivity. In building a generalized model, we do not wish to
-have such datapoints present for our analysis.
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct64} 
+
+}
+
+\caption{Box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Bedroom Lamp sub-activity.}\label{fig:subAct64}
+\end{figure}
+
+\hypertarget{bedroom-jewelrybox---sub-activity-139}{%
+\paragraph{Bedroom Jewelrybox - Sub-Activity
+139}\label{bedroom-jewelrybox---sub-activity-139}}
 
 \begin{figure}[H]
 
@@ -1898,11 +2470,37 @@ have such datapoints present for our analysis.
 \caption{Box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Bedroom Jewelrybox sub activity.}\label{fig:subAct139}
 \end{figure}
 
+\hypertarget{kitchen-cereal---sub-activity-145}{%
+\paragraph{Kitchen Cereal - Sub-Activity
+145}\label{kitchen-cereal---sub-activity-145}}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct145} 
+
+}
+
+\caption{Box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Kitchen Cereal sub-activity.}\label{fig:subAct145}
+\end{figure}
+
+\hypertarget{kitchen-containers---sub-activity-60}{%
+\paragraph{Kitchen Containers - Sub-Activity
+60}\label{kitchen-containers---sub-activity-60}}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct60} 
+
+}
+
+\caption{Box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Kitchen Containers sub-activity.}\label{fig:subAct60}
+\end{figure}
+
 \hypertarget{the-final-pre-processed-dataset}{%
 \subsubsection{The Final pre-processed
 dataset}\label{the-final-pre-processed-dataset}}
 
-XYZ
+The final pre-processed dataset
 
 \hypertarget{data-analysis-and-manipulation}{%
 \subsection{Data Analysis and
@@ -2028,447 +2626,6 @@ Test for in \ref{fig:fig1} we see XYZ
 \end{figure}
 
 \pagebreak
-
-\pagebreak
-
-\hypertarget{bedroom-lamp---subact64}{%
-\paragraph{Bedroom Lamp - SubAct64}\label{bedroom-lamp---subact64}}
-
-The bedroom lamp was only present in the dataset for one instance, as
-seen in Figure \ref{fig:subAct64}, and thus this sub activity was
-dropped from the dataset.
-
-\hypertarget{kitchen-cereal---subact145}{%
-\paragraph{Kitchen Cereal -
-SubAct145}\label{kitchen-cereal---subact145}}
-
-Likewise with the bedroom jewelry box, the kitchen cereal subactivity,
-Figure \ref{fig:subAct145} below, was dropped due to the extremely
-specific nature of this activity.
-
-\hypertarget{kitchen-containers---subact60}{%
-\paragraph{Kitchen Containers -
-SubAct60}\label{kitchen-containers---subact60}}
-
-Likewise with the bedroom jewelry box, the kitchen containers
-subactivity, Figure \ref{fig:subAct60} below, was dropped due to the
-extremely specific nature of this activity.
-
-\hypertarget{foyer-closet---subact81}{%
-\paragraph{Foyer Closet - subAct81}\label{foyer-closet---subact81}}
-
-\begin{figure}[H]
-
-{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct81} 
-
-}
-
-\caption{Box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Foyer Closet sub activity.}\label{fig:subAct81}
-\end{figure}
-
-\hypertarget{bathroom-medicine-cabinet}{%
-\paragraph{Bathroom Medicine Cabinet}\label{bathroom-medicine-cabinet}}
-
-\begin{figure}[H]
-
-{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct57} 
-
-}
-
-\caption{A caption}\label{fig:subAct57}
-\end{figure}
-
-\hypertarget{study-drawer}{%
-\paragraph{Study Drawer}\label{study-drawer}}
-
-\begin{figure}[H]
-
-{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct82} 
-
-}
-
-\caption{A caption}\label{fig:subAct82}
-\end{figure}
-
-\hypertarget{bedroom-drawer}{%
-\paragraph{Bedroom Drawer}\label{bedroom-drawer}}
-
-\begin{figure}[H]
-
-{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct146} 
-
-}
-
-\caption{A caption}\label{fig:subAct146}
-\end{figure}
-
-\hypertarget{kitchen-cabinet}{%
-\paragraph{Kitchen Cabinet}\label{kitchen-cabinet}}
-
-\begin{figure}[H]
-
-{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct132} 
-
-}
-
-\caption{A caption}\label{fig:subAct132}
-\end{figure}
-
-\hypertarget{kitchen-microwave}{%
-\paragraph{Kitchen Microwave}\label{kitchen-microwave}}
-
-\begin{figure}[H]
-
-{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct143} 
-
-}
-
-\caption{A caption}\label{fig:subAct143}
-\end{figure}
-
-\hypertarget{kitchen-door}{%
-\paragraph{Kitchen Door}\label{kitchen-door}}
-
-\begin{figure}[H]
-
-{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct141} 
-
-}
-
-\caption{A caption}\label{fig:subAct141}
-\end{figure}
-
-\hypertarget{bathroom-shower-faucet}{%
-\paragraph{Bathroom Shower Faucet}\label{bathroom-shower-faucet}}
-
-\begin{figure}[H]
-
-{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct93} 
-
-}
-
-\caption{A caption}\label{fig:subAct93}
-\end{figure}
-
-\hypertarget{kitchen-drawer}{%
-\paragraph{Kitchen Drawer}\label{kitchen-drawer}}
-
-\begin{figure}[H]
-
-{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct125} 
-
-}
-
-\caption{A caption}\label{fig:subAct125}
-\end{figure}
-
-\hypertarget{kitchen-dishwasher}{%
-\paragraph{Kitchen Dishwasher}\label{kitchen-dishwasher}}
-
-\begin{figure}[H]
-
-{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct70} 
-
-}
-
-\caption{A caption}\label{fig:subAct70}
-\end{figure}
-
-\hypertarget{kitchen-refrigerator}{%
-\paragraph{Kitchen Refrigerator}\label{kitchen-refrigerator}}
-
-\begin{figure}[H]
-
-{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct126} 
-
-}
-
-\caption{A caption}\label{fig:subAct126}
-\end{figure}
-
-\hypertarget{bathroom-sink-faucet---cold}{%
-\paragraph{Bathroom Sink Faucet -
-Cold}\label{bathroom-sink-faucet---cold}}
-
-\begin{figure}[H]
-
-{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct88} 
-
-}
-
-\caption{A caption}\label{fig:subAct88}
-\end{figure}
-
-\hypertarget{bathroom-sink-faucet---hot}{%
-\paragraph{Bathroom Sink Faucet -
-Hot}\label{bathroom-sink-faucet---hot}}
-
-\begin{figure}[H]
-
-{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct68} 
-
-}
-
-\caption{A caption}\label{fig:subAct68}
-\end{figure}
-
-\hypertarget{foyer-door-subactnum-140}{%
-\paragraph{Foyer Door (SubActNum 140)}\label{foyer-door-subactnum-140}}
-
-\begin{figure}[H]
-
-{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct140} 
-
-}
-
-\caption{A caption}\label{fig:subAct140}
-\end{figure}
-
-\hypertarget{kitchen-freezer}{%
-\paragraph{Kitchen Freezer}\label{kitchen-freezer}}
-
-\begin{figure}[H]
-
-{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct137} 
-
-}
-
-\caption{A caption}\label{fig:subAct137}
-\end{figure}
-
-\hypertarget{kitchen-burner}{%
-\paragraph{Kitchen Burner}\label{kitchen-burner}}
-
-\begin{figure}[H]
-
-{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct106} 
-
-}
-
-\caption{A caption}\label{fig:subAct106}
-\end{figure}
-
-\hypertarget{kitchen-lightswitch}{%
-\paragraph{Kitchen Lightswitch}\label{kitchen-lightswitch}}
-
-\begin{figure}[H]
-
-{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct105} 
-
-}
-
-\caption{A caption}\label{fig:subAct105}
-\end{figure}
-
-\hypertarget{study-lightswitch-typo}{%
-\paragraph{Study Lightswitch (TYPO)}\label{study-lightswitch-typo}}
-
-\begin{figure}[H]
-
-{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct92} 
-
-}
-
-\caption{A caption}\label{fig:subAct92}
-\end{figure}
-
-\hypertarget{bathroom-door}{%
-\paragraph{Bathroom Door}\label{bathroom-door}}
-
-\begin{figure}[H]
-
-{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct130} 
-
-}
-
-\caption{A caption}\label{fig:subAct130}
-\end{figure}
-
-\hypertarget{foyer-lightswitch}{%
-\paragraph{Foyer Lightswitch}\label{foyer-lightswitch}}
-
-\begin{figure}[H]
-
-{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct104} 
-
-}
-
-\caption{A caption}\label{fig:subAct104}
-\end{figure}
-
-\hypertarget{kitchen-toaster}{%
-\paragraph{Kitchen Toaster}\label{kitchen-toaster}}
-
-\begin{figure}[H]
-
-{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct131} 
-
-}
-
-\caption{A caption}\label{fig:subAct131}
-\end{figure}
-
-\hypertarget{bathroom-exhaust-fan}{%
-\paragraph{Bathroom Exhaust Fan}\label{bathroom-exhaust-fan}}
-
-\begin{figure}[H]
-
-{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct96} 
-
-}
-
-\caption{A caption}\label{fig:subAct96}
-\end{figure}
-
-\hypertarget{bedroom-lightswitch}{%
-\paragraph{Bedroom Lightswitch}\label{bedroom-lightswitch}}
-
-\begin{figure}[H]
-
-{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct108} 
-
-}
-
-\caption{A caption}\label{fig:subAct108}
-\end{figure}
-
-\hypertarget{kitchen-oven}{%
-\paragraph{Kitchen Oven}\label{kitchen-oven}}
-
-\begin{figure}[H]
-
-{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct129} 
-
-}
-
-\caption{A caption}\label{fig:subAct129}
-\end{figure}
-
-\hypertarget{livingroom-lamp}{%
-\paragraph{Livingroom Lamp}\label{livingroom-lamp}}
-
-\begin{figure}[H]
-
-{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct76} 
-
-}
-
-\caption{A caption}\label{fig:subAct76}
-\end{figure}
-
-\hypertarget{kitchen-washingmachine}{%
-\paragraph{Kitchen Washingmachine}\label{kitchen-washingmachine}}
-
-\begin{figure}[H]
-
-{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct142} 
-
-}
-
-\caption{A caption}\label{fig:subAct142}
-\end{figure}
-
-\hypertarget{kitchen-laundry-dryer}{%
-\paragraph{Kitchen Laundry Dryer}\label{kitchen-laundry-dryer}}
-
-\begin{figure}[H]
-
-{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct90} 
-
-}
-
-\caption{A caption}\label{fig:subAct90}
-\end{figure}
-
-\hypertarget{kitchen-garbage-disposal}{%
-\paragraph{Kitchen Garbage Disposal}\label{kitchen-garbage-disposal}}
-
-\begin{figure}[H]
-
-{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct98} 
-
-}
-
-\caption{A caption}\label{fig:subAct98}
-\end{figure}
-
-\hypertarget{livingroom-lightswitch}{%
-\paragraph{Livingroom Lightswitch}\label{livingroom-lightswitch}}
-
-\begin{figure}[H]
-
-{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct107} 
-
-}
-
-\caption{A caption}\label{fig:subAct107}
-\end{figure}
-
-\hypertarget{kitchen-cereal-subactnum-145}{%
-\paragraph{Kitchen Cereal (SubActNum
-145)}\label{kitchen-cereal-subactnum-145}}
-
-DROPPED
-
-\begin{figure}[H]
-
-{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct145} 
-
-}
-
-\caption{A caption}\label{fig:subAct145}
-\end{figure}
-
-\hypertarget{kitchen-containers-subactnum-60}{%
-\paragraph{Kitchen Containers (SubActNum
-60)}\label{kitchen-containers-subactnum-60}}
-
-DROPPED
-
-\begin{figure}[H]
-
-{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct60} 
-
-}
-
-\caption{A caption}\label{fig:subAct60}
-\end{figure}
-
-\hypertarget{kitchen-coffee-machine}{%
-\paragraph{Kitchen Coffee Machine}\label{kitchen-coffee-machine}}
-
-\begin{figure}[H]
-
-{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct119} 
-
-}
-
-\caption{A caption}\label{fig:subAct119}
-\end{figure}
-
-\hypertarget{bedroom-lamp-subactnum-64}{%
-\paragraph{Bedroom Lamp (SubActNum
-64)}\label{bedroom-lamp-subactnum-64}}
-
-DROPPED
-
-\begin{figure}[H]
-
-{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct64} 
-
-}
-
-\caption{A caption}\label{fig:subAct64}
-\end{figure}
-
-\begin{figure}[H]
-
-{\centering \includegraphics{MD_Final_files/figure-latex/fig1-1} 
-
-}
-
-\caption{\label{fig:fig1}This is a caption}\label{fig:fig1}
-\end{figure}
 
 Reduce image border (not working???)
 \url{https://holtzy.github.io/Pimp-my-rmd/}
