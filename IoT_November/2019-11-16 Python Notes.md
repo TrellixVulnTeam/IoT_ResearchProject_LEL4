@@ -15,8 +15,19 @@ ds.to_csv(PATH + '/intermediate_datasets/S1SubActivities_temporalFeaturesCLEANSE
 
 
 
+bathroom_lightswitch_allFeatures.png
+
+kitchen_dishwasher_allFeatures.png  
+kitchen_washingmachine_allFeatures.png 
 
 
+Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the bathroom toiletflush sub activity.
+
+
+```{r}
+df_METRIC <- read_csv("/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/df_METRIC.csv")
+df_ACC <- read_csv("/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/df_ACC.csv")
+```
 
 
 

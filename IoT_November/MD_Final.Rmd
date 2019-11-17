@@ -758,7 +758,7 @@ head(fridge, n=5) %>% kable(format = "latex", caption = "Example of duplicate su
 
 As noted by Basu et al, human behavior with respect to home appliance interaction and activity, is typically periodic in nature [@kaustavbasuApplianceUsagePrediction2012], that is, certain activities occur at specific times of day or in a particular sequence. It is helpful therefore to add categorical temporal features to our dataset, in order to inform further analysis. Using the Python `pandas` and `datetime` packages, the following features were added to all instances of the pre-processed S1 sub activities dataset; `dayNumeric`, `DAY`, `WDWE` (where WD is weekday and WE is weekend), `HOUR` (based on 24-hour time) and `durationSec` (the delta seconds value between `start` and `end`). This dataset was exported as `S1SubActivities_preprocessedWfeatures.csv`.
 
-```{r TAB_, echo=FALSE, message=FALSE, warning=FALSE}
+```{r TAB_ALL, echo=FALSE, message=FALSE, warning=FALSE}
 df <- read_csv('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/S1SubActivities_preprocessedWfeatures.csv', 
                col_types = cols(subActNum = col_character(), dayNumeric = col_character(), HOUR = col_character()))
 dfNoDupes = df[!duplicated(df$subActNum),]
@@ -848,21 +848,121 @@ check %>% kable(format = "latex", caption = "Demo table", booktabs = T) %>%
                 font_size = 8)
 ```
 
-There were in total 4 pre-processing methodologies used.
-1. Filling outliers with median
-2. All values replaced with one value
-3. No futher processing required
-3. Sub-activity dropped
+There were in total 4 pre-processing methodologies used. 1. Filling outliers with median 2. All values replaced with one value 3. No further processing required 4. Sub-activity dropped
 
 ### Sub-Activity Cleansing - 1) Filling outliers with median
 
-This methodology is exemplified by the bathroom cabinet. This was also applied to 
+An example of this methodology can be seen with the bathroom cabinet. This methodology was also applied to all of the other sub-activities in Table \ref{tab:outlierSTATS}.
 
 #### Bathroom Cabinet
+As per Table \ref{tab:outlierSTATS}, above, the bathroom cabinet has an overall count of n=104 in the dataset. In Figure \ref{fig:subAct67} the boxplot (A) in row one shows several outliers, most notably around the 20,000 second mark for Friday and the 25,000 mark for Sunday. When considering all weekday and weekend values together, the mean is found to be 460.22 seconds, while the standard deviation is found to be 3176.16. As the SD in this case greatly overwhelms the mean, and the values of 20,000 seconds and 25,000 seconds are highly unrealistic for the sub-activity in question, the outliers will be filled with the median (4.0 seconds). The resultant plots can be seen in the second row.
 
-```{r subAct67, echo=FALSE, fig.cap="A caption", fig.pos='H', out.width = '100%'}
+```{r subAct67, echo=FALSE, fig.cap="Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the bathroom cabinet sub-activity.", fig.pos='H', out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct67.png')
 ```
+
+#### Bathroom Medicine Cabinet
+The bathroom medicine cabinet has an overall count of n=194 in the dataset. In Figure \ref{fig:subAct57} boxplot (A) in row one shows a large amount of outliers, ranging all the way to nearly 40,000 seconds (over 11 hours). This is clearly outside the expected range for this sub-activity, with a median of 88.0 seconds, a mean of 460.22 seconds, and a standard deviation of 7354.14 seconds. These outliers will be filled with the median (88.0 seconds). The resultant plots can be seen in the second row.
+```{r subAct57, echo=FALSE, fig.cap="Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Bathroom Medicine Cabinet sub activity.", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct57.png')
+```
+
+#### Study Drawer
+The study drawer has an overall count of n=45 in the dataset. In Figure \ref{fig:subAct82} boxplot (A) in row one shows some abnormal results for Monday, Friday and Saturday. While the median is 6.0 seconds, there are results for Saturday that stretch beyond 30,000 seconds, clearly indicating sensor or measurement error. It is also outside the expected range for this sub-activity, causing the mean to be 1634.49 seconds with a standard deviation of 5432.41 seconds. These outliers will be filled with the median (6.0 seconds). The resultant plots can be seen in the second row.
+```{r subAct82, echo=FALSE, fig.cap="Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Study Drawer sub activity.", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct82.png')
+```
+
+#### Bedroom Drawer
+The bedroom drawer has an overall count of n=99. In Figure \ref{fig:subAct146} boxplot (A) in row one shows two main outliers, one on Friday at just under 10,000 seconds, and one on Wednesday at around 17,000 seconds. The median for this sub-activity is 10.0 seconds, and such outliers are clearly outside the expected range for this sub-activity, causing the mean to be 273.47 seconds with a standard deviation of 1918.73 seconds. These outliers will be filled with the median (10.0 seconds). The resultant plots can be seen in the second row.
+```{r subAct146, echo=FALSE, fig.cap="Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Bedroom Drawer sub activity.", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct146.png')
+```
+
+#### Kitchen Cabinet
+The kitchen cabinet has an overall count of n=406. Figure \ref{fig:subAct132} boxplot (A) in row one shows one main outlier on Tuesday, at nearly 40,000 seconds. The median for this sub-activity is 7.0 seconds, and this outlier is clearly outside the expected range for this sub-activity, causing the mean to be 112.82 seconds with a standard deviation of 1864.01 seconds. This outlier will be filled with the median (7.0 seconds). The resultant plots can be seen in the second row.
+```{r subAct132, echo=FALSE, fig.cap="Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Kitchen Cabinet sub activity.", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct132.png')
+```
+
+#### Kitchen Microwave
+The kitchen microwave has an overall count of n=61.Figure \ref{fig:subAct143} boxplot (A) in row one shows one main outlier on Thursday, at nearly 22,500 seconds. The median for this sub-activity is 6.0 seconds, and this outlier is clearly outside the expected range for this sub-activity, causing the mean to be 377.41 seconds with a standard deviation of 2868.67 seconds. This outlier will be filled with the median (6.0 seconds). The resultant plots can be seen in the second row.
+```{r subAct143, echo=FALSE, fig.cap="Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Kitchen Microwave sub activity.", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct143.png')
+```
+
+#### Kitchen Door
+The kitchen door has an overall count of n=134. Figure \ref{fig:subAct141} boxplot (A) in row one shows several key outliers, notably one on Friday at over 1,750 seconds. The median for this sub-activity is 4.0 seconds, and these outliers are clearly outside the expected range for this sub-activity, causing the mean to be 46.11 seconds with a standard deviation of 174.19 seconds. These outliers will be filled with the median (4.0 seconds). The resultant plots can be seen in the second row.
+```{r subAct141, echo=FALSE, fig.cap="Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Kitchen Door sub activity.", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct141.png')
+```
+
+#### Bathroom Shower Faucet
+The bathroom shower faucet has an overall count of n=88. Figure \ref{fig:subAct93} boxplot (A) in row one shows several outliers, with six of particular concern that range from over 10,000 seconds to 40,000 seconds. The median for this sub-activity is 15.0 seconds, and these extreme outliers are clearly outside the expected range for this sub-activity, causing the mean to be 1754.35 seconds with a standard deviation of 6540.73 seconds. The outliers will be filled with the median (15.0 seconds). The resultant plots can be seen in the second row.
+```{r subAct93, echo=FALSE, fig.cap="Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Bathroom Shower Faucet sub activity.", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct93.png')
+```
+
+#### Kitchen Drawer
+The kitchen drawer has an overall count of n=208. Figure \ref{fig:subAct125} boxplot (A) in row one shows one main outlier on Sunday, at nearly 25,000 seconds. The median for this sub-activity is 4.0 seconds, and this outlier is clearly outside the expected range for this sub-activity, causing the mean to be 145.06 seconds with a standard deviation of 1727.58 seconds. This outlier will be filled with the median (4.0 seconds). The resultant plots can be seen in the second row.
+```{r subAct125, echo=FALSE, fig.cap="Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Kitchen Drawer sub activity.", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct125.png')
+```
+
+#### Kitchen Dishwasher
+The kitchen dishwasher has an overall count of n=86. Figure \ref{fig:subAct70} boxplot (A) in row one shows several outliers, particularly six in the range of 7500 seconds to nearly 25,000 seconds. The observations for Thursdays are also much higher on average than the observations for the other days. The median for this sub-activity is 63.5 seconds, and these outliers and abnormal results are clearly outside the expected range for this sub-activity, causing the mean to be 1518.41 seconds with a standard deviation of 4146.64 seconds. These outliers will be filled with the median (63.5 seconds). The resultant plots can be seen in the second row.
+```{r subAct70, echo=FALSE, fig.cap="Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Kitchen Dishwasher sub activity.", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct70.png')
+```
+
+#### Bathroom Sink Faucet - Hot
+The bathroom sink faucet has an overall count of n=169. Figure \ref{fig:subAct68} boxplot (A) in row one shows one main outlier on Saturday, at over 6000 seconds. The median for this sub-activity is 11.0 seconds, and this outlier is clearly outside the expected range for this sub-activity, causing the mean to be 57.91 seconds with a standard deviation of 501.27 seconds. This outlier will be filled with the median (11.0 seconds). The resultant plots can be seen in the second row.
+```{r subAct68, echo=FALSE, fig.cap="Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Bathroom Sink Faucet sub activity.", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct68.png')
+```
+
+#### Kitchen Freezer
+The kitchen freezer has an overall count of n=130. Figure \ref{fig:subAct137} boxplot (A) in row one shows many outliers on all days but Monday, and abnormal results on Monday compared to the other days. The median for this sub-activity is 39.0 seconds, and these outliers are clearly outside the expected range for this sub-activity, causing the mean to be 1738.11 seconds with a standard deviation of 4512.57 seconds. These outliers will be filled with the median (39.0 seconds). The resultant plots can be seen in the second row.
+```{r subAct137, echo=FALSE, fig.cap="Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Kitchen Freezer sub activity.", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct137.png')
+```
+
+#### Kitchen Lightswitch
+The kitchen lightswitch has an overall count of n=32. Figure \ref{fig:subAct105} boxplot (A) in row one shows many abnormal results, including one observation on Sunday at nearly 55,000 seconds, and abnormally high results for Saturday when compared to the other days. The median for this sub-activity is 4454.0 seconds, and many of these results and outliers are clearly outside the expected range for this sub-activity, causing the mean to be 9318.72 seconds with a standard deviation of 13,081.34 seconds. The outliers will be filled with the median (4454.0 seconds). The resultant plots can be seen in the second row.
+```{r subAct105, echo=FALSE, fig.cap="Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Kitchen Lightswitch sub activity.", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct105.png')
+```
+
+#### Study Lightswitch 
+The study lightswitch has an overall count of n=26. Figure \ref{fig:subAct92} boxplot (A) in row one shows abnormal results for Saturday and Sunday as compared to the other days. The median for this sub-activity is 1728.5 seconds, and these abnormal results are clearly outside the expected range for this sub-activity, causing the mean to be 6430.73 seconds with a standard deviation of 11,002.30 seconds. These outliers will be filled with the median (1728.50 seconds). The resultant plots can be seen in the second row.
+```{r subAct92, echo=FALSE, fig.cap="Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Study Lightswitch sub-activity.", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct92.png')
+```
+
+#### Bathroom Door
+The bathroom door has an overall count of n=73. Figure \ref{fig:subAct130} boxplot (A)  in row one shows six extreme outliers, with two of particular concern – one on Thursday at around 10,000 seconds and one on Sunday at around 17,500 seconds. The median for this sub-activity is 17.0 seconds, and these outliers are clearly outside the expected range for this sub-activity, causing the mean to be 461.62 seconds with a standard deviation of 2310.81 seconds. These outliers will be filled with the median (17.0 seconds). The resultant plots can be seen in the second row.
+```{r subAct130, echo=FALSE, fig.cap="Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Bathroom Door sub-activity.", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct130.png')
+```
+
+#### Kitchen Toaster
+The kitchen toaster has an overall count of n=71. Figure \ref{fig:subAct131} boxplot (A) in row one shows two main extreme outliers, one on Thursday at nearly 10,000 seconds and one on Friday at nearly 30,000 seconds. There are also general abnormal results on Friday as compared to the other days. The median for this sub-activity is 5.0 seconds, and these outliers and abnormal results are clearly outside the expected range for this sub-activity, causing the mean to be 790.37 seconds with a standard deviation of 3793.67 seconds. These outliers and abnormal results will be filled with the median (5.0 seconds). The resultant plots can be seen in the second row.
+```{r subAct131, echo=FALSE, fig.cap="Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Kitchen Toaster sub-activity.", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct131.png')
+```
+
+#### Livingroom Lightswitch
+The livingroom lightswitch has an overall count of n=8. Figure \ref{fig:subAct107} boxplot (A) in row one shows variable results due to the low count, with abnormally high results for Friday as compared to the other days. The median for this sub-activity is 6352.5 seconds, with a mean of 12,545.13 seconds and a standard deviation of 15,556.66 seconds. The abnormal values will be filled with the median (6352.50 seconds). The resultant plots can be seen in the second row.
+```{r subAct107, echo=FALSE, fig.cap="Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Livingroom Lightswitch sub-activity.", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct107.png')
+```
+
+### Foyer Closet - subAct81
+The foyer closer has an overall count of n=29 in the dataset. In Figure \ref{fig:subAct81} boxplot (A) in row one shows one key outlier just under 1000 seconds. When considering all values together, the mean is found to be 42.45 seconds, while the standard deviation is found to be 174.43 second. As the observation is so far from the median, it is clearly having a large impact on the mean and standard deviation, and the value of nearly 1000 seconds is unrealistic for the sub-activity in question, the outlier will be filled with the median (8.0 seconds). The resultant plots can be seen in the second row.
+```{r subAct81, echo=FALSE, fig.cap="Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Foyer Closet sub activity.", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct81.png')
+```
+
 
 ### SubActivity Cleansing - 2) All values replaced with one value
 
@@ -870,41 +970,105 @@ This methodology was applied only to the bathroom toiletflush, with all values b
 
 #### Bathroom Toiletflush
 
-```{r subAct100, echo=FALSE, fig.cap="A caption", fig.pos='H', out.width = '100%'}
+Given the domain knowledge that it is unrealistic for a toilet flush to last for thousands of seconds, and the lack of variability of the length of toilet flushes, it was appropriate in this circumstance to presume sensor or measurement error, and to replace the values instead with one value – 1 second. The initial (row one) and resultant (row two) plots can be seen in Figure \ref{fig:subAct100}
+
+```{r subAct100, echo=FALSE, fig.cap="Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the bathroom toiletflush sub-activity.", fig.pos='H', out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct100.png')
 ```
 
 ###  SubActivity Cleansing Review - 3) No futher processing required
 
-Based on the investigation of the box plots (A in all sub activity plots), heat maps of day of week versus duration in seconds mapped by count (B in all subactivity plots) and heat maps of day of week versus hour of day mapped by count (C in all subactivity plots) the following sub activities were left in their native state; `bathroom_lightswitch`, `kitchen_refrigerator`, `bathroom_sinkfaucet-cold`, `foyer_door`, `kitchen_burner`, `foyer_lightswitch`, `bathroom_exhaustfan`, `bedroom_lightswitch`, `kitchen_oven`, `livingroom_lamp`, `kitchen_washingmachine`, `kitchen_laundrydryer`, `kitchen_garbagedisposal`, `kitchen_coffeemachine`, `foyer_closet` as seen highlighted **COLOUR** in .
+Based on the investigation of the box plots (A in all sub activity plots), heat maps of day of week versus duration in seconds mapped by count (B in all subactivity plots) and heat maps of day of week versus hour of day mapped by count (C in all subactivity plots) the following sub activities were left in their native state; `bathroom_lightswitch` (Figure \ref{fig:subAct101}, below), `kitchen_refrigerator` (Figure \ref{fig:subAct126}, below), `bathroom_sinkfaucet-cold` (Figure \ref{fig:subAct88}, below), `foyer_door` (Figure \ref{fig:subAct}, below), `kitchen_burner` (Figure \ref{fig:subAct}, below), `foyer_lightswitch` (Figure \ref{fig:subAct}, below), `bathroom_exhaustfan` (Figure \ref{fig:subAct}, below), `bedroom_lightswitch` (Figure \ref{fig:subAct}, below), `kitchen_oven` (Figure \ref{fig:subAct}, below), `livingroom_lamp` (Figure \ref{fig:subAct}, below), `kitchen_washingmachine` (Figure \ref{fig:subAct}, below), `kitchen_laundrydryer` (Figure \ref{fig:subAct}, below), `kitchen_garbagedisposal` (Figure \ref{fig:subAct}, below), `kitchen_coffeemachine` (Figure \ref{fig:subAct}, below) and `foyer_closet` (Figure \ref{fig:subAct}, below).
 
 #### Bathroom Lightswitch
-
 ```{r subAct101, echo=FALSE, fig.cap="A caption", out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct101.png')
 ```
 
+#### Kitchen Refrigerator
+```{r subAct126, echo=FALSE, fig.cap="Initial and processed data box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Kitchen Refrigerator sub activity.", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct126.png')
+```
+
+#### Bathroom Sink Faucet - Cold - Sub-Activity 88
+```{r subAct88, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct88.png')
+```
+
+#### Foyer Door - Sub-Activity 140
+```{r subAct140, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct140.png')
+```
+
+#### Kitchen Burner - Sub-Activity 140
+```{r subAct106, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct106.png')
+```
+
+#### Foyer Lightswitch - Sub-Activity 104
+```{r subAct104, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct104.png')
+```
+
+#### Bathroom Exhaust Fan - Sub-Activity 96
+```{r subAct96, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct96.png')
+```
+
+#### Bedroom Lightswitch  - Sub-Activity 108
+```{r subAct108, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct108.png')
+```
+
+#### Kitchen Oven  - Sub-Activity 129
+```{r subAct129, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct129.png')
+```
+
+#### Livingroom Lamp - Sub-Activity 76
+```{r subAct76, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct76.png')
+```
+
+#### Kitchen Washingmachine - Sub-Activity 142
+```{r subAct142, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct142.png')
+```
+
+#### Kitchen Laundry Dryer - Sub-Activity 90
+```{r subAct90, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct90.png')
+```
+
+#### Kitchen Garbage Disposal - Sub-Activity 98
+```{r subAct98, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct98.png')
+```
+
+
+
+
+
 
 ###  SubActivity Cleansing - 4) Sub-activity dropped
 
-Based on the investigation of the box plots (A in all sub activity plots), heat maps of day of week versus duration in seconds mapped by count (B in all subactivity plots) and heat maps of day of week versus hour of day mapped by count (C in all subactivity plots) the following sub activities were dropped from the dataset.
+Based on the investigation of the box plots (A in all sub activity plots), heat maps of day of week versus duration in seconds mapped by count (B in all subactivity plots) and heat maps of day of week versus hour of day mapped by count (C in all subactivity plots) the following sub activities were dropped from the dataset. This livingroom DVD sub activity, as plotted below in Figure \ref{fig:subAct56} was dropped from the dataset due to it's sparsity (only two instances in the dataset). The bedroom jewelrybox subactivity, as seen in Figure \ref{fig:subAct139} was dropped due to the extremely specific nature of this subactivity. In building a generalized model, we do not wish to have such datapoints present for our analysis.
 
 
-#### Livingroom DVD - SubAct56
-
-This livingroom DVD sub activity, as plotted below in Figure \ref{fig:subAct56} was dropped from the dataset due to it's sparsity (only two instances in the dataset).
-
+#### Livingroom DVD - Sub-Activity 56
 ```{r subAct56, echo=FALSE, fig.cap="Box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Livingroom DVD sub activity.", out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct56.png')
 ```
 
-#### Bedroom Jewelrybox - SubAct139
-
-The bedroom jewelrybox subactivity, as seen in Figure \ref{fig:subAct139} was dropped due to the extremely specific nature of this subactivity. In building a generalized model, we do not wish to have such datapoints present for our analysis.
-
+#### Bedroom Jewelrybox - Sub-Activity 139
 ```{r subAct139, echo=FALSE, fig.cap="Box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Bedroom Jewelrybox sub activity.", out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct139.png')
 ```
+
+
+
+
+
 
 ###  The Final pre-processed dataset
 
@@ -1024,193 +1188,19 @@ Likewise with the bedroom jewelry box, the kitchen cereal subactivity, Figure \r
 
 Likewise with the bedroom jewelry box, the kitchen containers subactivity, Figure \ref{fig:subAct60} below, was dropped due to the extremely specific nature of this activity.
 
-#### Foyer Closet - subAct81
-
-```{r subAct81, echo=FALSE, fig.cap="Box plot (A) and heat maps (B = day of week versus duration in seconds mapped by count, C = day of week versus hour of day mapped by count) for the Foyer Closet sub activity.", out.width = '100%'}
-knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct81.png')
-```
 
 
-#### Bathroom Medicine Cabinet
-
-```{r subAct57, echo=FALSE, fig.cap="A caption", out.width = '100%'}
-knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct57.png')
-```
-
-#### Study Drawer
-
-```{r subAct82, echo=FALSE, fig.cap="A caption", out.width = '100%'}
-knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct82.png')
-```
-
-#### Bedroom Drawer
-
-```{r subAct146, echo=FALSE, fig.cap="A caption", out.width = '100%'}
-knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct146.png')
-```
-
-#### Kitchen Cabinet
-
-```{r subAct132, echo=FALSE, fig.cap="A caption", out.width = '100%'}
-knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct132.png')
-```
-
-#### Kitchen Microwave
-
-```{r subAct143, echo=FALSE, fig.cap="A caption", out.width = '100%'}
-knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct143.png')
-```
-
-#### Kitchen Door
-
-```{r subAct141, echo=FALSE, fig.cap="A caption", out.width = '100%'}
-knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct141.png')
-```
-
-#### Bathroom Shower Faucet
-
-```{r subAct93, echo=FALSE, fig.cap="A caption", out.width = '100%'}
-knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct93.png')
-```
-
-#### Kitchen Drawer
-
-```{r subAct125, echo=FALSE, fig.cap="A caption", out.width = '100%'}
-knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct125.png')
-```
-
-#### Kitchen Dishwasher
-
-```{r subAct70, echo=FALSE, fig.cap="A caption", out.width = '100%'}
-knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct70.png')
-```
-
-#### Kitchen Refrigerator
-
-```{r subAct126, echo=FALSE, fig.cap="A caption", out.width = '100%'}
-knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct126.png')
-```
-
-#### Bathroom Sink Faucet - Cold
-
-```{r subAct88, echo=FALSE, fig.cap="A caption", out.width = '100%'}
-knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct88.png')
-```
-
-#### Bathroom Sink Faucet - Hot
-
-```{r subAct68, echo=FALSE, fig.cap="A caption", out.width = '100%'}
-knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct68.png')
-```
-
-#### Foyer Door (SubActNum 140)
-
-```{r subAct140, echo=FALSE, fig.cap="A caption", out.width = '100%'}
-knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct140.png')
-```
-
-#### Kitchen Freezer
-
-```{r subAct137, echo=FALSE, fig.cap="A caption", out.width = '100%'}
-knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct137.png')
-```
-
-#### Kitchen Burner
-
-```{r subAct106, echo=FALSE, fig.cap="A caption", out.width = '100%'}
-knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct106.png')
-```
-
-#### Kitchen Lightswitch
-
-```{r subAct105, echo=FALSE, fig.cap="A caption", out.width = '100%'}
-knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct105.png')
-```
-
-#### Study Lightswitch (TYPO)
-
-```{r subAct92, echo=FALSE, fig.cap="A caption", out.width = '100%'}
-knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct92.png')
-```
-
-#### Bathroom Door
-
-```{r subAct130, echo=FALSE, fig.cap="A caption", out.width = '100%'}
-knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct130.png')
-```
-
-#### Foyer Lightswitch
-
-```{r subAct104, echo=FALSE, fig.cap="A caption", out.width = '100%'}
-knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct104.png')
-```
-
-#### Kitchen Toaster
-
-```{r subAct131, echo=FALSE, fig.cap="A caption", out.width = '100%'}
-knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct131.png')
-```
-
-#### Bathroom Exhaust Fan
-
-```{r subAct96, echo=FALSE, fig.cap="A caption", out.width = '100%'}
-knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct96.png')
-```
-
-#### Bedroom Lightswitch
-
-```{r subAct108, echo=FALSE, fig.cap="A caption", out.width = '100%'}
-knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct108.png')
-```
-
-#### Kitchen Oven
-
-```{r subAct129, echo=FALSE, fig.cap="A caption", out.width = '100%'}
-knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct129.png')
-```
 
 
-#### Livingroom Lamp
-
-```{r subAct76, echo=FALSE, fig.cap="A caption", out.width = '100%'}
-knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct76.png')
-```
-
-#### Kitchen Washingmachine
-
-```{r subAct142, echo=FALSE, fig.cap="A caption", out.width = '100%'}
-knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct142.png')
-```
-#### Kitchen Laundry Dryer
-
-```{r subAct90, echo=FALSE, fig.cap="A caption", out.width = '100%'}
-knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct90.png')
-```
-
-#### Kitchen Garbage Disposal
-
-```{r subAct98, echo=FALSE, fig.cap="A caption", out.width = '100%'}
-knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct98.png')
-```
-
-#### Livingroom Lightswitch
-
-```{r subAct107, echo=FALSE, fig.cap="A caption", out.width = '100%'}
-knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct107.png')
-```
 
 
-#### Kitchen Cereal (SubActNum 145)
-
-DROPPED
+#### Kitchen Cereal (SubActNum 145) DROPPED
 
 ```{r subAct145, echo=FALSE, fig.cap="A caption", out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct145.png')
 ```
 
-#### Kitchen Containers (SubActNum 60)
-
-DROPPED
+#### Kitchen Containers (SubActNum 60) DROPPED
 
 ```{r subAct60, echo=FALSE, fig.cap="A caption", out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/subAct60.png')
@@ -1231,12 +1221,6 @@ knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/
 ```
 
 
-
-
-
-```{r fig1, echo=FALSE, fig.cap="\\label{fig:fig1}This is a caption"}
-plot(pressure)
-```
 
 Reduce image border (not working???)
 https://holtzy.github.io/Pimp-my-rmd/ 

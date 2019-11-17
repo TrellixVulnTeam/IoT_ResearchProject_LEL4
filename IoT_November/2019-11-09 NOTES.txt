@@ -440,6 +440,11 @@ Based on the investigation of the box plots (A in all sub activity plots), heat 
 
 
 
+```{r fig1, echo=FALSE, fig.cap="\\label{fig:fig1}This is a caption"}
+plot(pressure)
+```
+
+
 
 
 

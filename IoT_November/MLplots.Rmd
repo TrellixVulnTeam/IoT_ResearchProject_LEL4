@@ -38,6 +38,215 @@ report <- dplyr::filter(files, grepl("_rep", X1))
 confusion <- dplyr::filter(files, grepl("confusion", X1))
 ```
 
+
+
+
+```{r}
+library(tidyverse)
+library(stringr)
+list_of_files <- list.files(path = '/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/allFeatures/',
+                            pattern = '_rep.csv',
+                            full.names = TRUE)
+df <- list_of_files %>%
+  setNames(nm = .) %>% 
+  map_df(~read_csv(.x, col_types = cols(), col_names = FALSE), .id = "file_name")
+```
+
+```{r}
+df$file_name <- gsub("/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/allFeatures/", "", df$file_name)
+df$file_name <- gsub("_rep.csv", "", df$file_name)
+df$file_name <- substring(df$file_name, 2)
+```
+
+```{r}
+df$X1 <- gsub("0.0", "0", df$X1)
+df$X1 <- gsub("1.0", "1", df$X1)
+colnames(df) <- c('fn','X1','precision','recall','f1score','support')
+df$fn <-  paste(df$fn, df$X1, sep = "_")
+df$fn <- gsub("macro avg", "m.avg", df$fn)
+df$fn <- gsub("weighted avg", "w.avg", df$fn)
+df <- na.omit(df)
+#drops <- c("X1")
+#df <- df[ , !(names(df) %in% drops)]
+```
+
+```{r}
+df$precision <- as.numeric(as.character(df$precision))
+df$precision <- format(round(df$precision, 3), nsmall = 3)
+df$recall <- as.numeric(as.character(df$recall))
+df$recall <- format(round(df$recall, 3), nsmall = 3)
+df$f1score <- as.numeric(as.character(df$f1score))
+df$f1score <- format(round(df$f1score, 3), nsmall = 3)
+df$support <- as.numeric(as.character(df$support))
+df$support <- format(round(df$support, 0), nsmall = 0)
+```
+
+```{r}
+df_accuracy <- df[grepl("accuracy", df$fn),]
+df_final <- df[!grepl("accuracy", df$fn),]
+```
+
+```{r}
+drops <- c("recall", "f1score", "support")
+df_accuracy <- df_accuracy[ , !(names(df_accuracy) %in% drops)]
+colnames(df_accuracy)[3] <- "accuracy"
+```
+
+```{r}
+colnames(df_final)[1] <- "subAct_metric"
+colnames(df_final)[3] <- "precision_i"
+colnames(df_final)[4] <- "recall_i"
+colnames(df_final)[5] <- "f1score_i"
+colnames(df_final)[6] <- "support_i"
+colnames(df_accuracy)[1] <- "subAct_metric"
+colnames(df_accuracy)[3] <- "accuracy_i"
+```
+
+```{r}
+df_iAll <- df_final
+df_iAcc <- df_accuracy 
+```
+
+
+```{r}
+write.csv(df_final, file="/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/allFeatures/df_final.csv")
+write.csv(df_accuracy, file="/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/allFeatures/df_accuracy.csv")
+```
+
+## Energy Only
+
+```{r}
+library(tidyverse)
+library(stringr)
+list_of_files <- list.files(path = '/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/energyOnly/',
+                            pattern = '_rep.csv',
+                            full.names = TRUE)
+df <- list_of_files %>%
+  setNames(nm = .) %>% 
+  map_df(~read_csv(.x, col_types = cols(), col_names = FALSE), .id = "file_name")
+```
+
+```{r}
+df$file_name <- gsub("/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/energyOnly/", "", df$file_name)
+df$file_name <- gsub("_rep.csv", "", df$file_name)
+df$file_name <- substring(df$file_name, 2)
+```
+
+```{r}
+df$X1 <- gsub("0.0", "0", df$X1)
+df$X1 <- gsub("1.0", "1", df$X1)
+colnames(df) <- c('fn','X1','precision','recall','f1score','support')
+df$fn <-  paste(df$fn, df$X1, sep = "_")
+df$fn <- gsub("macro avg", "m.avg", df$fn)
+df$fn <- gsub("weighted avg", "w.avg", df$fn)
+df <- na.omit(df)
+```
+
+```{r}
+df$precision <- as.numeric(as.character(df$precision))
+df$precision <- format(round(df$precision, 3), nsmall = 3)
+df$recall <- as.numeric(as.character(df$recall))
+df$recall <- format(round(df$recall, 3), nsmall = 3)
+df$f1score <- as.numeric(as.character(df$f1score))
+df$f1score <- format(round(df$f1score, 3), nsmall = 3)
+df$support <- as.numeric(as.character(df$support))
+df$support <- format(round(df$support, 0), nsmall = 0)
+```
+
+```{r}
+df_accuracy <- df[grepl("accuracy", df$fn),]
+df_final <- df[!grepl("accuracy", df$fn),]
+```
+
+```{r}
+drops <- c("recall", "f1score", "support")
+df_accuracy <- df_accuracy[ , !(names(df_accuracy) %in% drops)]
+colnames(df_accuracy)[3] <- "accuracy"
+```
+
+```{r}
+colnames(df_final)[1] <- "subAct_metric"
+colnames(df_final)[3] <- "precision_ii"
+colnames(df_final)[4] <- "recall_ii"
+colnames(df_final)[5] <- "f1score_ii"
+colnames(df_final)[6] <- "support_ii"
+colnames(df_accuracy)[1] <- "subAct_metric"
+colnames(df_accuracy)[3] <- "accuracy_ii"
+```
+
+
+```{r}
+df_iiAll <- df_final
+df_iiAcc <- df_accuracy
+```
+
+
+```{r}
+write.csv(df_final, file="/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/energyOnly/df_final.csv")
+write.csv(df_accuracy, file="/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/energyOnly/df_accuracy.csv")
+```
+
+```{r}
+df_final <- dplyr::inner_join(df_iAll, df_iiAll, by = "subAct_metric")
+df_accuracy <- dplyr::inner_join(df_iAcc, df_iiAcc, by = "subAct_metric")
+```
+
+```{r}
+write.csv(df_final, file="/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/df_METRIC.csv")
+write.csv(df_accuracy, file="/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/df_ACC.csv")
+```
+
+
+```{r}
+df_METRIC <- read_csv("/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/df_METRIC.csv")
+df_ACC <- read_csv("/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/df_ACC.csv")
+```
+
+```{r}
+pairs(df_METRIC[,2:7], pch = 19)
+```
+
+```{r}
+scatter_precision <- ggplot(data=df_METRIC, aes(precision_i, precision_ii, colour = metric)) +
+  stat_smooth(method = "lm", col = "black", size = 0.5) +
+  geom_point() + theme_grey() + scale_color_jco() + #scale_color_brewer(palette ="Dark2") +
+  theme(legend.title = element_blank()) +
+  annotate("text", x = 0.6, y = 0.85, label = "R Squared") + 
+  annotate("text", x = 0.6, y = 0.8, label = format(summary(lm(precision_ii ~ precision_i, data = df_METRIC))$r.squared, digits = 4))
+scatter_precision
+```
+
+
+```{r}
+scatter_recall <- ggplot(data=df_METRIC, aes(recall_i, recall_ii, colour = metric)) +
+  stat_smooth(method = "lm", col = "black", size = 0.5) +
+  geom_point() + theme_grey() + scale_color_jco() +
+  theme(legend.title = element_blank()) +
+  annotate("text", x = 0.6, y = 0.85, label = "R Squared") + 
+  annotate("text", x = 0.6, y = 0.8, label = format(summary(lm(recall_ii ~ recall_i, data = df_METRIC))$r.squared, digits = 4))
+scatter_recall
+```
+
+```{r}
+scatter_f1 <- ggplot(data=df_METRIC, aes(f1score_i, f1score_ii, colour = metric)) +
+  stat_smooth(method = "lm", col = "dodgerblue", size = 0.5) +
+  geom_point() + theme_grey() + scale_color_jco() +
+  theme(legend.title = element_blank()) +
+  annotate("text", x = 0.6, y = 0.85, label = "R Squared") + 
+  annotate("text", x = 0.6, y = 0.8, label = format(summary(lm(f1score_ii ~ f1score_i, data = df_METRIC))$r.squared, digits = 4))
+scatter_f1
+```
+
+```{r}
+scatter_acc <- ggplot(data=df_ACC, aes(accuracy_i, accuracy_ii, colour = metric)) +
+  stat_smooth(method = "lm", col = "black", size = 0.5) +
+  geom_point() + theme_grey() + scale_color_aaas() +
+  theme(legend.title = element_blank()) +
+  annotate("text", x = 0.925, y = 0.975, label = "R Squared") + 
+  annotate("text", x = 0.925, y = 0.9625, label = format(summary(lm(accuracy_ii ~ accuracy_i, data = df_ACC))$r.squared, digits = 4))
+scatter_acc
+```
+
 ```{r message=FALSE, warning=FALSE}
 featPlots <- list()
 for(i in 1:nrow(best_feats)) {
@@ -116,6 +325,9 @@ for(i in 1:21) {
 ```
 
 
+```{r}
+nameVector
+```
 
 
 
@@ -227,7 +439,13 @@ for(i in 1:21) {
 ```
 
 
+```{r}
+plot_grid(featPlots[[1]], dtPlots[[1]], rocPlots[[1]], labels = c("A", "T", "C"), label_size = 8, nrow = 1,  rel_widths = c(1, 1, 1))
+```
 
+```{r}
+nameVector
+```
 
 
 
@@ -413,5 +631,16 @@ ggsave("/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 
 
 
+
+```{r}
+reports <- '/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/allFeatures/'
+file_list <- list.files(path=reports, pattern="*_rep.csv")
+```
+
+```{r}
+data.report <- do.call("rbind", lapply(file_list, 
+                                       function(x) 
+                                         cbind(read.csv(paste(reports, x, sep='')))))
+```
 
 
