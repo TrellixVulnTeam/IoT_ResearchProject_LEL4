@@ -1,11 +1,5 @@
 ds.to_csv(PATH + '/intermediate_datasets/S1SubActivities_temporalFeaturesCLEANSED.csv', index = False)
 
-* len(ds_1n_60s) = 1989
-* File = /intermediate_datasets/ds_1n_60s.csv
-
-* len(ds_1n_10s) = 1063
-* File = /intermediate_datasets/ds_1n_10s.csv
-
 * len(ds_10n_60s) = 5385
 * File = /intermediate_datasets/ds_10n_60s.csv
 
