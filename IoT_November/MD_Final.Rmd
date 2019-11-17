@@ -1161,45 +1161,111 @@ knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/
 ```
 
 ### Re-casting the Dataset as a Boolean Array
-Based on the analysis above, we sought a data structure whereby every simultaneous subactivity occuring at one point in time could potentially be evaluated. In order to acheive this without having to place a large emphasis on complex combinatorics, it was decided to cast the data structure into a Boolean Array. In this structure, each sub-activity will become an attribute, with every row is a timestamp index. This structure will span the duration of the dataset - in other words, every second that was accounted for in the original dataset will have an instance (a row). 
+Based on the analysis above, we sought a data structure whereby every simultaneous subactivity occuring at one point in time could potentially be evaluated. In order to acheive this without having to place a large emphasis on complex combinatorics, it was decided to cast the data structure into a Boolean Array. In this structure, each sub-activity will become an attribute, with every row is a timestamp index. This structure will span the duration of the dataset - in other words, every second that was accounted for in the original dataset will have a row instance (a row).
 
-The required transformations were for performed on the pre-processed dataset, and a sample (with omitted attributes) can be seen below in Table \ref{tab:TAB_S1SubAct_B_s_EXAMPLE}. This example subset has its first instance at 01/04/2003 6:54:50 am. Here we can see the following sub-activities in an 'active' state; 57 (bathroom medicine cabinet), 101 (bathroom lightswitch) and 96 (bathroom exhaustfan). All other sub-activities are inactive. At 01/04/2003 6:54:56 am sub-activity 88 (bathroom sinkfaucet - hot) becomes active, followed by one second later at 01/04/2003 6:54:57 am sub-activity 68 (bathroom sinkfaucet - cold) becoming active. Sub-activity 57, 101, 68, 88 and 96 all remain active at 01/04/2003 6:55:01 am. 
+The required transformations were for performed on the pre-processed dataset, with an initial index occuring at 27/03/2003 6:43:40 am, and the final index occuring at 11/4/2003 10:24:18 pm. In some regions of the dataset there were no results, so it is not an uninterrupted timescale from the first to last index. This will not affect our analysis as we are considering sequences of events as they occur with respect to concurrency. 
+
+A sample of the processed boolean array data (with omitted attributes) can be seen below in Table \ref{tab:TAB_S1SubAct_B_s_EXAMPLE}. Here we can see the following sub-activities in an 'active' state; 57 (bathroom medicine cabinet), 101 (bathroom lightswitch) and 96 (bathroom exhaustfan). All other sub-activities are inactive. At 01/04/2003 6:54:56 am sub-activity 88 (bathroom sinkfaucet - hot) becomes active, followed by one second later at 01/04/2003 6:54:57 am sub-activity 68 (bathroom sinkfaucet - cold) becoming active. Sub-activity 57, 101, 68, 88 and 96 all remain active at 01/04/2003 6:55:01 am. 
 
 ```{r TAB_S1SubAct_B_s_EXAMPLE, echo=FALSE, results='asis'}
 df <- read_csv('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/S1SubAct_B_s_EXAMPLE.csv')
-head(df) %>% kable(format = "latex", caption = "Add text", 
+df %>% kable(format = "latex", caption = "Add text", 
                    booktabs = T) %>% 
   kable_styling(latex_options = c("hold_position", "striped", "scale_down"),
                 bootstrap_options = c("striped", "hover", "condensed"),
                 font_size = 8)
 ```
 
-This data structure thus offers the following benefit;
+This data structure thus offers the following benefits; i) Simultaneous consideration of the state of multiple sub-activities,ii) Present in a format that is still readily human interprettable and iii) Present in a format that can be easily consumed by a machine.
 
-- Simultaneous consideration of the state of multiple sub-activities
-- Present in a format that is still readily human interprettable
-- Present in a format that can be easily consumed by a machine
+And the following challenges; i) The dataset is overall very large, potentially requiring large amounts of computational power for downstream analysis, ii) The dataset is potentially highly homogeneous in certain temporal regions and iii) A second-by-second analysis is most likely to granular for the purposes of this work
 
-And the following challenges:
+In order to remedy this, we converted the Boolean Array structure into the minute-scale, by aggregating all the second values for each attribute for each minute. For example, if a sub-activity had occured for 30 seconds during one minute, it will not be represented as a '1' for that minute in the dataframe.
 
-- The dataset is overall very large, potentially requiring large amounts of computational power for downstream analysis
-- The dataset is potentially highly homogeneous in certain temporal regions
-- A second-by-second analysis is most likely to granular for the purposes of this work
+```{r TAB_S1SubAct_B_m_EXAMPLE, echo=FALSE, results='asis'}
+df <- read_csv('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/intermediate_datasets/S1SubAct_B_m_EXAMPLE.csv')
+df %>% kable(format = "latex", caption = "Add text", 
+                   booktabs = T) %>% 
+  kable_styling(latex_options = c("hold_position", "striped", "scale_down"),
+                bootstrap_options = c("striped", "hover", "condensed"),
+                font_size = 8)
+```
+
+# Machine Learning Analysis
+
+Using the pre-processed boolean array data (minute-scale) we will now attempt to create a predictive model with the aim of identifying patterns of co-occurrence between the sub-activities. As we are attempting to predict the on or off state of activities, this is a binary classification problem. As discussed during the Sankey analysis, the sub-activities can be broadly categorised as requiring energy input only from the end user (e.g., Kitchen Door) or requiring external energy to function (e.g., Kitchen Toaster). Note that for the purposes of further discussion such appliances will be referred to as energy-intensive (e.g., light switch, fridge and so on). Our model we will only attempt to predict the state of energy-intensive appliances, for reasons outlined in the discussion section.
+
+## The Machine Learning Algorithm
+A wrapper method will be created centered around the the sklearn Decision Tree Classifier. This method will use a decision tree model and optimize its hyperparameters using a grid search. The grid search will be performed over split criterion ('gini' and 'entropy') and maximum depth. Feature selection will be performed using the entropy-based method of mutual information, for the top five features. Cross-validation will be performed using 5-folds. The wrapper method will enable the model to perform the functions described above in an iterative fashion for each of the energy-intensive sub-activity features in the dataset. The processed sub-activities meta data will also be parsed to provide the data on which sub-activity is energy intensive and which is not. Throughout the iterations, key data will be parsed to *.csv format for later analysis.
+
+### Data
+The dataset used will be the boolean array on the minute scale. These data currently have an datetime index, with dimensionality of **XXXX**. In preparation for the analysis, the datetime index is removed, as will be discussed below. Important to note that these data currently contain no categorical features (e.g, day of week, weekend / weekday, hour of day, room of house, e.t.c,).
+
+```python
+ds = pd.read_csv(PATH + '/intermediate_datasets/S1SubAct_B_m_NoDupes.csv', index_col = 'duration')
+ds.reset_index(drop = True, inplace = True)
+```
+### The Wrapper Method
+The following python script was used to perform the desired machine learning analysis.
+
+```python
+for subAct in poweredSubActs:
+    print("BEGIN:", subAct)
+    row = {"Target":subAct}
+    Data = ds.drop(columns = subAct).values
+    target = ds[subAct]
+    
+    D_train, D_test, t_train, t_test = train_test_split(Data, target, test_size = 0.3, 
+                                        random_state=999)
+    cv_method = RepeatedStratifiedKFold(n_splits = 5, n_repeats = 3, random_state = 999)
+    dt_classifier = DecisionTreeClassifier(random_state=999)
+    params_DT = {'criterion': ['gini', 'entropy'], 
+                'max_depth': [2, 3, 4, 5, 6, 7, 8, 9, 10]}
+    gs = GridSearchCV(estimator=dt_classifier, param_grid=params_DT, cv=cv_method,
+                      verbose=1, scoring='accuracy')
+    gs.fit(Data, target)
+    
+    print("best params:", gs.best_params_)
+    print("best score:", gs.best_score_)
+    
+    row['Original_Fit'] = gs.best_score_
+    num_features = 5
+    
+    fs_fit_mutual_info = fs.SelectKBest(fs.mutual_info_classif, k=num_features)
+    fs_fit_mutual_info.fit_transform(Data, target)
+    fs_indices_mutual_info = np.argsort(fs_fit_mutual_info.scores_)[::-1][0:num_features]
+    
+    best_features_mutual_info = ds.columns[fs_indices_mutual_info].values    
+    feature_importances_mutual_info = fs_fit_mutual_info.scores_[fs_indices_mutual_info]
+    
+    results_DT = pd.DataFrame(gs.cv_results_['params'])
+    results_DT['test_score'] = gs.cv_results_['mean_test_score']
+    results_DT.to_csv(subAct + "_dt.csv", index=False)
+    
+    t_pred = gs.predict(D_test)
+    t_prob = gs.predict_proba(D_test)
+    
+    metrics.roc_auc_score(t_test, t_pred)
+    fpr, tpr, _ = metrics.roc_curve(t_test, t_prob[:, 1])
+    roc_auc = metrics.auc(fpr, tpr)    
+    
+    print('roc_auc', roc_auc)
+    df = pd.DataFrame({'fpr': fpr, 'tpr': tpr})
+    df.to_csv(subAct + "_roc.csv", index = False)
+    
+    report = metrics.classification_report(t_test, t_pred, output_dict=True)
+    rep = pd.DataFrame(report).transpose()
+    rep.to_csv(subAct + "_rep.csv", index=True)
+    print(metrics.confusion_matrix(t_test, t_pred))
+    
+    report = metrics.confusion_matrix(t_test, t_pred)
+    rep = pd.DataFrame(report).transpose()
+    rep.to_csv(subAct + "_confusion.csv", index=True)    
+```
+### Machine Learning Model Results
+The following section provides an evaluation of the machine learning model results.
 
 
-
-
-
-
-27/3/2003  6:43:40 am
-11/4/2003  10:24:18 pm
-
-If the sub-actitivity is occuring at that point in time, the value in the cell will be `1`. If the 
-As demonstrated 
-
-
-
-bathroom_toiletflush	bathroom_lightswitch	foyer_lightswitch	bathroom_medicinecabinet	bathroom_cabinet	bathrooom-sinkfaucet-hot	bathroom_showerfaucet	bathrooom-sinkfaucet-cold	kitchen_laundrydryer	bathroom_exhaustfan	bathroom_door
 
 
 
@@ -1215,8 +1281,21 @@ knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/
 
 
 
+# Discussion
+unbalanced data... 
+##
+- Collapse 1 second gives one for a minute AND
+- Collapse 59 seconds give one for a minute
+- How much would such a thing affect the balance of the data?
 
+## Energy only sub-activity
 
+For our model, we aim to only predict the state (on or off) of the later category, that is, sub-activities that require an energy source to function. This is because, in the larger context of this work, only energy-based sub-activities could be (in theory) 
+
+## Machine Learning Models
+unbalanced data... 
+- Feature selection will be performed using the entropy-based method of mutual information. USING MORE than 5 - 'the extremely low imporance value indicates that the overall importance of the features is low, so considering more than 5 would not be beneficial in find tuning our model.'
+##
 
 
 
