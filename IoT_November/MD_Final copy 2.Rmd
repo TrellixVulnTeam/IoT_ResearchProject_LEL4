@@ -1265,127 +1265,127 @@ for subAct in poweredSubActs:
 ### Machine Learning Model Results
 The following section provides an evaluation of the machine learning model results.
 
-#### Bedroom Lightswitch  - Sub-Activity 108
+### Bedroom Lightswitch
 The top five most important features for predicting this sub-activity (as shown in tile ‘A’ of the plot below) are: bathroom light switch, kitchen cabinet, kitchen dishwasher, kitchen laundry dryer and livingroom light switch. The bathroom light switch is significantly more important than the other four. For the analysis of the bedroom light switch feature it was determined that the best parameters were ‘entropy’ with a maximum tree depth of 4. The plot of Mean CV Score versus Maximum depth shows that ‘gini’ is the better parameter at certain tree depths. The shape of the ROC curve and the corresponding ROC_AUC value of 0.9016 are indicative of a good fit. The extremely high precision (0.98) and recall (1.00) values for 0 as compared to the relatively low recall (0.36) value for 1 are due to the unbalanced data set, where of the 1588 instances, 1543 are 0, while 45 are 1. The model has successfully categorised only 16 of the 45 instances of 1, and even given the unbalanced nature of the dataset, the model has performed poorly.
 ```{r echo=FALSE, fig.cap="ADD TEXT", fig.align='center', out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/bedroom_lightswitch_allFeatures.png')
 ```
 
-#### Kitchen Laundry Dryer - Sub-Activity 90
+### Kitchen Laundrydryer
 The top five most important features for predicting this sub-activity (as shown in tile ‘A’ of the plot below) are: kitchen door, kitchen washing machine, bathroom medicine cabinet, kitchen dishwasher and bedroom drawer. The kitchen door and kitchen washing machine are significantly more important than the other three. For the analysis of the kitchen laundry dryer feature it was determined that the best parameter¬s were ‘gini’ with a maximum tree depth of 5. The plot of Mean CV Score versus Maximum depth shows that ‘gini’ is the better parameter at all tree depths up to 10.  The shape of the ROC curve and the corresponding ROC_AUC value of 0.9551 are indicative of a good fit. The extremely high precision (0.99) and recall (1.00) values for 0 as compared to the relatively low recall (0.30) value for 1 are due to the unbalanced data set, where of the 1588 instances, 1565 are 0, while 23 are 1. The model has successfully categorised only 7 of the 23 instances of 1, and even given the unbalanced nature of the dataset, the model has performed poorly.
 ```{r echo=FALSE, fig.cap="ADD TEXT", fig.align='center', out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/kitchen_laundrydryer_allFeatures.png')
 ```
 
-#### Kitchen Freezer - Sub-Activity 137
+### Kitchen Freezer
 The top five most important features for predicting this sub-activity (as shown in tile ‘A’ of the plot below) are: kitchen refrigerator, livingroom light switch, foyer closet, bathroom door and bathroom toilet flush. The kitchen refrigerator is significantly more important than the other four. For the analysis of the kitchen freezer feature it was determined that the best parameters were ‘gini’ with a maximum tree depth of 9. The plot of Mean CV Score versus Maximum depth shows that ‘gini’ is the better parameter at all tree depths from 3 up to 10.  The shape of the ROC curve and the corresponding ROC_AUC value of 0.8639 are indicative of a good fit. The extremely high precision (0.94) and recall (0.98) values for 0 as compared to the relatively low recall (0.44) value for 1 are due to the unbalanced data set, where of the 1588 instances, 1423 are 0, while 165 are 1. The model has successfully categorised 73 of the 165 instances of 1, and in these circumstances has performed adequately.
 ```{r echo=FALSE, fig.cap="ADD TEXT", fig.align='center', out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/kitchen_freezer_allFeatures.png')
 ```
 
-#### Kitchen Toaster - Sub-Activity 131
+### Kitchen Toaster
 The top five most important features for predicting this sub-activity (as shown in tile ‘A’ of the plot below) are: kitchen cabinet, bathroom exhaust fan, study light switch, kitchen toaster and livingroom light switch. The kitchen cabinet is significantly more important than the other four. For the analysis of the kitchen toaster feature it was determined that the best parameters were ‘gini’ with a maximum tree depth of 3. The plot of Mean CV Score versus Maximum depth shows that ‘gini’ is the better parameter at all tree depths up to 6, and then ‘entropy’ is the better parameter from 7 to 10.  The shape of the ROC curve and the corresponding ROC_AUC value of 0.7782 are indicative of an adequate fit. The extremely high precision (0.99) and recall (1.00) values for 0 as compared to the relatively low recall (0.23) value for 1 are due to the unbalanced data set, where of the 1588 instances, 1566 are 0, while 22 are 1. The model has successfully categorised only 5 of the 22 instances of 1, and even given the unbalanced nature of the dataset, the model has performed poorly.
 ```{r echo=FALSE, fig.cap="ADD TEXT", fig.align='center', out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/kitchen_toaster_allFeatures.png')
 ```
 
-#### Bathroom Exhaust Fan - Sub-Activity 96
+### Bathroom Exhaustfan
 The top five most important features for predicting this sub-activity (as shown in tile ‘A’ of the plot below) are: livingroom light switch, bathroom sink faucet hot, livingroom lamp, bathroom medicine cabinet and foyer door. The livingroom light switch, bathroom sink faucet hot and livingroom lamp are noticeably more important than the other two. For the analysis of the bathroom exhaust fan feature it was determined that the best parameters were ‘gini’ with a maximum tree depth of 8. The plot of Mean CV Score versus Maximum depth shows that ‘gini’ is the better parameter at all tree depths up to 10.  The shape of the ROC curve and the corresponding ROC_AUC value of 0.9054 are indicative of a good fit. The extremely high precision (0.90) and recall (0.99) values for 0 as compared to the relatively low recall (0.25) value for 1 are due to the unbalanced data set, where of the 1588 instances, 1384 are 0, while 204 are 1. The model has successfully categorised only 51 of the 204 instances of 1, and even given the unbalanced nature of the dataset, the model has performed poorly.
 ```{r echo=FALSE, fig.cap="ADD TEXT", fig.align='center', out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/bathroom_exhaustfan_allFeatures.png')
 ```
 
-#### Bathroom Shower Faucet - Sub-Activity 93
+### Bathroom Showerfaucet
 The top five most important features for predicting this sub-activity (as shown in tile ‘A’ of the plot below) are: bathroom light switch, kitchen refrigerator, kitchen dishwasher, foyer door and kitchen microwave. The bathroom light switch, kitchen refrigerator and kitchen dishwasher are significantly more important than the other two. For the analysis of the bathroom shower faucet feature it was determined that the best parameters were ‘entropy’ with a maximum tree depth of 8. The plot of Mean CV Score versus Maximum depth shows that ‘entropy’ is the better parameter at all tree depths up to 10.  The shape of the ROC curve and the corresponding ROC_AUC value of 0.9280 are indicative of a good fit. The extremely high precision (0.97) and recall (1.00) values for 0 as compared to the relatively low recall (0.40) value for 1 are due to the unbalanced data set, where of the 1588 instances, 1520 are 0, while 68 are 1. The model has successfully categorised 27 of the 68 instances of 1, and in these circumstances has performed adequately.
 ```{r echo=FALSE, fig.cap="ADD TEXT", fig.align='center', out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/bathroom_showerfaucet_allFeatures.png')
 ```
 
-#### Bathroom Lightswitch - Sub-Activity 101
+### bathroom_lightswitch
 The top five most important features for predicting this sub-activity (as shown in tile ‘A’ of the plot below) are: kitchen dishwasher, bedroom drawer, livingroom light switch, bathroom cabinet and foyer light switch. The kitchen dishwasher, bedroom drawer and livingroom light switch are significantly more important than the other two. For the analysis of the bathroom light switch feature it was determined that the best parameters were ‘gini’ with a maximum tree depth of 10. The plot of Mean CV Score versus Maximum depth shows that ‘gini’ is the better parameter at all tree depths up to 10.  The shape of the ROC curve and the corresponding ROC_AUC value of 0.9073 are indicative of a good fit. The extremely high precision (0.85) and recall (0.99) values for 0 as compared to the relatively low recall (0.30) value for 1 are due to the unbalanced data set, where of the 1588 instances, 1262 are 0, while 326 are 1. The model has successfully categorised only 99 of the 326 instances of 1, and even given the unbalanced nature of the dataset, the model has performed poorly.
 ```{r echo=FALSE, fig.cap="ADD TEXT", fig.align='center', out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/bathroom_lightswitch_allFeatures.png')
 ```
 
-#### Kitchen Refrigerator - Sub-Activity 126
+### kitchen_refrigerator
 The top five most important features for predicting this sub-activity (as shown in tile ‘A’ of the plot below) are: kitchen cabinet, kitchen toaster, kitchen drawer, kitchen light switch and kitchen burner. The kitchen cabinet and kitchen toaster are significantly more important than the other three. For the analysis of the kitchen refrigerator feature it was determined that the best parameters were ‘gini’ with a maximum tree depth of 10. The plot of Mean CV Score versus Maximum depth shows that ‘gini’ and ‘entropy’ alternate as the better parameter depending on the tree depth.  The shape of the ROC curve and the corresponding ROC_AUC value of 0.9534 are indicative of a good fit. The extremely high precision (0.97) and recall (1.00) values for 0 as compared to the recall (0.51) value for 1 are due to the unbalanced data set, where of the 1588 instances, 1506 are 0, while 82 are 1. The model has successfully categorised 42 of the 82 instances of 1, and the model has performed adequately.
 ```{r echo=FALSE, fig.cap="ADD TEXT", fig.align='center', out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/kitchen_refrigerator_allFeatures.png')
 ```
 
-#### Foyer Lightswitch - Sub-Activity 104
+### foyer_lightswitch
 The top five most important features for predicting this sub-activity (as shown in tile ‘A’ of the plot below) are: kitchen burner, foyer light switch, kitchen coffee machine, kitchen dishwasher and bathroom light switch. The kitchen burner is significantly more important than the other four. For the analysis of the foyer light switch feature it was determined that the best parameters were ‘gini’ with a maximum tree depth of 4. The plot of Mean CV Score versus Maximum depth shows that ‘gini’ and ‘entropy’ alternate as the better parameter depending on the tree depth. The shape of the ROC curve and the corresponding ROC_AUC value of 0.9394 are indicative of a good fit. The extremely high precision (0.99) and recall (1.00) values for 0 as compared to the reasonable recall (0.77) value for 1 are despite the unbalanced data set, where of the 1588 instances, 1528 are 0, while 60 are 1. The model has successfully categorised 46 of the 60 instances of 1, and the model has performed excellently.
 ```{r echo=FALSE, fig.cap="ADD TEXT", fig.align='center', out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/foyer_lightswitch_allFeatures.png')
 ```
 
-#### Kitchen Burner - Sub-Activity 140
+### kitchen_burner
 The top five most important features for predicting this sub-activity (as shown in tile ‘A’ of the plot below) are: kitchen light switch, kitchen door, bathroom sink faucet hot, kitchen drawer and kitchen burner. The kitchen light switch and kitchen door are significantly more important than the other three. For the analysis of the kitchen burner feature it was determined that the best parameters were ‘entropy’ with a maximum tree depth of 8. The plot of Mean CV Score versus Maximum depth shows that ‘gini’ and ‘entropy’ alternate as the better parameter depending on the tree depth. The shape of the ROC curve and the corresponding ROC_AUC value of 0.9433 are indicative of a good fit. The extremely high precision (0.97) and recall (1.00) values for 0 as compared to the relatively low recall (0.34) value for 1 are due to the unbalanced data set, where of the 1588 instances, 1506 are 0, while 82 are 1. The model has successfully categorised only 28 of the 82 instances of 1, and even given the unbalanced nature of the dataset, the model has performed poorly.
 ```{r echo=FALSE, fig.cap="ADD TEXT", fig.align='center', out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/kitchen_burner_allFeatures.png')
 ```
 
-#### Study Lightswitch - Sub-Activity 92
+### study Lightswitch
 The top five most important features for predicting this sub-activity (as shown in tile ‘A’ of the plot below) are: bathroom cabinet, livingroom lamp, livingroom light switch, kitchen light switch and bedroom light switch. The bathroom cabinet is significantly more important than the other four. For the analysis of the study light switch feature it was determined that the best parameters were ‘entropy’ with a maximum tree depth of 8. The plot of Mean CV Score versus Maximum depth shows that ‘gini’ and ‘entropy’ alternate as the better parameter depending on the tree depth. The shape of the ROC curve and the corresponding ROC_AUC value of 0.8689 are indicative of a good fit. The high precision (0.89) and recall (1.00) values for 0 as compared to the extremely low recall (0.07) value for 1 are due to the unbalanced data set, where of the 1588 instances, 1407 are 0, while 181 are 1. The model has successfully categorised only 13 of the 181 instances of 1, and even given the unbalanced nature of the dataset, the model has performed extremely poorly.
 ```{r echo=FALSE, fig.cap="ADD TEXT", fig.align='center', out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/study_lightwitch_allFeatures.png')
 ```
 
-#### Kitchen Washingmachine - Sub-Activity 142
+### kitchen_washingmachine
 The top five most important features for predicting this sub-activity (as shown in tile ‘A’ of the plot below) are: bathroom sink faucet cold, kitchen door, kitchen light switch, bathroom exhaust fan and kitchen dishwasher. The bathroom sink faucet cold and kitchen door are significantly more important than the other three. For the analysis of the kitchen washing machine feature it was determined that the best parameters were ‘gini’ with a maximum tree depth of 3. The plot of Mean CV Score versus Maximum depth shows that ‘gini’ and ‘entropy’ alternate as the better parameter depending on the tree depth. The shape of the ROC curve and the corresponding ROC_AUC value of 0.8698 are indicative of a good fit. The extremely high precision (0.99) and recall (1.00) values for 0 as compared to the relatively low recall (0.19) value for 1 are due to the unbalanced data set, where of the 1588 instances, 1562 are 0, while 26 are 1. The model has successfully categorised only 5 of the 26 instances of 1, and even given the unbalanced nature of the dataset, the model has performed poorly.
 ```{r echo=FALSE, fig.cap="ADD TEXT", fig.align='center', out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/kitchen_washingmachine_allFeatures.png')
 ```
 
-#### Kitchen Lightswitch - Sub-Activity 105
+### Kitchen Lightswitch
 The top five most important features for predicting this sub-activity (as shown in tile ‘A’ of the plot below) are: foyer light switch, kitchen refrigerator, kitchen drawer, bathroom shower faucet and bathroom cabinet. All five of these features have similar importance. For the analysis of the kitchen light switch feature it was determined that the best parameters were ‘gini’ with a maximum tree depth of 10. The plot of Mean CV Score versus Maximum depth shows that ‘gini’ is the better parameter at all tree depths up to 10. The shape of the ROC curve and the corresponding ROC_AUC value of 0.8868 are indicative of a good fit. The extremely high precision (0.88) and recall (0.87) values for 0 as compared to the reasonable recall (0.74) value for 1 are despite the unbalanced data set, where of the 1588 instances, 1100 are 0, while 488 are 1. The model has successfully categorised 361 of the 488 instances of 1, and the model has performed excellently.
 ```{r echo=FALSE, fig.cap="ADD TEXT", fig.align='center', out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/kitchen_lightswitch_allFeatures.png')
 ```
 
-#### Livingroom Lamp - Sub-Activity 76
+### Livingroom Lamp
 The top five most important features for predicting this sub-activity (as shown in tile ‘A’ of the plot below) are: bathroom light switch, bathroom door, kitchen light switch, study drawer and livingroom light switch. The bathroom light switch is significantly more important than the other four. For the analysis of the livingroom lamp feature it was determined that the best parameters were ‘gini’ with a maximum tree depth of 8. The plot of Mean CV Score versus Maximum depth shows that ‘gini’ and ‘entropy’ alternate as the better parameter depending on the tree depth. The shape of the ROC curve and the corresponding ROC_AUC value of 0.8639 are indicative of a good fit. The high precision (0.81) and recall (0.99) values for 0 as compared to the low recall (0.16) value for 1 are due to the unbalanced data set, where of the 1588 instances, 1252 are 0, while 336 are 1. The model has successfully categorised only 54 of the 336 instances of 1, and even given the unbalanced nature of the dataset, the model has performed poorly.
 ```{r echo=FALSE, fig.cap="ADD TEXT", fig.align='center', out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/livingroom_lamp_allFeatures.png')
 ```
 
-#### Kitchen Microwave - Sub-Activity 143
+### kitchen_microwave
 The top five most important features for predicting this sub-activity (as shown in tile ‘A’ of the plot below) are: kitchen cabinet, kitchen refrigerator, kitchen door, bedroom light switch and kitchen drawer. All five of these features have similar importance. For the analysis of the kitchen microwave feature it was determined that the best parameters were ‘entropy’ with a maximum tree depth of 2. The plot of Mean CV Score versus Maximum depth shows that ‘entropy’ is the better parameter at all tree depths up to 10. The shape of the ROC curve and the corresponding ROC_AUC value of 0.5899 are indicative of a poor fit. The extremely high precision (0.99) and recall (1.00) values for 0 as compared to the recall (0.00) value for 1 are due to the unbalanced data set, where of the 1588 instances, 1575 are 0, while 13 are 1. The model has successfully categorised 0 of the 13 instances of 1. Thus, the model has not successfully fit.
 ```{r echo=FALSE, fig.cap="ADD TEXT", fig.align='center', out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/kitchen_microwave_allFeatures.png')
 ```
 
-#### Kitchen Garbage Disposal - Sub-Activity 98
+### kitchen_garbagedisposal
 The top five most important features for predicting this sub-activity (as shown in tile ‘A’ of the plot below) are: livingroom light switch, kitchen cabinet, bathroom door, kitchen door, livingroom lamp. The livingroom light switch is significantly more important than the other four. For the analysis of the kitchen garbage disposal feature it was determined that the best parameters were ‘gini’ with a maximum tree depth of 2. The plot of Mean CV Score versus Maximum depth shows that ‘entropy’ is equally good at this depth, and that ‘gini’ and ‘entropy’ alternate as the better parameter depending on the tree depth. The shape of the ROC curve and the corresponding ROC_AUC value of 0.7035 are indicative of a moderate fit. The extremely high precision (1.00) and recall (1.00) values for 0 as compared to the recall (0.00) value for 1 are due to the unbalanced data set, where of the 1588 instances, 1586 are 0, while 2 are 1. The model has successfully categorised 0 of the 2 instances of 1. Thus, the model has not successfully fit.
 ```{r echo=FALSE, fig.cap="ADD TEXT", fig.align='center', out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/kitchen_garbagedisposal_allFeatures.png')
 ```
 
-#### Kitchen Coffee Machine - Sub-Activity 119
+### kitchen_coffeemachine
 The top five most important features for predicting this sub-activity (as shown in tile ‘A’ of the plot below) are: kitchen toaster, foyer closet, bathroom shower faucet, bathroom cabinet and bathroom sink faucet cold. The kitchen toaster is significantly more important than the other four. For the analysis of the kitchen coffee machine feature it was determined that the best parameters were ‘gini’ with a maximum tree depth of 2. The plot of Mean CV Score versus Maximum depth shows that ‘entropy’ and ‘gini’ are equal at all tree depths. The shape of the ROC curve and the corresponding ROC_AUC value of 0.9600 are indicative of a good fit. The extremely high precision (1.00) and recall (1.00) values for 0 as compared to the recall (0.00) value for 1 are due to the unbalanced data set, where of the 1588 instances, 1587 are 0, while 1 is 1. The model has successfully categorised 0 of the 1 instances of 1. Thus, the model has not successfully fit.
 ```{r echo=FALSE, fig.cap="ADD TEXT", fig.align='center', out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/kitchen_coffeemachine_allFeatures.png')
 ```
 
-#### Livingroom Lightswitch - Sub-Activity 107
+### livingroom_lightswitch
 The top five most important features for predicting this sub-activity (as shown in tile ‘A’ of the plot below) are: foyer light switch, bathroom shower faucet, bedroom drawer, livingroom light switch and foyer door. The foyer light switch is significantly more important than the other four. For the analysis of the livingroom light switch feature it was determined that the best parameters were ‘entropy’ with a maximum tree depth of 7. The plot of Mean CV Score versus Maximum depth shows that ‘gini’ and ‘entropy’ alternate as the better parameter depending on the tree depth. The shape of the ROC curve and the corresponding ROC_AUC value of 0.9178 are indicative of a good fit. The extremely high precision (0.91) and recall (1.00) values for 0 as compared to the relatively low recall (0.28) value for 1 are due to the unbalanced data set, where of the 1588 instances, 1386 are 0, while 202 are 1. The model has successfully categorised only 57 of the 202 instances of 1, and even given the unbalanced nature of the dataset, the model has performed poorly.
 ```{r echo=FALSE, fig.cap="ADD TEXT", fig.align='center', out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/livingroom_lightswitch_allFeatures.png')
 ```
 
-#### Kitchen Oven  - Sub-Activity 129
+### kitchen_oven
 The top five most important features for predicting this sub-activity (as shown in tile ‘A’ of the plot below) are: foyer door, kitchen drawer, bathroom toilet flush, bathroom shower faucet and bedroom light switch. The foyer door is significantly more important than the other four. For the analysis of the kitchen oven feature it was determined that the best parameters were ‘entropy’ with a maximum tree depth of 2. The plot of Mean CV Score versus Maximum depth shows that ‘gini’ and ‘entropy’ alternate as the better parameter depending on the tree depth. The shape of the ROC curve and the corresponding ROC_AUC value of 0.7051 are indicative of a moderate fit. The extremely high precision (0.99) and recall (1.00) values for 0 as compared to the recall (0.00) value for 1 are due to the unbalanced data set, where of the 1588 instances, 1579 are 0, while 9 are 1. The model has successfully categorised 0 of the 9 instances of 1. Thus, the model has not successfully fit.
 ```{r echo=FALSE, fig.cap="ADD TEXT", fig.align='center', out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/kitchen_oven_allFeatures.png')
 ```
 
-#### Kitchen Dishwasher - Sub-Activity 70
+### kitchen_dishwasher
 The top five most important features for predicting this sub-activity (as shown in tile ‘A’ of the plot below) are: kitchen cabinet, kitchen light switch, foyer closet, kitchen burner and livingroom light switch. The kitchen cabinet and kitchen light switch are significantly more important than the other three. For the analysis of the kitchen dishwasher feature it was determined that the best parameters were ‘entropy’ with a maximum tree depth of 8. The plot of Mean CV Score versus Maximum depth shows that ‘entropy’ is the better parameter at all tree depths up to 10.  The shape of the ROC curve and the corresponding ROC_AUC value of 0.8826 are indicative of a good fit. The extremely high precision (0.96) and recall (0.99) values for 0 as compared to the relatively low recall (0.26) value for 1 are due to the unbalanced data set, where of the 1588 instances, 1496 are 0, while 92 are 1. The model has successfully categorised only 24 of the 92 instances of 1, and even given the unbalanced nature of the dataset, the model has performed poorly.
 ```{r echo=FALSE, fig.cap="ADD TEXT", fig.align='center', out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/kitchen_dishwasher_allFeatures.png')
 ```
 
-#### Bathroom Sink Faucet (Hot) - Sub-Activity 68
+### bathroom_sinkfaucet-hot
 The top five most important features for predicting this sub-activity (as shown in tile ‘A’ of the plot below) are: study drawer, bathroom toilet flush, bathroom light switch, bathroom medicine cabinet and bathroom door. The study drawer is significantly more important than the other four. For the analysis of the bathroom sink faucet hot feature it was determined that the best parameters were ‘entropy’ with a maximum tree depth of 6. The plot of Mean CV Score versus Maximum depth shows that ‘gini’ and ‘entropy’ alternate as the better parameter depending on the tree depth. The shape of the ROC curve and the corresponding ROC_AUC value of 0.9066 are indicative of a good fit. The extremely high precision (0.97) and recall (1.00) values for 0 as compared to the recall (0.42) value for 1 are due to the unbalanced data set, where of the 1588 instances, 1514 are 0, while 74 are 1. The model has successfully categorised 31 of the 74 instances of 1, and the model has performed adequately.
 ```{r echo=FALSE, fig.cap="ADD TEXT", fig.align='center', out.width = '100%'}
 knitr::include_graphics('/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/bathroom_sinkfaucet-hot_allFeatures.png')

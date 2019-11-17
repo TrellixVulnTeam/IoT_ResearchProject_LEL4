@@ -436,7 +436,7 @@ Both these values
 Based on the investigation of the box plots (A in all sub activity plots), heat maps of day of week versus duration in seconds mapped by count (B in all subactivity plots) and heat maps of day of week versus hour of day mapped by count (C in all subactivity plots) the following sub activities were left in their native state
 
 
-
+https://www.ijcai.org/Proceedings/13/Papers/427.pdf !!!!
 
 
 
@@ -444,19 +444,32 @@ Based on the investigation of the box plots (A in all sub activity plots), heat 
 plot(pressure)
 ```
 
+01/04/2003  6:54:50 am
+01/04/2003  6:54:51 am
+01/04/2003  6:54:52 am
+01/04/2003  6:54:53 am
+01/04/2003  6:54:54 am
+01/04/2003  6:54:55 am
+01/04/2003  6:54:56 am
+01/04/2003  6:54:57 am
+01/04/2003  6:54:58 am
+01/04/2003  6:54:59 am
+01/04/2003  6:55:00 am
+01/04/2003  6:55:01 am
 
 
-
-
-
-
-
-
-
-
-
-
-
+01/04/2003  6:45:00 am
+01/04/2003  6:46:00 am
+01/04/2003  6:47:00 am
+01/04/2003  6:48:00 am
+01/04/2003  6:49:00 am
+01/04/2003  6:51:00 am
+01/04/2003  6:52:00 am
+01/04/2003  6:53:00 am
+01/04/2003  6:54:00 am
+01/04/2003  6:55:00 am
+01/04/2003  6:56:00 am
+01/04/2003  6:57:00 am
 
 
 
