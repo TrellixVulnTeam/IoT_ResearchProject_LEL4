@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.11.13)  17 NOV 2019 21:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.11.13)  18 NOV 2019 07:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -906,1065 +906,1303 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 [3]
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-satelliteImages".png, id=237, 753.0534pt x 326.4195pt>
+satelliteImages".png, id=262, 753.0534pt x 326.4195pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""satelliteImages".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""satelliteImages".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""satelliteImages".png  used on input line 185.
+t/IoT_November/images/""satelliteImages".png  used on input line 210.
 (pdftex.def)             Requested size: 300.06696pt x 130.0674pt.
-<"MD_Final_files/figure-latex/""globalPovertyPlot-1".pdf, id=238, 420.57124pt x
+<"MD_Final_files/figure-latex/""globalPovertyPlot-1".pdf, id=263, 420.57124pt x
  169.63374pt>
 File: "MD_Final_files/figure-latex/""globalPovertyPlot-1".pdf Graphic file (typ
 e pdf)
 <use "MD_Final_files/figure-latex/""globalPovertyPlot-1".pdf>
 Package pdftex.def Info: "MD_Final_files/figure-latex/""globalPovertyPlot-1".pd
-f  used on input line 194.
+f  used on input line 219.
 (pdftex.def)             Requested size: 420.57663pt x 169.6359pt.
 [4 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/
 satelliteImages.png (PNG copy)> <./MD_Final_files/figure-latex/globalPovertyPlo
 t-1.pdf>]
-<"MD_Final_files/figure-latex/""internetAccessPlot-1".pdf, id=265, 284.06125pt 
+<"MD_Final_files/figure-latex/""internetAccessPlot-1".pdf, id=290, 284.06125pt 
 x 187.70125pt>
 File: "MD_Final_files/figure-latex/""internetAccessPlot-1".pdf Graphic file (ty
 pe pdf)
 <use "MD_Final_files/figure-latex/""internetAccessPlot-1".pdf>
 Package pdftex.def Info: "MD_Final_files/figure-latex/""internetAccessPlot-1".p
-df  used on input line 229.
+df  used on input line 254.
 (pdftex.def)             Requested size: 284.07787pt x 187.71223pt.
-<"MD_Final_files/figure-latex/""populationGrowthPlot-1".pdf, id=273, 354.32375p
+<"MD_Final_files/figure-latex/""populationGrowthPlot-1".pdf, id=298, 354.32375p
 t x 187.70125pt>
 File: "MD_Final_files/figure-latex/""populationGrowthPlot-1".pdf Graphic file (
 type pdf)
 <use "MD_Final_files/figure-latex/""populationGrowthPlot-1".pdf>
 Package pdftex.def Info: "MD_Final_files/figure-latex/""populationGrowthPlot-1"
-.pdf  used on input line 281.
+.pdf  used on input line 306.
 (pdftex.def)             Requested size: 354.32828pt x 187.70364pt.
 [5 <./MD_Final_files/figure-latex/internetAccessPlot-1.pdf>]
-<"MD_Final_files/figure-latex/""globalEnergyPlot-1".pdf, id=299, 351.3125pt x 1
+<"MD_Final_files/figure-latex/""globalEnergyPlot-1".pdf, id=325, 351.3125pt x 1
 87.70125pt>
 File: "MD_Final_files/figure-latex/""globalEnergyPlot-1".pdf Graphic file (type
  pdf)
 <use "MD_Final_files/figure-latex/""globalEnergyPlot-1".pdf>
 Package pdftex.def Info: "MD_Final_files/figure-latex/""globalEnergyPlot-1".pdf
-  used on input line 297.
+  used on input line 322.
 (pdftex.def)             Requested size: 351.33307pt x 187.71223pt.
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 3
-05.
+30.
 (/Users/alistairgj/Library/TinyTeX/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-warmingTrend".png, id=302, 1196.47pt x 625.33624pt>
+warmingTrend".png, id=328, 1196.47pt x 625.33624pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""warmingTrend".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""warmingTrend".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""warmingTrend".png  used on input line 325.
+t/IoT_November/images/""warmingTrend".png  used on input line 350.
 (pdftex.def)             Requested size: 400.09424pt x 209.10965pt.
 [6 <./MD_Final_files/figure-latex/populationGrowthPlot-1.pdf> <./MD_Final_files
 /figure-latex/globalEnergyPlot-1.pdf>]
-<"MD_Final_files/figure-latex/""sectorEnergyPlot-1".pdf, id=333, 351.3125pt x 1
+<"MD_Final_files/figure-latex/""sectorEnergyPlot-1".pdf, id=358, 351.3125pt x 1
 87.70125pt>
 File: "MD_Final_files/figure-latex/""sectorEnergyPlot-1".pdf Graphic file (type
  pdf)
 <use "MD_Final_files/figure-latex/""sectorEnergyPlot-1".pdf>
 Package pdftex.def Info: "MD_Final_files/figure-latex/""sectorEnergyPlot-1".pdf
-  used on input line 345.
+  used on input line 370.
 (pdftex.def)             Requested size: 351.33307pt x 187.71223pt.
 [7 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/
 warmingTrend.png> <./MD_Final_files/figure-latex/sectorEnergyPlot-1.pdf>] [8] [
 9]
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-dash1234".png, id=384, 1789.68625pt x 464.73625pt>
+dash1234".png, id=420, 1789.68625pt x 464.73625pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""dash1234".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""dash1234".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""dash1234".png  used on input line 538.
+t/IoT_November/images/""dash1234".png  used on input line 574.
 (pdftex.def)             Requested size: 500.09833pt x 129.86288pt.
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-dash5678".png, id=385, 1730.465pt x 452.69125pt>
+dash5678".png, id=421, 1730.465pt x 452.69125pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""dash5678".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""dash5678".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""dash5678".png  used on input line 547.
+t/IoT_November/images/""dash5678".png  used on input line 583.
 (pdftex.def)             Requested size: 500.1057pt x 130.82811pt.
-[10 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
-/dash1234.png>]
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-kobusDash".png, id=393, 1347.0325pt x 503.8825pt>
+kobusDash".png, id=423, 1347.0325pt x 503.8825pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""kobusDash".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""kobusDash".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""kobusDash".png  used on input line 590.
+t/IoT_November/images/""kobusDash".png  used on input line 625.
 (pdftex.def)             Requested size: 300.06834pt x 112.24612pt.
-[11 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
-/dash5678.png> </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_Nove
-mber/images/kobusDash.png>]
+[10 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
+/dash1234.png> </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_Nove
+mber/images/dash5678.png>]
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-cetinResults".png, id=404, 1134.2375pt x 925.4575pt>
+cetinResults".png, id=435, 1134.2375pt x 925.4575pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""cetinResults".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""cetinResults".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""cetinResults".png  used on input line 630.
+t/IoT_November/images/""cetinResults".png  used on input line 660.
 (pdftex.def)             Requested size: 325.06097pt x 265.22675pt.
-[12 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
-/cetinResults.png>] [13]
+[11 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
+/kobusDash.png> </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_Nov
+ember/images/cetinResults.png>]
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-basuTree".png, id=424, 1089.06876pt x 641.39626pt>
+basuTree".png, id=448, 1089.06876pt x 641.39626pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""basuTree".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""basuTree".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""basuTree".png  used on input line 753.
+t/IoT_November/images/""basuTree".png  used on input line 734.
 (pdftex.def)             Requested size: 400.07425pt x 235.61977pt.
-[14 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
-/basuTree.png>] [15]
+[12] [13 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/i
+mages/basuTree.png>]
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-oldNewParadigm".png, id=441, 309.0747pt x 146.949pt>
+oldNewParadigm".png, id=469, 309.0747pt x 146.949pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""oldNewParadigm".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""oldNewParadigm".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""oldNewParadigm".png  used on input line 888.
+t/IoT_November/images/""oldNewParadigm".png  used on input line 804.
 (pdftex.def)             Requested size: 309.0928pt x 146.9576pt.
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-huangA".png, id=442, 1046.91125pt x 524.96124pt>
+home".png, id=472, 453.6147pt x 234.6366pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
-es/""huangA".png Graphic file (type png)
+es/""home".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
-s/""huangA".png>
+s/""home".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""huangA".png  used on input line 909.
-(pdftex.def)             Requested size: 250.04976pt x 125.38449pt.
-[16 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
-/oldNewParadigm.png> </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/Io
-T_November/images/huangA.png>]
-<"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-huangC".png, id=453, 1288.815pt x 558.085pt>
-File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
-es/""huangC".png Graphic file (type png)
-<use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
-s/""huangC".png>
-Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""huangC".png  used on input line 943.
-(pdftex.def)             Requested size: 250.04947pt x 108.27687pt.
-[17 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
-/huangC.png>] [18]
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
-084.
+t/IoT_November/images/""home".png  used on input line 852.
+(pdftex.def)             Requested size: 453.63434pt x 234.64674pt.
+[14 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
+/oldNewParadigm.png>] [15 </Users/alistairgj/Documents/GitHub/IoT_ResearchProje
+ct/IoT_November/images/home.png>]
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 8
+69.
 (/Users/alistairgj/Library/TinyTeX/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 1101.
-[19]
+(Font)              <5> on input line 886.
+[16]
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-s1actExcel".png, id=493, 1331.97626pt x 347.2975pt>
+s1actExcel".png, id=509, 1331.97626pt x 347.2975pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""s1actExcel".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""s1actExcel".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""s1actExcel".png  used on input line 1289.
+t/IoT_November/images/""s1actExcel".png  used on input line 1074.
 (pdftex.def)             Requested size: 500.0996pt x 130.39522pt.
-[20]
+[17]
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1365.
-
-
-Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1365.
+(relsize)                Using 6.0pt instead on input line 1150.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1365.
+(relsize)                Using 6.0pt instead on input line 1150.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1365.
+(relsize)                Using 6.0pt instead on input line 1150.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1365.
+(relsize)                Using 6.0pt instead on input line 1150.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1365.
+(relsize)                Using 6.0pt instead on input line 1150.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1365.
+(relsize)                Using 6.0pt instead on input line 1150.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1365.
+(relsize)                Using 6.0pt instead on input line 1150.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1365.
+(relsize)                Using 6.0pt instead on input line 1150.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1365.
+(relsize)                Using 6.0pt instead on input line 1150.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1365.
+(relsize)                Using 6.0pt instead on input line 1150.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1365.
+(relsize)                Using 6.0pt instead on input line 1150.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1365.
+(relsize)                Using 6.0pt instead on input line 1150.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1365.
+(relsize)                Using 6.0pt instead on input line 1150.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1365.
+(relsize)                Using 6.0pt instead on input line 1150.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1365.
+(relsize)                Using 6.0pt instead on input line 1150.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1365.
+(relsize)                Using 6.0pt instead on input line 1150.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1365.
+(relsize)                Using 6.0pt instead on input line 1150.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1365.
+(relsize)                Using 6.0pt instead on input line 1150.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1365.
+(relsize)                Using 6.0pt instead on input line 1150.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1365.
+(relsize)                Using 6.0pt instead on input line 1150.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1365.
+(relsize)                Using 6.0pt instead on input line 1150.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1365.
+(relsize)                Using 6.0pt instead on input line 1150.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1365.
+(relsize)                Using 6.0pt instead on input line 1150.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1365.
+(relsize)                Using 6.0pt instead on input line 1150.
 
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+Package relsize Warning: Font size 4.16667pt is too small.
+(relsize)                Using 6.0pt instead on input line 1150.
 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[21 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
+[18 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
 /s1actExcel.png>]
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1487.
+(relsize)                Using 6.0pt instead on input line 1268.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1487.
+(relsize)                Using 6.0pt instead on input line 1268.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1487.
+(relsize)                Using 6.0pt instead on input line 1268.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1487.
+(relsize)                Using 6.0pt instead on input line 1268.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1487.
+(relsize)                Using 6.0pt instead on input line 1268.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1487.
+(relsize)                Using 6.0pt instead on input line 1268.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1487.
+(relsize)                Using 6.0pt instead on input line 1268.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1487.
+(relsize)                Using 6.0pt instead on input line 1268.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1487.
+(relsize)                Using 6.0pt instead on input line 1268.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1487.
+(relsize)                Using 6.0pt instead on input line 1268.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1487.
+(relsize)                Using 6.0pt instead on input line 1268.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1487.
+(relsize)                Using 6.0pt instead on input line 1268.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1487.
+(relsize)                Using 6.0pt instead on input line 1268.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1487.
+(relsize)                Using 6.0pt instead on input line 1268.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1487.
+(relsize)                Using 6.0pt instead on input line 1268.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1487.
+(relsize)                Using 6.0pt instead on input line 1268.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1487.
+(relsize)                Using 6.0pt instead on input line 1268.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1487.
+(relsize)                Using 6.0pt instead on input line 1268.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1487.
+(relsize)                Using 6.0pt instead on input line 1268.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1487.
+(relsize)                Using 6.0pt instead on input line 1268.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1487.
+(relsize)                Using 6.0pt instead on input line 1268.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1487.
+(relsize)                Using 6.0pt instead on input line 1268.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1487.
+(relsize)                Using 6.0pt instead on input line 1268.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1487.
+(relsize)                Using 6.0pt instead on input line 1268.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1487.
+(relsize)                Using 6.0pt instead on input line 1268.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1487.
+(relsize)                Using 6.0pt instead on input line 1268.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1487.
+(relsize)                Using 6.0pt instead on input line 1268.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1487.
+(relsize)                Using 6.0pt instead on input line 1268.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1487.
+(relsize)                Using 6.0pt instead on input line 1268.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1487.
+(relsize)                Using 6.0pt instead on input line 1268.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1487.
+(relsize)                Using 6.0pt instead on input line 1268.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1487.
+(relsize)                Using 6.0pt instead on input line 1268.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1487.
+(relsize)                Using 6.0pt instead on input line 1268.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1487.
+(relsize)                Using 6.0pt instead on input line 1268.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1487.
+(relsize)                Using 6.0pt instead on input line 1268.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1487.
+(relsize)                Using 6.0pt instead on input line 1268.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1487.
+(relsize)                Using 6.0pt instead on input line 1268.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1487.
+(relsize)                Using 6.0pt instead on input line 1268.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1487.
+(relsize)                Using 6.0pt instead on input line 1268.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1487.
+(relsize)                Using 6.0pt instead on input line 1268.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1487.
+(relsize)                Using 6.0pt instead on input line 1268.
 
 
 Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 1487.
+(relsize)                Using 6.0pt instead on input line 1268.
 
-[22]
+[19]
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[23]
-<"MD_Final_files/figure-latex/""FIG_aggLineChart-1".pdf, id=613, 495.8525pt x 3
+[20]
+<"MD_Final_files/figure-latex/""FIG_aggLineChart-1".pdf, id=628, 495.8525pt x 3
 52.31625pt>
 File: "MD_Final_files/figure-latex/""FIG_aggLineChart-1".pdf Graphic file (type
  pdf)
 <use "MD_Final_files/figure-latex/""FIG_aggLineChart-1".pdf>
 Package pdftex.def Info: "MD_Final_files/figure-latex/""FIG_aggLineChart-1".pdf
-  used on input line 1684.
+  used on input line 1457.
 (pdftex.def)             Requested size: 495.85129pt x 352.31538pt.
-[24]
-<"MD_Final_files/figure-latex/""FIG_allBoxPlots-1".pdf, id=623, 495.8525pt x 35
+[21] [22 <./MD_Final_files/figure-latex/FIG_aggLineChart-1.pdf>]
+<"MD_Final_files/figure-latex/""FIG_allBoxPlots-1".pdf, id=653, 495.8525pt x 35
 2.31625pt>
 File: "MD_Final_files/figure-latex/""FIG_allBoxPlots-1".pdf Graphic file (type 
 pdf)
 <use "MD_Final_files/figure-latex/""FIG_allBoxPlots-1".pdf>
 Package pdftex.def Info: "MD_Final_files/figure-latex/""FIG_allBoxPlots-1".pdf 
- used on input line 1707.
+ used on input line 1482.
 (pdftex.def)             Requested size: 495.85129pt x 352.31538pt.
-[25 <./MD_Final_files/figure-latex/FIG_aggLineChart-1.pdf>]
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[26 <./MD_Final_files/figure-latex/FIG_allBoxPlots-1.pdf>]
+[23 <./MD_Final_files/figure-latex/FIG_allBoxPlots-1.pdf>]
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-subAct67".png, id=669, 3199.955pt x 1065.9825pt>
+subAct67".png, id=681, 3199.955pt x 1065.9825pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""subAct67".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""subAct67".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""subAct67".png  used on input line 1796.
+t/IoT_November/images/""subAct67".png  used on input line 1570.
 (pdftex.def)             Requested size: 500.0894pt x 166.59189pt.
+[24 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
+/subAct67.png>]
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-subAct57".png, id=671, 3199.955pt x 1065.9825pt>
+subAct57".png, id=693, 3199.955pt x 1065.9825pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""subAct57".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""subAct57".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""subAct57".png  used on input line 1818.
+t/IoT_November/images/""subAct57".png  used on input line 1592.
 (pdftex.def)             Requested size: 500.0894pt x 166.59189pt.
-[27 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
-/subAct67.png>]
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-subAct82".png, id=681, 3199.955pt x 1065.9825pt>
+subAct82".png, id=695, 3199.955pt x 1065.9825pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""subAct82".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""subAct82".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""subAct82".png  used on input line 1841.
+t/IoT_November/images/""subAct82".png  used on input line 1615.
 (pdftex.def)             Requested size: 500.0894pt x 166.59189pt.
+[25 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
+/subAct57.png> </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_Nove
+mber/images/subAct82.png>]
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-subAct146".png, id=683, 3199.955pt x 1065.9825pt>
+subAct146".png, id=711, 3199.955pt x 1065.9825pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""subAct146".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""subAct146".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""subAct146".png  used on input line 1864.
+t/IoT_November/images/""subAct146".png  used on input line 1638.
 (pdftex.def)             Requested size: 500.0894pt x 166.59189pt.
-[28 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
-/subAct57.png> </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_Nove
-mber/images/subAct82.png>]
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-subAct132".png, id=697, 3199.955pt x 1065.9825pt>
+subAct132".png, id=713, 3199.955pt x 1065.9825pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""subAct132".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""subAct132".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""subAct132".png  used on input line 1885.
+t/IoT_November/images/""subAct132".png  used on input line 1659.
 (pdftex.def)             Requested size: 500.0894pt x 166.59189pt.
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-subAct143".png, id=699, 3199.955pt x 1065.9825pt>
+subAct143".png, id=715, 3199.955pt x 1065.9825pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""subAct143".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""subAct143".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""subAct143".png  used on input line 1906.
+t/IoT_November/images/""subAct143".png  used on input line 1680.
 (pdftex.def)             Requested size: 500.0894pt x 166.59189pt.
-[29 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
+[26 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
 /subAct146.png> </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_Nov
 ember/images/subAct132.png>]
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-subAct141".png, id=713, 3199.955pt x 1065.9825pt>
+subAct141".png, id=729, 3199.955pt x 1065.9825pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""subAct141".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""subAct141".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""subAct141".png  used on input line 1928.
+t/IoT_November/images/""subAct141".png  used on input line 1702.
 (pdftex.def)             Requested size: 500.0894pt x 166.59189pt.
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-subAct93".png, id=715, 3199.955pt x 1065.9825pt>
+subAct93".png, id=731, 3199.955pt x 1065.9825pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""subAct93".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""subAct93".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""subAct93".png  used on input line 1951.
+t/IoT_November/images/""subAct93".png  used on input line 1725.
 (pdftex.def)             Requested size: 500.0894pt x 166.59189pt.
-[30 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
+[27 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
 /subAct143.png> </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_Nov
 ember/images/subAct141.png>]
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-subAct125".png, id=729, 3199.955pt x 1065.9825pt>
+subAct125".png, id=745, 3199.955pt x 1065.9825pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""subAct125".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""subAct125".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""subAct125".png  used on input line 1972.
+t/IoT_November/images/""subAct125".png  used on input line 1746.
 (pdftex.def)             Requested size: 500.0894pt x 166.59189pt.
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-subAct70".png, id=731, 3199.955pt x 1065.9825pt>
+subAct70".png, id=747, 3199.955pt x 1065.9825pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""subAct70".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""subAct70".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""subAct70".png  used on input line 1996.
+t/IoT_November/images/""subAct70".png  used on input line 1770.
 (pdftex.def)             Requested size: 500.0894pt x 166.59189pt.
-[31 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
+[28 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
 /subAct93.png> </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_Nove
 mber/images/subAct125.png>]
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-subAct68".png, id=746, 3199.955pt x 1065.9825pt>
+subAct68".png, id=761, 3199.955pt x 1065.9825pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""subAct68".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""subAct68".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""subAct68".png  used on input line 2017.
+t/IoT_November/images/""subAct68".png  used on input line 1791.
 (pdftex.def)             Requested size: 500.0894pt x 166.59189pt.
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-subAct137".png, id=748, 3199.955pt x 1065.9825pt>
+subAct137".png, id=763, 3199.955pt x 1065.9825pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""subAct137".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""subAct137".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""subAct137".png  used on input line 2039.
+t/IoT_November/images/""subAct137".png  used on input line 1813.
 (pdftex.def)             Requested size: 500.0894pt x 166.59189pt.
-[32 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
+[29 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
 /subAct70.png> </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_Nove
 mber/images/subAct68.png>]
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-subAct105".png, id=762, 3199.955pt x 1065.9825pt>
+subAct105".png, id=777, 3199.955pt x 1065.9825pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""subAct105".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""subAct105".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""subAct105".png  used on input line 2063.
+t/IoT_November/images/""subAct105".png  used on input line 1837.
 (pdftex.def)             Requested size: 500.0894pt x 166.59189pt.
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-subAct92".png, id=764, 3199.955pt x 1065.9825pt>
+subAct92".png, id=779, 3199.955pt x 1065.9825pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""subAct92".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""subAct92".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""subAct92".png  used on input line 2085.
+t/IoT_November/images/""subAct92".png  used on input line 1859.
 (pdftex.def)             Requested size: 500.0894pt x 166.59189pt.
-[33 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
+[30 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
 /subAct137.png> </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_Nov
 ember/images/subAct105.png>]
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-subAct130".png, id=778, 3199.955pt x 1065.9825pt>
+subAct130".png, id=793, 3199.955pt x 1065.9825pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""subAct130".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""subAct130".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""subAct130".png  used on input line 2108.
+t/IoT_November/images/""subAct130".png  used on input line 1882.
 (pdftex.def)             Requested size: 500.0894pt x 166.59189pt.
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-subAct131".png, id=780, 3199.955pt x 1065.9825pt>
+subAct131".png, id=795, 3199.955pt x 1065.9825pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""subAct131".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""subAct131".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""subAct131".png  used on input line 2132.
+t/IoT_November/images/""subAct131".png  used on input line 1906.
 (pdftex.def)             Requested size: 500.0894pt x 166.59189pt.
-[34 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
+[31 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
 /subAct92.png> </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_Nove
 mber/images/subAct130.png>]
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-subAct107".png, id=794, 3199.955pt x 1065.9825pt>
+subAct107".png, id=810, 3199.955pt x 1065.9825pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""subAct107".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""subAct107".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""subAct107".png  used on input line 2153.
+t/IoT_November/images/""subAct107".png  used on input line 1927.
 (pdftex.def)             Requested size: 500.0894pt x 166.59189pt.
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-subAct81".png, id=796, 3199.955pt x 1065.9825pt>
+subAct81".png, id=812, 3199.955pt x 1065.9825pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""subAct81".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""subAct81".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""subAct81".png  used on input line 2176.
+t/IoT_November/images/""subAct81".png  used on input line 1950.
 (pdftex.def)             Requested size: 500.0894pt x 166.59189pt.
-[35 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
+[32 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
 /subAct131.png> </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_Nov
 ember/images/subAct107.png>]
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-subAct100".png, id=809, 3199.955pt x 1065.9825pt>
+subAct100".png, id=827, 3199.955pt x 1065.9825pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""subAct100".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""subAct100".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""subAct100".png  used on input line 2203.
+t/IoT_November/images/""subAct100".png  used on input line 1977.
 (pdftex.def)             Requested size: 500.0894pt x 166.59189pt.
-[36 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
+[33 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
 /subAct81.png> </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_Nove
 mber/images/subAct100.png>]
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-subAct101".png, id=842, 3199.955pt x 532.99126pt>
+subAct101".png, id=859, 3199.955pt x 532.99126pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""subAct101".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""subAct101".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""subAct101".png  used on input line 2240.
+t/IoT_November/images/""subAct101".png  used on input line 2014.
 (pdftex.def)             Requested size: 500.0894pt x 83.29594pt.
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-subAct126".png, id=843, 3199.955pt x 532.99126pt>
+subAct126".png, id=860, 3199.955pt x 532.99126pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""subAct126".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""subAct126".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""subAct126".png  used on input line 2253.
+t/IoT_November/images/""subAct126".png  used on input line 2027.
 (pdftex.def)             Requested size: 500.0894pt x 83.29594pt.
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-subAct88".png, id=844, 3199.955pt x 532.99126pt>
+subAct88".png, id=861, 3199.955pt x 532.99126pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""subAct88".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""subAct88".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""subAct88".png  used on input line 2266.
+t/IoT_November/images/""subAct88".png  used on input line 2040.
 (pdftex.def)             Requested size: 500.0894pt x 83.29594pt.
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-subAct140".png, id=845, 3199.955pt x 532.99126pt>
+subAct140".png, id=862, 3199.955pt x 532.99126pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""subAct140".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""subAct140".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""subAct140".png  used on input line 2279.
+t/IoT_November/images/""subAct140".png  used on input line 2053.
 (pdftex.def)             Requested size: 500.0894pt x 83.29594pt.
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-subAct106".png, id=846, 3199.955pt x 532.99126pt>
+subAct106".png, id=863, 3199.955pt x 532.99126pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""subAct106".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""subAct106".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""subAct106".png  used on input line 2292.
+t/IoT_November/images/""subAct106".png  used on input line 2066.
 (pdftex.def)             Requested size: 500.0894pt x 83.29594pt.
-[37 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
+[34 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
 /subAct101.png> </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_Nov
 ember/images/subAct126.png> </Users/alistairgj/Documents/GitHub/IoT_ResearchPro
 ject/IoT_November/images/subAct88.png> </Users/alistairgj/Documents/GitHub/IoT_
 ResearchProject/IoT_November/images/subAct140.png>]
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-subAct104".png, id=872, 3199.955pt x 532.99126pt>
+subAct104".png, id=888, 3199.955pt x 532.99126pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""subAct104".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""subAct104".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""subAct104".png  used on input line 2305.
+t/IoT_November/images/""subAct104".png  used on input line 2079.
 (pdftex.def)             Requested size: 500.0894pt x 83.29594pt.
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-subAct96".png, id=873, 3199.955pt x 532.99126pt>
+subAct96".png, id=889, 3199.955pt x 532.99126pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""subAct96".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""subAct96".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""subAct96".png  used on input line 2318.
+t/IoT_November/images/""subAct96".png  used on input line 2092.
 (pdftex.def)             Requested size: 500.0894pt x 83.29594pt.
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-subAct108".png, id=874, 3199.955pt x 532.99126pt>
+subAct108".png, id=890, 3199.955pt x 532.99126pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""subAct108".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""subAct108".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""subAct108".png  used on input line 2331.
+t/IoT_November/images/""subAct108".png  used on input line 2105.
 (pdftex.def)             Requested size: 500.0894pt x 83.29594pt.
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-subAct129".png, id=875, 3199.955pt x 532.99126pt>
+subAct129".png, id=891, 3199.955pt x 532.99126pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""subAct129".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""subAct129".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""subAct129".png  used on input line 2344.
+t/IoT_November/images/""subAct129".png  used on input line 2118.
 (pdftex.def)             Requested size: 500.0894pt x 83.29594pt.
-[38 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
+[35 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
 /subAct106.png> </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_Nov
 ember/images/subAct104.png> </Users/alistairgj/Documents/GitHub/IoT_ResearchPro
 ject/IoT_November/images/subAct96.png> </Users/alistairgj/Documents/GitHub/IoT_
 ResearchProject/IoT_November/images/subAct108.png>]
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-subAct76".png, id=894, 3199.955pt x 532.99126pt>
+subAct76".png, id=910, 3199.955pt x 532.99126pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""subAct76".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""subAct76".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""subAct76".png  used on input line 2357.
+t/IoT_November/images/""subAct76".png  used on input line 2131.
 (pdftex.def)             Requested size: 500.0894pt x 83.29594pt.
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-subAct142".png, id=895, 3199.955pt x 532.99126pt>
+subAct142".png, id=911, 3199.955pt x 532.99126pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""subAct142".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""subAct142".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""subAct142".png  used on input line 2370.
+t/IoT_November/images/""subAct142".png  used on input line 2144.
 (pdftex.def)             Requested size: 500.0894pt x 83.29594pt.
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-subAct90".png, id=896, 3199.955pt x 532.99126pt>
+subAct90".png, id=912, 3199.955pt x 532.99126pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""subAct90".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""subAct90".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""subAct90".png  used on input line 2383.
+t/IoT_November/images/""subAct90".png  used on input line 2157.
 (pdftex.def)             Requested size: 500.0894pt x 83.29594pt.
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-subAct98".png, id=897, 3199.955pt x 532.99126pt>
+subAct98".png, id=913, 3199.955pt x 532.99126pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""subAct98".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""subAct98".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""subAct98".png  used on input line 2396.
+t/IoT_November/images/""subAct98".png  used on input line 2170.
 (pdftex.def)             Requested size: 500.0894pt x 83.29594pt.
-[39 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
+[36 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
 /subAct129.png> </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_Nov
 ember/images/subAct76.png> </Users/alistairgj/Documents/GitHub/IoT_ResearchProj
 ect/IoT_November/images/subAct142.png> </Users/alistairgj/Documents/GitHub/IoT_
 ResearchProject/IoT_November/images/subAct90.png>]
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-subAct119".png, id=914, 3199.955pt x 532.99126pt>
+subAct119".png, id=930, 3199.955pt x 532.99126pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""subAct119".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""subAct119".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""subAct119".png  used on input line 2409.
+t/IoT_November/images/""subAct119".png  used on input line 2183.
 (pdftex.def)             Requested size: 500.0894pt x 83.29594pt.
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-subAct56".png, id=919, 3199.955pt x 532.99126pt>
+subAct56".png, id=935, 3199.955pt x 532.99126pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""subAct56".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""subAct56".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""subAct56".png  used on input line 2442.
+t/IoT_November/images/""subAct56".png  used on input line 2216.
 (pdftex.def)             Requested size: 500.0894pt x 83.29594pt.
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-subAct64".png, id=920, 3199.955pt x 532.99126pt>
+subAct64".png, id=936, 3199.955pt x 532.99126pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""subAct64".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""subAct64".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""subAct64".png  used on input line 2455.
+t/IoT_November/images/""subAct64".png  used on input line 2229.
 (pdftex.def)             Requested size: 500.0894pt x 83.29594pt.
-[40 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
+[37 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
 /subAct98.png> </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_Nove
 mber/images/subAct119.png> </Users/alistairgj/Documents/GitHub/IoT_ResearchProj
 ect/IoT_November/images/subAct56.png>]
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-subAct139".png, id=939, 3199.955pt x 532.99126pt>
+subAct139".png, id=956, 3199.955pt x 532.99126pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""subAct139".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""subAct139".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""subAct139".png  used on input line 2468.
+t/IoT_November/images/""subAct139".png  used on input line 2242.
 (pdftex.def)             Requested size: 500.0894pt x 83.29594pt.
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-subAct145".png, id=940, 3199.955pt x 532.99126pt>
+subAct145".png, id=957, 3199.955pt x 532.99126pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""subAct145".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""subAct145".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""subAct145".png  used on input line 2481.
+t/IoT_November/images/""subAct145".png  used on input line 2255.
 (pdftex.def)             Requested size: 500.0894pt x 83.29594pt.
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-subAct60".png, id=941, 3199.955pt x 532.99126pt>
+subAct60".png, id=958, 3199.955pt x 532.99126pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""subAct60".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""subAct60".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""subAct60".png  used on input line 2494.
+t/IoT_November/images/""subAct60".png  used on input line 2268.
 (pdftex.def)             Requested size: 500.0894pt x 83.29594pt.
-[41 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
+[38 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
 /subAct64.png> </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_Nove
 mber/images/subAct139.png> </Users/alistairgj/Documents/GitHub/IoT_ResearchProj
 ect/IoT_November/images/subAct145.png> </Users/alistairgj/Documents/GitHub/IoT_
 ResearchProject/IoT_November/images/subAct60.png>]
 
-LaTeX Warning: Reference `tab:' on page 42 undefined on input line 2533.
+LaTeX Warning: Reference `tab:' on page 39 undefined on input line 2306.
 
 
-Package xcolor Warning: Incompatible color definition on input line 2560.
+Package xcolor Warning: Incompatible color definition on input line 2333.
 
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 2562.
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 2335.
 LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 
-2565.
+2338.
 (/Users/alistairgj/Library/TinyTeX/texmf-dist/tex/latex/lm/ts1lmtt.fd
 File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 
-Package xcolor Warning: Incompatible color definition on input line 2590.
+Package xcolor Warning: Incompatible color definition on input line 2363.
 
 
-Package xcolor Warning: Incompatible color definition on input line 2590.
+Package xcolor Warning: Incompatible color definition on input line 2363.
 
 
-Package xcolor Warning: Incompatible color definition on input line 2590.
+Package xcolor Warning: Incompatible color definition on input line 2363.
 
-[42]
+[39]
 
-Package xcolor Warning: Incompatible color definition on input line 2590.
-
-
-Package xcolor Warning: Incompatible color definition on input line 2590.
+Package xcolor Warning: Incompatible color definition on input line 2363.
 
 
-Underfull \hbox (badness 1137) in paragraph at lines 2592--2602
+Package xcolor Warning: Incompatible color definition on input line 2363.
+
+
+Underfull \hbox (badness 1137) in paragraph at lines 2365--2375
 \T1/lmtt/m/n/10.95 1, dt.timedelta(0,-60))\T1/lmr/m/n/10.95 ) * Ten neigh-bours
  for 10 sec-onds gave a dataset of 1536 in-stances
  []
 
-
-LaTeX Warning: Reference `tab:' on page 43 undefined on input line 2607.
-
-
-Overfull \hbox (52.96814pt too wide) in paragraph at lines 2621--2636
- [][] 
- []
-
-[43]
+[40]
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-WeekdayMorningds_1n_60s".png, id=996, 1360.08125pt x 679.53876pt>
+WeekdayMorningds_1n_60s".png, id=1013, 1360.08125pt x 679.53876pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""WeekdayMorningds_1n_60s".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""WeekdayMorningds_1n_60s".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""WeekdayMorningds_1n_60s".png  used on input line 2710.
+t/IoT_November/images/""WeekdayMorningds_1n_60s".png  used on input line 2483.
 (pdftex.def)             Requested size: 500.10922pt x 249.87007pt.
+[41 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
+/WeekdayMorningds_1n_60s.png>]
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-WeekdayAfternoonds_1n_60s".png, id=997, 1346.02875pt x 614.295pt>
+WeekdayAfternoonds_1n_60s".png, id=1021, 1346.02875pt x 614.295pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""WeekdayAfternoonds_1n_60s".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""WeekdayAfternoonds_1n_60s".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""WeekdayAfternoonds_1n_60s".png  used on input line 2723
+t/IoT_November/images/""WeekdayAfternoonds_1n_60s".png  used on input line 2498
 .
 (pdftex.def)             Requested size: 500.1178pt x 228.24167pt.
-[44 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
-/WeekdayMorningds_1n_60s.png>]
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-WeekdayEveningds_1n_60s".png, id=1007, 1326.9575pt x 661.47125pt>
+WeekdayEveningds_1n_60s".png, id=1022, 1326.9575pt x 661.47125pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""WeekdayEveningds_1n_60s".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""WeekdayEveningds_1n_60s".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""WeekdayEveningds_1n_60s".png  used on input line 2736.
+t/IoT_November/images/""WeekdayEveningds_1n_60s".png  used on input line 2511.
 (pdftex.def)             Requested size: 500.09831pt x 249.29257pt.
+[42 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
+/WeekdayAfternoonds_1n_60s.png> </Users/alistairgj/Documents/GitHub/IoT_Researc
+hProject/IoT_November/images/WeekdayEveningds_1n_60s.png>]
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-WeekendMorningds_1n_60s".png, id=1008, 1309.89375pt x 702.625pt>
+WeekendMorningds_1n_60s".png, id=1033, 1309.89375pt x 702.625pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""WeekendMorningds_1n_60s".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""WeekendMorningds_1n_60s".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""WeekendMorningds_1n_60s".png  used on input line 2749.
+t/IoT_November/images/""WeekendMorningds_1n_60s".png  used on input line 2526.
 (pdftex.def)             Requested size: 500.10333pt x 268.25464pt.
-[45 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
-/WeekdayAfternoonds_1n_60s.png> </Users/alistairgj/Documents/GitHub/IoT_Researc
-hProject/IoT_November/images/WeekdayEveningds_1n_60s.png>]
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-WeekendAfternoonds_1n_60s".png, id=1019, 1361.085pt x 577.15625pt>
+WeekendAfternoonds_1n_60s".png, id=1034, 1361.085pt x 577.15625pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""WeekendAfternoonds_1n_60s".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""WeekendAfternoonds_1n_60s".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""WeekendAfternoonds_1n_60s".png  used on input line 2762
+t/IoT_November/images/""WeekendAfternoonds_1n_60s".png  used on input line 2539
 .
 (pdftex.def)             Requested size: 500.10448pt x 212.06494pt.
+[43 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
+/WeekendMorningds_1n_60s.png> </Users/alistairgj/Documents/GitHub/IoT_ResearchP
+roject/IoT_November/images/WeekendAfternoonds_1n_60s.png>]
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-WeekendEveningds_1n_60s".png, id=1020, 1324.95pt x 651.43375pt>
+WeekendEveningds_1n_60s".png, id=1046, 1324.95pt x 651.43375pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""WeekendEveningds_1n_60s".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""WeekendEveningds_1n_60s".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""WeekendEveningds_1n_60s".png  used on input line 2775.
+t/IoT_November/images/""WeekendEveningds_1n_60s".png  used on input line 2554.
 (pdftex.def)             Requested size: 500.10999pt x 245.88739pt.
-[46 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
-/WeekendMorningds_1n_60s.png> </Users/alistairgj/Documents/GitHub/IoT_ResearchP
-roject/IoT_November/images/WeekendAfternoonds_1n_60s.png>]
 
-LaTeX Warning: Reference `fig:fig1' on page 47 undefined on input line 2794.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[44 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
+/WeekendEveningds_1n_60s.png>] [45]
+
+Package xcolor Warning: Incompatible color definition on input line 2721.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2764.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2764.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2764.
+
+[46]
+
+Package xcolor Warning: Incompatible color definition on input line 2764.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2764.
 
 <"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
-iosMockUps".png, id=1031, 437.2335pt x 285.7074pt>
+bedroom_lightswitch_allFeatures".png, id=1070, 3199.955pt x 799.98875pt>
+File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
+es/""bedroom_lightswitch_allFeatures".png Graphic file (type png)
+<use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
+s/""bedroom_lightswitch_allFeatures".png>
+Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
+t/IoT_November/images/""bedroom_lightswitch_allFeatures".png  used on input lin
+e 2793.
+(pdftex.def)             Requested size: 500.0894pt x 125.02234pt.
+<"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
+kitchen_laundrydryer_allFeatures".png, id=1071, 3199.955pt x 799.98875pt>
+File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
+es/""kitchen_laundrydryer_allFeatures".png Graphic file (type png)
+<use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
+s/""kitchen_laundrydryer_allFeatures".png>
+Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
+t/IoT_November/images/""kitchen_laundrydryer_allFeatures".png  used on input li
+ne 2821.
+(pdftex.def)             Requested size: 500.0894pt x 125.02234pt.
+[47 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
+/bedroom_lightswitch_allFeatures.png>]
+<"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
+kitchen_freezer_allFeatures".png, id=1083, 3199.955pt x 799.98875pt>
+File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
+es/""kitchen_freezer_allFeatures".png Graphic file (type png)
+<use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
+s/""kitchen_freezer_allFeatures".png>
+Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
+t/IoT_November/images/""kitchen_freezer_allFeatures".png  used on input line 28
+50.
+(pdftex.def)             Requested size: 500.0894pt x 125.02234pt.
+<"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
+kitchen_toaster_allFeatures".png, id=1084, 3199.955pt x 799.98875pt>
+File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
+es/""kitchen_toaster_allFeatures".png Graphic file (type png)
+<use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
+s/""kitchen_toaster_allFeatures".png>
+Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
+t/IoT_November/images/""kitchen_toaster_allFeatures".png  used on input line 28
+78.
+(pdftex.def)             Requested size: 500.0894pt x 125.02234pt.
+[48 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
+/kitchen_laundrydryer_allFeatures.png> </Users/alistairgj/Documents/GitHub/IoT_
+ResearchProject/IoT_November/images/kitchen_freezer_allFeatures.png>]
+<"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
+bathroom_exhaustfan_allFeatures".png, id=1098, 3199.955pt x 799.98875pt>
+File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
+es/""bathroom_exhaustfan_allFeatures".png Graphic file (type png)
+<use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
+s/""bathroom_exhaustfan_allFeatures".png>
+Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
+t/IoT_November/images/""bathroom_exhaustfan_allFeatures".png  used on input lin
+e 2906.
+(pdftex.def)             Requested size: 500.0894pt x 125.02234pt.
+<"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
+bathroom_showerfaucet_allFeatures".png, id=1099, 3199.955pt x 799.98875pt>
+File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
+es/""bathroom_showerfaucet_allFeatures".png Graphic file (type png)
+<use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
+s/""bathroom_showerfaucet_allFeatures".png>
+Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
+t/IoT_November/images/""bathroom_showerfaucet_allFeatures".png  used on input l
+ine 2935.
+(pdftex.def)             Requested size: 500.0894pt x 125.02234pt.
+[49 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
+/kitchen_toaster_allFeatures.png> </Users/alistairgj/Documents/GitHub/IoT_Resea
+rchProject/IoT_November/images/bathroom_exhaustfan_allFeatures.png>]
+<"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
+bathroom_lightswitch_allFeatures".png, id=1113, 3199.955pt x 799.98875pt>
+File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
+es/""bathroom_lightswitch_allFeatures".png Graphic file (type png)
+<use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
+s/""bathroom_lightswitch_allFeatures".png>
+Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
+t/IoT_November/images/""bathroom_lightswitch_allFeatures".png  used on input li
+ne 2963.
+(pdftex.def)             Requested size: 500.0894pt x 125.02234pt.
+<"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
+kitchen_refrigerator_allFeatures".png, id=1114, 3199.955pt x 799.98875pt>
+File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
+es/""kitchen_refrigerator_allFeatures".png Graphic file (type png)
+<use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
+s/""kitchen_refrigerator_allFeatures".png>
+Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
+t/IoT_November/images/""kitchen_refrigerator_allFeatures".png  used on input li
+ne 2992.
+(pdftex.def)             Requested size: 500.0894pt x 125.02234pt.
+[50 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
+/bathroom_showerfaucet_allFeatures.png> </Users/alistairgj/Documents/GitHub/IoT
+_ResearchProject/IoT_November/images/bathroom_lightswitch_allFeatures.png>]
+<"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
+foyer_lightswitch_allFeatures".png, id=1127, 3199.955pt x 799.98875pt>
+File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
+es/""foyer_lightswitch_allFeatures".png Graphic file (type png)
+<use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
+s/""foyer_lightswitch_allFeatures".png>
+Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
+t/IoT_November/images/""foyer_lightswitch_allFeatures".png  used on input line 
+3021.
+(pdftex.def)             Requested size: 500.0894pt x 125.02234pt.
+<"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
+kitchen_burner_allFeatures".png, id=1128, 3199.955pt x 799.98875pt>
+File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
+es/""kitchen_burner_allFeatures".png Graphic file (type png)
+<use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
+s/""kitchen_burner_allFeatures".png>
+Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
+t/IoT_November/images/""kitchen_burner_allFeatures".png  used on input line 305
+1.
+(pdftex.def)             Requested size: 500.0894pt x 125.02234pt.
+[51 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
+/kitchen_refrigerator_allFeatures.png> </Users/alistairgj/Documents/GitHub/IoT_
+ResearchProject/IoT_November/images/foyer_lightswitch_allFeatures.png>]
+<"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
+study_lightwitch_allFeatures".png, id=1141, 3199.955pt x 799.98875pt>
+File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
+es/""study_lightwitch_allFeatures".png Graphic file (type png)
+<use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
+s/""study_lightwitch_allFeatures".png>
+Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
+t/IoT_November/images/""study_lightwitch_allFeatures".png  used on input line 3
+081.
+(pdftex.def)             Requested size: 500.0894pt x 125.02234pt.
+<"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
+kitchen_washingmachine_allFeatures".png, id=1142, 3199.955pt x 799.98875pt>
+File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
+es/""kitchen_washingmachine_allFeatures".png Graphic file (type png)
+<use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
+s/""kitchen_washingmachine_allFeatures".png>
+Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
+t/IoT_November/images/""kitchen_washingmachine_allFeatures".png  used on input 
+line 3109.
+(pdftex.def)             Requested size: 500.0894pt x 125.02234pt.
+[52 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
+/kitchen_burner_allFeatures.png> </Users/alistairgj/Documents/GitHub/IoT_Resear
+chProject/IoT_November/images/study_lightwitch_allFeatures.png>]
+<"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
+kitchen_lightswitch_allFeatures".png, id=1155, 3199.955pt x 799.98875pt>
+File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
+es/""kitchen_lightswitch_allFeatures".png Graphic file (type png)
+<use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
+s/""kitchen_lightswitch_allFeatures".png>
+Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
+t/IoT_November/images/""kitchen_lightswitch_allFeatures".png  used on input lin
+e 3137.
+(pdftex.def)             Requested size: 500.0894pt x 125.02234pt.
+<"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
+livingroom_lamp_allFeatures".png, id=1156, 3199.955pt x 799.98875pt>
+File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
+es/""livingroom_lamp_allFeatures".png Graphic file (type png)
+<use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
+s/""livingroom_lamp_allFeatures".png>
+Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
+t/IoT_November/images/""livingroom_lamp_allFeatures".png  used on input line 31
+66.
+(pdftex.def)             Requested size: 500.0894pt x 125.02234pt.
+[53 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
+/kitchen_washingmachine_allFeatures.png> </Users/alistairgj/Documents/GitHub/Io
+T_ResearchProject/IoT_November/images/kitchen_lightswitch_allFeatures.png>]
+<"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
+kitchen_microwave_allFeatures".png, id=1169, 3199.955pt x 799.98875pt>
+File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
+es/""kitchen_microwave_allFeatures".png Graphic file (type png)
+<use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
+s/""kitchen_microwave_allFeatures".png>
+Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
+t/IoT_November/images/""kitchen_microwave_allFeatures".png  used on input line 
+3194.
+(pdftex.def)             Requested size: 500.0894pt x 125.02234pt.
+<"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
+kitchen_garbagedisposal_allFeatures".png, id=1170, 3199.955pt x 799.98875pt>
+File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
+es/""kitchen_garbagedisposal_allFeatures".png Graphic file (type png)
+<use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
+s/""kitchen_garbagedisposal_allFeatures".png>
+Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
+t/IoT_November/images/""kitchen_garbagedisposal_allFeatures".png  used on input
+ line 3223.
+(pdftex.def)             Requested size: 500.0894pt x 125.02234pt.
+[54 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
+/livingroom_lamp_allFeatures.png> </Users/alistairgj/Documents/GitHub/IoT_Resea
+rchProject/IoT_November/images/kitchen_microwave_allFeatures.png>]
+<"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
+kitchen_coffeemachine_allFeatures".png, id=1183, 3199.955pt x 799.98875pt>
+File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
+es/""kitchen_coffeemachine_allFeatures".png Graphic file (type png)
+<use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
+s/""kitchen_coffeemachine_allFeatures".png>
+Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
+t/IoT_November/images/""kitchen_coffeemachine_allFeatures".png  used on input l
+ine 3251.
+(pdftex.def)             Requested size: 500.0894pt x 125.02234pt.
+<"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
+livingroom_lightswitch_allFeatures".png, id=1184, 3199.955pt x 799.98875pt>
+File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
+es/""livingroom_lightswitch_allFeatures".png Graphic file (type png)
+<use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
+s/""livingroom_lightswitch_allFeatures".png>
+Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
+t/IoT_November/images/""livingroom_lightswitch_allFeatures".png  used on input 
+line 3281.
+(pdftex.def)             Requested size: 500.0894pt x 125.02234pt.
+[55 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
+/kitchen_garbagedisposal_allFeatures.png> </Users/alistairgj/Documents/GitHub/I
+oT_ResearchProject/IoT_November/images/kitchen_coffeemachine_allFeatures.png>]
+<"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
+kitchen_oven_allFeatures".png, id=1198, 3199.955pt x 799.98875pt>
+File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
+es/""kitchen_oven_allFeatures".png Graphic file (type png)
+<use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
+s/""kitchen_oven_allFeatures".png>
+Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
+t/IoT_November/images/""kitchen_oven_allFeatures".png  used on input line 3310.
+
+(pdftex.def)             Requested size: 500.0894pt x 125.02234pt.
+<"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
+kitchen_dishwasher_allFeatures".png, id=1199, 3199.955pt x 799.98875pt>
+File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
+es/""kitchen_dishwasher_allFeatures".png Graphic file (type png)
+<use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
+s/""kitchen_dishwasher_allFeatures".png>
+Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
+t/IoT_November/images/""kitchen_dishwasher_allFeatures".png  used on input line
+ 3340.
+(pdftex.def)             Requested size: 500.0894pt x 125.02234pt.
+[56 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
+/livingroom_lightswitch_allFeatures.png> </Users/alistairgj/Documents/GitHub/Io
+T_ResearchProject/IoT_November/images/kitchen_oven_allFeatures.png>]
+<"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
+bathroom_sinkfaucet-hot_allFeatures".png, id=1212, 3199.955pt x 799.98875pt>
+File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
+es/""bathroom_sinkfaucet-hot_allFeatures".png Graphic file (type png)
+<use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
+s/""bathroom_sinkfaucet-hot_allFeatures".png>
+Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
+t/IoT_November/images/""bathroom_sinkfaucet-hot_allFeatures".png  used on input
+ line 3369.
+(pdftex.def)             Requested size: 500.0894pt x 125.02234pt.
+<"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
+facets2".png, id=1214, 3199.955pt x 2311.63625pt>
+File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
+es/""facets2".png Graphic file (type png)
+<use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
+s/""facets2".png>
+Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
+t/IoT_November/images/""facets2".png  used on input line 3388.
+(pdftex.def)             Requested size: 500.0894pt x 361.26282pt.
+[57 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
+/kitchen_dishwasher_allFeatures.png> </Users/alistairgj/Documents/GitHub/IoT_Re
+searchProject/IoT_November/images/bathroom_sinkfaucet-hot_allFeatures.png>] [58
+ </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/fa
+cets2.png>]
+
+Package xcolor Warning: Incompatible color definition on input line 3442.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3451.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3451.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3453.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3531.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3531.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3531.
+
+[59]
+
+Package xcolor Warning: Incompatible color definition on input line 3531.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3531.
+
+[60] [61] [62] [63] [64] [65]
+<"/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/""
+iosMockUps".png, id=1317, 437.2335pt x 285.7074pt>
 File: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/imag
 es/""iosMockUps".png Graphic file (type png)
 <use "/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/image
 s/""iosMockUps".png>
 Package pdftex.def Info: "/Users/alistairgj/Documents/GitHub/IoT_ResearchProjec
-t/IoT_November/images/""iosMockUps".png  used on input line 2798.
+t/IoT_November/images/""iosMockUps".png  used on input line 4183.
 (pdftex.def)             Requested size: 400.09808pt x 261.44148pt.
-[47 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
-/WeekendEveningds_1n_60s.png> </Users/alistairgj/Documents/GitHub/IoT_ResearchP
-roject/IoT_November/images/iosMockUps.png>]
-
-Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 2834.
-
-
-Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 2834.
-
-
-Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 2834.
-
-
-Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 2834.
-
-
-Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 2834.
-
-
-Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 2834.
-
-
-Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 2834.
-
-
-Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 2834.
-
-
-Package relsize Warning: Font size 4.16667pt is too small.
-(relsize)                Using 6.0pt instead on input line 2834.
-
-
-Overfull \hbox (20.73694pt too wide) in paragraph at lines 2855--2860
+[66]
+Overfull \hbox (20.73694pt too wide) in paragraph at lines 4213--4218
 \T1/lmr/m/n/10.95 development / desa / socialperspectiveondevelopment / issues 
 / information-[]and-[]communication-[]technologies-[]icts .
  []
 
-[48]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 3011.
-[49]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 3011.
+[67 </Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images
+/iosMockUps.png>] [68]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 4388.
+[69]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 4388.
 (./MD_Final.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 3011.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 3011.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 4388.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 4388.
 
 Package rerunfilecheck Info: File `MD_Final.out' has not changed.
-(rerunfilecheck)             Checksum: 11A43A2F68A9C956B3A102FB386E06CF;10509.
+(rerunfilecheck)             Checksum: 2B15BF42D2302CF95DFD85D3923308C2;11305.
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 3011.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 4388.
  ) 
 Here is how much of TeX's memory you used:
- 16102 strings out of 494111
- 265951 string characters out of 6172653
- 388406 words of memory out of 5000000
- 19475 multiletter control sequences out of 15000+600000
- 71537 words of font info for 58 fonts, out of 8000000 for 9000
+ 16412 strings out of 494111
+ 283082 string characters out of 6172653
+ 393300 words of memory out of 5000000
+ 19651 multiletter control sequences out of 15000+600000
+ 71120 words of font info for 57 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  46i,15n,42p,757b,509s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/Users/alistairgj/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{
@@ -1981,10 +2219,10 @@ tairgj/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri12.pfb></Users/alis
 tairgj/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri7.pfb></Users/alist
 airgj/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtk10.pfb></Users/alist
 airgj/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
-Output written on MD_Final.pdf (49 pages, 9154527 bytes).
+Output written on MD_Final.pdf (69 pages, 12621311 bytes).
 PDF statistics:
- 1250 PDF objects out of 1440 (max. 8388607)
- 1044 compressed objects within 11 object streams
- 437 named destinations out of 1000 (max. 500000)
- 652 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1554 PDF objects out of 1728 (max. 8388607)
+ 1284 compressed objects within 13 object streams
+ 572 named destinations out of 1000 (max. 500000)
+ 797 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -145,11 +145,36 @@ Convenience}
 \begin{document}
 \maketitle
 \begin{abstract}
-The preface pretty much says it all.
-
 \par
 
-Second paragraph of abstract starts here. \pagebreak
+Previously collected sensor data of domestic activities, including
+activity, start time and end time was evaluated and subsequently
+cleansed of outliers. Values with an extremely low overall aggregated
+count were dropped from the dataset, as were values deemed to be highly
+irrelevant to our analysis. With respect to outlier cleansing, median
+was found to be a better overall value to fill rather than mean, owing
+to the extremely large spread of the data. The cleansed dataset was then
+converted to a boolean-array structure, where each attribute was a
+domestic activity and the index was a timestamp list. In this structure
+a `1' was representative of an on state, while a `0' was representative
+of an off state. This consideration applied equally to activities in the
+data set that were both energy consuming (e.g., using a lamp) and not
+energy consuming (e.g., opening a door). A machine learning wrapper
+method was created to iteratively train and test for each attribute. The
+method was based on a decision tree model with hyperparameter
+optimization via grid search over the split criterion (`gini' and
+`entropy') maximum depth. Cross validation was performed over
+five-folds. Using all attributes from the dataset, the model gave varied
+performance, most likely due to the large imbalance of values in the
+dataset. The machine learning analysis was repeated using training for
+only activities requiring energy input. These results were largely
+similar to the first iteration. Finally, the wrapper method was extended
+to include consideration of power costs (in kilowatt hours) and
+appliance energy consumption (in watts) in addition to an antagonistic
+feature which aimed to reduced the overall period of time an appliance
+is in an `on' state. The logic of this model was found to be sound, and
+improvements to the base machine learning model are recommended to
+improve the overall performance. \pagebreak
 \end{abstract}
 
 {
@@ -263,13 +288,13 @@ objects into a unified cyber-physical system.
 \hypertarget{the-bigger-picture}{%
 \subsubsection{The Bigger Picture}\label{the-bigger-picture}}
 
-Considering the bigger picture of societal benefit, as seen in figure
+Considering the bigger picture of societal benefit, as seen in Figure
 \ref{fig:globalPovertyPlot}, from 1990 through 2015 the number of people
 living in extreme poverty has dropped by more than half. As evidenced by
 Figure \ref{fig:internetAccessPlot}, over the same time period, the
 percentage of people with access to the internet has move from around 1
 per cent to an average of around 50 per cent (this trend is now moving
-exponentially as a function of time). And, figure
+exponentially as a function of time). And, Figure
 \ref{fig:populationGrowthPlot} shows that over the last 100 years, the
 human population has experienced unprecedented growth from 1 billion
 individuals to in excess of 7 billion. Mankind have thus simultaneously
@@ -298,7 +323,7 @@ the burning of fossil fuels, as illustrated by Figure
 
 }
 
-\caption{ADD TEXT, Source: Our World in Data}\label{fig:globalEnergyPlot}
+\caption{Energy Production and Changing Energy Sources, Source: Our World in Data}\label{fig:globalEnergyPlot}
 \end{figure}
 
 The International Panel on Climate Change (IPCC) finds that Human
@@ -317,7 +342,7 @@ increases in ocean acidity and decreases in ocean oxygen levels are
 projected to reduce risks to marine biodiversity, fisheries, and
 ecosystems, and their functions and services to humans. Taken together,
 these effects will lead to risks of the health, livelihoods, food
-security, water supply, human security, and economic growth of mankind
+security, water supply, human security, and economic growth
 {[}\protect\hyperlink{ref-intergovernmentalpanelonclimatechangeGlobalWarming2018}{9}{]}.
 
 \begin{figure}[H]
@@ -388,18 +413,26 @@ grids.
 \hypertarget{aim}{%
 \subsection{Aim}\label{aim}}
 
+In this work we aim to use previously captured sensor data of domestic
+activities to develop a framework for the consideration of convenience
+with respect to energy savings. We will extrapolate these findings into
+a proposed hypothetical scenario in which an end user occupying an IoT
+smart home is able to use a smartphone application to personalise the
+level of convenience, cost saving or energy saving.
+
 \hypertarget{research-questions}{%
 \subsubsection{Research Questions}\label{research-questions}}
 
-The aim of this work is to use sensor data from X to consider Y in the
-context of Z.
-
-\hypertarget{research-contributions}{%
-\subsubsection{Research Contributions}\label{research-contributions}}
-
-The aim of this work is to use
-
-\pagebreak
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Can a generalised methodology for processing data pertaining to end
+  user activity in a smarthome be developed?
+\item
+  Can historical sensor data be used to build a meaningful model for the
+  relationship between end user convenience and cost?
+\end{enumerate}
 
 \hypertarget{preliminaries}{%
 \section{Preliminaries}\label{preliminaries}}
@@ -412,8 +445,9 @@ Cloud computing and the IoT paradigm has enabled the association of
 previously disparate fields into a larger coherent framework. Namely,
 smart home appliances, demand-response, energy consumption, predictive
 analytics predictive service offering and end user convenience. This
-work proposes a framework for the association of sensor data into a
-model which can do X Y Z. \textbf{Mention internet in general?}
+work proposes a framework for the association of sensor data as an into
+into a machine learning model as a means of predicting energy-intensive
+appliance usage in a hypothetical IoT smarthome.
 
 \hypertarget{related-work}{%
 \subsection{Related Work}\label{related-work}}
@@ -436,9 +470,6 @@ By using 1994--2014 panel data of the Brazilian, Russian, Indian,
 Chinese \& South African (\textbf{BRICS}) economies, empirical results
 demonstrate that rise in both internet usage and mobile cellular
 subscription ICTs likely mitigates CO2 emissions.
-
-\textbf{BRIDGE} -- Greater internet availability / connectivity
-facilitates the deployment of smart electricity grids
 
 \hypertarget{smart-metering}{%
 \subsubsection{Smart Metering}\label{smart-metering}}
@@ -472,8 +503,6 @@ demand response programs), incorporate renewable sources of electricity
 into the system, and increase the overall efficiency and reliability of
 the system
 {[}\protect\hyperlink{ref-hornePrivacyTechnologyNorms2015}{13}{]}.
-\textbf{It is worth noting, however, that the scenario described above
-relies on end user intervention.}
 
 \hypertarget{electricity-demand-response-smart-electricity-grids-and-smart-home-data}{%
 \subsubsection{Electricity Demand Response, Smart Electricity Grids and
@@ -481,19 +510,23 @@ Smart Home
 Data}\label{electricity-demand-response-smart-electricity-grids-and-smart-home-data}}
 
 Predicting and influencing residential energy use has been the subject
-to extensive study (\textbf{REF}). Literature indicates that factors
-such as occupant behaviour and socio-economic status are important
-\textbf{{[}15 from Cetin{]}}. Nielsen attributed 36\% of variation in
-energy consumption of homes to lifestyle and occupant behaviour, and
-64\% to socio-economic influences. This is exemplified by the work of De
-et al, who show that in developing nations, cooking consumes up to 90\%
-of the overall residential energy consumption and is mainly based on
-non-renewable energy (International Energy Agency, 2006; De et al.,
-2013). Other factors such as climate zone, number of occupants, income
-level, age of home, and size of home have also been correlated with home
-energy use (K.S. Cetin, 2014). The has been much work both on using
-smart meter data to evaluate consumer behaviour, and the interplay
-between smart appliances and shifting households' electricity demand.
+to extensive study
+{[}\protect\hyperlink{ref-ilzelaicaneEvaluationHouseholdElectricity2015}{16}{]}.
+Literature indicates that factors such as occupant behaviour and
+socio-economic status are important. For example Nielsen attributed 36\%
+of variation in energy consumption of homes to lifestyle and occupant
+behaviour, and 64\% to socio-economic influences. This is exemplified by
+the work of De et al, who show that in developing nations, cooking
+consumes up to 90\% of the overall residential energy consumption and is
+mainly based on non-renewable energy
+{[}\protect\hyperlink{ref-d.m.murrayApplianceElectricalConsumption2018}{17}{]}.
+Other factors such as climate zone, number of occupants, income level,
+age of home, and size of home have also been correlated with home energy
+use
+{[}\protect\hyperlink{ref-ilzelaicaneEvaluationHouseholdElectricity2015}{16}{]}.
+There has been much work both on using smart meter data to evaluate
+consumer behaviour, and the interplay between smart appliances and
+shifting households' electricity demand.
 
 Kavousian et al identify the need for developing an analytical method
 that can leverage 15-minute or 30-minute interval energy consumption
@@ -502,36 +535,39 @@ of energy efficiency programs. They note that utilities spend millions
 of dollars annually to improve appliance energy efficiency. By way of
 example, in 2013 utilities in California US spent \$80 M USD on
 appliance and plug load efficiency programs, the highest expenditure
-among all utility energy efficiency programs (\textbf{CPUC, 2013 FIND
-REF}). A need for analytical methodologies that can process smart meter
-data and allow energy reduction savings to be identified is
-demonstrated. Using a smart meter dataset of 4231 households, containing
-information on electricity consumption at 30-minute intervals, with
-aggregated local weather data, the authors use smart meter data to rank
-residential appliance efficiency. Various control methodologies are
-embedded into the analytical process, taking into account building type,
-building size (e.g., apartment, detached), household type (e.g., de
-facto, single, dependents), respondent age and heater type (e.g.,
-electric or gas). The data set included 120+ household variables, many
-of which were highly correlated, model selection techniques were used to
-successfully reduce dimensionality. A set of load profiles were compiled
-based on the results (where normalized load was plotted as a function of
-hour of day). It was determined that household behaviour and demographic
-can be used to generate positive and negative energy efficiency
-coefficients with respect to load profiles. This work has implications
-for energy grid planning -- for example in high-density housing versus
-suburban housing.
+among all utility energy efficiency programs
+{[}\protect\hyperlink{ref-amirkavousianRankingApplianceEnergy2015}{18}{]}.
+A need for analytical methodologies that can process smart meter data
+and allow energy reduction savings to be identified is demonstrated.
+Using a smart meter dataset of 4231 households, containing information
+on electricity consumption at 30-minute intervals, with aggregated local
+weather data, the authors use smart meter data to rank residential
+appliance efficiency. Various control methodologies are embedded into
+the analytical process, taking into account building type, building size
+(e.g., apartment, detached), household type (e.g., de facto, single,
+dependents), respondent age and heater type (e.g., electric or gas). The
+data set included 120+ household variables, many of which were highly
+correlated, model selection techniques were used to successfully reduce
+dimensionality. A set of load profiles were compiled based on the
+results (where normalized load was plotted as a function of hour of
+day). It was determined that household behaviour and demographic can be
+used to generate positive and negative energy efficiency coefficients
+with respect to load profiles. This work has implications for energy
+grid planning -- for example in high-density housing versus suburban
+housing.
 
 Karjalainen considers the manner in which smart meter data is
 communicated to end users, with the principal purpose of the paper being
 to study what kind of electricity consumption feedback consumers
-understand and prefer (Karjalainen, 2011). It is noted that the most
-effective feedback tools for engaging households in reducing energy
-consumption are both computerized and interactive. In this work a series
-of options for feedback is gathered, for example consumption (kHh),
-power (W), cost (\$), environmental impact (e.g., kg CO2), total for
-household, disaggregation by appliance, real time, hour, day, and so on.
-Examples of feedback options are shown in Figure \textbf{X}, below.
+understand and prefer
+{[}\protect\hyperlink{ref-karjalainenConsumerPreferencesFeedback2011}{19}{]}.
+It is noted that the most effective feedback tools for engaging
+households in reducing energy consumption are both computerized and
+interactive. In this work a series of options for feedback is gathered,
+for example consumption (kHh), power (W), cost (\$), environmental
+impact (e.g., kg CO2), total for household, disaggregation by appliance,
+real time, hour, day, and so on. Examples of feedback options are shown
+in Figure \ref{fig:fb1} and Figure \ref{fig:fb2}, below.
 
 \begin{figure}[H]
 
@@ -539,7 +575,7 @@ Examples of feedback options are shown in Figure \textbf{X}, below.
 
 }
 
-\caption{ADD TEXT}\label{fig:unnamed-chunk-1}
+\caption{Option One, Two, Three and Four of the smart meter data dashboards proposed by Karjalainen}\label{fig:fb1}
 \end{figure}
 
 \begin{figure}[H]
@@ -548,33 +584,32 @@ Examples of feedback options are shown in Figure \textbf{X}, below.
 
 }
 
-\caption{Option Five, Six, Seven and Eight of the smart meter data dashboards proposed by Karjalainen}\label{fig:unnamed-chunk-2}
+\caption{Option Five, Six, Seven and Eight of the smart meter data dashboards proposed by Karjalainen}\label{fig:fb2}
 \end{figure}
 
 The results of qualitative participant interviews clearly showed that
 while some consumers are very interested in saving household
-electricity, other consumers show only a little interest (\textbf{NOTE
-they were asked about saving electricity, not about saving money or
-convenience}). When specifically asked to list what measures (if any)
-were typically taken at home to realize reductions in energy usage, some
-respondents listed numerous measures, while others just said they turn
-lights off in rooms that are empty. The author also found some
-participants were unaware of differences in stand-by versus active modes
-of operation for electrical appliances, resulting in practising
-inefficient energy saving measures in the home environment. When
-trialling feedback prototypes to participants, two main issues were
-encountered: (1) many people are not familiar with scientific units and
-do not understand the difference between W and kWh and (2) many people
-do not understand how carbon dioxide emissions are related to
-electricity consumption. It is perhaps surprising that the overall most
-popular prototype was `6', below. Perhaps because unlike the other
-prototypes, this clearly (the most clearly) articulates cost. The
-concept of convenience was absent entirely from consideration.
+electricity, other consumers show only a little interest. When
+specifically asked to list what measures (if any) were typically taken
+at home to realize reductions in energy usage, some respondents listed
+numerous measures, while others just said they turn lights off in rooms
+that are empty. The author also found some participants were unaware of
+differences in stand-by versus active modes of operation for electrical
+appliances, resulting in practising inefficient energy saving measures
+in the home environment. When trialling feedback prototypes to
+participants, two main issues were encountered: (1) many people are not
+familiar with scientific units and do not understand the difference
+between W and kWh and (2) many people do not understand how carbon
+dioxide emissions are related to electricity consumption. It is perhaps
+surprising that the overall most popular prototype was `6', below.
+Perhaps because unlike the other prototypes, this clearly (the most
+clearly) articulates cost. The concept of convenience was absent
+entirely from consideration.
 
 In the domain of supply and demand economics, consumer behaviour and
 smart appliances Kobus et al investigated if households can shift their
 electricity demand to times when electricity is abundantly available
-{[}\protect\hyperlink{ref-charlotteb.a.kobusReallifeAssessmentEffect2015}{16}{]}.
+{[}\protect\hyperlink{ref-charlotteb.a.kobusReallifeAssessmentEffect2015}{20}{]}.
 Using a household electrical monitoring system (\textbf{EMS}) coupled to
 a smart appliance (smart washing machine), photovoltaic cells and the
 electricity grid, they were able to show that households can shift
@@ -591,29 +626,24 @@ washing machine use in such a way that cost is minimized.
 
 }
 
-\caption{ADD TEXT}\label{fig:unnamed-chunk-3}
+\caption{Example dashboards proposed by Kobus et al}\label{fig:unnamed-chunk-1}
 \end{figure}
 
 Their work is in response to two major challenges to domestic
-electricity supply and demand. \textbf{REMOVED: It is well observed that
-over electricity grids, demand shows a pattern over time, influenced by
-natural and social circumstances. This poses a great challenge when
-considering renewable energy sources like PV -- people are generally not
-at home when local electricity is abundantly produced (for example the
-daylight hours of Monday till Friday)} The first being that the amount
-of distributed renewable electricity generation is increasing with time
-(for example, as more households install photovoltaic (\textbf{PV})
-panels), and the second that electricity demand will continue to
-significantly increase moving into the foreseeable future. These
-developments pose great challenges to `traditional' power systems, where
-supply follows demand entirely. Smart grids are proposed as a potential
-solution to facilitate the affordable introduction of cleaner
-electricity producing and consuming technologies.
+electricity supply and demand. The first being the amount of distributed
+renewable electricity generation is increasing with time (e.g., as more
+households install photovoltaic (\textbf{PV}) panels), and the second
+that electricity demand will continue to significantly increase moving
+into the foreseeable future. These developments pose great challenges to
+`traditional' power systems, where supply follows demand entirely. Smart
+grids are proposed as a potential solution for the affordable
+introduction of cleaner electricity producing and consuming
+technologies.
 
 Cetin et al consider electricity usage of appliance, as when aggregated,
 this accounts for approximately 30 per cent of electricity used in the
 residential building sector
-{[}\protect\hyperlink{ref-k.s.cetinApplianceDailyEnergy2014}{17}{]}.
+{[}\protect\hyperlink{ref-k.s.cetinApplianceDailyEnergy2014}{21}{]}.
 This, together with small appliances, home electronics and lighting,
 account for more than 2/3 of total residential electricity use. Cetin et
 al also highlight that influencing `time of use' is becoming
@@ -631,7 +661,7 @@ as a percentage of daily electricity load.
 
 }
 
-\caption{ADD TEXT}\label{fig:unnamed-chunk-4}
+\caption{Appliance energy consumption with respect to time of day, A = refrigerators, B = cloths washers, C = Cloths dryers and D = Dishwashers}\label{fig:unnamed-chunk-2}
 \end{figure}
 
 It was found that the refrigerator had the most consistent consumption
@@ -647,66 +677,17 @@ of appliances are similar, and that electricity use varies more between
 houses during peak use times of day than during low-use times. Murray et
 al further explore the topic of home appliance energy consumption using
 smart meter data, specifically pertaining to residential activities
-around food storage and preparation (D.M. Murray, 2018), with the aim of
-providing a model that can easily be applied to existing smart meter
-energy datasets. The authors use real-time energy consumption data from
-microwaves and ovens, from which user behaviour / desired outcome can be
-implicitly associated (for example, oven usage on a weekday between the
-hours of 6pm and 8pm can be associated with the behaviour of preparing
-dinner). Consideration is given to the concept of the RisingEdge (when
-an appliance is switched on or moves to a high consuming state) and
-FallingEdge (when an appliance is switched off or moves to a low
-consuming state) of power consumption. Accurate energy consumption
-models for major cooking appliances are successfully constructed,
-further re-enforcing the value and widespread applicability of
-residential smart meter data.
-
-In this work,
-
-This supports \_\_ that smart meters represent a valuable source of data
-that can be used for a variety of purposes, beyond just real-time
-monitoring. For example the model constructed by Murray et al does not
-rely on difficult to obtain parameters such as food type, temperature
-and weight. it has been shown that \ldots{}
-
-\begin{itemize}
-\tightlist
-\item
-  Authors are able to use smart meter data to build accurate energy
-  consumption models of major cooking appliances
-\item
-  Smart =
-\item
-  Using consumption data from real homes, the authors are able to create
-  scalable mathematical models to account for energy consumption
-  associated with food preparation
-\item
-  Indeed, from an energy-efficiency perspective, targeted energy
-  feedback can be provided on consumers appliance usage habits and
-  activities (Stankovic et al., 2016) leading to informed energy savings
-  programmes and retrofit strategies for replacing appliances.
-\item
-  And if this variation can be influenced??
-\end{itemize}
-
-\emph{Demand Response allows for the management of demand side resources
-in real-time; i.e.~shifting electricity demand according to fluctuating
-supply. When integrated into electricity markets, Demand Response can be
-used for load shifting and as a replacement for both control reserve and
-balancing energy. These three usage scenarios are compared based on
-historic German data from 2011 to determine that load shifting provides
-the highest benefit: its annual financial savings accumulate to €3.110M
-for both households and the service sector. This equals to relative
-savings of 2.83\% compared to a scenario without load shifting.}
-
-{[}{\textbf{???}}{]} discuss electricity demand response - allowing the
-management of demand side resources in real-time. \textbf{Based on Darby
-and McKenna (REF), we define demand response and a household action
-(automated, manual, or both) due to which electricity use is shifted in
-time in response to a price signal of other stimuli. This can result in
-more efficient usage of the available sustainable electricity, like
-self-consumption of on-site PV electricity (REF) and peak demand
-reductions (REF) - all from \textbf{???}\{kobus2015\}}
+around food storage and preparation
+{[}\protect\hyperlink{ref-d.m.murrayApplianceElectricalConsumption2018}{17}{]},
+with the aim of providing a model that can easily be applied to existing
+smart meter energy datasets. The authors use real-time energy
+consumption data from microwaves and ovens, from which user behaviour /
+desired outcome can be implicitly associated (for example, oven usage on
+a weekday between the hours of 6pm and 8pm can be associated with the
+behaviour of preparing dinner). Accurate energy consumption models for
+major cooking appliances are successfully constructed, further
+re-enforcing the value and widespread applicability of residential smart
+meter data.
 
 \hypertarget{predictive-modelling-and-forecasting}{%
 \subsubsection{Predictive Modelling and
@@ -716,7 +697,7 @@ In the domestic predictive energy consumption space Basu et al consider
 home automation systems linked via a communication network to enable
 interaction, data collation and control of appliances remotely by end
 users
-{[}\protect\hyperlink{ref-kaustavbasuApplianceUsagePrediction2012}{18}{]}.
+{[}\protect\hyperlink{ref-kaustavbasuApplianceUsagePrediction2012}{22}{]}.
 The potential competing priorities of energy savings versus comfort
 optimization for home occupants is discussed. The objective of this work
 is to propose a learning system that is able to help the home automation
@@ -731,7 +712,7 @@ substructures in the training instances in the form of sub-events, for
 example periodicity in data. This Knowledge Extraction process is
 similar to the implicit associations used by Murray et al, in the
 analysis of energy consumption for food preparation
-{[}\protect\hyperlink{ref-d.m.murrayApplianceElectricalConsumption2018}{19}{]}.
+{[}\protect\hyperlink{ref-d.m.murrayApplianceElectricalConsumption2018}{17}{]}.
 The substructures are then fed to a propositional learner. The proposed
 model is trained in an iterative manner and attempts to take into
 account all the possible information based on consumption data, time of
@@ -745,8 +726,8 @@ constitutes a target variable over a set of iterations). In the
 evaluation phase they find that user behaviour toward an appliance is
 highly variable and the predictability of an appliance is dependent on
 the regularity of usage patterns of the inhabitants. It is specifically
-noted that \emph{it is therefore very difficult for now to propose a
-generic methodology of appliance prediction for private houses}.
+noted that it is therefore very difficult for now to propose a generic
+methodology of appliance prediction for private houses.
 
 \begin{figure}[H]
 
@@ -754,7 +735,7 @@ generic methodology of appliance prediction for private houses}.
 
 }
 
-\caption{ADD TEXT}\label{fig:unnamed-chunk-5}
+\caption{A decision tree from the work of Basu et al}\label{fig:unnamed-chunk-3}
 \end{figure}
 
 Chou et al consider global energy consumption in the residential housing
@@ -775,8 +756,7 @@ achieved via energy dashboards and emails. The authors propose that
 end-users of this system can use forecast information and anomalous data
 to enhance the efficiency of energy usage in their buildings especially
 during peak times by adjusting the operating schedule of their
-appliances and electrical equipment. \textbf{In order to achieve the
-desired model (???)}
+appliances and electrical equipment.
 
 During this study, an EIS with 5 main components was installed in an
 experimental building. The parts were as follows; (1) the internal
@@ -787,74 +767,9 @@ sensors was used to compile the model, including timestamps (YYYY-MM-DD
 hh:mm:ss), outdoor temperature (ºC), total building energy consumption
 (kWh), aggregated energy consumption data (e.g., second floor lighting)
 and individual appliances. The backend of the application was notably
-cloud-hosted.
-
-\begin{itemize}
-\tightlist
-\item
-  Improve consumer satisfaction by providing real-time services that
-  enable end-users to monitor the energy consumption easily.
-\item
-  Energy Information System - personalised terminal in domestic home
-  which provides real-time or daily updating of hourly energy
-  consumption data allows users to address building performance issues
-  that are otherwise difficult to identify.
-\item
-  The data stream from the smart meters arrives at 15 min intervals,
-  generating 96 data points daily for each smart meter.
-\item
-  The hardware of the DBMS consists of the communication system, the
-  smart meter system, the environmental sensor system, and the server
-  system, and the software programs that are used to process the data
-  written in MATLAB. A DBMS stores real-time data that are retrieved
-  from the smart grid metering infrastructure, including real-time
-  energy consumption data, information about appliances, data from
-  temperature and humidity sensors, and analytical results, including
-  predicted electricity consumption, and data on electricity-saving
-  alternatives. Moreover, the DBMS stores electrical parameters such as
-  voltage, current, power, frequency, and power factor.
-\item
-  The proposed prediction model (i.e.,SARIMA-MetaFA-LSSVR) consists of
-  stage 1, involving univariate linear technique, and stage 2, involving
-  optimized multivariate nonlineartechnique tofit the energy consumption
-  data. SARIMA is adopted to handle the linear component, whereas Meta
-  FA-LSSVR is used to model the nonlinear part of energy consumption
-  data. In particular, the MetaFA is employed for automatically tuning
-  LSSVR hyper parameters, thus improving the overall prediction
-  performance.
-\item
-  Output
-\item
-  A web-based system to display energy consumption that is measured in
-  real time with previously predicted values.
-\item
-  Early-warning system integrated into web-based system to detect
-  anomalous power consumption and provide warnings (notifications)
-  thereof to users.
-\item
-  The real-time prediction model in web-based system is designed and
-  implemented based on our previous work{[}20,33,49{]}, which developed
-  a novel sliding window metaheuristic optimization-based machine
-  learning system to analyze time-series data that are generated by a
-  smart grid to efficiently forecast energy consumption one day in
-  advance.
-\end{itemize}
-
-\hypertarget{smart-home-and-energy-efficiency}{%
-\subsubsection{Smart Home and Energy
-Efficiency}\label{smart-home-and-energy-efficiency}}
-
-{[}{\textbf{???}} NOT IN LIB{]} - As recently as 2009 it was posited
-that ``The proposed model allows for introduction of power priorities
-for consumer's electrical equipment by the importance of their
-functions. The relevance of the functions carried out by the data device
-is evaluated by each consumer individually. The relevance of functions
-and priorities assigned to power mode / groups of electrical equipment
-can be changed over time.''\\
-`Haseeb et al {[}{\textbf{???}} NOT IN LIB{]} have (through review)
-shown that at a macro scale, global adoption of internet reduces energy
-consumption' + At the micro scale (that is, the behaviour of
-individuals\ldots)
+cloud-hosted. They found improve consumer satisfaction by providing
+real-time services that enable end-users to monitor the energy
+consumption easily.
 
 \hypertarget{iot-and-end-user-convenience}{%
 \subsubsection{IoT and End User
@@ -877,11 +792,12 @@ the IoT paradigm, digital and physical entities can be linked, by means
 of appropriate information and communication technologies, to enable a
 whole new class of applications and services
 {[}\protect\hyperlink{ref-danielemiorandiInternetThingsVision2012}{6}{]}.
-
 One consequence resulting from the widespread deployment of consumer
 electronics with IoT capability is the evolution of the Internet from
-interconnecting computers to interconnecting things. Figure X, below,
-shows XYZ.
+interconnecting computers to interconnecting things. Figure
+\ref{fig:diagram}, below, represents the availability of services
+provisioned by new means facilitated by the internet and cloud
+computing.
 
 \begin{figure}[H]
 
@@ -889,163 +805,24 @@ shows XYZ.
 
 }
 
-\caption{ADD TEXT}\label{fig:unnamed-chunk-6}
+\caption{The old and new paradigms of end user interaction with the internet}\label{fig:diagram}
 \end{figure}
-
-\hypertarget{heading}{%
-\subsubsection{Heading???}\label{heading}}
 
 Huang et al propose a novel service mining framework to personalize
-services in an IoT-based smart home (Bing Huang, 2018). This work
-considers the notion of personal `convenience' as a driving force behind
-the provisioning of services to end users. That is, in an IoT smart
-home, where everything is interconnect, can services (for example, the
-switching on or off of a light) be automatically served to users such
-that their level of effort (to interact with their surroundings) will be
-diminished, and thus their level of convenience will be increased?
-
-\begin{figure}[H]
-
-{\centering \includegraphics[width=0.5\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/huangA} 
-
-}
-
-\caption{ADD TEXT}\label{fig:unnamed-chunk-7}
-\end{figure}
-
-Using this framework, IoT services can be composed in a periodic
-fashion, for the convenience of the end user / consumer.
-
-\begin{itemize}
-\tightlist
-\item
-  Use intelligence to compose IoT services for the convenience of the
-  end user / consumer
-\end{itemize}
-
-The input for this work was data from domestic IoT services, with a
-corresponding timestamp. The end user in this scenario performs daily
-activities by interacting with IoT services, these interactions are
-recorded as IoT service event sequences. A novel PCMiner algorithm
-(Periodic Composite IoT Service Miner)
-
-Periodic composite IoT services can be loosely defined as the composite
-IoT services' repeating occurrence at certain locations with regular
-time intervals
-
-The output for this work was an IoT service model and a composite IoT
-service model (based on spatio-temporal features). A periodic composite
-IoT service model to represent the regularity of composite IoT services
-occurring at a certain location at a certain time interval
-
-\begin{figure}[H]
-
-{\centering \includegraphics[width=0.5\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/huangC} 
-
-}
-
-\caption{ADD TEXT}\label{fig:unnamed-chunk-8}
-\end{figure}
-
-Critical to note that in this work model composition is reliant on
-temporal, proximity and duration features.
-
-Output: Spatio-temporal proximity model
-
-\begin{itemize}
-\tightlist
-\item
-  Filter out insignificant spatio-temporal IoT service relationships
-  Categories (e.g., objective):
-\item
-  Quantify the correlation strength of among IoT services from time and
-  location aspects
-\item
-  IoT devices are highly heterogeneous in terms of supporting
-  infrastructure ranging from networking to programming abstraction
-\item
-  Hiding (abstracting) complex and diverse supporting infrastructure
-\item
-  Proximity and correlation strength
-\end{itemize}
-
-Service Mining on the Web \textbf{???}\{zheng2009\}
-
-In the domain of Service Mining and Service Recognition, Zheng et al aim
-to provide end users with value-added services through the composition
-of existing services (output = composed web services). They attempt to
-craft a Service Mining Tool * More generalised * Technology = Service
-mining tool, web service mining * Output = composed web services * Aims
-at providing value-added services through composing existing services *
-It is essential to be able to proactively discover opportunities for
-composing useful services, even when the goals are unspecified at the
-moment, or simply hard to imagine or unknown * Much like the easy access
-to a glut of data has provided a fertile ground for data mining
-research, there is an expectation that an increase in Web services'
-availability will also spur both the need and opportunities to break new
-ground on Web Services Mining * We define Web Service Mining as a
-bottom-up search process aimed at the proactive discovery of potentially
-interesting and useful web services from existing services.
-
-\textbf{Two Main Challenges} * Combinatorial Explosion * Evaluation of
-interestingness and usefulness
-
-\hypertarget{summary}{%
-\subsubsection{Summary}\label{summary}}
-
-In summary there is lots of variability and this informs the
-construction of our model -- it must be robust. By stripping the time
-variable this greatly simplifies modelling. As mentioned in the work of
-Murray et al (Appliance electrical consumption modelling at scale using
-smart meter data) smart home data contains implicit associations, the
-example given being that, if a person is using the oven between the
-hours of 6pm and 8pm on a weekday, it can be assumed they are preparing
-dinner -- there is no need to explicitly determine this. In a similar
-way, we \textbf{believe} that we can implicitly obtain spatial and
-temporal information about how a series of appliances (electrical and
-non-electrical) are interrelated.
-
-As demonstrated above, there has been a vast swathe of work done in the
-areas of smart meter data and predictive analytics, X, Y \& Z. What is,
-however, of significant note, is the absence of holistic consideration
-with respect to energy consumption, smart home data, predictive
-analytics, IoT and end user convenience. As demonstrated above, numerous
-studies have found that creating and maintaining behaviour (such as
-monitoring a smart meter and then intervening) is \ldots{} shit.
-
-Due to n = 1, it would be a fair criticism to say that the methodology
-employed cannot claim to be robust\ldots{} this is fair. However, the
-Kavousian et al thoroughly analyse the effect of household variables on
-overall energy efficiency. Our analysis (n=1) has no such \ldots{} Take
-for example Consumer preferences for feedback on household electricity
-consumption (REF). The work considers, in isolation, the concept of
-saving electricity. For example during participant interviews, the line
-of questioning is framed around electricity saving NOT cost or
-convenience.
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  The cost of the sensors is negligible (EXCEPT for discussion later RE
-  top 5 features)
-\item
-  The energy requirement for the sensors is negligible
-\item
-  In our proposed model, computation is performed in the cloud
-\item
-  An app is available to interact with the smart home
-\item
-  All of the electrical appliances in our smart home can be remote
-  controlled to some extent
-\end{enumerate}
-
-\begin{itemize}
-\tightlist
-\item
-  What about, instead of responding to the average time, the
-  antagonistic AI responded to price signals in the market?
-\end{itemize}
+services in an IoT-based smart home
+{[}\protect\hyperlink{ref-binghuangServiceOrientedComputing16th2018}{7}{]}.
+This work considers the notion of personal `convenience' as a driving
+force behind the provisioning of services to end users. That is, in an
+IoT smart home, where everything is interconnect, can services (for
+example, the switching on or off of a light) be automatically served to
+users such that their level of effort (to interact with their
+surroundings) will be diminished, and thus their level of convenience
+will be increased? The input for this work was data from domestic IoT
+services, with a corresponding timestamp. The end user in this scenario
+performs daily activities by interacting with IoT services, these
+interactions are recorded as IoT service event sequences. The output for
+this work was an IoT service model and a composite IoT service model
+(based on spatio-temporal features).
 
 \hypertarget{the-data-set}{%
 \subsection{The Data Set}\label{the-data-set}}
@@ -1055,21 +832,29 @@ with End-User Sensor Installation in the Home} by Randy Joseph
 Rockinson, Submitted to the Program of Media Arts and Sciences, School
 of Architecture and Planning, in partial fulfilment of the requirement
 for the degree of Master of Science in Media Arts and Sciences at the
-Massachusetts Institute of Technology (MIT) February 2008 (REF).
+Massachusetts Institute of Technology (MIT) February 2008
+{[}\protect\hyperlink{ref-rockinsonActivityRecognitionHome}{23}{]}.
 
 The aim of Rockinson was to considered the effect of end user versus
 professional installation of a sensor array in the home - on the basis
 that, if installation of sensors is to be considered as a high initial
 cost, and a barrier to entry for end users wanting this technology, is
 there a difference if a professional versus an end user performs the
-installation?
+installation? Between 80-100 reed switch sensors where installed in two
+single-person apartments collecting data about human activity for two
+weeks. The sensors were installed in everyday objects such as drawers,
+refrigerators, containers, etc to record for example opening-closing
+events (activation deactivation events) as the subject carried out
+everyday activities.
 
-Between 80-100 reed switch sensors where installed in two single-person
-apartments collecting data about human activity for two weeks. The
-sensors were installed in everyday objects such as drawers,
-refrigerators, containers, etc to record opening-closing events
-(activation deactivation events) as the subject carried out everyday
-activities.
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/home} 
+
+}
+
+\caption{The floor plan of the MIT home lab with a selection of sensors. Sensors in red correspond to those that require an energy source, while blue are activities that require only energy input from the end user, for example opening a door}\label{fig:unnamed-chunk-4}
+\end{figure}
 
 \pagebreak
 
@@ -1221,7 +1006,7 @@ n & concat\\
 Referering to the work of Rockinson (from where the data originated) it
 is was determined that these duplicate values are theresult of multiple
 sensors with extremely similar functionality
-{[}\protect\hyperlink{ref-rockinsonActivityRecognitionHome}{20}{]}. For
+{[}\protect\hyperlink{ref-rockinsonActivityRecognitionHome}{23}{]}. For
 example, kitchen\_burner has a value of n=4, accounted for by the
 presense of one sensor per burner in the original work. While this level
 of granularity may provide an avenue for further analysis, for the
@@ -1233,12 +1018,12 @@ sensor class kitchen\_cabinet has a value of n=15, indicating that for
 the various cabinets in the kitchen, a total of 15 sensors were fitted
 to monitor activity. This information will be used to inform the
 pre-processing methodology for the sub activity data in subsequent
-analysis (\textbf{section XXX}). The sensor meta data set was inspected
-and stripped of special characters, and the sub activities requiring an
-input of energy (e.g., electrical, gas) were flagged with a boolean
-value, resulting in Table \ref{tab:TAB_sensorDataCleansedFinal}. The
-pre-processed sensor data was exported as
-\texttt{S1Sensors\_preprocessed.csv}. \rowcolors{2}{gray!6}{white}
+analysis. The sensor meta data set was inspected and stripped of special
+characters, and the sub activities requiring an input of energy (e.g.,
+electrical, gas) were flagged with a boolean value, resulting in Table
+\ref{tab:TAB_sensorDataCleansedFinal}. The pre-processed sensor data was
+exported as \texttt{S1Sensors\_preprocessed.csv}.
+\rowcolors{2}{gray!6}{white}
 
 \begin{table}[!h]
 
@@ -1269,20 +1054,20 @@ Data}\label{importing-preprocessing-the-activities-data}}
 
 The \texttt{S1activities.csv} dataset contains the collated activity and
 subactivity data from the work of Rockinson
-{[}\protect\hyperlink{ref-rockinsonActivityRecognitionHome}{20}{]}. The
+{[}\protect\hyperlink{ref-rockinsonActivityRecognitionHome}{23}{]}. The
 goal of pre-processing the \texttt{S1activities.csv} will be to
 restructure the dataset into a `tidy' format, where the attributes are
-columns, the rows are instances, and each cell contains only one value
-(\textbf{REF Hadley}). Figure \ref{fig:s1actExcel} shows the data set
-open in a spreadsheet program and Table \ref{tab:TAB_rawDSS1} shows a
-sample of the dataset after importation of the dataset into the
-interactve development environment. Inspection of the original dataset
-via an interactive development environment shows a structure such that
-each 5 rows contains is one discrete set of data, for example: * Row 1:
-Activity, Date, Start Time, End Time * Row 2: Sub-activity (an action
-that can be executed as part of performing the activity) code-values *
-Row 3: Sub-activity descriptive values * Row 4: Sub-activity start time
-* Row 5: Sub-activity end time
+columns, the rows are instances, and each cell contains only one value.
+Figure \ref{fig:s1actExcel} shows the data set open in a spreadsheet
+program and Table \ref{tab:TAB_rawDSS1} shows a sample of the dataset
+after importation of the dataset into the interactve development
+environment. Inspection of the original dataset via an interactive
+development environment shows a structure such that each 5 rows contains
+is one discrete set of data, for example; row 1) Activity, Date, Start
+Time, End Time, row 2) Sub-activity (an action that can be executed as
+part of performing the activity) code-values, row 3) Sub-activity
+descriptive values, row 4) Sub-activity start time and row 5)
+Sub-activity end time.
 
 \begin{figure}[H]
 
@@ -1366,6 +1151,8 @@ activities dataset, as seen in Table \ref{tab:TAB_dsActFinal}.
 \label{alg:actExtraction}
 \end{algorithm}
 
+\pagebreak
+
 \rowcolors{2}{gray!6}{white}
 \begin{table}[!h]
 
@@ -1382,9 +1169,6 @@ Bathing & 4/1/2003 & 20:41:35 & 21:32:50\\
 Toileting & 4/1/2003 & 17:30:36 & 17:46:41\\
 Toileting & 4/1/2003 & 18:4:43 & 18:18:2\\
 Toileting & 4/1/2003 & 11:52:1 & 11:58:50\\
-Going out to work & 4/1/2003 & 12:11:26 & 12:15:12\\
-\addlinespace
-Preparing lunch & 4/1/2003 & 11:21:17 & 11:38:22\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1406,9 +1190,6 @@ Bathing & 2003-04-01 20:41:35 & 2003-04-01 21:32:50\\
 Toileting & 2003-04-01 17:30:36 & 2003-04-01 17:46:41\\
 Toileting & 2003-04-01 18:04:43 & 2003-04-01 18:18:02\\
 Toileting & 2003-04-01 11:52:01 & 2003-04-01 11:58:50\\
-Going out to work & 2003-04-01 12:11:26 & 2003-04-01 12:15:12\\
-\addlinespace
-Preparing lunch & 2003-04-01 11:21:17 & 2003-04-01 11:38:22\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1420,7 +1201,7 @@ Data}\label{importing-visualizing-and-preprocessing-the-subactivities-data}}
 
 As mentioned above, the \texttt{S1Activities\_data.csv} dataset contains
 the collated activity and subactivity data from the work of Rockinson
-{[}\protect\hyperlink{ref-rockinsonActivityRecognitionHome}{20}{]}. As
+{[}\protect\hyperlink{ref-rockinsonActivityRecognitionHome}{23}{]}. As
 with the activities data extraction, the dataframe was converted to a 2D
 array, using \texttt{np.array()}, where each row from the dataframe
 became an array within the 2D array. The 2D array was flattened to a 1D
@@ -1506,9 +1287,6 @@ subActNum & subAct & date & startTime & endTime\\
 68 & Sink faucet - hot & 4/1/2003 & 20:51:58 & 20:52:5\\
 81 & Closet & 4/1/2003 & 20:53:36 & 20:53:43\\
 101 & Light switch & 4/1/2003 & 20:53:49 & 21:21:43\\
-93 & Shower faucet & 4/1/2003 & 20:53:52 & 20:58:42\\
-\addlinespace
-137 & Freezer & 4/1/2003 & 20:58:22 & 20:58:32\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1529,9 +1307,6 @@ subActNum & subAct & start & end\\
 100 & Toilet Flush & 2003-03-27 06:44:06 & 2003-03-27 07:12:41\\
 101 & Light switch & 2003-03-27 06:44:20 & 2003-03-27 07:46:34\\
 57 & Medicine cabinet & 2003-03-27 06:44:35 & 2003-03-27 06:44:48\\
-58 & Medicine cabinet & 2003-03-27 06:44:36 & 2003-03-27 06:44:48\\
-\addlinespace
-67 & Cabinet & 2003-03-27 06:44:49 & 2003-03-27 06:44:56\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1541,22 +1316,19 @@ subActNum & subAct & start & end\\
 \subsubsection{Amalgamating `duplicate' sub-activity
 instances}\label{amalgamating-duplicate-sub-activity-instances}}
 
-As mentioned in \emph{Importing \& Preprocessing the Sensor Meta Data},
-10 of the sensors have duplicated values, owing to the presence of more
-than one sensor for certain activities. The sub-activity
-\texttt{kitchen\_refrigerator}, for example, has the numbers {[}91, 126,
-144{]} associated with it, as seen in Table \ref{tab:TAB_fridge}, below.
-These values are subsequently replaced with {[}126{]}. As is the case
-with all sub-activities with degenerate numbers, the end value is chosen
-based on the first appearance in the S1 Sensors dataset.
-
-All duplicated values, as seen in Table \ref{tab:TAB_numDupes} were
-aggregated to have the same sensor ID / subAct number, thus giving a
-value of n=1 with respect to duplication.The first occurence of each
-degenerate subactivity provided the subAct number to be used for all
-subsequent instances. This dataset was exported as
-\texttt{S1SubActivities\_preprocessed.csv}. **It was found these data
-has dimensionality of \_\_\_**
+As mentioned in above, 10 of the sensors have duplicated values, owing
+to the presence of more than one sensor for certain activities. The
+sub-activity \texttt{kitchen\_refrigerator}, for example, has the
+numbers {[}91, 126, 144{]} associated with it, as seen in Table
+\ref{tab:TAB_fridge}, below. These values are subsequently replaced with
+{[}126{]}. As is the case with all sub-activities with degenerate
+numbers, the end value is chosen based on the first appearance in the S1
+Sensors dataset. All duplicated values, as seen in Table
+\ref{tab:TAB_numDupes} were aggregated to have the same sensor ID /
+subAct number, thus giving a value of n=1 with respect to
+duplication.The first occurence of each degenerate subactivity provided
+the subAct number to be used for all subsequent instances. This dataset
+was exported as \texttt{S1SubActivities\_preprocessed.csv}.
 
 \rowcolors{2}{gray!6}{white}
 \begin{table}[!h]
@@ -1589,7 +1361,7 @@ data}\label{addition-of-temporal-features-to-the-pre-processed-sub-activities-da
 
 As noted by Basu et al, human behavior with respect to home appliance
 interaction and activity, is typically periodic in nature
-{[}\protect\hyperlink{ref-kaustavbasuApplianceUsagePrediction2012}{18}{]},
+{[}\protect\hyperlink{ref-kaustavbasuApplianceUsagePrediction2012}{22}{]},
 that is, certain activities occur at specific times of day or in a
 particular sequence. It is helpful therefore to add categorical temporal
 features to our dataset, in order to inform further analysis. Using the
@@ -1663,6 +1435,8 @@ subActNum & subAct & start & end & dayNumeric & DAY & WDWE & HOUR & durationSec\
 \end{table}
 \rowcolors{2}{white}{white}
 
+\pagebreak
+
 \hypertarget{subactivity-visualisation-and-outlier-inspection}{%
 \subsubsection{SubActivity Visualisation and Outlier
 Inspection}\label{subactivity-visualisation-and-outlier-inspection}}
@@ -1676,8 +1450,7 @@ sub-activity count versus sub-activity was generated, as seen in Figure
 \ref{fig:FIG_aggLineChart}, below. The chart shows that there is a high
 level of consistency with respect to the overall aggregated count of
 each sub-activity, when compared to the feature
-\texttt{Day\ of\ the\ Week}. \textbf{This is helpful for subsequent
-analysis.}
+\texttt{Day\ of\ the\ Week}.
 
 \begin{figure}[H]
 
@@ -1685,8 +1458,10 @@ analysis.}
 
 }
 
-\caption{ADD Text}\label{fig:FIG_aggLineChart}
+\caption{Aggregated line chart}\label{fig:FIG_aggLineChart}
 \end{figure}
+
+\pagebreak
 
 \hypertarget{aggregated-box-plot-of-sub-activities}{%
 \paragraph{Aggregated Box Plot of
@@ -1708,12 +1483,12 @@ be individually considered with respect to it's outliers.
 
 }
 
-\caption{ADD Text}\label{fig:FIG_allBoxPlots}
+\caption{Box plots for all sub-activites}\label{fig:FIG_allBoxPlots}
 \end{figure}
 
-\hypertarget{sub-activity-cleansing---outlier-removal}{%
-\subsubsection{Sub-Activity Cleansing - Outlier
-Removal}\label{sub-activity-cleansing---outlier-removal}}
+\hypertarget{sub-activity-data-cleansing}{%
+\subsubsection{Sub-Activity Data
+Cleansing}\label{sub-activity-data-cleansing}}
 
 Via the inspection of each sub-activity the following set of instances
 were identified, as seen in Table \ref{tab:outlierSTATS}. In all cases
@@ -1772,7 +1547,6 @@ foyer\_closet & 29 & 8.0 & 42.44828 & 174.4286\\
 \subsubsection{Sub-Activity Cleansing - 1) Filling outliers with
 median}\label{sub-activity-cleansing---1-filling-outliers-with-median}}
 
-An example of this methodology can be seen with the bathroom cabinet.
 This methodology was also applied to all of the other sub-activities in
 Table \ref{tab:outlierSTATS}.
 
@@ -2158,7 +1932,7 @@ seconds). The resultant plots can be seen in the second row.
 \end{figure}
 
 \hypertarget{foyer-closet---sub-activity-81}{%
-\subsubsection{Foyer Closet - Sub-Activity
+\paragraph{Foyer Closet - Sub-Activity
 81}\label{foyer-closet---sub-activity-81}}
 
 The foyer closer has an overall count of n=29 in the dataset. In Figure
@@ -2511,8 +2285,7 @@ sub-activity), \texttt{end} (the end datetime for this specific instance
 of the aub-activity), \texttt{dayNumeric} (a categorical variable to
 indiate day), \texttt{DAY} (e.g., `Fri', `Sat'), \texttt{WDWE} (WD
 signifies `weekday' and WE signifies `weekend'), \texttt{HOUR} (a
-categorical value to indicate time of the day, by the hour). And a
-dimensionality of {[}\textbf{DIM}{]}.
+categorical value to indicate time of the day, by the hour).
 
 \hypertarget{data-analysis-and-manipulation}{%
 \subsection{Data Analysis and
@@ -2604,20 +2377,20 @@ We are focussing our analysis on the sequential analysis algorithm run
 with the parameters of one neighbouring sub-activity over a sixty second
 period (\texttt{id\_delta(ds,\ 1,\ dt.timedelta(0,-60))}), the head of
 the resultant dataset (\texttt{ds\_1n\_60s.csv}) can be Table
-\ref{tab:}, below. The reasoning behind chosing this dataset being 1) It
-is best practise to start with the most `simple' form of a problem in
-order to develop understanding, in this case being that one neighbour
-only is considered for each row and 2) For further analysis these data
-may be collapsed from a seconds time scale to a minute time scale, so it
-is useful to know the variety of activities that can occur within one
-minute (60 seconds of each other).
+\ref{tab:TAB_ds_1n_60s}, below. The reasoning behind chosing this
+dataset being 1) It is best practise to start with the most `simple'
+form of a problem in order to develop understanding, in this case being
+that one neighbour only is considered for each row and 2) For further
+analysis these data may be collapsed from a seconds time scale to a
+minute time scale, so it is useful to know the variety of activities
+that can occur within one minute (60 seconds of each other).
 
 \rowcolors{2}{gray!6}{white}
 \begin{table}[!h]
 
 \caption{\label{tab:TAB_ds_1n_60s}Sequential analysis result: one neighbouring sub-activity over a sixty second period}
 \centering
-\fontsize{8}{10}\selectfont
+\resizebox{\linewidth}{!}{\fontsize{8}{10}\selectfont
 \begin{tabular}[t]{rrllllrllr}
 \hiderowcolors
 \toprule
@@ -2632,7 +2405,7 @@ EventA & EventB & EvA\_Start & EvB\_Start & EvA\_End & EvB\_End & Delta & DAY & 
 \addlinespace
 67 & 82 & 2003-03-27 06:44:49 & 2003-03-27 06:45:45 & 2003-03-27 06:44:57 & 2003-03-27 06:45:49 & 56 & Thu & WD & 6\\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \end{table}
 \rowcolors{2}{white}{white}
 
@@ -2714,6 +2487,8 @@ am}\label{weekday-morning-initial-morning-sub-activity-until-11.59-am}}
 \caption{Sankey Diagram of Weekday Mornings, considering all one neighbour per instance within a 60 second period}\label{fig:sankey_WeekdayMorningds_1n_60s}
 \end{figure}
 
+\pagebreak
+
 \hypertarget{weekday-afternoon-12-noon-until-17.59-pm}{%
 \paragraph{Weekday Afternoon, 12 noon until 17.59
 pm}\label{weekday-afternoon-12-noon-until-17.59-pm}}
@@ -2739,6 +2514,8 @@ mid-night}\label{weekday-evening-1800-pm-until-mid-night}}
 
 \caption{Sankey Diagram of Weekday Evenings, considering all one neighbour per instance within a 60 second period}\label{fig:sankey_WeekdayEveningds_1n_60s}
 \end{figure}
+
+\pagebreak
 
 \hypertarget{weekend-morning-initial-morning-sub-activity-until-11.59-am}{%
 \paragraph{Weekend Morning, initial morning sub-activity until 11.59
@@ -2766,6 +2543,8 @@ am}\label{weekend-morning-initial-morning-sub-activity-until-11.59-am}}
 \caption{Sankey Diagram of Weekend Afternoons, considering all one neighbour per instance within a 60 second period}\label{fig:sankey_WeekendAfternoonds_1n_60s}
 \end{figure}
 
+\pagebreak
+
 \hypertarget{weekend-evening-1800pm-untill-mid-night}{%
 \paragraph{Weekend Evening, 18:00pm untill
 mid-night}\label{weekend-evening-1800pm-untill-mid-night}}
@@ -2784,14 +2563,1620 @@ mid-night}\label{weekend-evening-1800pm-untill-mid-night}}
 Array}\label{re-casting-the-dataset-as-a-boolean-array}}
 
 Based on the analysis above, we sought a data structure whereby every
-simultaneous subactivity occuring at one point in time could be
-evaluated. In order to acheive this without having to place a large
+simultaneous subactivity occuring at one point in time could potentially
+be evaluated. In order to acheive this without having to place a large
 emphasis on complex combinatorics, it was decided to cast the data
-structure into a Boolean Array.
+structure into a Boolean Array. In this structure, each sub-activity
+will become an attribute, with every row is a timestamp index. This
+structure will span the duration of the dataset - in other words, every
+second that was accounted for in the original dataset will have a row
+instance (a row).
 
-As demonstrated
+The required transformations were for performed on the pre-processed
+dataset, with an initial index occuring at 27/03/2003 6:43:40 am, and
+the final index occuring at 11/4/2003 10:24:18 pm. In some regions of
+the dataset there were no results, so it is not an uninterrupted
+timescale from the first to last index. This will not affect our
+analysis as we are considering sequences of events as they occur with
+respect to concurrency.
 
-Test for in \ref{fig:fig1} we see XYZ
+A sample of the processed boolean array data (with omitted attributes)
+can be seen below in Table \ref{tab:TAB_S1SubAct_B_s_EXAMPLE}. Here we
+can see the following sub-activities in an `active' state; 57 (bathroom
+medicine cabinet), 101 (bathroom lightswitch) and 96 (bathroom
+exhaustfan). All other sub-activities are inactive. At 01/04/2003
+6:54:56 am sub-activity 88 (bathroom sinkfaucet - hot) becomes active,
+followed by one second later at 01/04/2003 6:54:57 am sub-activity 68
+(bathroom sinkfaucet - cold) becoming active. Sub-activity 57, 101, 68,
+88 and 96 all remain active at 01/04/2003 6:55:01 am.
+
+\rowcolors{2}{gray!6}{white}
+\begin{table}[!h]
+
+\caption{\label{tab:TAB_S1SubAct_B_s_EXAMPLE}Add text}
+\centering
+\fontsize{8}{10}\selectfont
+\begin{tabular}[t]{lrrrrrrrrrrr}
+\hiderowcolors
+\toprule
+IDX & 57 & 67 & 100 & 101 & 104 & 68 & 93 & 88 & 90 & 96 & 130\\
+\midrule
+\showrowcolors
+01/04/2003  6:54:50 am & 1 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 1 & 0\\
+01/04/2003  6:54:51 am & 1 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 1 & 0\\
+01/04/2003  6:54:52 am & 1 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 1 & 0\\
+01/04/2003  6:54:53 am & 1 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 1 & 0\\
+01/04/2003  6:54:54 am & 1 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 1 & 0\\
+\addlinespace
+01/04/2003  6:54:55 am & 1 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 1 & 0\\
+01/04/2003  6:54:56 am & 1 & 0 & 0 & 1 & 0 & 0 & 0 & 1 & 0 & 1 & 0\\
+01/04/2003  6:54:57 am & 1 & 0 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0\\
+01/04/2003  6:54:58 am & 1 & 0 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0\\
+01/04/2003  6:54:59 am & 1 & 0 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0\\
+\addlinespace
+01/04/2003  6:55:00 am & 1 & 0 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0\\
+01/04/2003  6:55:01 am & 1 & 0 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0\\
+\bottomrule
+\end{tabular}
+\end{table}
+\rowcolors{2}{white}{white}
+
+This data structure thus offers the following benefits; i) Simultaneous
+consideration of the state of multiple sub-activities,ii) Present in a
+format that is still readily human interprettable and iii) Present in a
+format that can be easily consumed by a machine.
+
+And the following challenges; i) The dataset is overall very large,
+potentially requiring large amounts of computational power for
+downstream analysis, ii) The dataset is potentially highly homogeneous
+in certain temporal regions and iii) A second-by-second analysis is most
+likely to granular for the purposes of this work
+
+In order to remedy this, we converted the Boolean Array structure into
+the minute-scale, by aggregating all the second values for each
+attribute for each minute. For example, if a sub-activity had occured
+for 30 seconds during one minute, it will not be represented as a `1'
+for that minute in the dataframe.
+
+\rowcolors{2}{gray!6}{white}
+\begin{table}[!h]
+
+\caption{\label{tab:TAB_S1SubAct_B_m_EXAMPLE}Add text}
+\centering
+\fontsize{8}{10}\selectfont
+\begin{tabular}[t]{lrrrrrrrrrrr}
+\hiderowcolors
+\toprule
+IDX & 57 & 67 & 100 & 101 & 104 & 68 & 93 & 88 & 90 & 96 & 130\\
+\midrule
+\showrowcolors
+01/04/2003  6:45:00 am & 1 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 1 & 0\\
+01/04/2003  6:46:00 am & 1 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 1 & 0\\
+01/04/2003  6:47:00 am & 1 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 1 & 0\\
+01/04/2003  6:48:00 am & 1 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 1 & 0\\
+01/04/2003  6:49:00 am & 1 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 1 & 0\\
+\addlinespace
+01/04/2003  6:51:00 am & 1 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 1 & 0\\
+01/04/2003  6:52:00 am & 1 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 1 & 0\\
+01/04/2003  6:53:00 am & 1 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 1 & 0\\
+01/04/2003  6:54:00 am & 1 & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 1 & 0\\
+01/04/2003  6:55:00 am & 1 & 0 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0\\
+\addlinespace
+01/04/2003  6:56:00 am & 1 & 0 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0\\
+01/04/2003  6:57:00 am & 1 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 1 & 0\\
+\bottomrule
+\end{tabular}
+\end{table}
+\rowcolors{2}{white}{white}
+
+\hypertarget{machine-learning-analysis}{%
+\section{Machine Learning Analysis}\label{machine-learning-analysis}}
+
+Using the pre-processed boolean array data (minute-scale) we will now
+attempt to create a predictive model with the aim of identifying
+patterns of co-occurrence between the sub-activities. As we are
+attempting to predict the on or off state of activities, this is a
+binary classification problem. As discussed during the Sankey analysis,
+the sub-activities can be broadly categorised as requiring energy input
+only from the end user (e.g., Kitchen Door) or requiring external energy
+to function (e.g., Kitchen Toaster). Note that for the purposes of
+further discussion such appliances will be referred to as
+energy-intensive (e.g., light switch, fridge and so on). Our model we
+will only attempt to predict the state of energy-intensive appliances,
+for reasons outlined in the discussion section.
+
+\hypertarget{the-machine-learning-algorithm}{%
+\subsection{The Machine Learning
+Algorithm}\label{the-machine-learning-algorithm}}
+
+A wrapper method will be created centered around the the sklearn
+Decision Tree Classifier. This method will use a decision tree model and
+optimize its hyperparameters using a grid search. The grid search will
+be performed over split criterion (`gini' and `entropy') and maximum
+depth. Feature selection will be performed using the entropy-based
+method of mutual information, for the top five features.
+Cross-validation will be performed using 5-folds. The wrapper method
+will enable the model to perform the functions described above in an
+iterative fashion for each of the energy-intensive sub-activity features
+in the dataset. The processed sub-activities meta data will also be
+parsed to provide the data on which sub-activity is energy intensive and
+which is not. Throughout the iterations, key data will be parsed to
+*.csv format for later analysis.
+
+\hypertarget{data}{%
+\subsubsection{Data}\label{data}}
+
+The dataset used will be the boolean array on the minute scale. In
+preparation for the analysis, the datetime index is removed, as will be
+discussed below. Important to note that these data currently contain no
+categorical features (e.g, day of week, weekend / weekday, hour of day,
+room of house, e.t.c,).
+
+\hypertarget{the-wrapper-method}{%
+\subsubsection{The Wrapper Method}\label{the-wrapper-method}}
+
+The following python script was used to perform the desired machine
+learning analysis.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ subAct }\KeywordTok{in}\NormalTok{ poweredSubActs:}
+\NormalTok{    row }\OperatorTok{=}\NormalTok{ \{}\StringTok{"Target"}\NormalTok{:subAct\}}
+\NormalTok{    Data }\OperatorTok{=}\NormalTok{ ds.drop(columns }\OperatorTok{=}\NormalTok{ subAct).values}
+\NormalTok{    target }\OperatorTok{=}\NormalTok{ ds[subAct]}
+\NormalTok{    D_train, D_test, t_train, t_test }\OperatorTok{=}\NormalTok{ train_test_split(Data, target, test_size }\OperatorTok{=} \FloatTok{0.3}\NormalTok{, }
+\NormalTok{                                        random_state}\OperatorTok{=}\DecValTok{999}\NormalTok{)}
+\NormalTok{    cv_method }\OperatorTok{=}\NormalTok{ RepeatedStratifiedKFold(n_splits }\OperatorTok{=} \DecValTok{5}\NormalTok{, n_repeats }\OperatorTok{=} \DecValTok{3}\NormalTok{, random_state }\OperatorTok{=} \DecValTok{999}\NormalTok{)}
+\NormalTok{    dt_classifier }\OperatorTok{=}\NormalTok{ DecisionTreeClassifier(random_state}\OperatorTok{=}\DecValTok{999}\NormalTok{)}
+\NormalTok{    params_DT }\OperatorTok{=}\NormalTok{ \{}\StringTok{'criterion'}\NormalTok{: [}\StringTok{'gini'}\NormalTok{, }\StringTok{'entropy'}\NormalTok{], }
+                \StringTok{'max_depth'}\NormalTok{: [}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{10}\NormalTok{]\}}
+\NormalTok{    gs }\OperatorTok{=}\NormalTok{ GridSearchCV(estimator}\OperatorTok{=}\NormalTok{dt_classifier, param_grid}\OperatorTok{=}\NormalTok{params_DT, cv}\OperatorTok{=}\NormalTok{cv_method,}
+\NormalTok{                      verbose}\OperatorTok{=}\DecValTok{1}\NormalTok{, scoring}\OperatorTok{=}\StringTok{'accuracy'}\NormalTok{)}
+\NormalTok{    gs.fit(Data, target)}
+\NormalTok{    row[}\StringTok{'Original_Fit'}\NormalTok{] }\OperatorTok{=}\NormalTok{ gs.best_score_}
+\NormalTok{    num_features }\OperatorTok{=} \DecValTok{5}
+    
+\NormalTok{    fs_fit_mutual_info }\OperatorTok{=}\NormalTok{ fs.SelectKBest(fs.mutual_info_classif, k}\OperatorTok{=}\NormalTok{num_features)}
+\NormalTok{    fs_fit_mutual_info.fit_transform(Data, target)}
+\NormalTok{    fs_indices_mutual_info }\OperatorTok{=}\NormalTok{ np.argsort(fs_fit_mutual_info.scores_)[::}\OperatorTok{-}\DecValTok{1}\NormalTok{][}\DecValTok{0}\NormalTok{:num_features]}
+\NormalTok{    best_features_mutual_info }\OperatorTok{=}\NormalTok{ ds.columns[fs_indices_mutual_info].values    }
+\NormalTok{    feature_importances_mutual_info }\OperatorTok{=}\NormalTok{ fs_fit_mutual_info.scores_[fs_indices_mutual_info]}
+\NormalTok{    results_DT }\OperatorTok{=}\NormalTok{ pd.DataFrame(gs.cv_results_[}\StringTok{'params'}\NormalTok{])}
+\NormalTok{    results_DT[}\StringTok{'test_score'}\NormalTok{] }\OperatorTok{=}\NormalTok{ gs.cv_results_[}\StringTok{'mean_test_score'}\NormalTok{]}
+\NormalTok{    results_DT.to_csv(subAct }\OperatorTok{+} \StringTok{"_dt.csv"}\NormalTok{, index}\OperatorTok{=}\VariableTok{False}\NormalTok{)}
+    
+\NormalTok{    t_pred }\OperatorTok{=}\NormalTok{ gs.predict(D_test)}
+\NormalTok{    t_prob }\OperatorTok{=}\NormalTok{ gs.predict_proba(D_test)}
+\NormalTok{    metrics.roc_auc_score(t_test, t_pred)}
+\NormalTok{    fpr, tpr, _ }\OperatorTok{=}\NormalTok{ metrics.roc_curve(t_test, t_prob[:, }\DecValTok{1}\NormalTok{])}
+\NormalTok{    roc_auc }\OperatorTok{=}\NormalTok{ metrics.auc(fpr, tpr)    }
+\NormalTok{    df }\OperatorTok{=}\NormalTok{ pd.DataFrame(\{}\StringTok{'fpr'}\NormalTok{: fpr, }\StringTok{'tpr'}\NormalTok{: tpr\})}
+\NormalTok{    df.to_csv(subAct }\OperatorTok{+} \StringTok{"_roc.csv"}\NormalTok{, index }\OperatorTok{=} \VariableTok{False}\NormalTok{)}
+    
+\NormalTok{    report }\OperatorTok{=}\NormalTok{ metrics.classification_report(t_test, t_pred, output_dict}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\NormalTok{    rep }\OperatorTok{=}\NormalTok{ pd.DataFrame(report).transpose()}
+\NormalTok{    rep.to_csv(subAct }\OperatorTok{+} \StringTok{"_rep.csv"}\NormalTok{, index}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+    
+\NormalTok{    report }\OperatorTok{=}\NormalTok{ metrics.confusion_matrix(t_test, t_pred)}
+\NormalTok{    rep }\OperatorTok{=}\NormalTok{ pd.DataFrame(report).transpose()}
+\NormalTok{    rep.to_csv(subAct }\OperatorTok{+} \StringTok{"_confusion.csv"}\NormalTok{, index}\OperatorTok{=}\VariableTok{True}\NormalTok{)    }
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{machine-learning-model-results}{%
+\subsubsection{Machine Learning Model
+Results}\label{machine-learning-model-results}}
+
+The following section provides an evaluation of the machine learning
+model results.
+
+\hypertarget{bedroom-lightswitch---sub-activity-108-1}{%
+\paragraph{Bedroom Lightswitch - Sub-Activity
+108}\label{bedroom-lightswitch---sub-activity-108-1}}
+
+The top five most important features for predicting this sub-activity
+(as shown in tile `A' of the plot below) are: bathroom light switch,
+kitchen cabinet, kitchen dishwasher, kitchen laundry dryer and
+livingroom light switch. The bathroom light switch is significantly more
+important than the other four. For the analysis of the bedroom light
+switch feature it was determined that the best parameters were `entropy'
+with a maximum tree depth of 4. The plot of Mean CV Score versus Maximum
+depth shows that `gini' is the better parameter at certain tree depths.
+The shape of the ROC curve and the corresponding ROC\_AUC value of
+0.9016 are indicative of a good fit. The extremely high precision (0.98)
+and recall (1.00) values for 0 as compared to the relatively low recall
+(0.36) value for 1 are due to the unbalanced data set, where of the 1588
+instances, 1543 are 0, while 45 are 1.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/bedroom_lightswitch_allFeatures} 
+
+}
+
+\caption{Plot of Mutual Information Feature Importance (A), DT Performance Comparison (B) and ROC Curve of DT (C)}\label{fig:unnamed-chunk-7}
+\end{figure}
+
+\hypertarget{kitchen-laundry-dryer---sub-activity-90-1}{%
+\paragraph{Kitchen Laundry Dryer - Sub-Activity
+90}\label{kitchen-laundry-dryer---sub-activity-90-1}}
+
+The top five most important features for predicting this sub-activity
+(as shown in tile `A' of the plot below) are: kitchen door, kitchen
+washing machine, bathroom medicine cabinet, kitchen dishwasher and
+bedroom drawer. The kitchen door and kitchen washing machine are
+significantly more important than the other three. For the analysis of
+the kitchen laundry dryer feature it was determined that the best
+parameter¬s were `gini' with a maximum tree depth of 5. The plot of Mean
+CV Score versus Maximum depth shows that `gini' is the better parameter
+at all tree depths up to 10. The shape of the ROC curve and the
+corresponding ROC\_AUC value of 0.9551 are indicative of a good fit. The
+extremely high precision (0.99) and recall (1.00) values for 0 as
+compared to the relatively low recall (0.30) value for 1 are due to the
+unbalanced data set, where of the 1588 instances, 1565 are 0, while 23
+are 1.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/kitchen_laundrydryer_allFeatures} 
+
+}
+
+\caption{Plot of Mutual Information Feature Importance (A), DT Performance Comparison (B) and ROC Curve of DT (C)}\label{fig:unnamed-chunk-8}
+\end{figure}
+
+\hypertarget{kitchen-freezer---sub-activity-137-1}{%
+\paragraph{Kitchen Freezer - Sub-Activity
+137}\label{kitchen-freezer---sub-activity-137-1}}
+
+The top five most important features for predicting this sub-activity
+(as shown in tile `A' of the plot below) are: kitchen refrigerator,
+livingroom light switch, foyer closet, bathroom door and bathroom toilet
+flush. The kitchen refrigerator is significantly more important than the
+other four. For the analysis of the kitchen freezer feature it was
+determined that the best parameters were `gini' with a maximum tree
+depth of 9. The plot of Mean CV Score versus Maximum depth shows that
+`gini' is the better parameter at all tree depths from 3 up to 10. The
+shape of the ROC curve and the corresponding ROC\_AUC value of 0.8639
+are indicative of a good fit. The extremely high precision (0.94) and
+recall (0.98) values for 0 as compared to the relatively low recall
+(0.44) value for 1 are due to the unbalanced data set, where of the 1588
+instances, 1423 are 0, while 165 are 1. The model has successfully
+categorised 73 of the 165 instances of 1, and in these circumstances has
+performed adequately.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/kitchen_freezer_allFeatures} 
+
+}
+
+\caption{Plot of Mutual Information Feature Importance (A), DT Performance Comparison (B) and ROC Curve of DT (C)}\label{fig:unnamed-chunk-9}
+\end{figure}
+
+\hypertarget{kitchen-toaster---sub-activity-131-1}{%
+\paragraph{Kitchen Toaster - Sub-Activity
+131}\label{kitchen-toaster---sub-activity-131-1}}
+
+The top five most important features for predicting this sub-activity
+(as shown in tile `A' of the plot below) are: kitchen cabinet, bathroom
+exhaust fan, study light switch, kitchen toaster and livingroom light
+switch. The kitchen cabinet is significantly more important than the
+other four. For the analysis of the kitchen toaster feature it was
+determined that the best parameters were `gini' with a maximum tree
+depth of 3. The plot of Mean CV Score versus Maximum depth shows that
+`gini' is the better parameter at all tree depths up to 6, and then
+`entropy' is the better parameter from 7 to 10. The shape of the ROC
+curve and the corresponding ROC\_AUC value of 0.7782 are indicative of
+an adequate fit. The extremely high precision (0.99) and recall (1.00)
+values for 0 as compared to the relatively low recall (0.23) value for 1
+are due to the unbalanced data set, where of the 1588 instances, 1566
+are 0, while 22 are 1.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/kitchen_toaster_allFeatures} 
+
+}
+
+\caption{Plot of Mutual Information Feature Importance (A), DT Performance Comparison (B) and ROC Curve of DT (C)}\label{fig:unnamed-chunk-10}
+\end{figure}
+
+\hypertarget{bathroom-exhaust-fan---sub-activity-96-1}{%
+\paragraph{Bathroom Exhaust Fan - Sub-Activity
+96}\label{bathroom-exhaust-fan---sub-activity-96-1}}
+
+The top five most important features for predicting this sub-activity
+(as shown in tile `A' of the plot below) are: livingroom light switch,
+bathroom sink faucet hot, livingroom lamp, bathroom medicine cabinet and
+foyer door. The livingroom light switch, bathroom sink faucet hot and
+livingroom lamp are noticeably more important than the other two. For
+the analysis of the bathroom exhaust fan feature it was determined that
+the best parameters were `gini' with a maximum tree depth of 8. The plot
+of Mean CV Score versus Maximum depth shows that `gini' is the better
+parameter at all tree depths up to 10. The shape of the ROC curve and
+the corresponding ROC\_AUC value of 0.9054 are indicative of a good fit.
+The extremely high precision (0.90) and recall (0.99) values for 0 as
+compared to the relatively low recall (0.25) value for 1 are due to the
+unbalanced data set, where of the 1588 instances, 1384 are 0, while 204
+are 1.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/bathroom_exhaustfan_allFeatures} 
+
+}
+
+\caption{Plot of Mutual Information Feature Importance (A), DT Performance Comparison (B) and ROC Curve of DT (C)}\label{fig:unnamed-chunk-11}
+\end{figure}
+
+\hypertarget{bathroom-shower-faucet---sub-activity-93-1}{%
+\paragraph{Bathroom Shower Faucet - Sub-Activity
+93}\label{bathroom-shower-faucet---sub-activity-93-1}}
+
+The top five most important features for predicting this sub-activity
+(as shown in tile `A' of the plot below) are: bathroom light switch,
+kitchen refrigerator, kitchen dishwasher, foyer door and kitchen
+microwave. The bathroom light switch, kitchen refrigerator and kitchen
+dishwasher are significantly more important than the other two. For the
+analysis of the bathroom shower faucet feature it was determined that
+the best parameters were `entropy' with a maximum tree depth of 8. The
+plot of Mean CV Score versus Maximum depth shows that `entropy' is the
+better parameter at all tree depths up to 10. The shape of the ROC curve
+and the corresponding ROC\_AUC value of 0.9280 are indicative of a good
+fit. The extremely high precision (0.97) and recall (1.00) values for 0
+as compared to the relatively low recall (0.40) value for 1 are due to
+the unbalanced data set, where of the 1588 instances, 1520 are 0, while
+68 are 1. The model has successfully categorised 27 of the 68 instances
+of 1, and in these circumstances has performed adequately.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/bathroom_showerfaucet_allFeatures} 
+
+}
+
+\caption{Plot of Mutual Information Feature Importance (A), DT Performance Comparison (B) and ROC Curve of DT (C)}\label{fig:unnamed-chunk-12}
+\end{figure}
+
+\hypertarget{bathroom-lightswitch---sub-activity-101-1}{%
+\paragraph{Bathroom Lightswitch - Sub-Activity
+101}\label{bathroom-lightswitch---sub-activity-101-1}}
+
+The top five most important features for predicting this sub-activity
+(as shown in tile `A' of the plot below) are: kitchen dishwasher,
+bedroom drawer, livingroom light switch, bathroom cabinet and foyer
+light switch. The kitchen dishwasher, bedroom drawer and livingroom
+light switch are significantly more important than the other two. For
+the analysis of the bathroom light switch feature it was determined that
+the best parameters were `gini' with a maximum tree depth of 10. The
+plot of Mean CV Score versus Maximum depth shows that `gini' is the
+better parameter at all tree depths up to 10. The shape of the ROC curve
+and the corresponding ROC\_AUC value of 0.9073 are indicative of a good
+fit. The extremely high precision (0.85) and recall (0.99) values for 0
+as compared to the relatively low recall (0.30) value for 1 are due to
+the unbalanced data set, where of the 1588 instances, 1262 are 0, while
+326 are 1.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/bathroom_lightswitch_allFeatures} 
+
+}
+
+\caption{Plot of Mutual Information Feature Importance (A), DT Performance Comparison (B) and ROC Curve of DT (C)}\label{fig:unnamed-chunk-13}
+\end{figure}
+
+\hypertarget{kitchen-refrigerator---sub-activity-126-1}{%
+\paragraph{Kitchen Refrigerator - Sub-Activity
+126}\label{kitchen-refrigerator---sub-activity-126-1}}
+
+The top five most important features for predicting this sub-activity
+(as shown in tile `A' of the plot below) are: kitchen cabinet, kitchen
+toaster, kitchen drawer, kitchen light switch and kitchen burner. The
+kitchen cabinet and kitchen toaster are significantly more important
+than the other three. For the analysis of the kitchen refrigerator
+feature it was determined that the best parameters were `gini' with a
+maximum tree depth of 10. The plot of Mean CV Score versus Maximum depth
+shows that `gini' and `entropy' alternate as the better parameter
+depending on the tree depth. The shape of the ROC curve and the
+corresponding ROC\_AUC value of 0.9534 are indicative of a good fit. The
+extremely high precision (0.97) and recall (1.00) values for 0 as
+compared to the recall (0.51) value for 1 are due to the unbalanced data
+set, where of the 1588 instances, 1506 are 0, while 82 are 1. The model
+has successfully categorised 42 of the 82 instances of 1, and the model
+has performed adequately.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/kitchen_refrigerator_allFeatures} 
+
+}
+
+\caption{Plot of Mutual Information Feature Importance (A), DT Performance Comparison (B) and ROC Curve of DT (C)}\label{fig:unnamed-chunk-14}
+\end{figure}
+
+\hypertarget{foyer-lightswitch---sub-activity-104-1}{%
+\paragraph{Foyer Lightswitch - Sub-Activity
+104}\label{foyer-lightswitch---sub-activity-104-1}}
+
+The top five most important features for predicting this sub-activity
+(as shown in tile `A' of the plot below) are: kitchen burner, foyer
+light switch, kitchen coffee machine, kitchen dishwasher and bathroom
+light switch. The kitchen burner is significantly more important than
+the other four. For the analysis of the foyer light switch feature it
+was determined that the best parameters were `gini' with a maximum tree
+depth of 4. The plot of Mean CV Score versus Maximum depth shows that
+`gini' and `entropy' alternate as the better parameter depending on the
+tree depth. The shape of the ROC curve and the corresponding ROC\_AUC
+value of 0.9394 are indicative of a good fit. The extremely high
+precision (0.99) and recall (1.00) values for 0 as compared to the
+reasonable recall (0.77) value for 1 are despite the unbalanced data
+set, where of the 1588 instances, 1528 are 0, while 60 are 1. The model
+has successfully categorised 46 of the 60 instances of 1, and the model
+has performed excellently.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/foyer_lightswitch_allFeatures} 
+
+}
+
+\caption{Plot of Mutual Information Feature Importance (A), DT Performance Comparison (B) and ROC Curve of DT (C)}\label{fig:unnamed-chunk-15}
+\end{figure}
+
+\hypertarget{kitchen-burner---sub-activity-140-1}{%
+\paragraph{Kitchen Burner - Sub-Activity
+140}\label{kitchen-burner---sub-activity-140-1}}
+
+The top five most important features for predicting this sub-activity
+(as shown in tile `A' of the plot below) are: kitchen light switch,
+kitchen door, bathroom sink faucet hot, kitchen drawer and kitchen
+burner. The kitchen light switch and kitchen door are significantly more
+important than the other three. For the analysis of the kitchen burner
+feature it was determined that the best parameters were `entropy' with a
+maximum tree depth of 8. The plot of Mean CV Score versus Maximum depth
+shows that `gini' and `entropy' alternate as the better parameter
+depending on the tree depth. The shape of the ROC curve and the
+corresponding ROC\_AUC value of 0.9433 are indicative of a good fit. The
+extremely high precision (0.97) and recall (1.00) values for 0 as
+compared to the relatively low recall (0.34) value for 1 are due to the
+unbalanced data set, where of the 1588 instances, 1506 are 0, while 82
+are 1. The model has successfully categorised only 28 of the 82
+instances of 1, and even given the unbalanced nature of the dataset, the
+model has performed poorly.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/kitchen_burner_allFeatures} 
+
+}
+
+\caption{Plot of Mutual Information Feature Importance (A), DT Performance Comparison (B) and ROC Curve of DT (C)}\label{fig:unnamed-chunk-16}
+\end{figure}
+
+\hypertarget{study-lightswitch---sub-activity-92-1}{%
+\paragraph{Study Lightswitch - Sub-Activity
+92}\label{study-lightswitch---sub-activity-92-1}}
+
+The top five most important features for predicting this sub-activity
+(as shown in tile `A' of the plot below) are: bathroom cabinet,
+livingroom lamp, livingroom light switch, kitchen light switch and
+bedroom light switch. The bathroom cabinet is significantly more
+important than the other four. For the analysis of the study light
+switch feature it was determined that the best parameters were `entropy'
+with a maximum tree depth of 8. The plot of Mean CV Score versus Maximum
+depth shows that `gini' and `entropy' alternate as the better parameter
+depending on the tree depth. The shape of the ROC curve and the
+corresponding ROC\_AUC value of 0.8689 are indicative of a good fit. The
+high precision (0.89) and recall (1.00) values for 0 as compared to the
+extremely low recall (0.07) value for 1 are due to the unbalanced data
+set, where of the 1588 instances, 1407 are 0, while 181 are 1. The model
+has successfully categorised only 13 of the 181 instances of 1, and even
+given the unbalanced nature of the dataset, the model has performed
+extremely poorly.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/study_lightwitch_allFeatures} 
+
+}
+
+\caption{Plot of Mutual Information Feature Importance (A), DT Performance Comparison (B) and ROC Curve of DT (C)}\label{fig:unnamed-chunk-17}
+\end{figure}
+
+\hypertarget{kitchen-washingmachine---sub-activity-142-1}{%
+\paragraph{Kitchen Washingmachine - Sub-Activity
+142}\label{kitchen-washingmachine---sub-activity-142-1}}
+
+The top five most important features for predicting this sub-activity
+(as shown in tile `A' of the plot below) are: bathroom sink faucet cold,
+kitchen door, kitchen light switch, bathroom exhaust fan and kitchen
+dishwasher. The bathroom sink faucet cold and kitchen door are
+significantly more important than the other three. For the analysis of
+the kitchen washing machine feature it was determined that the best
+parameters were `gini' with a maximum tree depth of 3. The plot of Mean
+CV Score versus Maximum depth shows that `gini' and `entropy' alternate
+as the better parameter depending on the tree depth. The shape of the
+ROC curve and the corresponding ROC\_AUC value of 0.8698 are indicative
+of a good fit. The extremely high precision (0.99) and recall (1.00)
+values for 0 as compared to the relatively low recall (0.19) value for 1
+are due to the unbalanced data set, where of the 1588 instances, 1562
+are 0, while 26 are 1.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/kitchen_washingmachine_allFeatures} 
+
+}
+
+\caption{Plot of Mutual Information Feature Importance (A), DT Performance Comparison (B) and ROC Curve of DT (C)}\label{fig:unnamed-chunk-18}
+\end{figure}
+
+\hypertarget{kitchen-lightswitch---sub-activity-105-1}{%
+\paragraph{Kitchen Lightswitch - Sub-Activity
+105}\label{kitchen-lightswitch---sub-activity-105-1}}
+
+The top five most important features for predicting this sub-activity
+(as shown in tile `A' of the plot below) are: foyer light switch,
+kitchen refrigerator, kitchen drawer, bathroom shower faucet and
+bathroom cabinet. All five of these features have similar importance.
+For the analysis of the kitchen light switch feature it was determined
+that the best parameters were `gini' with a maximum tree depth of 10.
+The plot of Mean CV Score versus Maximum depth shows that `gini' is the
+better parameter at all tree depths up to 10. The shape of the ROC curve
+and the corresponding ROC\_AUC value of 0.8868 are indicative of a good
+fit. The extremely high precision (0.88) and recall (0.87) values for 0
+as compared to the reasonable recall (0.74) value for 1 are despite the
+unbalanced data set, where of the 1588 instances, 1100 are 0, while 488
+are 1. The model has successfully categorised 361 of the 488 instances
+of 1, and the model has performed excellently.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/kitchen_lightswitch_allFeatures} 
+
+}
+
+\caption{Plot of Mutual Information Feature Importance (A), DT Performance Comparison (B) and ROC Curve of DT (C)}\label{fig:unnamed-chunk-19}
+\end{figure}
+
+\hypertarget{livingroom-lamp---sub-activity-76-1}{%
+\paragraph{Livingroom Lamp - Sub-Activity
+76}\label{livingroom-lamp---sub-activity-76-1}}
+
+The top five most important features for predicting this sub-activity
+(as shown in tile `A' of the plot below) are: bathroom light switch,
+bathroom door, kitchen light switch, study drawer and livingroom light
+switch. The bathroom light switch is significantly more important than
+the other four. For the analysis of the livingroom lamp feature it was
+determined that the best parameters were `gini' with a maximum tree
+depth of 8. The plot of Mean CV Score versus Maximum depth shows that
+`gini' and `entropy' alternate as the better parameter depending on the
+tree depth. The shape of the ROC curve and the corresponding ROC\_AUC
+value of 0.8639 are indicative of a good fit. The high precision (0.81)
+and recall (0.99) values for 0 as compared to the low recall (0.16)
+value for 1 are due to the unbalanced data set, where of the 1588
+instances, 1252 are 0, while 336 are 1. The model has successfully
+categorised only 54 of the 336 instances of 1, and even given the
+unbalanced nature of the dataset, the model has performed poorly.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/livingroom_lamp_allFeatures} 
+
+}
+
+\caption{Plot of Mutual Information Feature Importance (A), DT Performance Comparison (B) and ROC Curve of DT (C)}\label{fig:unnamed-chunk-20}
+\end{figure}
+
+\hypertarget{kitchen-microwave---sub-activity-143-1}{%
+\paragraph{Kitchen Microwave - Sub-Activity
+143}\label{kitchen-microwave---sub-activity-143-1}}
+
+The top five most important features for predicting this sub-activity
+(as shown in tile `A' of the plot below) are: kitchen cabinet, kitchen
+refrigerator, kitchen door, bedroom light switch and kitchen drawer. All
+five of these features have similar importance. For the analysis of the
+kitchen microwave feature it was determined that the best parameters
+were `entropy' with a maximum tree depth of 2. The plot of Mean CV Score
+versus Maximum depth shows that `entropy' is the better parameter at all
+tree depths up to 10. The shape of the ROC curve and the corresponding
+ROC\_AUC value of 0.5899 are indicative of a poor fit. The extremely
+high precision (0.99) and recall (1.00) values for 0 as compared to the
+recall (0.00) value for 1 are due to the unbalanced data set, where of
+the 1588 instances, 1575 are 0, while 13 are 1. The model has
+successfully categorised 0 of the 13 instances of 1. Thus, the model has
+not successfully fit.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/kitchen_microwave_allFeatures} 
+
+}
+
+\caption{Plot of Mutual Information Feature Importance (A), DT Performance Comparison (B) and ROC Curve of DT (C)}\label{fig:unnamed-chunk-21}
+\end{figure}
+
+\hypertarget{kitchen-garbage-disposal---sub-activity-98-1}{%
+\paragraph{Kitchen Garbage Disposal - Sub-Activity
+98}\label{kitchen-garbage-disposal---sub-activity-98-1}}
+
+The top five most important features for predicting this sub-activity
+(as shown in tile `A' of the plot below) are: livingroom light switch,
+kitchen cabinet, bathroom door, kitchen door, livingroom lamp. The
+livingroom light switch is significantly more important than the other
+four. For the analysis of the kitchen garbage disposal feature it was
+determined that the best parameters were `gini' with a maximum tree
+depth of 2. The plot of Mean CV Score versus Maximum depth shows that
+`entropy' is equally good at this depth, and that `gini' and `entropy'
+alternate as the better parameter depending on the tree depth. The shape
+of the ROC curve and the corresponding ROC\_AUC value of 0.7035 are
+indicative of a moderate fit. The extremely high precision (1.00) and
+recall (1.00) values for 0 as compared to the recall (0.00) value for 1
+are due to the unbalanced data set, where of the 1588 instances, 1586
+are 0, while 2 are 1. The model has successfully categorised 0 of the 2
+instances of 1. Thus, the model has not successfully fit.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/kitchen_garbagedisposal_allFeatures} 
+
+}
+
+\caption{Plot of Mutual Information Feature Importance (A), DT Performance Comparison (B) and ROC Curve of DT (C)}\label{fig:unnamed-chunk-22}
+\end{figure}
+
+\hypertarget{kitchen-coffee-machine---sub-activity-119-1}{%
+\paragraph{Kitchen Coffee Machine - Sub-Activity
+119}\label{kitchen-coffee-machine---sub-activity-119-1}}
+
+The top five most important features for predicting this sub-activity
+(as shown in tile `A' of the plot below) are: kitchen toaster, foyer
+closet, bathroom shower faucet, bathroom cabinet and bathroom sink
+faucet cold. The kitchen toaster is significantly more important than
+the other four. For the analysis of the kitchen coffee machine feature
+it was determined that the best parameters were `gini' with a maximum
+tree depth of 2. The plot of Mean CV Score versus Maximum depth shows
+that `entropy' and `gini' are equal at all tree depths. The shape of the
+ROC curve and the corresponding ROC\_AUC value of 0.9600 are indicative
+of a good fit. The extremely high precision (1.00) and recall (1.00)
+values for 0 as compared to the recall (0.00) value for 1 are due to the
+unbalanced data set, where of the 1588 instances, 1587 are 0, while 1 is
+1. The model has successfully categorised 0 of the 1 instances of 1.
+Thus, the model has not successfully fit.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/kitchen_coffeemachine_allFeatures} 
+
+}
+
+\caption{Plot of Mutual Information Feature Importance (A), DT Performance Comparison (B) and ROC Curve of DT (C)}\label{fig:unnamed-chunk-23}
+\end{figure}
+
+\hypertarget{livingroom-lightswitch---sub-activity-107-1}{%
+\paragraph{Livingroom Lightswitch - Sub-Activity
+107}\label{livingroom-lightswitch---sub-activity-107-1}}
+
+The top five most important features for predicting this sub-activity
+(as shown in tile `A' of the plot below) are: foyer light switch,
+bathroom shower faucet, bedroom drawer, livingroom light switch and
+foyer door. The foyer light switch is significantly more important than
+the other four. For the analysis of the livingroom light switch feature
+it was determined that the best parameters were `entropy' with a maximum
+tree depth of 7. The plot of Mean CV Score versus Maximum depth shows
+that `gini' and `entropy' alternate as the better parameter depending on
+the tree depth. The shape of the ROC curve and the corresponding
+ROC\_AUC value of 0.9178 are indicative of a good fit. The extremely
+high precision (0.91) and recall (1.00) values for 0 as compared to the
+relatively low recall (0.28) value for 1 are due to the unbalanced data
+set, where of the 1588 instances, 1386 are 0, while 202 are 1. The model
+has successfully categorised only 57 of the 202 instances of 1, and even
+given the unbalanced nature of the dataset, the model has performed
+poorly.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/livingroom_lightswitch_allFeatures} 
+
+}
+
+\caption{Plot of Mutual Information Feature Importance (A), DT Performance Comparison (B) and ROC Curve of DT (C)}\label{fig:unnamed-chunk-24}
+\end{figure}
+
+\hypertarget{kitchen-oven---sub-activity-129-1}{%
+\paragraph{Kitchen Oven - Sub-Activity
+129}\label{kitchen-oven---sub-activity-129-1}}
+
+The top five most important features for predicting this sub-activity
+(as shown in tile `A' of the plot below) are: foyer door, kitchen
+drawer, bathroom toilet flush, bathroom shower faucet and bedroom light
+switch. The foyer door is significantly more important than the other
+four. For the analysis of the kitchen oven feature it was determined
+that the best parameters were `entropy' with a maximum tree depth of 2.
+The plot of Mean CV Score versus Maximum depth shows that `gini' and
+`entropy' alternate as the better parameter depending on the tree depth.
+The shape of the ROC curve and the corresponding ROC\_AUC value of
+0.7051 are indicative of a moderate fit. The extremely high precision
+(0.99) and recall (1.00) values for 0 as compared to the recall (0.00)
+value for 1 are due to the unbalanced data set, where of the 1588
+instances, 1579 are 0, while 9 are 1. The model has successfully
+categorised 0 of the 9 instances of 1. Thus, the model has not
+successfully fit.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/kitchen_oven_allFeatures} 
+
+}
+
+\caption{Plot of Mutual Information Feature Importance (A), DT Performance Comparison (B) and ROC Curve of DT (C)}\label{fig:unnamed-chunk-25}
+\end{figure}
+
+\hypertarget{kitchen-dishwasher---sub-activity-70-1}{%
+\paragraph{Kitchen Dishwasher - Sub-Activity
+70}\label{kitchen-dishwasher---sub-activity-70-1}}
+
+The top five most important features for predicting this sub-activity
+(as shown in tile `A' of the plot below) are: kitchen cabinet, kitchen
+light switch, foyer closet, kitchen burner and livingroom light switch.
+The kitchen cabinet and kitchen light switch are significantly more
+important than the other three. For the analysis of the kitchen
+dishwasher feature it was determined that the best parameters were
+`entropy' with a maximum tree depth of 8. The plot of Mean CV Score
+versus Maximum depth shows that `entropy' is the better parameter at all
+tree depths up to 10. The shape of the ROC curve and the corresponding
+ROC\_AUC value of 0.8826 are indicative of a good fit. The extremely
+high precision (0.96) and recall (0.99) values for 0 as compared to the
+relatively low recall (0.26) value for 1 are due to the unbalanced data
+set, where of the 1588 instances, 1496 are 0, while 92 are 1. The model
+has successfully categorised only 24 of the 92 instances of 1, and even
+given the unbalanced nature of the dataset, the model has performed
+poorly.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/kitchen_dishwasher_allFeatures} 
+
+}
+
+\caption{Plot of Mutual Information Feature Importance (A), DT Performance Comparison (B) and ROC Curve of DT (C)}\label{fig:unnamed-chunk-26}
+\end{figure}
+
+\hypertarget{bathroom-sink-faucet-hot---sub-activity-68-1}{%
+\paragraph{Bathroom Sink Faucet (Hot) - Sub-Activity
+68}\label{bathroom-sink-faucet-hot---sub-activity-68-1}}
+
+The top five most important features for predicting this sub-activity
+(as shown in tile `A' of the plot below) are: study drawer, bathroom
+toilet flush, bathroom light switch, bathroom medicine cabinet and
+bathroom door. The study drawer is significantly more important than the
+other four. For the analysis of the bathroom sink faucet hot feature it
+was determined that the best parameters were `entropy' with a maximum
+tree depth of 6. The plot of Mean CV Score versus Maximum depth shows
+that `gini' and `entropy' alternate as the better parameter depending on
+the tree depth. The shape of the ROC curve and the corresponding
+ROC\_AUC value of 0.9066 are indicative of a good fit. The extremely
+high precision (0.97) and recall (1.00) values for 0 as compared to the
+recall (0.42) value for 1 are due to the unbalanced data set, where of
+the 1588 instances, 1514 are 0, while 74 are 1. The model has
+successfully categorised 31 of the 74 instances of 1, and the model has
+performed adequately.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/bathroom_sinkfaucet-hot_allFeatures} 
+
+}
+
+\caption{Plot of Mutual Information Feature Importance (A), DT Performance Comparison (B) and ROC Curve of DT (C)}\label{fig:unnamed-chunk-27}
+\end{figure}
+
+\hypertarget{training-using-only-energy-intensive-sub-activities}{%
+\subsubsection{Training using only Energy-Intensive
+Sub-Activities}\label{training-using-only-energy-intensive-sub-activities}}
+
+The above model was re-trained using as input parameters only those
+subactivies that were energy-intensive. Figure \ref{fig:MLmetrics} shows
+the semi-quantitative results. Overall there is minimal difference with
+respect to training in the absense of non-energy intensive
+sub-activities.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/Users/alistairgj/Documents/GitHub/IoT_ResearchProject/IoT_November/images/facets2} 
+
+}
+
+\caption{Semi-quantitative plots of machine learning performance metrics when comparing training on all features (i) to training with only energy-intensive features (ii). Tile A corresponds to precision metrics, tile B corresponds to recal metrics, tile C corresponds to F1-score metrics and tile D corresponds to the accuracy metrix}\label{fig:MLmetrics}
+\end{figure}
+
+\hypertarget{antagonistic-machine-learning-model}{%
+\subsection{Antagonistic Machine Learning
+Model}\label{antagonistic-machine-learning-model}}
+
+The following model builds on all the previous work to build a model
+that acts in an antagonistic manner as a way to reduce overall power
+consumption. The inputs were as follows; the boolean timeseries array on
+the minute scale to train the model, the sensor (sub-activity) meta data
+with an additional column for wattage, data with proposed power costs
+(\textbf{kWh}) and pre-processed event-row data from earlier in our
+analysis. The iterative \texttt{calc\_subAct} algorithm has the
+following stages:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Trains a decision tree classifier for the current target feature (as
+  per the previous section)
+\item
+  Segments the event-row dataset into 6 sub-sections, weekend and
+  weekday by morning, afternoon and evening
+\item
+  Calculates the mean value associated with each segment
+\item
+  Using the classifier model, creates a predicited boolean column
+  (\texttt{prediction}) of on or off states for the current target
+  feature
+\item
+  Sums the duration of each uninterrupted sequence of 1's in the
+  predicted boolean feature
+\item
+  Compares the summed duration to the mean from the segmented event-row
+  data
+\item
+  If the predicted value (summed duration) is less than the mean, there
+  is no intervention
+\item
+  If the predicted value (summed duration) is more than the mean, there
+  is potential intervention (a constant determines the weighting the
+  difference in mean and summed duration is given)
+\item
+  These `interventions' are used to antagonistically reduce the overall
+  duration of the sub-activity in an `on' state, and this reduce power
+  consumption.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ds }\OperatorTok{=}\NormalTok{ pd.read_csv(}\StringTok{'S1SubActivities_temporalFeaturesPreprocessed.csv'}\NormalTok{, index_col }\OperatorTok{=} \VariableTok{None}\NormalTok{) }
+\NormalTok{ds_new }\OperatorTok{=}\NormalTok{ ds.copy()}
+\NormalTok{ds_new[}\StringTok{'Phase'}\NormalTok{] }\OperatorTok{=} \StringTok{"Afternoon"}
+\NormalTok{ds_new.loc[ds_new[}\StringTok{'HOUR'}\NormalTok{] }\OperatorTok{<} \DecValTok{12}\NormalTok{, }\StringTok{'Phase'}\NormalTok{] }\OperatorTok{=} \StringTok{"Morning"}
+\NormalTok{ds_new.loc[ds_new[}\StringTok{'HOUR'}\NormalTok{] }\OperatorTok{>=} \DecValTok{18}\NormalTok{, }\StringTok{'Phase'}\NormalTok{] }\OperatorTok{=} \StringTok{"Evening"}
+\NormalTok{benchmark_usage }\OperatorTok{=}\NormalTok{ ds_new.groupby([}\StringTok{'subAct'}\NormalTok{,}\StringTok{'WDWE'}\NormalTok{,}\StringTok{'Phase'}\NormalTok{])[}\StringTok{'durationSec'}\NormalTok{].mean()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ calc_subAct(dataframe, subAct, wattage, df_costs):}
+    
+\NormalTok{    df }\OperatorTok{=}\NormalTok{ dataframe.copy()}
+
+\NormalTok{    Data }\OperatorTok{=}\NormalTok{ df.drop(columns }\OperatorTok{=}\NormalTok{ subAct).values}
+\NormalTok{    target }\OperatorTok{=}\NormalTok{ df[subAct]}
+\NormalTok{    D_train, D_test, t_train, t_test }\OperatorTok{=}\NormalTok{ train_test_split(Data, target, test_size }\OperatorTok{=} \FloatTok{0.3}\NormalTok{,}
+\NormalTok{                                                        random_state}\OperatorTok{=}\DecValTok{999}\NormalTok{)}
+\NormalTok{    dt_classifier }\OperatorTok{=}\NormalTok{ DecisionTreeClassifier(max_depth}\OperatorTok{=}\DecValTok{10}\NormalTok{, criterion}\OperatorTok{=}\StringTok{'entropy'}\NormalTok{,}
+\NormalTok{                                           random_state }\OperatorTok{=} \DecValTok{999}\NormalTok{)}
+\NormalTok{    dt_classifier.fit(D_train, t_train)}
+\NormalTok{    confidence }\OperatorTok{=}\NormalTok{ dt_classifier.score(D_test, t_test)}
+\NormalTok{    df[}\StringTok{'prediction'}\NormalTok{] }\OperatorTok{=}\NormalTok{ dt_classifier.predict(Data)}
+\NormalTok{    df[}\StringTok{'intervention'}\NormalTok{] }\OperatorTok{=}\NormalTok{ (df[}\StringTok{'prediction'}\NormalTok{].diff() }\OperatorTok{==} \DecValTok{-1}\NormalTok{) }\OperatorTok{&}\NormalTok{ (df[subAct] }\OperatorTok{==} \DecValTok{1}\NormalTok{)}
+\NormalTok{    dfIDX }\OperatorTok{=}\NormalTok{ pd.read_csv(}\StringTok{'S1SubAct_B_m_NoDupes.csv'}\NormalTok{, index_col }\OperatorTok{=} \VariableTok{None}\NormalTok{)}
+\NormalTok{    dfIDX.duration }\OperatorTok{=}\NormalTok{ pd.to_datetime(dfIDX.duration, }\BuiltInTok{format}\OperatorTok{=}\StringTok{'%Y-%m-}\SpecialCharTok{%d}\StringTok{ %H:%M:%S'}\NormalTok{)}
+\NormalTok{    df[}\StringTok{'timestamp'}\NormalTok{] }\OperatorTok{=}\NormalTok{ dfIDX[}\StringTok{'duration'}\NormalTok{]}
+
+\NormalTok{    df }\OperatorTok{=}\NormalTok{ add_DAY_WDWE_phaseII(df)}
+\NormalTok{    df[}\StringTok{'Phase'}\NormalTok{] }\OperatorTok{=} \StringTok{"Afternoon"}
+\NormalTok{    df.loc[df[}\StringTok{'Hour'}\NormalTok{] }\OperatorTok{<} \DecValTok{12}\NormalTok{, }\StringTok{'Phase'}\NormalTok{] }\OperatorTok{=} \StringTok{"Morning"}
+\NormalTok{    df.loc[df[}\StringTok{'Hour'}\NormalTok{] }\OperatorTok{>=} \DecValTok{18}\NormalTok{, }\StringTok{'Phase'}\NormalTok{] }\OperatorTok{=} \StringTok{"Evening"}
+    
+    \CommentTok{# Calculate approx durations}
+\NormalTok{    duration }\OperatorTok{=} \DecValTok{0}
+\NormalTok{    duration_col }\OperatorTok{=}\NormalTok{ []}
+
+    \ControlFlowTok{for}\NormalTok{ row }\KeywordTok{in}\NormalTok{ df.iterrows():}
+        \ControlFlowTok{if}\NormalTok{ row[}\DecValTok{1}\NormalTok{][subAct] }\OperatorTok{==} \DecValTok{1}\NormalTok{:}
+\NormalTok{            duration }\OperatorTok{+=} \DecValTok{1}
+        \ControlFlowTok{else}\NormalTok{:}
+\NormalTok{            duration }\OperatorTok{=} \DecValTok{0}
+\NormalTok{        duration_col.append(duration)}
+
+\NormalTok{    df[}\StringTok{'duration'}\NormalTok{] }\OperatorTok{=}\NormalTok{ duration_col}
+
+\NormalTok{    cancelled_interventions }\OperatorTok{=} \DecValTok{0}
+\NormalTok{    completed_interventions }\OperatorTok{=} \DecValTok{0}
+\NormalTok{    possible_intervention }\OperatorTok{=} \VariableTok{False}
+\NormalTok{    intervening }\OperatorTok{=} \VariableTok{False}
+\NormalTok{    total_minutes_saved }\OperatorTok{=} \DecValTok{0}
+\NormalTok{    total_kwh_saved }\OperatorTok{=} \DecValTok{0}
+\NormalTok{    total_dollars_saved }\OperatorTok{=} \DecValTok{0}
+
+    \ControlFlowTok{for}\NormalTok{ row }\KeywordTok{in}\NormalTok{ df.iterrows():}
+        \ControlFlowTok{if}\NormalTok{ row[}\DecValTok{1}\NormalTok{][}\StringTok{'intervention'}\NormalTok{] }\KeywordTok{and} \KeywordTok{not}\NormalTok{ intervening:}
+\NormalTok{            possible_intervention }\OperatorTok{=} \VariableTok{True}
+        \ControlFlowTok{if}\NormalTok{ possible_intervention:}
+            \ControlFlowTok{if}\NormalTok{ row[}\DecValTok{1}\NormalTok{][subAct] }\OperatorTok{==} \DecValTok{0}\NormalTok{:}
+\NormalTok{                possible_intervention }\OperatorTok{=} \VariableTok{False}
+\NormalTok{                cancelled_interventions }\OperatorTok{+=} \DecValTok{1}
+            \ControlFlowTok{else}\NormalTok{:}
+                \ControlFlowTok{if}\NormalTok{ row[}\DecValTok{1}\NormalTok{][}\StringTok{'duration'}\NormalTok{] }\OperatorTok{>} 
+\NormalTok{                          benchmark_usage[subAct][row[}\DecValTok{1}\NormalTok{][}\StringTok{'WDWE'}\NormalTok{]][row[}\DecValTok{1}\NormalTok{][}\StringTok{'Phase'}\NormalTok{]] }\OperatorTok{/} \DecValTok{60}\NormalTok{:}
+\NormalTok{                    intervening }\OperatorTok{=} \VariableTok{True}
+\NormalTok{                    completed_interventions }\OperatorTok{+=} \DecValTok{1}
+\NormalTok{                    possible_intervention }\OperatorTok{=} \VariableTok{False}
+        \ControlFlowTok{if}\NormalTok{ intervening:}
+            \ControlFlowTok{if}\NormalTok{ row[}\DecValTok{1}\NormalTok{][subAct] }\OperatorTok{==} \DecValTok{0}\NormalTok{:}
+\NormalTok{                intervening }\OperatorTok{=} \VariableTok{False}
+            \ControlFlowTok{else}\NormalTok{:}
+\NormalTok{                total_minutes_saved }\OperatorTok{+=} \DecValTok{1}
+\NormalTok{                kwh_saved }\OperatorTok{=}\NormalTok{ wattage }\OperatorTok{/} \DecValTok{60} \OperatorTok{/} \DecValTok{1000}
+\NormalTok{                total_kwh_saved }\OperatorTok{+=}\NormalTok{ kwh_saved}
+\NormalTok{                hour }\OperatorTok{=}\NormalTok{ row[}\DecValTok{1}\NormalTok{][}\StringTok{'Hour'}\NormalTok{]}
+\NormalTok{                wdwe }\OperatorTok{=}\NormalTok{ row[}\DecValTok{1}\NormalTok{][}\StringTok{'WDWE'}\NormalTok{]}
+\NormalTok{                rate }\OperatorTok{=}\NormalTok{ df_costs[(df_costs[}\StringTok{'Hour'}\NormalTok{] }\OperatorTok{==}\NormalTok{ hour) }\OperatorTok{&} 
+\NormalTok{                  (df_costs[}\StringTok{'WDWE'}\NormalTok{] }\OperatorTok{==}\NormalTok{ wdwe)].iloc[}\DecValTok{0}\NormalTok{][}\StringTok{'cost_per_kwh'}\NormalTok{]}
+\NormalTok{                dollars_saved }\OperatorTok{=}\NormalTok{ rate }\OperatorTok{*}\NormalTok{ kwh_saved}
+\NormalTok{                total_dollars_saved }\OperatorTok{+=}\NormalTok{ dollars_saved}
+
+\ControlFlowTok{for}\NormalTok{ row }\KeywordTok{in}\NormalTok{ df_sensors.iterrows():}
+\NormalTok{    subAct }\OperatorTok{=}\NormalTok{ row[}\DecValTok{1}\NormalTok{][}\StringTok{'concat'}\NormalTok{]}
+\NormalTok{    wattage }\OperatorTok{=}\NormalTok{ row[}\DecValTok{1}\NormalTok{][}\StringTok{'wattage'}\NormalTok{]}
+\NormalTok{    calc_subAct(df, subAct, wattage, df_costs)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{results}{%
+\subsubsection{Results}\label{results}}
+
+\hypertarget{subact-bathroom_lightswitch}{%
+\paragraph{subAct:
+bathroom\_lightswitch}\label{subact-bathroom_lightswitch}}
+
+\begin{itemize}
+\tightlist
+\item
+  Classifier accuracy metric: 0.847
+\item
+  Number of completed interventions: 11
+\item
+  Number of interventions cancelled due to not meeting mean number of
+  minutes usage: 12
+\item
+  Total minutes saved: 420 min
+\item
+  Total minutes saved, accounting for accuracy metric: 355.914 min
+\item
+  Total electricity saved (kwh): 0.168 kWh
+\item
+  Total electricity saved, accounting for accuracy metric (kwh): 0.142
+  kWh
+\item
+  Total money saved: \$ 0.039 AUD
+\item
+  Total money saved accounting for confidence: \$ 0.033 AUD
+\end{itemize}
+
+\hypertarget{subact-foyer_lightswitch}{%
+\paragraph{SubAct: foyer\_lightswitch}\label{subact-foyer_lightswitch}}
+
+\begin{itemize}
+\tightlist
+\item
+  Classifier accuracy metric: 0.992
+\item
+  Number of completed interventions: 0
+\item
+  Number of interventions cancelled due to not meeting mean number of
+  minutes usage: 1
+\item
+  Total minutes saved: 0 min
+\item
+  Total minutes saved, accounting for accuracy metric: 0.0 min
+\item
+  Total electricity saved (kwh): 0 kWh
+\item
+  Total electricity saved, accounting for accuracy metric (kwh): 0.0 kWh
+\item
+  Total money saved: \$ 0 AUD
+\item
+  Total money saved accounting for confidence: \$ 0.0 AUD
+\end{itemize}
+
+\hypertarget{subact-kitchen_lightswitch}{%
+\paragraph{SubAct:
+kitchen\_lightswitch}\label{subact-kitchen_lightswitch}}
+
+\begin{itemize}
+\tightlist
+\item
+  Classifier accuracy metric: 0.805
+\item
+  Number of completed interventions: 12
+\item
+  Number of interventions cancelled due to not meeting mean number of
+  minutes usage: 6
+\item
+  Total minutes saved: 440 min
+\item
+  Total minutes saved, accounting for accuracy metric: 354.275 min
+\item
+  Total electricity saved (kwh): 0.352 kWh
+\item
+  Total electricity saved, accounting for accuracy metric (kwh): 0.283
+  kWh
+\item
+  Total money saved: \$ 0.086 AUD
+\item
+  Total money saved accounting for confidence: \$ 0.069 AUD
+\end{itemize}
+
+\hypertarget{subact-kitchen_burner}{%
+\paragraph{SubAct: kitchen\_burner}\label{subact-kitchen_burner}}
+
+\begin{itemize}
+\tightlist
+\item
+  Classifier accuracy metric: 0.965
+\item
+  Number of completed interventions: 5
+\item
+  Number of interventions cancelled due to not meeting mean number of
+  minutes usage: 0
+\item
+  Total minutes saved: 50 min
+\item
+  Total minutes saved, accounting for accuracy metric: 48.266 min
+\item
+  Total electricity saved (kwh): 1.25 kWh
+\item
+  Total electricity saved, accounting for accuracy metric (kwh): 1.207
+  kWh
+\item
+  Total money saved: \$ 0.29 AUD
+\item
+  Total money saved accounting for confidence: \$ 0.28 AUD
+\end{itemize}
+
+\hypertarget{subact-livingroom_lightswitch}{%
+\paragraph{SubAct:
+livingroom\_lightswitch}\label{subact-livingroom_lightswitch}}
+
+\begin{itemize}
+\tightlist
+\item
+  Classifier accuracy metric: 0.904
+\item
+  Number of completed interventions: 3
+\item
+  Number of interventions cancelled due to not meeting mean number of
+  minutes usage: 0
+\item
+  Total minutes saved: 21 min
+\item
+  Total minutes saved, accounting for accuracy metric: 18.987 min
+\item
+  Total electricity saved (kwh): 0.017 kWh
+\item
+  Total electricity saved, accounting for accuracy metric (kwh): 0.015
+  kWh
+\item
+  Total money saved: \$ 0.004 AUD
+\item
+  Total money saved accounting for confidence: \$ 0.003 AUD
+\end{itemize}
+
+\hypertarget{subact-bedroom_lightswitch}{%
+\paragraph{SubAct:
+bedroom\_lightswitch}\label{subact-bedroom_lightswitch}}
+
+\begin{itemize}
+\tightlist
+\item
+  Classifier accuracy metric: 0.979
+\item
+  Number of completed interventions: 2
+\item
+  Number of interventions cancelled due to not meeting mean number of
+  minutes usage: 0
+\item
+  Total minutes saved: 7 min
+\item
+  Total minutes saved, accounting for accuracy metric: 6.85 min
+\item
+  Total electricity saved (kwh): 0.004 kWh
+\item
+  Total electricity saved, accounting for accuracy metric (kwh): 0.004
+  kWh
+\item
+  Total money saved: \$ 0.001 AUD
+\item
+  Total money saved accounting for confidence: \$ 0.001 AUD
+\end{itemize}
+
+\hypertarget{subact-kitchen_coffeemachine}{%
+\paragraph{SubAct:
+kitchen\_coffeemachine}\label{subact-kitchen_coffeemachine}}
+
+\begin{itemize}
+\tightlist
+\item
+  Classifier accuracy metric: 0.998
+\item
+  Number of completed interventions: 0
+\item
+  Number of interventions cancelled due to not meeting mean number of
+  minutes usage: 0
+\item
+  Total minutes saved: 0 min
+\item
+  Total minutes saved, accounting for accuracy metric: 0.0 min
+\item
+  Total electricity saved (kwh): 0 kWh
+\item
+  Total electricity saved, accounting for accuracy metric (kwh): 0.0 kWh
+\item
+  Total money saved: \$ 0 AUD
+\item
+  Total money saved accounting for confidence: \$ 0.0 AUD
+\end{itemize}
+
+\hypertarget{subact-kitchen_refrigerator}{%
+\paragraph{SubAct:
+kitchen\_refrigerator}\label{subact-kitchen_refrigerator}}
+
+\begin{itemize}
+\tightlist
+\item
+  Classifier accuracy metric: 0.961
+\item
+  Number of completed interventions: 8
+\item
+  Number of interventions cancelled due to not meeting mean number of
+  minutes usage: 0
+\item
+  Total minutes saved: 51 min
+\item
+  Total minutes saved, accounting for accuracy metric: 49.006 min
+\item
+  Total electricity saved (kwh): 0.128 kWh
+\item
+  Total electricity saved, accounting for accuracy metric (kwh): 0.123
+  kWh
+\item
+  Total money saved: \$ 0.028 AUD
+\item
+  Total money saved accounting for confidence: \$ 0.027 AUD
+\end{itemize}
+
+\hypertarget{subact-kitchen_oven}{%
+\paragraph{SubAct: kitchen\_oven}\label{subact-kitchen_oven}}
+
+\begin{itemize}
+\tightlist
+\item
+  Classifier accuracy metric: 0.994
+\item
+  Number of completed interventions: 0
+\item
+  Number of interventions cancelled due to not meeting mean number of
+  minutes usage: 0
+\item
+  Total minutes saved: 0 min
+\item
+  Total minutes saved, accounting for accuracy metric: 0.0 min
+\item
+  Total electricity saved (kwh): 0 kWh
+\item
+  Total electricity saved, accounting for accuracy metric (kwh): 0.0 kWh
+\item
+  Total money saved: \$ 0 AUD
+\item
+  Total money saved accounting for confidence: \$ 0.0 AUD
+\end{itemize}
+
+\hypertarget{subact-kitchen_toaster}{%
+\paragraph{SubAct: kitchen\_toaster}\label{subact-kitchen_toaster}}
+
+\begin{itemize}
+\tightlist
+\item
+  Classifier accuracy metric: 0.989
+\item
+  Number of completed interventions: 1
+\item
+  Number of interventions cancelled due to not meeting mean number of
+  minutes usage: 0
+\item
+  Total minutes saved: 1 min
+\item
+  Total minutes saved, accounting for accuracy metric: 0.989 min
+\item
+  Total electricity saved (kwh): 0.016 kWh
+\item
+  Total electricity saved, accounting for accuracy metric (kwh): 0.016
+  kWh
+\item
+  Total money saved: \$ 0.003 AUD
+\item
+  Total money saved accounting for confidence: \$ 0.003 AUD
+\end{itemize}
+
+\hypertarget{subact-kitchen_freezer}{%
+\paragraph{SubAct: kitchen\_freezer}\label{subact-kitchen_freezer}}
+
+\begin{itemize}
+\tightlist
+\item
+  Classifier accuracy metric: 0.924
+\item
+  Number of completed interventions: 22
+\item
+  Number of interventions cancelled due to not meeting mean number of
+  minutes usage: 7
+\item
+  Total minutes saved: 249 min
+\item
+  Total minutes saved, accounting for accuracy metric: 230.003 min
+\item
+  Total electricity saved (kwh): 0.622 kWh
+\item
+  Total electricity saved, accounting for accuracy metric (kwh): 0.575
+  kWh
+\item
+  Total money saved: \$ 0.145 AUD
+\item
+  Total money saved accounting for confidence: \$ 0.134 AUD
+\end{itemize}
+
+\hypertarget{subact-kitchen_washingmachine}{%
+\paragraph{SubAct:
+kitchen\_washingmachine}\label{subact-kitchen_washingmachine}}
+
+\begin{itemize}
+\tightlist
+\item
+  Classifier accuracy metric: 0.982
+\item
+  Number of completed interventions: 6
+\item
+  Number of interventions cancelled due to not meeting mean number of
+  minutes usage: 0
+\item
+  Total minutes saved: 11 min
+\item
+  Total minutes saved, accounting for accuracy metric: 10.799 min
+\item
+  Total electricity saved (kwh): 0.403 kWh
+\item
+  Total electricity saved, accounting for accuracy metric (kwh): 0.396
+  kWh
+\item
+  Total money saved: \$ 0.089 AUD
+\item
+  Total money saved accounting for confidence: \$ 0.087 AUD
+\end{itemize}
+
+\hypertarget{subact-kitchen_microwave}{%
+\paragraph{SubAct: kitchen\_microwave}\label{subact-kitchen_microwave}}
+
+\begin{itemize}
+\tightlist
+\item
+  Classifier accuracy metric: 0.987
+\item
+  Number of completed interventions: 0
+\item
+  Number of interventions cancelled due to not meeting mean number of
+  minutes usage: 0
+\item
+  Total minutes saved: 0 min
+\item
+  Total minutes saved, accounting for accuracy metric: 0.0 min
+\item
+  Total electricity saved (kwh): 0 kWh
+\item
+  Total electricity saved, accounting for accuracy metric (kwh): 0.0 kWh
+\item
+  Total money saved: \$ 0 AUD
+\item
+  Total money saved accounting for confidence: \$ 0.0 AUD
+\end{itemize}
+
+\hypertarget{subact-bathroom_sinkfaucet-hot}{%
+\paragraph{SubAct:
+bathroom\_sinkfaucet-hot}\label{subact-bathroom_sinkfaucet-hot}}
+
+\begin{itemize}
+\tightlist
+\item
+  Classifier accuracy metric: 0.975
+\item
+  Number of completed interventions: 14
+\item
+  Number of interventions cancelled due to not meeting mean number of
+  minutes usage: 0
+\item
+  Total minutes saved: 17 min
+\item
+  Total minutes saved, accounting for accuracy metric: 16.582 min
+\item
+  Total electricity saved (kwh): 5.497 kWh
+\item
+  Total electricity saved, accounting for accuracy metric (kwh): 5.362
+  kWh
+\item
+  Total money saved: \$ 1.261 AUD
+\item
+  Total money saved accounting for confidence: \$ 1.23 AUD
+\end{itemize}
+
+\hypertarget{subact-kitchen_dishwasher}{%
+\paragraph{SubAct:
+kitchen\_dishwasher}\label{subact-kitchen_dishwasher}}
+
+\begin{itemize}
+\tightlist
+\item
+  Classifier accuracy metric: 0.955
+\item
+  Number of completed interventions: 9
+\item
+  Number of interventions cancelled due to not meeting mean number of
+  minutes usage: 1
+\item
+  Total minutes saved: 106 min
+\item
+  Total minutes saved, accounting for accuracy metric: 101.255 min
+\item
+  Total electricity saved (kwh): 3.887 kWh
+\item
+  Total electricity saved, accounting for accuracy metric (kwh): 3.713
+  kWh
+\item
+  Total money saved: \$ 0.855 AUD
+\item
+  Total money saved accounting for confidence: \$ 0.817 AUD
+\end{itemize}
+
+\hypertarget{subact-livingroom_lamp}{%
+\paragraph{SubAct: livingroom\_lamp}\label{subact-livingroom_lamp}}
+
+\begin{itemize}
+\tightlist
+\item
+  Classifier accuracy metric: 0.804
+\item
+  Number of completed interventions: 2
+\item
+  Number of interventions cancelled due to not meeting mean number of
+  minutes usage: 1
+\item
+  Total minutes saved: 570 min
+\item
+  Total minutes saved, accounting for accuracy metric: 458.228 min
+\item
+  Total electricity saved (kwh): 0.114 kWh
+\item
+  Total electricity saved, accounting for accuracy metric (kwh): 0.092
+  kWh
+\item
+  Total money saved: \$ 0.027 AUD
+\item
+  Total money saved accounting for confidence: \$ 0.021 AUD
+\end{itemize}
+
+\hypertarget{subact-kitchen_laundrydryer}{%
+\paragraph{SubAct:
+kitchen\_laundrydryer}\label{subact-kitchen_laundrydryer}}
+
+\begin{itemize}
+\tightlist
+\item
+  Classifier accuracy metric: 0.985
+\item
+  Number of completed interventions: 5
+\item
+  Number of interventions cancelled due to not meeting mean number of
+  minutes usage: 0
+\item
+  Total minutes saved: 12 min
+\item
+  Total minutes saved, accounting for accuracy metric: 11.826 min
+\item
+  Total electricity saved (kwh): 0.6 kWh
+\item
+  Total electricity saved, accounting for accuracy metric (kwh): 0.591
+  kWh
+\item
+  Total money saved: \$ 0.134 AUD
+\item
+  Total money saved accounting for confidence: \$ 0.132 AUD
+\end{itemize}
+
+\hypertarget{subact-study_lightwitch}{%
+\paragraph{SubAct: study\_lightwitch}\label{subact-study_lightwitch}}
+
+\begin{itemize}
+\tightlist
+\item
+  Classifier accuracy metric: 0.885
+\item
+  Number of completed interventions: 4
+\item
+  Number of interventions cancelled due to not meeting mean number of
+  minutes usage: 3
+\item
+  Total minutes saved: 39 min
+\item
+  Total minutes saved, accounting for accuracy metric: 34.525 min
+\item
+  Total electricity saved (kwh): 0.023 kWh
+\item
+  Total electricity saved, accounting for accuracy metric (kwh): 0.021
+  kWh
+\item
+  Total money saved: \$ 0.006 AUD
+\item
+  Total money saved accounting for confidence: \$ 0.005 AUD
+\end{itemize}
+
+\hypertarget{subact-bathroom_showerfaucet}{%
+\paragraph{SubAct:
+bathroom\_showerfaucet}\label{subact-bathroom_showerfaucet}}
+
+\begin{itemize}
+\tightlist
+\item
+  Classifier accuracy metric: 0.959
+\item
+  Number of completed interventions: 7
+\item
+  Number of interventions cancelled due to not meeting mean number of
+  minutes usage: 0
+\item
+  Total minutes saved: 49 min
+\item
+  Total minutes saved, accounting for accuracy metric: 46.992 min
+\item
+  Total electricity saved (kwh): 15.843 kWh
+\item
+  Total electricity saved, accounting for accuracy metric (kwh): 15.194
+  kWh
+\item
+  Total money saved: \$ 3.524 AUD
+\item
+  Total money saved accounting for confidence: \$ 3.38 AUD
+\end{itemize}
+
+\hypertarget{subact-bathroom_exhaustfan}{%
+\paragraph{SubAct:
+bathroom\_exhaustfan}\label{subact-bathroom_exhaustfan}}
+
+\begin{itemize}
+\tightlist
+\item
+  Classifier accuracy metric: 0.875
+\item
+  Number of completed interventions: 5
+\item
+  Number of interventions cancelled due to not meeting mean number of
+  minutes usage: 2
+\item
+  Total minutes saved: 24 min
+\item
+  Total minutes saved, accounting for accuracy metric: 21.004 min
+\item
+  Total electricity saved (kwh): 0.024 kWh
+\item
+  Total electricity saved, accounting for accuracy metric (kwh): 0.021
+  kWh
+\item
+  Total money saved: \$ 0.005 AUD
+\item
+  Total money saved accounting for confidence: \$ 0.005 AUD
+\end{itemize}
+
+\hypertarget{subact-kitchen_garbagedisposal}{%
+\paragraph{SubAct:
+kitchen\_garbagedisposal}\label{subact-kitchen_garbagedisposal}}
+
+\begin{itemize}
+\tightlist
+\item
+  Classifier accuracy metric: 0.997
+\item
+  Number of completed interventions: 0
+\item
+  Number of interventions cancelled due to not meeting mean number of
+  minutes usage: 0
+\item
+  Total minutes saved: 0 min
+\item
+  Total minutes saved, accounting for accuracy metric: 0.0 min
+\item
+  Total electricity saved (kwh): 0 kWh
+\item
+  Total electricity saved, accounting for accuracy metric (kwh): 0.0 kWh
+\item
+  Total money saved: \$ 0 AUD
+\item
+  Total money saved accounting for confidence: \$ 0.0 AUD
+\end{itemize}
+
+\hypertarget{discussion}{%
+\section{Discussion}\label{discussion}}
+
+It was our intention to develop a data collection and processing
+methodology with subsequent machine learning analysis that would allow
+for the consideration of the interplay between end user convenience,
+enery saving and cost in an IoT Smart Home. Review of current literature
+showed that in the space of energy saving, consideration is rarely given
+to the convenience of end users, and how this will affect overall
+outcomes in the long term. A large volume of literature proposes that
+through the provisioning of display terminals in the home, users can
+monitor their energy usage and intervene accordingly. We proposed that
+by leveraging the emerging technologies of IoT and cloud computing, the
+nessescity for an end user to intervene to diminish cost an be reduced,
+and thus increase convenience.
+
+We initially created a predictive machine learning model using only for
+a sub-activity on or off states based on historical data. As compared to
+other work in the IoT Smart Home predictive analytics space, our model
+used only the on-off states of other sub-activities to train a decision
+tree classifier. One large challenge in this work was imbalance, whereby
+the number of 1 values in many of the target features was heavily
+overwhelmed by the 0 values. One such example of this was the model
+derived for the kitchen coffee machine. Inspection of the results
+revealed that in the source dataset out of 1588 instances, 1587 were 0
+and only one was 1. In this case, the model was overfit, as any cross
+validation testing for 0 values will be extremely likely to appear
+correct.
+
+After the first iteration of our model and subsequent result analysis,
+another evaluation was conducted whereby the non-energy requiring
+sub-activities were stripped from the training dataset. It was found
+through a semi-quanitative comparision methodogy that this has little
+affect on the overall performance of the model. However, this may also
+be attributed to the imbalance in the dataset towards values of 0. Some
+of the results from the analysis were promising, and using the original
+model an antagonistic model for reducing energy usage was proposed. The
+logic of this model was sound such that for energy-intensive
+sub-activities overall useage duration was able to be reduced in some
+cases. Due to the large imbalance in the dataset, future work is needed
+to optimize parameters.
+
+The overall proposed hypothetical model would be one whereby an IoT
+Smart home has one or more occupants who initially train the model with
+their daily activities over a certain period of time. When they are
+ready, they can activate the AI to help reduce power, as per the
+proposed mechanism above. As the model is antagonistic, is always aims
+to drive energy usage down by performing switching off events at the end
+or start of a sequence. In the case of the smarthome users, if they
+themselves intervened to re-activate an activity that has been switched
+off, this could be used to further train the model. The user would
+potentially interact with this model through a smart phone application,
+as shown in the mock below, Figure \ref{fig:ios}.
+
+Convenience is factored into the overall proposed model in two main ways
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  A predictive model is created to mediate on-off events of smart home
+  appliances reducing the need of an end user to intervene, thus
+  increasing convenience.
+\item
+  The end user does not have to expend energy analysing a feeback
+  system, based on their historical behaviour a model can be trained and
+  then the level of convenience, energy saving and dollar saving can be
+  paramatised as shown below.
+\end{enumerate}
 
 \begin{figure}[H]
 
@@ -2799,45 +4184,18 @@ Test for in \ref{fig:fig1} we see XYZ
 
 }
 
-\caption{ADD TEXT}\label{fig:unnamed-chunk-12}
+\caption{A proposed end user UI for the functioning model}\label{fig:ios}
 \end{figure}
 
-\pagebreak
+\hypertarget{conclusion}{%
+\section{Conclusion}\label{conclusion}}
 
-Reduce image border (not working???)
-\url{https://holtzy.github.io/Pimp-my-rmd/}
-
-S1SubActivities\_temporalFeaturesCLEANSED.csv = `Final' dataset
-
-\hypertarget{algorithm-1}{%
-\paragraph{Algorithm 1}\label{algorithm-1}}
-
-Text
-
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetAlgoLined
-\KwResult{Write here the result}
-\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
-\Input{Write here the input}
-\Output{Write here the output}
-\BlankLine
-\While{While condition}{
-    instructions\;
-    \eIf{condition}{
-        instructions1\;
-        instructions2\;
-    }{
-        instructions3\;
-    }
-}
-\caption{While loop with If/Else condition}
-\end{algorithm}
-
-\url{https://daattali.com/shiny/colourInput/}
-
-\hypertarget{strip-plots}{%
-\paragraph{Strip Plots}\label{strip-plots}}
+Using previously collected data on end user activity, we were able to
+build a model that can predict the on-off state of activities in the
+home. Unlike other work in this space, the model uses only the on-off
+state of other features as predictors. The model was combined with usage
+statistics, wattage data and electricity pricing data to make an
+antagonistic mechanism to reduce overall power consumption.
 
 \hypertarget{references}{%
 \section*{References}\label{references}}
@@ -2918,94 +4276,113 @@ and alerting of energy use by home appliances. Applied Energy
 15. Graab AC (2011) The smart grid: A smart solution to a complicated
 problem. William and Mary Law Review 52:2051
 
+\leavevmode\hypertarget{ref-ilzelaicaneEvaluationHouseholdElectricity2015}{}%
+16. Ilze Laicane AB Dagnija Blumberga (2015) Evaluation of Household
+Electricity Savings. Analysis of Household Electricity Demand Profile
+and User Activities. Energy Procedia 72:285--292.
+\url{https://doi.org/10.1016/j.egypro.2015.06.041}
+
+\leavevmode\hypertarget{ref-d.m.murrayApplianceElectricalConsumption2018}{}%
+17. D. M. Murray VS L. Stankovic (2018) Appliance electrical consumption
+modelling at scale using smart meter data. Journal of Cleaner
+Production. \url{https://doi.org/10.1016/j.jclepro.2018.03.163}
+
+\leavevmode\hypertarget{ref-amirkavousianRankingApplianceEnergy2015}{}%
+18. Amir Kavousian MF Ram Rajagopal (2015) Ranking appliance energy
+efficiency in households: Utilizing smart meter data and energy
+efficiency frontiers to estimate and identify the determinants of
+appliance energy efficiency in residential buildings. Energy and
+Buildings 99:220--230.
+\url{https://doi.org/10.1016/j.enbuild.2015.03.052}
+
+\leavevmode\hypertarget{ref-karjalainenConsumerPreferencesFeedback2011}{}%
+19. Karjalainen S (2011) Consumer preferences for feedback on household
+electricity consumption. Energy and Buildings 43:458--467.
+\url{https://doi.org/10.1016/j.enbuild.2010.10.010}
+
 \leavevmode\hypertarget{ref-charlotteb.a.kobusReallifeAssessmentEffect2015}{}%
-16. Charlotte B. A. Kobus RM Elke A. M. Klaassen (2015) A real-life
+20. Charlotte B. A. Kobus RM Elke A. M. Klaassen (2015) A real-life
 assessment on the effect of smart appliances for shifting households'
 electricity demand. Applied Energy 147:335--343.
 \url{https://doi.org/10.1016/j.apenergy.2015.01.073}
 
 \leavevmode\hypertarget{ref-k.s.cetinApplianceDailyEnergy2014}{}%
-17. K. S. Cetin AN P. C. Tabares-Velasco (2014) Appliance daily energy
+21. K. S. Cetin AN P. C. Tabares-Velasco (2014) Appliance daily energy
 use in new residential buildings: Use profiles and variation in
 time-of-use. Energy and Buildings 84:716--726.
 \url{https://doi.org/10.1016/j.enbuild.2014.07.045}
 
 \leavevmode\hypertarget{ref-kaustavbasuApplianceUsagePrediction2012}{}%
-18. Kaustav Basu SB Vincent Debusschere (2012) Appliance usage
+22. Kaustav Basu SB Vincent Debusschere (2012) Appliance usage
 prediction using a time series based classification approach.
 1217--1222. \url{https://doi.org/10.1109/iecon.2012.6388597}
 
-\leavevmode\hypertarget{ref-d.m.murrayApplianceElectricalConsumption2018}{}%
-19. D. M. Murray VS L. Stankovic (2018) Appliance electrical consumption
-modelling at scale using smart meter data. Journal of Cleaner
-Production. \url{https://doi.org/10.1016/j.jclepro.2018.03.163}
-
 \leavevmode\hypertarget{ref-rockinsonActivityRecognitionHome}{}%
-20. Rockinson R Activity Recognition in the Home Setting Using Simple
+23. Rockinson R Activity Recognition in the Home Setting Using Simple
 and Ubiquitous sensors
 
 \leavevmode\hypertarget{ref-countrycode}{}%
-21. Arel-Bundock V, Enevoldsen N, Yetman C (2018) Countrycode: An r
+24. Arel-Bundock V, Enevoldsen N, Yetman C (2018) Countrycode: An r
 package to convert country names and country codes. Journal of Open
 Source Software 3:848
 
 \leavevmode\hypertarget{ref-cowplot}{}%
-22. Wilke CO (2018) Cowplot: Streamlined plot theme and plot annotations
+25. Wilke CO (2018) Cowplot: Streamlined plot theme and plot annotations
 for 'ggplot2'
 
 \leavevmode\hypertarget{ref-bibtex}{}%
-23. Francois R (2017) Bibtex: Bibtex parser
+26. Francois R (2017) Bibtex: Bibtex parser
 
 \leavevmode\hypertarget{ref-dplyr}{}%
-24. Wickham H, François R, Henry L, Müller K (2019) Dplyr: A grammar of
+27. Wickham H, François R, Henry L, Müller K (2019) Dplyr: A grammar of
 data manipulation
 
 \leavevmode\hypertarget{ref-ggExtra}{}%
-25. Attali D, Baker C (2018) GgExtra: Add marginal histograms to
+28. Attali D, Baker C (2018) GgExtra: Add marginal histograms to
 'ggplot2', and more 'ggplot2' enhancements
 
 \leavevmode\hypertarget{ref-tidyverse}{}%
-26. Wickham H (2017) Tidyverse: Easily install and load the 'tidyverse'
+29. Wickham H (2017) Tidyverse: Easily install and load the 'tidyverse'
 
 \leavevmode\hypertarget{ref-ggplot2}{}%
-27. Wickham H (2016) Ggplot2: Elegant graphics for data analysis.
+30. Wickham H (2016) Ggplot2: Elegant graphics for data analysis.
 Springer-Verlag New York
 
 \leavevmode\hypertarget{ref-ggridges}{}%
-28. Wilke CO (2018) Ggridges: Ridgeline plots in 'ggplot2'
+31. Wilke CO (2018) Ggridges: Ridgeline plots in 'ggplot2'
 
 \leavevmode\hypertarget{ref-kableExtra}{}%
-29. Zhu H (2018) KableExtra: Construct complex table with 'kable' and
+32. Zhu H (2018) KableExtra: Construct complex table with 'kable' and
 pipe syntax
 
 \leavevmode\hypertarget{ref-knitr1}{}%
-30. Xie Y (2019) Knitr: A general-purpose package for dynamic report
+33. Xie Y (2019) Knitr: A general-purpose package for dynamic report
 generation in r
 
 \leavevmode\hypertarget{ref-lubridate}{}%
-31. Grolemund G, Wickham H (2011) Dates and times made easy with
+34. Grolemund G, Wickham H (2011) Dates and times made easy with
 lubridate. Journal of Statistical Software 40:1--25
 
 \leavevmode\hypertarget{ref-readr}{}%
-32. Wickham H, Hester J, Francois R (2017) Readr: Read rectangular text
+35. Wickham H, Hester J, Francois R (2017) Readr: Read rectangular text
 data
 
 \leavevmode\hypertarget{ref-tidyr}{}%
-33. Wickham H, Henry L (2018) Tidyr: Easily tidy data with 'spread()'
+36. Wickham H, Henry L (2018) Tidyr: Easily tidy data with 'spread()'
 and 'gather()' functions
 
 \leavevmode\hypertarget{ref-viridis}{}%
-34. Garnier S (2018) Viridis: Default color maps from 'matplotlib'
+37. Garnier S (2018) Viridis: Default color maps from 'matplotlib'
 
 \leavevmode\hypertarget{ref-reticulate}{}%
-35. Ushey K, Allaire J, Tang Y (2019) Reticulate: Interface to 'python'
+38. Ushey K, Allaire J, Tang Y (2019) Reticulate: Interface to 'python'
 
 \leavevmode\hypertarget{ref-ggsci}{}%
-36. Xiao N (2017) Ggsci: Scientific journal and sci-fi themed color
+39. Xiao N (2017) Ggsci: Scientific journal and sci-fi themed color
 palettes for 'ggplot2'
 
 \leavevmode\hypertarget{ref-scales}{}%
-37. Wickham H (2018) Scales: Scale functions for visualization
+40. Wickham H (2018) Scales: Scale functions for visualization
 
 
 \end{document}
